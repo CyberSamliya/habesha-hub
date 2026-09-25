@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A community resource site for Ethiopian families in the United States — government aid, immigration guidance, and a local directory of Ethiopian shops and churches.">
-<title>Habesha Hub</title>
+<meta name="description" content="Find Ethiopian businesses, community resources, culture, and reliable guidance across the United States. Search local services and suggest a listing.">
+<title>Habesha Hub | Ethiopian businesses, culture &amp; community</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@500&display=swap">
 <style>
   :root{
@@ -133,18 +133,53 @@
   footer p{color:var(--ink-soft); font-size:.85rem; max-width:50ch;}
 
   .copybtn{border:1px solid var(--line); background:var(--card); border-radius:8px; padding:5px 10px; font-size:.78rem; cursor:pointer; color:var(--ink);}
+
+  /* Community directory */
+  .hero{background:radial-gradient(circle at 88% 10%,var(--gold-soft),transparent 35%),var(--paper);}
+  .hero-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.8fr);gap:44px;align-items:center;}
+  .hero h1{max-width:13ch;font-size:clamp(2.5rem,5vw,4.3rem);line-height:1.09;}
+  .hero-panel{padding:26px;border-radius:20px;background:var(--green-deep);color:#fff;box-shadow:0 18px 48px #0002;}
+  .hero-panel .eyebrow{color:var(--gold-soft);}
+  .hero-panel p{font-size:.85rem;margin-top:20px;color:#f3eee3;}
+  .hero-pills{display:grid;gap:8px;margin-top:18px;}
+  .hero-pills a{padding:9px 12px;border:1px solid #ffffff55;border-radius:9px;color:#fff;text-decoration:none;font-weight:600;}
+  .hero-pills a:hover,.hero-pills a:focus-visible{background:#ffffff22;}
+  .directory-search{display:flex;align-items:end;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:28px 0 16px;}
+  .directory-search label{font-weight:700;font-size:.85rem;flex:1;}
+  .directory-search input,.directory-search select{display:block;width:100%;min-height:44px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;padding:8px 12px;}
+  .category-links{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;}
+  .category-links button{white-space:nowrap;padding:8px 13px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer;}
+  .category-links button[aria-pressed="true"]{background:var(--green-deep);color:#fff;border-color:var(--green-deep);}
+  .result-count{margin:20px 0 12px;color:var(--ink-soft);font-size:.9rem;}
+  .listing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+  .listing{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:9px;}
+  .listing h3{font-size:1.2rem;}.listing p{color:var(--ink-soft);font-size:.9rem;}
+  .listing .listing-meta{font-size:.78rem;color:var(--green-deep);font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .listing-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;}
+  .listing-actions a{font-weight:700;font-size:.88rem;}
+  .empty-results{padding:28px;border:1px dashed var(--line);border-radius:var(--radius);background:var(--card);}
+  .empty-results p{margin:8px 0 18px;color:var(--ink-soft);}
+  .culture-grid .card{display:flex;flex-direction:column;gap:12px;}
+  .culture-grid p{color:var(--ink-soft);font-size:.93rem;}.culture-grid a{margin-top:auto;font-weight:700;}
+  .culture-number{color:var(--rust);font-size:.75rem;font-weight:700;letter-spacing:.1em;}
+  .resource-heading{padding-block:45px;scroll-margin-top:70px;}.resource-heading h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:8px 0;}.resource-heading p{color:var(--ink-soft);}
+  .resource-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}.resource-links a{padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:700;text-decoration:none;}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .skip-link{position:absolute;left:12px;top:-60px;padding:10px 14px;background:var(--green-deep);color:#fff;z-index:50;}
+  .skip-link:focus{top:12px;}
+  @media(max-width:700px){.hero-layout,.listing-grid{grid-template-columns:1fr;}.directory-search{flex-direction:column;align-items:stretch;}.directory-search label{width:100%;}.hero{padding-block:42px;}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#directory">Skip to directory</a>
 <header class="top">
   <div class="wrap navwrap">
     <div class="navrow">
       <a href="#top" class="brand"><span class="mark"></span>Habesha Hub</a>
       <nav class="links">
-        <a href="#aid">Aid &amp; Benefits</a>
-        <a href="#states">State Guide</a>
-        <a href="#legal">Legal &amp; Immigration</a>
-        <a href="#directory">Directory</a>
+        <a href="#directory">Find businesses</a>
+        <a href="#culture">Culture &amp; community</a>
+        <a href="#resources">Practical resources</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -153,21 +188,50 @@
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">Community-built, not a law firm or government office</span>
-      <h1>A starting point for Ethiopian families building a life in the United States</h1>
-      <div class="amharic-line amharic">እንኳን ደህና መጣችሁ — welcome.</div>
-      <p class="lead">Plain-language guides to government aid, immigration paperwork, and the Ethiopian shops, churches, and language programs already near you. Every guide links to the real, official source — this site explains, it doesn't replace them.</p>
-      <div class="hero-cta">
-        <a href="#aid" class="btn btn-primary">See aid programs</a>
-        <a href="#directory" class="btn btn-outline">Find community &amp; groceries</a>
+    <div class="wrap hero-layout">
+      <div>
+        <span class="eyebrow">Ethiopian community · United States</span>
+        <h1>Find your people. Find what you need.</h1>
+        <div class="amharic-line amharic" lang="am">እንኳን ደህና መጣችሁ</div>
+        <p class="lead">Discover Ethiopian restaurants, markets, services, culture, and practical resources. Columbus is our starting point; help us build a reliable guide for every city.</p>
+        <div class="hero-cta"><a href="#directory" class="btn btn-primary">Explore the directory</a><a href="#contact" class="btn btn-outline">Suggest a business</a></div>
       </div>
-      <div class="disclaimer-banner">
-        <span>ⓘ</span>
-        <span><strong>This is a community information site, not legal advice.</strong> Benefit rules and immigration consequences depend on your specific status and state. For anything that affects your case, confirm with the official agency or a licensed legal aid organization linked on this page.</span>
+      <aside class="hero-panel" aria-label="What you can find here">
+        <span class="eyebrow">Explore by need</span>
+        <div class="hero-pills"><a href="#directory" data-jump-cat="Restaurant">Restaurants</a><a href="#directory" data-jump-cat="Grocery">Groceries</a><a href="#directory" data-jump-cat="Beauty">Barbers &amp; salons</a><a href="#directory" data-jump-cat="Home repair">Home repairs</a><a href="#directory" data-jump-cat="Garage">Garages</a></div>
+        <p>Listings include a source and review date. No business is described as Ethiopian-owned without confirmation.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="directory" class="alt">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Local discovery</span><h2>Ethiopian businesses &amp; services</h2><p class="lead">Search by name or city, then narrow by category. We publish specific contact details only when we can link to a reliable source. Call ahead before visiting.</p></div>
+      <form class="directory-search" id="directorySearch" role="search">
+        <label for="dirQuery">Business or city<input id="dirQuery" type="search" placeholder="Try restaurant or Columbus" autocomplete="off"></label>
+        <label for="dirCategory">Category<select id="dirCategory"><option value="all">All categories</option><option>Restaurant</option><option>Grocery</option><option>Beauty</option><option>Home repair</option><option>Garage</option><option>Community</option></select></label>
+        <button type="reset" class="btn btn-outline">Clear</button>
+      </form>
+      <div class="category-links" aria-label="Browse categories"><button data-category="all" aria-pressed="true">All</button><button data-category="Restaurant">Restaurants</button><button data-category="Grocery">Groceries</button><button data-category="Beauty">Barbers &amp; salons</button><button data-category="Home repair">Home repairs</button><button data-category="Garage">Garages</button><button data-category="Community">Community</button></div>
+      <p id="resultCount" class="result-count" role="status" aria-live="polite"></p>
+      <div id="directoryResults" class="listing-grid"></div>
+      <div id="emptyResults" class="empty-results" hidden><h3>No reviewed listings match this search yet</h3><p>We are growing this directory carefully. Suggest a business and include its website or another reliable source so we can check it.</p><a href="#contact" class="btn btn-primary">Suggest a listing</a></div>
+      <p class="verify-note">“Reviewed source” means a linked business or local tourism page supported the displayed details on September 25, 2026. It is not an endorsement, a live-hours check, or proof of ownership. We welcome corrections.</p>
+    </div>
+  </section>
+
+  <section id="culture">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">More than a directory</span><h2>Culture, language &amp; belonging</h2><p class="lead">A place to discover living traditions and the organizations that keep them connected across generations.</p></div>
+      <div class="grid grid-3 culture-grid">
+        <article class="card"><span class="culture-number">01 / HERITAGE</span><h3>Festivals &amp; traditions</h3><p>Learn about Meskel and Timket through UNESCO’s descriptions of these living celebrations.</p><a href="https://ich.unesco.org/en/state/ethiopia-ET?info=elements-on-the-lists" target="_blank" rel="noopener">Explore Ethiopia’s heritage at UNESCO →</a></article>
+        <article class="card"><span class="culture-number">02 / STORIES</span><h3>Community voices</h3><p>Music, food, faith, language, and family stories deserve room alongside business listings. Share an organization or story for editorial review.</p><a href="#contact">Suggest a story →</a></article>
+        <article class="card"><span class="culture-number">03 / CONNECTION</span><h3>Churches &amp; learning</h3><p>Help families find Ethiopian Orthodox parishes, heritage-language classes, and cultural groups. Program schedules should be confirmed directly with organizers.</p><a href="#contact">Suggest a community resource →</a></article>
       </div>
     </div>
   </section>
+
+  <div id="resources" class="resource-heading alt"><div class="wrap"><span class="eyebrow">Reliable starting points</span><h2>Practical resources</h2><p>Official programs and legal information change. Follow the linked agencies for current rules and individual guidance.</p><div class="resource-links"><a href="#aid">Aid &amp; benefits</a><a href="#states">Ohio state guide</a><a href="#legal">Immigration &amp; legal help</a></div></div></div>
 
   <section id="aid" class="alt">
     <div class="wrap">
@@ -211,7 +275,7 @@
           <span class="tag">Income</span>
           <h3>Unemployment &amp; SSI/SSDI</h3>
           <p>Unemployment covers job loss through your state workforce agency. SSI/SSDI support people who can't work due to a disability, with separate rules for non-citizens.</p>
-          <a class="apply" href="https://www.benefits.gov/" target="_blank" rel="noopener">Full benefit finder (Benefits.gov) →</a>
+          <a class="apply" href="https://www.usa.gov/benefit-finder" target="_blank" rel="noopener">Find benefits (USAGov) →</a>
         </div>
       </div>
     </div>
@@ -249,119 +313,4 @@
       <div class="section-head">
         <span class="eyebrow">Read carefully — consequences here are real</span>
         <h2>Immigration &amp; legal guidance</h2>
-        <p class="lead">This section explains terms in plain language and points you to who can actually help. It is not legal advice, and immigration consequences depend heavily on individual facts.</p>
-      </div>
-
-      <details class="acc" open>
-        <summary><div><div class="s-title">Who should I talk to first?</div><span class="s-hint">Free and low-cost legal help</span></div><span class="chev">+</span></summary>
-        <div class="acc-body">
-          <p>For anything involving your immigration status — a filing deadline, a status change, a notice from USCIS or immigration court — talk to a licensed immigration attorney or an accredited nonprofit legal service before you act. A mistake on a form or a missed deadline can have consequences that are hard to undo.</p>
-          <ul>
-            <li><a href="https://www.uscis.gov/" target="_blank" rel="noopener">USCIS.gov</a> — official forms, filing fees, and case status, direct from the government.</li>
-            <li><a href="https://www.ilrc.org/community-resources" target="_blank" rel="noopener">Immigrant Legal Resource Center</a> — plain-language guides and a directory of legal help.</li>
-            <li><a href="https://www.nilc.org/resources/" target="_blank" rel="noopener">National Immigration Law Center</a> — policy explainers, kept current as rules change.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="acc">
-        <summary><div><div class="s-title">Common status terms, in plain language</div><span class="s-hint">Refugee, asylee, green card, and more</span></div><span class="chev">+</span></summary>
-        <div class="acc-body">
-          <p><strong>Refugee</strong> — approved for resettlement before arriving in the US; eligible for resettlement benefits from day one.</p>
-          <p><strong>Asylee</strong> — granted protection after arriving and applying from inside the US; similar benefits to refugees once approved.</p>
-          <p><strong>Lawful permanent resident (green card holder)</strong> — can live and work permanently; some federal benefits have a waiting period.</p>
-          <p><strong>Naturalized citizen</strong> — full citizenship after meeting residency and civics requirements; eligible for all federal benefits and voting.</p>
-          <p>Exact eligibility and timelines change with federal policy — confirm your own situation with USCIS or legal aid rather than relying on this summary alone.</p>
-        </div>
-      </details>
-
-      <details class="acc">
-        <summary><div><div class="s-title">What can go wrong — and why it matters to get help</div><span class="s-hint">Consequences of common mistakes</span></div><span class="chev">+</span></summary>
-        <div class="acc-body">
-          <p>A late filing, an incomplete form, or an unreported change of address can delay a case for months or put a status at risk. Unlicensed "notarios" or paid non-lawyers who promise a guaranteed outcome are a common source of real harm in immigrant communities — a notary public in the US does not have the same legal authority as in Ethiopia and cannot represent you in an immigration matter.</p>
-          <p>If you've already made a filing mistake, the fix is usually still to talk to a licensed attorney or accredited nonprofit as soon as possible, not to wait.</p>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <section id="directory">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Built from and for the community</span>
-        <h2>Grocery stores, churches &amp; language programs</h2>
-        <p class="lead">A starting directory for the Columbus, Ohio area, where this site began. Owners and details change — always call ahead before a special trip.</p>
-      </div>
-
-      <div class="dir-cat">
-        <h3>🛒 Ethiopian &amp; East African grocery stores — Columbus, OH</h3>
-        <div class="store-list">
-          <div class="store"><div class="sname">Habesha Market</div><div class="saddr">1391 S Hamilton Rd, Columbus, OH</div></div>
-          <div class="store"><div class="sname">Addis Ababa Grocery</div><div class="saddr">Columbus, OH — injera, teff, berbere &amp; spices</div></div>
-          <div class="store"><div class="sname">Dire Dawa Grocery Store</div><div class="saddr">Columbus, OH</div></div>
-          <div class="store"><div class="sname">Lalibela Grocery</div><div class="saddr">Columbus, OH</div></div>
-        </div>
-      </div>
-
-      <div class="dir-cat" style="margin-top:26px;">
-        <h3>✝️ Ethiopian Orthodox churches — Columbus, OH</h3>
-        <div class="store-list">
-          <div class="store"><div class="sname">St. Michael Ethiopian Orthodox Church</div><div class="saddr">Columbus, OH</div></div>
-          <div class="store"><div class="sname">Debre Medhanit Medhane Alem</div><div class="saddr">610 Neil Ave, Columbus, OH</div></div>
-          <div class="store"><div class="sname">Kidest Sehalte Mehret &amp; St. Urael</div><div class="saddr">Columbus, OH</div></div>
-        </div>
-        <p class="verify-note">Amharic and heritage-language classes for kids are often run informally through churches like these rather than as a standalone school — contact the church directly to ask about current class days and ages.</p>
-      </div>
-
-      <div class="dir-cat" style="margin-top:26px;">
-        <h3>🛒 Also known: DC / Maryland / Virginia markets</h3>
-        <div class="store-list">
-          <div class="store"><div class="sname">Selam International Market</div><div class="saddr">Washington, DC</div></div>
-          <div class="store"><div class="sname">Merkato Ethiopian Market</div><div class="saddr">Springfield, VA</div></div>
-          <div class="store"><div class="sname">Tana Ethiopian Market</div><div class="saddr">Silver Spring, MD</div></div>
-          <div class="store"><div class="sname">Skyline International Market</div><div class="saddr">Falls Church, VA</div></div>
-        </div>
-      </div>
-
-      <p class="verify-note">Know a store, church, or program that should be listed — here or in another state? Send the name and city through Contact below and it gets added.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="alt">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Help us grow this</span>
-        <h2>Add a listing or request a state</h2>
-        <p class="lead">This directory is only as good as what the community shares. Send corrections, new listings, or a state you'd like added.</p>
-      </div>
-      <div class="card" style="max-width:520px;">
-        <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:6px;">Reach the site's maintainer directly:</p>
-        <p style="font-weight:700; font-size:1.05rem;">samra8293101@gmail.com</p>
-        <button class="copybtn" id="copyEmail" type="button" style="margin-top:10px;">Copy email address</button>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap foot-row">
-      <a href="#top" class="brand"><span class="mark"></span>Habesha Hub</a>
-      <p>Community-maintained resource for Ethiopian families in the United States. Not affiliated with USCIS, any state government, or any law firm. Always confirm eligibility and legal questions with the official source linked on this page.</p>
-    </div>
-  </footer>
-</main>
-
-<script>
-  (function(){
-    var btn = document.getElementById('copyEmail');
-    if(!btn) return;
-    btn.addEventListener('click', function(){
-      var email = 'samra8293101@gmail.com';
-      function done(ok){ btn.textContent = ok ? 'Copied ✓' : email; setTimeout(function(){ btn.textContent='Copy email address'; }, 1800); }
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(email).then(function(){done(true);}).catch(function(){done(false);});
-      } else { done(false); }
-    });
-  })();
-</script>
-</body>
-</html>
+        <p class="lead">This section explains terms in plain language and points you to who can actually help. It is not legal advice, and immigration consequences d
