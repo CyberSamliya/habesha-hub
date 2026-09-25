@@ -3,82 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Find Ethiopian businesses, community resources, culture, and reliable guidance across the United States. Search local services and suggest a listing.">
-<title>Habesha Hub | Ethiopian businesses, culture &amp; community</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@500&display=swap">
+<meta name="description" content="A community resource site for Ethiopian families in the United States — government aid, immigration guidance, and a local directory of Ethiopian shops and churches.">
+<title>Habesha Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Ethiopic:wght@400;600&display=swap">
 <style>
   :root{
-    --ink:#1C1A17; --ink-soft:#4A443C;
-    --paper:#FBF7F0; --card:#FFFFFF; --sand:#EFE6D2;
-    --line:#E3D9C2;
-    --green:#0B5D3B; --green-deep:#08432A;
-    --gold:#C9962E; --gold-soft:#F1E2BC;
-    --rust:#B34A32; --rust-soft:#F3DCD4;
-    --radius:14px;
+    --ink:#232019; --ink-soft:#5B5344;
+    --paper:#F7F2E7; --card:#FFFDF8; --sand:#ECE3CC;
+    --line:#D8CBA6;
+    --green:#1E4D3A; --green-deep:#173B2C;
+    --gold:#9C7A28; --gold-soft:#EFE1B8;
+    --rust:#7A2E24; --rust-soft:#EAD7CC;
+    --radius:3px;
     color-scheme:light;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --ink:#F3EEE3; --ink-soft:#C9C0AE;
-      --paper:#171410; --card:#1E1A14; --sand:#241F17;
-      --line:#3A3226;
-      --green:#4CA97A; --green-deep:#2E7A54;
-      --gold:#E0B454; --gold-soft:#3A2E12;
-      --rust:#E08065; --rust-soft:#3A2018;
+      --ink:#EDE6D6; --ink-soft:#BCB09A;
+      --paper:#181510; --card:#211C15; --sand:#262016;
+      --line:#3E3524;
+      --green:#5B9A7E; --green-deep:#3E7A5F;
+      --gold:#D2AC55; --gold-soft:#332918;
+      --rust:#C97E6A; --rust-soft:#3A241D;
       color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --ink:#F3EEE3; --ink-soft:#C9C0AE;
-    --paper:#171410; --card:#1E1A14; --sand:#241F17;
-    --line:#3A3226;
-    --green:#4CA97A; --green-deep:#2E7A54;
-    --gold:#E0B454; --gold-soft:#3A2E12;
-    --rust:#E08065; --rust-soft:#3A2018;
+    --ink:#EDE6D6; --ink-soft:#BCB09A;
+    --paper:#181510; --card:#211C15; --sand:#262016;
+    --line:#3E3524;
+    --green:#5B9A7E; --green-deep:#3E7A5F;
+    --gold:#D2AC55; --gold-soft:#332918;
+    --rust:#C97E6A; --rust-soft:#3A241D;
     color-scheme:dark;
   }
 
   *{box-sizing:border-box;}
-  body{background:var(--paper); color:var(--ink); font-family:"Public Sans",-apple-system,BlinkMacSystemFont,sans-serif; padding-inline:0; margin:0; line-height:1.55;}
-  h1,h2,h3{font-family:"Fraunces",Georgia,serif; color:var(--ink); text-wrap:balance; letter-spacing:-.01em; margin:0;}
+  body{background:var(--paper); color:var(--ink); font-family:"Source Serif 4",Georgia,serif; padding-inline:0; margin:0; line-height:1.6;}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif; color:var(--ink); text-wrap:balance; letter-spacing:0; font-weight:600; margin:0;}
   p{margin:0;}
-  a{color:var(--green-deep);}
+  a{color:var(--green-deep); text-underline-offset:2px;}
   :root[data-theme="dark"] a{color:var(--gold);}
   @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) a{color:var(--gold);} }
-  .amharic{font-family:"Noto Sans Ethiopic","Public Sans",sans-serif;}
+  .amharic{font-family:"Noto Sans Ethiopic","Source Serif 4",sans-serif;}
+  .am{font-family:"Noto Sans Ethiopic","Source Serif 4",sans-serif; display:block; font-weight:400; font-style:normal; color:var(--rust); font-size:.6em; letter-spacing:0; text-transform:none; margin-top:5px;}
+  h1 .am, h2 .am{color:var(--rust); font-size:.48em; margin-top:8px; font-weight:400;}
+  nav.links a .am{font-size:.7em; display:block; margin-top:1px; color:inherit; opacity:.8;}
+  .store .sname .am{font-size:.82em; color:var(--ink-soft); font-weight:400;}
   .wrap{max-width:1040px; margin-inline:auto; padding-inline:20px;}
-  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--rust); font-weight:700;}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:"Source Serif 4",serif; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rust); font-weight:600;}
   .lead{color:var(--ink-soft); font-size:1.05rem; max-width:62ch;}
-  section{padding-block:56px; scroll-margin-top:70px;}
+  section{padding-block:56px; scroll-margin-top:76px;}
   .alt{background:var(--sand);}
 
   /* nav */
-  header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
-  .navrow{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px;}
-  .brand{display:flex; align-items:center; gap:10px; font-family:"Fraunces",serif; font-weight:600; font-size:1.05rem; text-decoration:none; color:var(--ink);}
-  .brand .mark{width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,var(--green) 0 33%, var(--gold) 33% 66%, var(--rust) 66% 100%); flex:none;}
-  nav.links{display:flex; gap:18px; flex-wrap:wrap; font-size:.88rem;}
-  nav.links a{color:var(--ink-soft); text-decoration:none; font-weight:600;}
-  nav.links a:hover{color:var(--green-deep);}
+  header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--paper); border-bottom:3px double var(--ink);}
+  .navrow{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:"Playfair Display",serif; font-weight:700; font-size:1.15rem; text-decoration:none; color:var(--ink); letter-spacing:.01em;}
+  .brand .mark{width:28px; height:28px; border-radius:2px; background:linear-gradient(135deg,var(--green) 0 33%, var(--gold) 33% 66%, var(--rust) 66% 100%); flex:none; border:1px solid var(--ink);}
+  nav.links{display:flex; gap:20px; flex-wrap:wrap; font-size:.82rem;}
+  nav.links a{color:var(--ink-soft); text-decoration:none; font-weight:600; display:inline-block; text-align:center; letter-spacing:.03em; text-transform:uppercase; font-size:.78rem;}
+  nav.links a:hover{color:var(--rust);}
   .navwrap{overflow-x:auto; scrollbar-width:none;}
   .navwrap::-webkit-scrollbar{display:none;}
 
   /* hero */
-  .hero{padding-block:64px 48px;}
-  .hero .eyebrow{margin-bottom:14px;}
-  .hero h1{font-size:clamp(2rem,4.4vw,3rem); max-width:16ch;}
-  .hero .amharic-line{font-size:1.3rem; color:var(--green-deep); margin-top:10px;}
-  .hero .lead{margin-top:16px;}
-  .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:26px;}
-  .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; font-weight:700; font-size:.92rem; text-decoration:none; border:1px solid transparent; cursor:pointer;}
-  .btn-primary{background:var(--green-deep); color:#fff;}
-  .btn-outline{border-color:var(--line); color:var(--ink);}
-  .disclaimer-banner{margin-top:34px; border:1px solid var(--line); background:var(--card); border-radius:var(--radius); padding:16px 20px; font-size:.9rem; color:var(--ink-soft); display:flex; gap:12px; align-items:flex-start;}
+  .hero{padding-block:60px 48px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{margin-bottom:16px;}
+  .hero h1{font-size:clamp(2rem,4.4vw,3rem); max-width:100%; width:100%; font-weight:700; line-height:1.15;}
+  .hero .amharic-line{font-family:"Noto Sans Ethiopic",sans-serif; font-size:1.2rem; color:var(--rust); margin-top:12px; font-style:normal;}
+  .hero .lead{margin-top:18px;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:var(--radius); font-family:"Source Serif 4",serif; font-weight:600; font-size:.92rem; text-decoration:none; border:1px solid var(--ink); cursor:pointer; letter-spacing:.01em;}
+  .btn-primary{background:var(--green-deep); color:#fff; border-color:var(--green-deep);}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .disclaimer-banner{margin-top:36px; border:1px solid var(--line); border-left:3px solid var(--rust); background:var(--card); border-radius:0; padding:16px 20px; font-size:.9rem; color:var(--ink-soft); display:flex; gap:12px; align-items:flex-start;}
   .disclaimer-banner strong{color:var(--ink);}
 
   /* section head */
   .section-head{max-width:60ch; margin-bottom:32px;}
-  .section-head h2{font-size:clamp(1.5rem,2.6vw,2rem); margin-top:8px;}
+  .section-head h2{font-size:clamp(1.5rem,2.6vw,2.1rem); margin-top:10px;}
 
   /* aid grid */
   .grid{display:grid; gap:18px;}
@@ -88,99 +92,71 @@
   @media (max-width:560px){.grid-3{grid-template-columns:1fr;}}
 
   .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px;}
-  .aid-card h3{font-size:1.05rem;}
-  .aid-card .tag{display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--green-deep); background:color-mix(in srgb, var(--green) 14%, transparent); padding:4px 9px; border-radius:999px; margin-bottom:10px;}
+  .aid-card h3{font-size:1.08rem;}
+  .aid-card .tag{display:inline-block; font-family:"Source Serif 4",serif; font-size:.68rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--green-deep); background:transparent; border:1px solid var(--green-deep); padding:3px 9px; border-radius:var(--radius); margin-bottom:12px;}
   .aid-card p{color:var(--ink-soft); font-size:.92rem; margin-top:8px;}
-  .aid-card a.apply{display:inline-block; margin-top:12px; font-size:.88rem; font-weight:700;}
+  .aid-card a.apply{display:inline-block; margin-top:12px; font-size:.88rem; font-weight:600;}
 
   /* accordion */
   details.acc{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:0; margin-bottom:12px; overflow:hidden;}
   details.acc summary{list-style:none; cursor:pointer; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
   details.acc summary::-webkit-details-marker{display:none;}
-  details.acc summary .s-title{font-family:"Fraunces",serif; font-size:1.05rem; font-weight:600;}
-  details.acc summary .s-hint{font-size:.82rem; color:var(--ink-soft); display:block; margin-top:2px; font-family:"Public Sans",sans-serif;}
+  details.acc summary .s-title{font-family:"Playfair Display",serif; font-size:1.08rem; font-weight:600;}
+  details.acc summary .s-hint{font-size:.82rem; color:var(--ink-soft); display:block; margin-top:2px; font-family:"Source Serif 4",serif; font-style:italic;}
   details.acc summary .chev{flex:none; width:26px; height:26px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--ink-soft);}
   details.acc[open] summary .chev{transform:rotate(45deg);}
   details.acc .acc-body{padding:0 22px 22px; color:var(--ink-soft); font-size:.94rem;}
   details.acc .acc-body p + p{margin-top:10px;}
   details.acc .acc-body ul{margin:10px 0 0; padding-left:20px;}
   details.acc .acc-body li{margin-bottom:6px;}
-  details.acc .acc-body a{font-weight:700;}
+  details.acc .acc-body a{font-weight:600;}
 
-  /* state card */
+  /* state selector */
+  .state-select-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:22px;}
+  .state-select-row label{font-family:"Playfair Display",serif; font-weight:600; font-size:1.05rem;}
+  select#stateSelect{font-family:"Source Serif 4",serif; font-size:1rem; padding:10px 14px; border-radius:var(--radius); border:1px solid var(--ink); background:var(--card); color:var(--ink); min-width:240px;}
   .state-card{display:grid; grid-template-columns:220px 1fr; gap:24px; align-items:start;}
   @media (max-width:700px){.state-card{grid-template-columns:1fr;}}
-  .state-card .state-label{font-family:"Fraunces",serif; font-size:1.6rem;}
-  .state-card .state-meta{color:var(--ink-soft); font-size:.88rem; margin-top:6px;}
-  .agency-row{display:flex; justify-content:space-between; gap:12px; padding-block:10px; border-top:1px solid var(--line); font-size:.9rem;}
+  .state-card .state-label{font-family:"Playfair Display",serif; font-size:1.6rem; font-weight:700;}
+  .state-card .state-meta{color:var(--ink-soft); font-size:.88rem; margin-top:6px; font-style:italic;}
+  .agency-row{display:flex; justify-content:space-between; gap:12px; padding-block:11px; border-top:1px solid var(--line); font-size:.9rem;}
   .agency-row:first-of-type{border-top:none;}
-  .agency-row .name{font-weight:700;}
+  .agency-row .name{font-weight:600;}
   .agency-row .meta{color:var(--ink-soft);}
+  .agency-row .meta .sep{margin:0 6px; color:var(--line);}
   .soon-card{border:1px dashed var(--line); border-radius:var(--radius); padding:20px; color:var(--ink-soft); font-size:.9rem; background:transparent;}
 
   /* directory */
   .dir-cat{margin-bottom:10px;}
-  .dir-cat h3{font-size:1rem; display:flex; align-items:center; gap:8px;}
+  .dir-cat h3{font-family:"Playfair Display",serif; font-weight:600; font-size:1.05rem; display:flex; align-items:center; gap:8px;}
   .store-list{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;}
   @media (max-width:700px){.store-list{grid-template-columns:1fr;}}
-  .store{border:1px solid var(--line); border-radius:10px; padding:12px 14px; background:var(--card); font-size:.88rem;}
-  .store .sname{font-weight:700;}
-  .store .saddr{color:var(--ink-soft); margin-top:2px;}
+  .store{border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px; background:var(--card); font-size:.88rem;}
+  .store .sname{font-weight:600;}
+  .store .saddr{color:var(--ink-soft); margin-top:2px; font-style:italic;}
   .verify-note{font-size:.8rem; color:var(--ink-soft); margin-top:14px; font-style:italic;}
 
-  footer{border-top:1px solid var(--line); padding-block:34px; margin-top:10px;}
+  footer{border-top:3px double var(--ink); padding-block:34px; margin-top:10px;}
   footer .foot-row{display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-start;}
   footer p{color:var(--ink-soft); font-size:.85rem; max-width:50ch;}
 
-  .copybtn{border:1px solid var(--line); background:var(--card); border-radius:8px; padding:5px 10px; font-size:.78rem; cursor:pointer; color:var(--ink);}
-
-  /* Community directory */
-  .hero{background:radial-gradient(circle at 88% 10%,var(--gold-soft),transparent 35%),var(--paper);}
-  .hero-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.8fr);gap:44px;align-items:center;}
-  .hero h1{max-width:13ch;font-size:clamp(2.5rem,5vw,4.3rem);line-height:1.09;}
-  .hero-panel{padding:26px;border-radius:20px;background:var(--green-deep);color:#fff;box-shadow:0 18px 48px #0002;}
-  .hero-panel .eyebrow{color:var(--gold-soft);}
-  .hero-panel p{font-size:.85rem;margin-top:20px;color:#f3eee3;}
-  .hero-pills{display:grid;gap:8px;margin-top:18px;}
-  .hero-pills a{padding:9px 12px;border:1px solid #ffffff55;border-radius:9px;color:#fff;text-decoration:none;font-weight:600;}
-  .hero-pills a:hover,.hero-pills a:focus-visible{background:#ffffff22;}
-  .directory-search{display:flex;align-items:end;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:28px 0 16px;}
-  .directory-search label{font-weight:700;font-size:.85rem;flex:1;}
-  .directory-search input,.directory-search select{display:block;width:100%;min-height:44px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;padding:8px 12px;}
-  .category-links{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;}
-  .category-links button{white-space:nowrap;padding:8px 13px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer;}
-  .category-links button[aria-pressed="true"]{background:var(--green-deep);color:#fff;border-color:var(--green-deep);}
-  .result-count{margin:20px 0 12px;color:var(--ink-soft);font-size:.9rem;}
-  .listing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
-  .listing{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:9px;}
-  .listing h3{font-size:1.2rem;}.listing p{color:var(--ink-soft);font-size:.9rem;}
-  .listing .listing-meta{font-size:.78rem;color:var(--green-deep);font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
-  .listing-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;}
-  .listing-actions a{font-weight:700;font-size:.88rem;}
-  .empty-results{padding:28px;border:1px dashed var(--line);border-radius:var(--radius);background:var(--card);}
-  .empty-results p{margin:8px 0 18px;color:var(--ink-soft);}
-  .culture-grid .card{display:flex;flex-direction:column;gap:12px;}
-  .culture-grid p{color:var(--ink-soft);font-size:.93rem;}.culture-grid a{margin-top:auto;font-weight:700;}
-  .culture-number{color:var(--rust);font-size:.75rem;font-weight:700;letter-spacing:.1em;}
-  .resource-heading{padding-block:45px;scroll-margin-top:70px;}.resource-heading h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:8px 0;}.resource-heading p{color:var(--ink-soft);}
-  .resource-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}.resource-links a{padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:700;text-decoration:none;}
-  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
-  .skip-link{position:absolute;left:12px;top:-60px;padding:10px 14px;background:var(--green-deep);color:#fff;z-index:50;}
-  .skip-link:focus{top:12px;}
-  @media(max-width:700px){.hero-layout,.listing-grid{grid-template-columns:1fr;}.directory-search{flex-direction:column;align-items:stretch;}.directory-search label{width:100%;}.hero{padding-block:42px;}}
+  .copybtn{border:1px solid var(--ink); background:var(--card); border-radius:var(--radius); padding:5px 10px; font-family:"Source Serif 4",serif; font-size:.78rem; cursor:pointer; color:var(--ink);}
+  .gform-embed{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); margin-top:14px;}
+  .gform-embed iframe{display:block; width:100%; min-height:820px; border:0;}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#directory">Skip to directory</a>
 <header class="top">
   <div class="wrap navwrap">
     <div class="navrow">
       <a href="#top" class="brand"><span class="mark"></span>Habesha Hub</a>
       <nav class="links">
-        <a href="#directory">Find businesses</a>
-        <a href="#culture">Culture &amp; community</a>
-        <a href="#resources">Practical resources</a>
-        <a href="#contact">Contact</a>
+        <a href="#aid">Aid &amp; Benefits<span class="am">እርዳታ እና ጥቅማ ጥቅሞች</span></a>
+        <a href="#states">State Guide<span class="am">የክፍለ ሀገር መመሪያ</span></a>
+        <a href="#legal">Legal &amp; Immigration<span class="am">ህግ እና ስደት</span></a>
+        <a href="#directory">Directory<span class="am">ማውጫ</span></a>
+        <a href="#vlog">Vlog<span class="am">ቭሎግ</span></a>
+        <a href="#contact">Contact<span class="am">አግኙን</span></a>
       </nav>
     </div>
   </div>
@@ -188,56 +164,27 @@
 
 <main id="top">
   <section class="hero">
-    <div class="wrap hero-layout">
-      <div>
-        <span class="eyebrow">Ethiopian community · United States</span>
-        <h1>Find your people. Find what you need.</h1>
-        <div class="amharic-line amharic" lang="am">እንኳን ደህና መጣችሁ</div>
-        <p class="lead">Discover Ethiopian restaurants, markets, services, culture, and practical resources. Columbus is our starting point; help us build a reliable guide for every city.</p>
-        <div class="hero-cta"><a href="#directory" class="btn btn-primary">Explore the directory</a><a href="#contact" class="btn btn-outline">Suggest a business</a></div>
+    <div class="wrap">
+      <span class="eyebrow">Community-built, not a law firm or government office</span>
+      <h1>A starting point for Ethiopian families building a life in the United States<span class="am">በአሜሪካ ውስጥ ሕይወት ለሚገነቡ ኢትዮጵያውያን ቤተሰቦች መነሻ ነጥብ</span></h1>
+      <div class="amharic-line amharic">እንኳን ደህና መጣችሁ — welcome.</div>
+      <p class="lead">Plain-language guides to government aid, immigration paperwork, and the Ethiopian shops, churches, and language programs already near you. Every guide links to the real, official source — this site explains, it doesn't replace them.</p>
+      <div class="hero-cta">
+        <a href="#aid" class="btn btn-primary">See aid programs</a>
+        <a href="#directory" class="btn btn-outline">Find community &amp; groceries</a>
       </div>
-      <aside class="hero-panel" aria-label="What you can find here">
-        <span class="eyebrow">Explore by need</span>
-        <div class="hero-pills"><a href="#directory" data-jump-cat="Restaurant">Restaurants</a><a href="#directory" data-jump-cat="Grocery">Groceries</a><a href="#directory" data-jump-cat="Beauty">Barbers &amp; salons</a><a href="#directory" data-jump-cat="Home repair">Home repairs</a><a href="#directory" data-jump-cat="Garage">Garages</a></div>
-        <p>Listings include a source and review date. No business is described as Ethiopian-owned without confirmation.</p>
-      </aside>
-    </div>
-  </section>
-
-  <section id="directory" class="alt">
-    <div class="wrap">
-      <div class="section-head"><span class="eyebrow">Local discovery</span><h2>Ethiopian businesses &amp; services</h2><p class="lead">Search by name or city, then narrow by category. We publish specific contact details only when we can link to a reliable source. Call ahead before visiting.</p></div>
-      <form class="directory-search" id="directorySearch" role="search">
-        <label for="dirQuery">Business or city<input id="dirQuery" type="search" placeholder="Try restaurant or Columbus" autocomplete="off"></label>
-        <label for="dirCategory">Category<select id="dirCategory"><option value="all">All categories</option><option>Restaurant</option><option>Grocery</option><option>Beauty</option><option>Home repair</option><option>Garage</option><option>Community</option></select></label>
-        <button type="reset" class="btn btn-outline">Clear</button>
-      </form>
-      <div class="category-links" aria-label="Browse categories"><button data-category="all" aria-pressed="true">All</button><button data-category="Restaurant">Restaurants</button><button data-category="Grocery">Groceries</button><button data-category="Beauty">Barbers &amp; salons</button><button data-category="Home repair">Home repairs</button><button data-category="Garage">Garages</button><button data-category="Community">Community</button></div>
-      <p id="resultCount" class="result-count" role="status" aria-live="polite"></p>
-      <div id="directoryResults" class="listing-grid"></div>
-      <div id="emptyResults" class="empty-results" hidden><h3>No reviewed listings match this search yet</h3><p>We are growing this directory carefully. Suggest a business and include its website or another reliable source so we can check it.</p><a href="#contact" class="btn btn-primary">Suggest a listing</a></div>
-      <p class="verify-note">“Reviewed source” means a linked business or local tourism page supported the displayed details on September 25, 2026. It is not an endorsement, a live-hours check, or proof of ownership. We welcome corrections.</p>
-    </div>
-  </section>
-
-  <section id="culture">
-    <div class="wrap">
-      <div class="section-head"><span class="eyebrow">More than a directory</span><h2>Culture, language &amp; belonging</h2><p class="lead">A place to discover living traditions and the organizations that keep them connected across generations.</p></div>
-      <div class="grid grid-3 culture-grid">
-        <article class="card"><span class="culture-number">01 / HERITAGE</span><h3>Festivals &amp; traditions</h3><p>Learn about Meskel and Timket through UNESCO’s descriptions of these living celebrations.</p><a href="https://ich.unesco.org/en/state/ethiopia-ET?info=elements-on-the-lists" target="_blank" rel="noopener">Explore Ethiopia’s heritage at UNESCO →</a></article>
-        <article class="card"><span class="culture-number">02 / STORIES</span><h3>Community voices</h3><p>Music, food, faith, language, and family stories deserve room alongside business listings. Share an organization or story for editorial review.</p><a href="#contact">Suggest a story →</a></article>
-        <article class="card"><span class="culture-number">03 / CONNECTION</span><h3>Churches &amp; learning</h3><p>Help families find Ethiopian Orthodox parishes, heritage-language classes, and cultural groups. Program schedules should be confirmed directly with organizers.</p><a href="#contact">Suggest a community resource →</a></article>
+      <div class="disclaimer-banner">
+        <span>ⓘ</span>
+        <span><strong>This is a community information site, not legal advice.</strong> Benefit rules and immigration consequences depend on your specific status and state. For anything that affects your case, confirm with the official agency or a licensed legal aid organization linked on this page.</span>
       </div>
     </div>
   </section>
-
-  <div id="resources" class="resource-heading alt"><div class="wrap"><span class="eyebrow">Reliable starting points</span><h2>Practical resources</h2><p>Official programs and legal information change. Follow the linked agencies for current rules and individual guidance.</p><div class="resource-links"><a href="#aid">Aid &amp; benefits</a><a href="#states">Ohio state guide</a><a href="#legal">Immigration &amp; legal help</a></div></div></div>
 
   <section id="aid" class="alt">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Federal &amp; state programs</span>
-        <h2>Government aid &amp; benefits</h2>
+        <h2>Government aid &amp; benefits<span class="am">የመንግስት እርዳታ እና ጥቅማ ጥቅሞች</span></h2>
         <p class="lead">What each program actually covers, who it's usually for, and where to apply. Always apply through the official portal linked below — never pay anyone to "guarantee" approval.</p>
       </div>
       <div class="grid grid-3">
@@ -275,7 +222,7 @@
           <span class="tag">Income</span>
           <h3>Unemployment &amp; SSI/SSDI</h3>
           <p>Unemployment covers job loss through your state workforce agency. SSI/SSDI support people who can't work due to a disability, with separate rules for non-citizens.</p>
-          <a class="apply" href="https://www.usa.gov/benefit-finder" target="_blank" rel="noopener">Find benefits (USAGov) →</a>
+          <a class="apply" href="https://www.benefits.gov/" target="_blank" rel="noopener">Full benefit finder (Benefits.gov) →</a>
         </div>
       </div>
     </div>
@@ -285,25 +232,19 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Rules vary by where you live</span>
-        <h2>State-by-state guide</h2>
-        <p class="lead">Income limits, office names, and application portals are set by each state. Ohio is filled in first as the model — request yours and it gets added.</p>
+        <h2>State-by-state guide<span class="am">በክፍለ ሀገር የተከፋፈለ መመሪያ</span></h2>
+        <p class="lead">Income limits, office names, and application portals are set by each state — not the federal government. Choose a state below for its benefits portal. Ohio has the fullest detail, since that's where this site started.</p>
       </div>
 
-      <div class="card state-card">
-        <div>
-          <div class="state-label">Ohio</div>
-          <div class="state-meta">Franklin County &amp; statewide</div>
-        </div>
-        <div>
-          <div class="agency-row"><span class="name">Apply for benefits</span><span class="meta"><a href="https://benefits.ohio.gov/" target="_blank" rel="noopener">benefits.ohio.gov →</a></span></div>
-          <div class="agency-row"><span class="name">SNAP &amp; cash assistance</span><span class="meta"><a href="https://jfs.ohio.gov/cash-food-and-refugee-assistance/welcome" target="_blank" rel="noopener">Ohio JFS Family Assistance →</a></span></div>
-          <div class="agency-row"><span class="name">Refugee Services Program</span><span class="meta"><a href="https://jfs.ohio.gov/public-assistance/refugee-services" target="_blank" rel="noopener">Ohio JFS Refugee Services →</a></span></div>
-          <div class="agency-row"><span class="name">Local resettlement help</span><span class="meta"><a href="https://refugeewelcome.org/state-resources/ohio/" target="_blank" rel="noopener">Refugee Welcome Collective — Ohio →</a></span></div>
-        </div>
+      <div class="state-select-row">
+        <label for="stateSelect">Select your state:</label>
+        <select id="stateSelect"></select>
       </div>
+
+      <div id="stateCard" class="card state-card"></div>
 
       <div class="soon-card" style="margin-top:14px;">
-        Don't see your state? Tell us which one (DC, Maryland, Virginia, Minnesota, Texas, Washington, and Colorado all have large Ethiopian communities) and we'll add the same breakdown for it.
+        Government portals get renamed and moved from time to time. If a link above doesn't work, use the "search the official site" link next to it, or call <strong>211</strong> — the free, nationwide referral line for local help with food, housing, and benefits.
       </div>
     </div>
   </section>
@@ -312,5 +253,245 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Read carefully — consequences here are real</span>
-        <h2>Immigration &amp; legal guidance</h2>
-        <p class="lead">This section explains terms in plain language and points you to who can actually help. It is not legal advice, and immigration consequences d
+        <h2>Immigration &amp; legal guidance<span class="am">የስደት እና ህጋዊ መመሪያ</span></h2>
+        <p class="lead">This section explains terms in plain language and points you to who can actually help. It is not legal advice, and immigration consequences depend heavily on individual facts.</p>
+      </div>
+
+      <details class="acc" open>
+        <summary><div><div class="s-title">Who should I talk to first?</div><span class="s-hint">Free and low-cost legal help</span></div><span class="chev">+</span></summary>
+        <div class="acc-body">
+          <p>For anything involving your immigration status — a filing deadline, a status change, a notice from USCIS or immigration court — talk to a licensed immigration attorney or an accredited nonprofit legal service before you act. A mistake on a form or a missed deadline can have consequences that are hard to undo.</p>
+          <ul>
+            <li><a href="https://www.uscis.gov/" target="_blank" rel="noopener">USCIS.gov</a> — official forms, filing fees, and case status, direct from the government.</li>
+            <li><a href="https://www.ilrc.org/community-resources" target="_blank" rel="noopener">Immigrant Legal Resource Center</a> — plain-language guides and a directory of legal help.</li>
+            <li><a href="https://www.nilc.org/resources/" target="_blank" rel="noopener">National Immigration Law Center</a> — policy explainers, kept current as rules change.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><div><div class="s-title">Common status terms, in plain language</div><span class="s-hint">Refugee, asylee, green card, and more</span></div><span class="chev">+</span></summary>
+        <div class="acc-body">
+          <p><strong>Refugee</strong> — approved for resettlement before arriving in the US; eligible for resettlement benefits from day one.</p>
+          <p><strong>Asylee</strong> — granted protection after arriving and applying from inside the US; similar benefits to refugees once approved.</p>
+          <p><strong>Lawful permanent resident (green card holder)</strong> — can live and work permanently; some federal benefits have a waiting period.</p>
+          <p><strong>Naturalized citizen</strong> — full citizenship after meeting residency and civics requirements; eligible for all federal benefits and voting.</p>
+          <p>Exact eligibility and timelines change with federal policy — confirm your own situation with USCIS or legal aid rather than relying on this summary alone.</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><div><div class="s-title">What can go wrong — and why it matters to get help</div><span class="s-hint">Consequences of common mistakes</span></div><span class="chev">+</span></summary>
+        <div class="acc-body">
+          <p>A late filing, an incomplete form, or an unreported change of address can delay a case for months or put a status at risk. Unlicensed "notarios" or paid non-lawyers who promise a guaranteed outcome are a common source of real harm in immigrant communities — a notary public in the US does not have the same legal authority as in Ethiopia and cannot represent you in an immigration matter.</p>
+          <p>If you've already made a filing mistake, the fix is usually still to talk to a licensed attorney or accredited nonprofit as soon as possible, not to wait.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="directory">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Built from and for the community</span>
+        <h2>Grocery stores, churches &amp; language programs<span class="am">የግሮሰሪ ሱቆች፣ አብያተ ክርስቲያናት እና የቋንቋ ፕሮግራሞች</span></h2>
+        <p class="lead">A starting directory for the Columbus, Ohio area, where this site began. Owners and details change — always call ahead before a special trip.</p>
+      </div>
+
+      <div class="dir-cat">
+        <h3>🛒 Ethiopian &amp; East African grocery stores — Columbus, OH</h3>
+        <div class="store-list">
+          <div class="store"><div class="sname">Habesha Market</div><div class="saddr">1391 S Hamilton Rd, Columbus, OH</div></div>
+          <div class="store"><div class="sname">Addis Ababa Grocery</div><div class="saddr">Columbus, OH — injera, teff, berbere &amp; spices</div></div>
+          <div class="store"><div class="sname">Dire Dawa Grocery Store</div><div class="saddr">Columbus, OH</div></div>
+          <div class="store"><div class="sname">Lalibela Grocery</div><div class="saddr">Columbus, OH</div></div>
+        </div>
+      </div>
+
+      <div class="dir-cat" style="margin-top:26px;">
+        <h3>✝️ Ethiopian Orthodox churches — Columbus, OH</h3>
+        <div class="store-list">
+          <div class="store"><div class="sname">St. Michael Ethiopian Orthodox Church</div><div class="saddr">Columbus, OH</div></div>
+          <div class="store"><div class="sname">Debre Medhanit Medhane Alem</div><div class="saddr">610 Neil Ave, Columbus, OH</div></div>
+          <div class="store"><div class="sname">Kidest Sehalte Mehret &amp; St. Urael</div><div class="saddr">Columbus, OH</div></div>
+        </div>
+        <p class="verify-note">Amharic and heritage-language classes for kids are often run informally through churches like these rather than as a standalone school — contact the church directly to ask about current class days and ages.</p>
+      </div>
+
+      <div class="dir-cat" style="margin-top:26px;">
+        <h3>🛒 Also known: DC / Maryland / Virginia markets</h3>
+        <div class="store-list">
+          <div class="store"><div class="sname">Selam International Market</div><div class="saddr">Washington, DC</div></div>
+          <div class="store"><div class="sname">Merkato Ethiopian Market</div><div class="saddr">Springfield, VA</div></div>
+          <div class="store"><div class="sname">Tana Ethiopian Market</div><div class="saddr">Silver Spring, MD</div></div>
+          <div class="store"><div class="sname">Skyline International Market</div><div class="saddr">Falls Church, VA</div></div>
+        </div>
+      </div>
+
+      <p class="verify-note">Know a store, church, or program that should be listed — here or in another state? Send the name and city through Contact below and it gets added.</p>
+    </div>
+  </section>
+
+  <section id="vlog" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">By the community, for the community</span>
+        <h2>Vlog<span class="am">ቭሎግ</span></h2>
+        <p class="lead">Anyone can submit a video — church, soccer, education, or children's health. New submissions are reviewed before they're added below, so nothing appears unchecked.</p>
+      </div>
+
+      <div class="dir-cat" style="margin-bottom:28px;">
+        <div class="store-list" style="grid-template-columns:repeat(4,1fr);">
+          <div class="store"><div class="sname">✝️ Orthodox Church<span class="am">ኦርቶዶክስ ቤተክርስቲያን</span></div></div>
+          <div class="store"><div class="sname">⚽ Soccer<span class="am">እግር ኳስ</span></div></div>
+          <div class="store"><div class="sname">📚 Education<span class="am">ትምህርት</span></div></div>
+          <div class="store"><div class="sname">🩺 Children's Health<span class="am">የልጆች ጤና</span></div></div>
+        </div>
+      </div>
+
+      <div class="soon-card" style="margin-bottom:20px;">
+        No vlogs posted yet — this is a brand-new section. Submit the first one below and it'll be reviewed and added here, grouped by category.
+      </div>
+
+      <details class="acc" open>
+        <summary><div><div class="s-title">Submit a vlog</div><span class="s-hint">Open the form — takes about a minute</span></div><span class="chev">+</span></summary>
+        <div class="acc-body">
+          <div class="gform-embed">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjHgaBKmWuRHPaQd1_O2JXzcT6bGNP9lot-oBrT5JSAKxcqg/viewform?embedded=true" width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0" title="Habesha Hub — Submit a Vlog form">Loading…</iframe>
+          </div>
+          <p class="form-note">Form not loading? <a href="https://forms.gle/8idCWumnCLV6SjWT7" target="_blank" rel="noopener">Open it in a new tab →</a></p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Help us grow this</span>
+        <h2>Add a listing or request a state<span class="am">ዝርዝር ያክሉ ወይም ክፍለ ሀገር ይጠይቁ</span></h2>
+        <p class="lead">This directory is only as good as what the community shares. Send corrections, new listings, or a state you'd like added.</p>
+      </div>
+      <div class="card" style="max-width:520px;">
+        <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:6px;">Reach the site's maintainer directly:</p>
+        <p style="font-weight:700; font-size:1.05rem;">samra8293101@gmail.com</p>
+        <button class="copybtn" id="copyEmail" type="button" style="margin-top:10px;">Copy email address</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-row">
+      <a href="#top" class="brand"><span class="mark"></span>Habesha Hub</a>
+      <p>Community-maintained resource for Ethiopian families in the United States. Not affiliated with USCIS, any state government, or any law firm. Always confirm eligibility and legal questions with the official source linked on this page.</p>
+    </div>
+  </footer>
+</main>
+
+<script>
+  var STATES = [
+    {c:"AL",n:"Alabama",portal:"https://mydhr.dhr.alabama.gov",label:"mydhr.dhr.alabama.gov"},
+    {c:"AK",n:"Alaska",portal:"https://health.alaska.gov/dpa",label:"Alaska Division of Public Assistance"},
+    {c:"AZ",n:"Arizona",portal:"https://www.healthearizonaplus.gov",label:"Health-e-Arizona Plus"},
+    {c:"AR",n:"Arkansas",portal:"https://access.arkansas.gov",label:"access.arkansas.gov"},
+    {c:"CA",n:"California",portal:"https://www.benefitscal.com",label:"BenefitsCal"},
+    {c:"CO",n:"Colorado",portal:"https://coloradopeak.secure.force.com",label:"Colorado PEAK"},
+    {c:"CT",n:"Connecticut",portal:"https://connect.ct.gov",label:"connect.ct.gov"},
+    {c:"DE",n:"Delaware",portal:"https://assist.dhss.delaware.gov",label:"Delaware ASSIST"},
+    {c:"FL",n:"Florida",portal:"https://www.myflfamilies.com/services/economic-self-sufficiency/access-florida",label:"ACCESS Florida"},
+    {c:"GA",n:"Georgia",portal:"https://gateway.ga.gov",label:"Georgia Gateway"},
+    {c:"HI",n:"Hawaii",portal:"https://myben.dhs.hawaii.gov",label:"MyBenefits Hawaii"},
+    {c:"ID",n:"Idaho",portal:"https://idalink.idaho.gov",label:"Idalink"},
+    {c:"IL",n:"Illinois",portal:"https://abe.illinois.gov",label:"Application for Benefits Eligibility (ABE)"},
+    {c:"IN",n:"Indiana",portal:"https://www.in.gov/fssa/dfr/",label:"Indiana FSSA — Family Resources"},
+    {c:"IA",n:"Iowa",portal:"https://hhs.iowa.gov",label:"Iowa HHS"},
+    {c:"KS",n:"Kansas",portal:"https://www.dcf.ks.gov/services/ees/Pages/default.aspx",label:"Kansas DCF — Economic & Employment Services"},
+    {c:"KY",n:"Kentucky",portal:"https://kynect.ky.gov",label:"kynect"},
+    {c:"LA",n:"Louisiana",portal:"https://www.myaccountla.dcfs.louisiana.gov",label:"MyAccount Louisiana"},
+    {c:"ME",n:"Maine",portal:"https://www.mymaineconnection.gov",label:"My Maine Connection"},
+    {c:"MD",n:"Maryland",portal:"https://mydhrbenefits.dhr.state.md.us",label:"Maryland MyDHR Benefits"},
+    {c:"MA",n:"Massachusetts",portal:"https://dtaconnect.eohhs.mass.gov",label:"DTA Connect"},
+    {c:"MI",n:"Michigan",portal:"https://newmibridges.michigan.gov",label:"MI Bridges"},
+    {c:"MN",n:"Minnesota",portal:"https://mnbenefits.mn.gov",label:"MNbenefits"},
+    {c:"MS",n:"Mississippi",portal:"https://www.mdhs.ms.gov",label:"Mississippi Dept. of Human Services"},
+    {c:"MO",n:"Missouri",portal:"https://mydss.mo.gov",label:"MyDSS Missouri"},
+    {c:"MT",n:"Montana",portal:"https://apply.mt.gov",label:"Montana Public Assistance Application"},
+    {c:"NE",n:"Nebraska",portal:"https://accessnebraska.ne.gov",label:"ACCESSNebraska"},
+    {c:"NV",n:"Nevada",portal:"https://accessnevada.dwss.nv.gov",label:"Access Nevada"},
+    {c:"NH",n:"New Hampshire",portal:"https://nheasy.nh.gov",label:"NH EASY"},
+    {c:"NJ",n:"New Jersey",portal:"https://www.njhelps.org",label:"NJHelps"},
+    {c:"NM",n:"New Mexico",portal:"https://www.yes.state.nm.us",label:"YES New Mexico"},
+    {c:"NY",n:"New York",portal:"https://mybenefits.ny.gov",label:"myBenefits NY"},
+    {c:"NC",n:"North Carolina",portal:"https://epass.nc.gov",label:"ePASS North Carolina"},
+    {c:"ND",n:"North Dakota",portal:"https://www.hhs.nd.gov/applyforbenefits",label:"ND HHS — Apply for Benefits"},
+    {c:"OH",n:"Ohio",portal:"https://benefits.ohio.gov/",label:"benefits.ohio.gov",extra:[
+      {name:"SNAP & cash assistance",url:"https://jfs.ohio.gov/cash-food-and-refugee-assistance/welcome",label:"Ohio JFS Family Assistance"},
+      {name:"Refugee Services Program",url:"https://jfs.ohio.gov/public-assistance/refugee-services",label:"Ohio JFS Refugee Services"},
+      {name:"Local resettlement help",url:"https://refugeewelcome.org/state-resources/ohio/",label:"Refugee Welcome Collective — Ohio"}
+    ]},
+    {c:"OK",n:"Oklahoma",portal:"https://www.okdhslive.org",label:"OKDHSLive"},
+    {c:"OR",n:"Oregon",portal:"https://one.oregon.gov",label:"ONE Oregon"},
+    {c:"PA",n:"Pennsylvania",portal:"https://www.compass.state.pa.us",label:"COMPASS Pennsylvania"},
+    {c:"RI",n:"Rhode Island",portal:"https://dhs.ri.gov",label:"Rhode Island DHS"},
+    {c:"SC",n:"South Carolina",portal:"https://dss.sc.gov",label:"South Carolina DSS"},
+    {c:"SD",n:"South Dakota",portal:"https://dss.sd.gov/economicassistance/",label:"South Dakota DSS — Economic Assistance"},
+    {c:"TN",n:"Tennessee",portal:"https://faonline.dhs.tn.gov",label:"Tennessee FAonline"},
+    {c:"TX",n:"Texas",portal:"https://www.yourtexasbenefits.com",label:"Your Texas Benefits"},
+    {c:"UT",n:"Utah",portal:"https://jobs.utah.gov/mycase",label:"MyCase Utah"},
+    {c:"VT",n:"Vermont",portal:"https://dcf.vermont.gov/esd",label:"Vermont Economic Services Division"},
+    {c:"VA",n:"Virginia",portal:"https://commonhelp.virginia.gov",label:"CommonHelp Virginia"},
+    {c:"WA",n:"Washington",portal:"https://www.washingtonconnection.org",label:"Washington Connection"},
+    {c:"WV",n:"West Virginia",portal:"https://www.wvpath.wv.gov",label:"WV PATH"},
+    {c:"WI",n:"Wisconsin",portal:"https://access.wisconsin.gov",label:"ACCESS Wisconsin"},
+    {c:"WY",n:"Wyoming",portal:"https://wesystem.wyo.gov",label:"Wyoming WES"},
+    {c:"DC",n:"District of Columbia",portal:"https://dhs.dc.gov",label:"DC Dept. of Human Services"}
+  ];
+
+  (function(){
+    var select = document.getElementById('stateSelect');
+    var cardEl = document.getElementById('stateCard');
+    if(!select || !cardEl) return;
+
+    STATES.forEach(function(s){
+      var opt = document.createElement('option');
+      opt.value = s.c;
+      opt.textContent = s.n;
+      select.appendChild(opt);
+    });
+
+    function searchUrl(stateName){
+      return 'https://www.google.com/search?q=' + encodeURIComponent(stateName + ' official SNAP Medicaid benefits application portal');
+    }
+
+    function render(code){
+      var s = STATES.find(function(x){ return x.c === code; }) || STATES[0];
+      var rows = '<div class="agency-row"><span class="name">Apply for benefits</span><span class="meta"><a href="' + s.portal + '" target="_blank" rel="noopener">' + s.label + ' →</a><span class="sep">·</span><a href="' + searchUrl(s.n) + '" target="_blank" rel="noopener">search official site</a></span></div>';
+      if(s.extra){
+        s.extra.forEach(function(e){
+          rows += '<div class="agency-row"><span class="name">' + e.name + '</span><span class="meta"><a href="' + e.url + '" target="_blank" rel="noopener">' + e.label + ' →</a></span></div>';
+        });
+      }
+      cardEl.innerHTML =
+        '<div><div class="state-label">' + s.n + '</div><div class="state-meta">Statewide' + (s.c === 'OH' ? ' — Columbus &amp; Franklin County detail below' : '') + '</div></div>' +
+        '<div>' + rows + '</div>';
+    }
+
+    select.value = 'OH';
+    render('OH');
+    select.addEventListener('change', function(){ render(this.value); });
+  })();
+
+  (function(){
+    var btn = document.getElementById('copyEmail');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var email = 'samra8293101@gmail.com';
+      function done(ok){ btn.textContent = ok ? 'Copied ✓' : email; setTimeout(function(){ btn.textContent='Copy email address'; }, 1800); }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(function(){done(true);}).catch(function(){done(false);});
+      } else { done(false); }
+    });
+  })();
+</script>
+</body>
+</html>
