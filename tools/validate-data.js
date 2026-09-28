@@ -37,7 +37,7 @@ listings.forEach(r => {
   if (!["closed","duplicate"].includes(r.status)) {
     if (!r.source) W(r, "no source recorded");
     if (r.verifiedDate) { const age = (Date.parse(today) - Date.parse(r.verifiedDate)) / 864e5; if (age > 365) W(r, `last checked ${Math.round(age)} days ago`); }
-    const k = r.state + "|" + norm(r.name); (byKey[k] = byKey[k] || []).push(r.id);
+    const k = r.state + "|" + (r.metro || r.city) + "|" + norm(r.name); (byKey[k] = byKey[k] || []).push(r.id);
     if (r.address) { const a = r.state + "|" + r.city.toLowerCase() + "|" + r.address.toLowerCase().replace(/[^a-z0-9]/g, ""); (byAddr[a] = byAddr[a] || []).push(r.id); }
     if (r.phone) { const p = r.phone.replace(/\D/g, ""); (byPhone[p] = byPhone[p] || []).push(r.id); }
   }
