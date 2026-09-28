@@ -6,14 +6,14 @@ Last updated: 2026-09-28
 
 | Measure | Count |
 |---|---|
-| Active listings (shown on site) | 217 |
-| Verified (with source + date) | 176 |
-| Community listed | 33 |
+| Active listings (shown on site) | 262 |
+| Verified (with source + date) | 209 |
+| Community listed | 45 |
 | Needs review | 8 |
 | Duplicates removed from display | 2 |
 | Closed businesses identified | 1 |
 | Housing posts | 0 (board built, awaiting reviewed submissions) |
-| States / DC with listings | 12 of 51 |
+| States / DC with listings | 20 of 51 |
 
 ## Phases
 
@@ -24,27 +24,35 @@ Last updated: 2026-09-28
 | 3. Washington DC / Maryland / Northern Virginia | Batches 1-2 done 2026-09-28 (38 added) |
 | 4. Ohio | Batch 1 done 2026-09-28 (19 added: Columbus, Cleveland, Cincinnati, Dayton, Akron) |
 | 5. TX, GA, WA, MN, CO, CA, NY/NJ | Texas batch 1 done (22 added: Dallas, Houston, Austin, San Antonio); Georgia batch 1 done (5 added); Washington, Minnesota, Colorado batch 1 done (25 added); California, New York, New Jersey batch 1 done (24 added). Phase 5 first pass complete |
-| 6. Other metros (Las Vegas, Phoenix, Boston, Chicago, Portland, Baltimore, Nashville, Charlotte, Philadelphia...) | Next |
+| 6. Other metros | Batch 1 done 2026-09-28 (45 added: Las Vegas, Phoenix, Boston, Chicago, Portland, Baltimore, Philadelphia, Nashville, Charlotte). Next: remaining metros (Salt Lake City, Sacramento, Kansas City, St. Louis, Omaha, Raleigh, Richmond, Orlando/Tampa, Detroit, Indianapolis, Louisville) |
 | 7 to 10 | Not started |
 
 ## Coverage by state
 
 | State | Cities / metros | Active | Verified | Categories present |
 |---|---|---|---|---|
+| Arizona | Phoenix | 5 | 2 | Restaurant, Church |
 | California | Los Angeles, San Diego metro, San Francisco Bay Area | 23 | 22 | Restaurant, Grocery, Church, Community |
 | Colorado | Aurora, Denver metro (incl. Edgewater, Lafayette) | 15 | 14 | Restaurant, Grocery, Church, Community |
 | District of Columbia | Washington | 20 | 15 | Restaurant, Grocery, Church, Community |
 | Georgia | Atlanta metro | 9 | 6 | Restaurant, Church, Community |
-| Maryland | Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 21 | 16 | Restaurant, Grocery, Shopping, Church, Community, Professional, Beauty |
+| Illinois | Chicago | 6 | 5 | Restaurant, Church, Community |
+| Maryland | Baltimore, Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 23 | 18 | Restaurant, Grocery, Shopping, Church, Community, Professional, Beauty |
+| Massachusetts | Boston metro (Cambridge, Brookline) | 4 | 4 | Restaurant, Church |
 | Minnesota | Minneapolis-Saint Paul metro | 13 | 12 | Restaurant, Grocery, Church, Community |
+| Nevada | Las Vegas metro | 10 | 9 | Restaurant, Church |
 | New Jersey | Newark, South Orange, Montclair, New Brunswick, Asbury Park | 5 | 4 | Restaurant, Church |
 | New York | New York City | 8 | 8 | Restaurant, Church |
+| North Carolina | Charlotte | 2 | 1 | Restaurant |
 | Ohio | Columbus metro, Cleveland metro, Cincinnati, Dayton, Akron | 33 | 21 | Restaurant, Grocery, Church, Community |
+| Oregon | Portland | 4 | 0 | Restaurant |
+| Pennsylvania | Philadelphia | 9 | 9 | Restaurant |
+| Tennessee | Nashville | 3 | 1 | Restaurant |
 | Texas | Dallas metro, Houston metro, Austin metro, San Antonio | 33 | 25 | Restaurant, Grocery, Shopping, Church, Community |
 | Virginia | Alexandria, Arlington, Falls Church, Springfield, Sterling, Woodbridge | 22 | 19 | Restaurant, Grocery, Shopping, Church, Community, Beauty |
 | Washington | Seattle metro (incl. Burien, Skyway) | 15 | 14 | Restaurant, Grocery, Church, Community |
 
-Churches by tradition: Orthodox 35, Protestant/Evangelical 19, Catholic 1, not yet confirmed 1.
+Churches by tradition: Orthodox 42, Protestant/Evangelical 19, Catholic 1, not yet confirmed 1.
 
 ## Categories still needing research (all states)
 
@@ -71,6 +79,8 @@ Auto, Home services, Healthcare, Childcare/family (only Amharic lessons at ECSAC
 - WA/MN/CO leads: Massawa, Adulis, Star Coffee, Cafe Soleil (Seattle; mainly Eritrean or connection unclear); Seattle Debre Selam St. Michael EOTC (Edmonds, Facebook only); Erta Ale, Ras, Rafiki Coffee, Hilltop, Skylight, Betty's Kitchen (Twin Cities, need Ethiopian evidence); Oromo Community of Minnesota and Oromo Center (Ethiopian-community-serving, to review).
 
 - CA/NY/NJ leads: Paradocs Coffee, Awash (LA); Muzita Abyssinian Bistro (San Diego, Ethiopian link to confirm); Abesha, Alem's Coffee, Lemat, LeYou, Mela Bistro, Selam, Walia, Haleluya, Moya (Bay Area list of unknown date, recheck each); Debre Selam Iyesus and Debre Meheret Kidus Michael (Oakland, Facebook only); Bethlehem Ethiopian Church Oakland; Debre Birhan Kidist Selassie NY (IRS only); Lalibela (South Orange NJ).
+
+- Phase 6 leads: Boston (Blue Nile JP, Fasika Cafe, Habesha Malden, Lucy Ethiopian Cafe, Sheger Cafe, Ethiopian Restaurant Malden, Ethiopian Evangelical Church, Boston Ethiopian Christian Fellowship) need a current check; Chicago (Debretsion Medhanealem, Debre Edom St. Mary, Holy Trinity; Facebook only); Portland, Nashville, Charlotte churches and community groups not yet searched; Ethiopian Famous Restaurant (Phoenix, 2012 source only).
 
 ## Source quality notes
 
