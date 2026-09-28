@@ -25,7 +25,19 @@ window.HABESHA_LISTINGS = [
   {name:"Abyssinia Ethiopian Restaurant",category:"Restaurant",city:"Silver Spring",state:"Maryland",address:"8221 Georgia Ave, Silver Spring, MD 20910",status:"verified"},
   {name:"Sheger Spring Cafe",category:"Restaurant",city:"Silver Spring",state:"Maryland",address:"900 Silver Spring Ave, Silver Spring, MD 20910",status:"verified"},
   {name:"Langano Ethiopian Restaurant",category:"Restaurant",city:"Silver Spring",state:"Maryland",address:"8305 Georgia Ave, Silver Spring, MD 20910",status:"verified"},
-  {name:"Woder Ethiopian Carryout & Market",category:"Grocery",city:"Silver Spring",state:"Maryland",address:"7845 Eastern Ave, Silver Spring, MD 20910",status:"verified"}
+  {name:"Woder Ethiopian Carryout & Market",category:"Grocery",city:"Silver Spring",state:"Maryland",address:"7845 Eastern Ave, Silver Spring, MD 20910",status:"verified"},
+  {name:"Zema Market",category:"Grocery",city:"Alexandria",state:"Virginia",address:"8714 Richmond Hwy, Alexandria, VA 22309",status:"verified"},
+  {name:"ZeMeda Market and Restaurant",category:"Restaurant",city:"Alexandria",state:"Virginia",address:"512 B South Van Dorn St, Alexandria, VA 22304",status:"verified"},
+  {name:"Time Ethiopian Cafe and Market",category:"Restaurant",city:"Lincolnia",state:"Virginia",address:"4701 N Chambliss St, Lincolnia, VA 22312",status:"verified"},
+  {name:"Regal Abyssinia",category:"Restaurant",city:"Falls Church",state:"Virginia",address:"3821 S George Mason Dr, Falls Church, VA 22041",status:"verified"},
+  {name:"Dama Restaurant and Pastry",category:"Restaurant",city:"Arlington",state:"Virginia",address:"1505 Columbia Pike, Arlington, VA 22204",status:"verified"},
+  {name:"Hawwi Ethiopian Restaurant",category:"Restaurant",city:"Alexandria",state:"Virginia",address:"1125 Queen St, Alexandria, VA 22314",status:"verified"},
+  {name:"Gospel Believers Ethiopian Church",category:"Church",city:"Sterling",state:"Virginia",address:"1402 Shepard Dr, Sterling, VA 20164",status:"verified"},
+  {name:"Virginia Evangelical Lutheran Church Mekane Yesus",category:"Church",city:"Annandale",state:"Virginia",address:"3901 Gallows Rd, Annandale, VA 22003",status:"verified"},
+  {name:"Embilta Cafe & Restaurant",category:"Restaurant",city:"Atlanta",state:"Georgia",address:"2100 Cheshire Bridge Rd NE, Atlanta, GA 30324",status:"verified"},
+  {name:"Ethiopian Evangelical Church Atlanta",category:"Church",city:"Stone Mountain",state:"Georgia",address:"4550 Greer Cir, Stone Mountain, GA 30083",status:"verified"},
+  {name:"Ebenezer Ethiopian Evangelical Church Atlanta",category:"Church",city:"Stone Mountain",state:"Georgia",address:"4528 Rockbridge Rd SW, Stone Mountain, GA 30083",status:"verified"},
+  {name:"Mekane Hiwot Abune Gebre Menfes Kidus EOTC",category:"Church",city:"Atlanta",state:"Georgia",address:"Atlanta, GA",status:"verified"}
 ];
 window.HABESHA_STATUS_LABELS={
   "verified":"Verified",
