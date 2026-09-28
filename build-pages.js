@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Builds one static, crawlable page per state that has listings (<slug>.html in the site root, e.g. ohio.html),
 // refreshes sitemap.xml, and writes the state link list into the index.html footer.
-// Run after every data change:  node tools/build-pages.js
+// Run after every data change:  node build-pages.js
 // No dependencies. Pages contain no JavaScript; the full search lives on the home page.
 "use strict";
 const fs = require("fs"), path = require("path");
-const { loadData } = require("./lib.js");
-const ROOT = path.join(__dirname, "..");
+const { loadData } = require("./tools/lib.js");
+const ROOT = __dirname;
 const SITE = "https://cybersamliya.github.io/habesha-hub/";
 const HIDDEN = new Set(["closed", "duplicate"]);
 
@@ -130,7 +130,7 @@ function page(state, rows, allStates, updated) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=20260929">
+<link rel="stylesheet" href="styles.css?v=20260929">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
 </head>
 <body class="state-page">

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // End-to-end checks for the directory UI. Requires Playwright:  npm i -D playwright  (or a global install)
-// Usage: node tools/test-site.js [url]   default: file://<repo>/index.html
+// Usage: node test-site.js [url]   default: file://<repo>/index.html
 const path = require("path");
 let chromium; try { ({ chromium } = require("playwright")); } catch (e) { ({ chromium } = require(path.join(process.env.PW_PATH || "/home/claude/test/node_modules", "playwright"))); }
-const target = process.argv[2] || "file://" + path.join(__dirname, "..", "index.html");
+const target = process.argv[2] || "file://" + path.join(__dirname, "index.html");
 let fails = 0;
 const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!cond) fails++; };
 

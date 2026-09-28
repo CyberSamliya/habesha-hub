@@ -1,6 +1,6 @@
 /* Habesha Hub directory application
  * Data: directory-data.js (window.HABESHA_LISTINGS, window.HABESHA_HOUSING, window.HABESHA_META)
- * Text: assets/i18n.js (window.HH_I18N) plus the additions below.
+ * Text: i18n.js (window.HH_I18N) plus the additions below.
  * No external scripts, no tracking, no network calls. Works from GitHub Pages and from file://.
  */
 (function () {
