@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://cybersamliya.github.io/habesha-hub/sitemap.xml

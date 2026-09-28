@@ -1,30 +1,83 @@
 # Habesha Hub
 
-Habesha Hub is a community-maintained discovery and resource platform for Ethiopian and Habesha communities across the United States.
+A community-maintained, searchable directory of Ethiopian and Habesha businesses, churches, professionals and organizations across the United States, organized by **state, city/metro and category**.
 
-## Structure
+Live site: https://cybersamliya.github.io/habesha-hub/
 
-- `index.html` — interface, search, state explorer, resources and contribution flows.
-- `directory-data.js` — community directory records and verification status.
+## Files
 
-## Adding a listing
+| Path | Purpose |
+|---|---|
+| `index.html` | Page markup, SEO metadata, JSON-LD |
+| `assets/styles.css` | All styles |
+| `assets/i18n.js` | English / Amharic interface text |
+| `assets/app.js` | Search, filters, cards, state explorer, housing board, contribution links |
+| `directory-data.js` | **All listings** (one per line) plus housing posts and status labels |
+| `tools/validate-data.js` | Data checks: required fields, ids, statuses, URLs, duplicates, housing privacy |
+| `tools/apply-updates.js` | Applies a research batch file to `directory-data.js` |
+| `tools/research/*.json` | Research batches: every change with its sources, kept as an audit trail |
+| `tools/test-site.js` | Browser tests (Playwright) for search, filters, deep links, mobile |
+| `.github/ISSUE_TEMPLATE/` | Review-queue forms: add business, church, professional, organization, housing, correction, claim |
+| `.github/workflows/validate.yml` | Runs the validator on every push |
+| `PROGRESS.md` | Research progress tracker |
 
-Add an object to `window.HABESHA_LISTINGS` in `directory-data.js` with `name`, `category`, `city`, `state`, `address`, and `status`.
+No build step. GitHub Pages serves the files as they are.
 
-Status values:
-- `verified` — independently reviewed against a reliable current source.
-- `community` — community submitted/listed but not independently verified.
-- `needs-review` — legacy or incomplete listing that needs confirmation.
+## Listing fields
+
+```js
+{"id":"oh-columbus-lalibela-grocery",      // stable, never reused
+ "name":"Lalibela Grocery", "altNames":[],  // spelling variants help search and de-duplication
+ "category":"Grocery", "subcategory":"Ethiopian grocery",
+ "denomination":"",                         // churches only: Orthodox | Protestant | Catholic (only with evidence)
+ "address":"1107 S Hamilton Rd",            // street only
+ "city":"Columbus", "metro":"",             // metro groups suburbs, e.g. Whitehall -> Columbus
+ "state":"Ohio", "zip":"43227",
+ "phone":"(614) 235-7330", "website":"", "social":"", "mapsUrl":"",
+ "source":"https://...", "secondSource":"https://...",
+ "status":"verified", "verifiedDate":"2026-09-28",
+ "publicNote":"",                           // shown on the card (e.g. conflicting addresses)
+ "notes":"",                                // internal, not shown
+ "privacy":"",                              // "limited" hides street and phone (individual providers)
+ "keywords":[]}
+```
+
+Categories: `Restaurant, Grocery, Shopping, Church, Beauty, Auto, Home, Professional, Healthcare, Childcare, Community` (housing lives in `HABESHA_HOUSING`).
+
+### Status values
+
+| Status | Meaning | Shown? |
+|---|---|---|
+| `verified` | Current official site, or two independent current sources, confirm name, location and Ethiopian/Habesha connection | Yes |
+| `community` | Publicly listed (directory, social page) but not independently confirmed | Yes |
+| `needs-review` | Incomplete, conflicting or possibly outdated | Yes, with a note |
+| `temporarily-closed` | Temporarily closed | Yes, with a warning |
+| `closed` | Closed, with evidence | No (kept for history) |
+| `duplicate` | Duplicate of another id (`notes` says which) | No (kept for history) |
+
+## Adding or correcting listings
+
+1. Research. Record the URL you used in `source` (and `secondSource`), plus today's date in `verifiedDate`.
+2. Put the change in a batch file, e.g. `tools/research/2026-10-05-ohio.json`:
+   ```json
+   {"date":"2026-10-05","update":{"<id>":{"phone":"(614) 555-0100"}},"add":[{...new listing...}]}
+   ```
+3. `node tools/apply-updates.js tools/research/2026-10-05-ohio.json`
+4. `node tools/validate-data.js` (must show 0 errors)
+5. Optional: `npm i -D playwright && node tools/test-site.js`
+
+Community submissions arrive by email (prefilled templates on the site) or GitHub issue forms, and always start as `community` or `needs-review`.
 
 ## Trust rules
 
-1. Never invent listings to make a state look complete.
-2. Show an honest empty state where coverage is missing.
-3. Prefer official business or organization sources when verifying details.
-4. Keep a correction path available for listings.
-5. Government and immigration information should link to official sources.
-6. Do not present community information as individualized legal, immigration, or benefits advice.
+1. Never invent a listing, address, phone, website, ownership, ethnicity or church tradition.
+2. Do not assume someone is Ethiopian from a name, language, photo or neighborhood. There must be public evidence.
+3. Show an honest empty state where coverage is missing ("No verified community listings yet").
+4. Do not delete uncertain records. Mark them `needs-review`, and mark closures only with evidence.
+5. Housing posts show date posted and date last checked, and expire automatically (Active up to 14 days, Needs recheck 15 to 45 days, Expired after 45 days or past the end date). Never publish a private home address.
+6. Government and immigration information links to official sources and is not individual advice.
 
-## Roadmap
+## Deep links
 
-Expand verified listings city by city; add business submission/claim workflow; create dedicated state/city pages; add events and organizations; expand English/Amharic localization; add structured data and sitemap as content grows.
+Filters are reflected in the URL, so results can be shared or bookmarked, for example:
+`?state=Ohio&category=Church&denomination=Orthodox`, `?state=Maryland&category=Restaurant`, `?q=injera`.
