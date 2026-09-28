@@ -6,10 +6,10 @@ Last updated: 2026-09-28
 
 | Measure | Count |
 |---|---|
-| Active listings (shown on site) | 141 |
-| Verified (with source + date) | 110 |
-| Community listed | 24 |
-| Needs review | 7 |
+| Active listings (shown on site) | 168 |
+| Verified (with source + date) | 129 |
+| Community listed | 31 |
+| Needs review | 8 |
 | Duplicates removed from display | 2 |
 | Closed businesses identified | 1 |
 | Housing posts | 0 (board built, awaiting reviewed submissions) |
@@ -23,7 +23,7 @@ Last updated: 2026-09-28
 | 2. Clean and verify existing listings (87) | Done 2026-09-28 |
 | 3. Washington DC / Maryland / Northern Virginia | Batches 1-2 done 2026-09-28 (38 added) |
 | 4. Ohio | Batch 1 done 2026-09-28 (19 added: Columbus, Cleveland, Cincinnati, Dayton, Akron) |
-| 5. TX, GA, WA, MN, CO, CA, NY/NJ | Existing listings audited only |
+| 5. TX, GA, WA, MN, CO, CA, NY/NJ | Texas batch 1 done (22 added: Dallas, Houston, Austin, San Antonio); Georgia batch 1 done (5 added). Others: existing listings audited only |
 | 6 to 10 | Not started |
 
 ## Coverage by state
@@ -33,17 +33,17 @@ Last updated: 2026-09-28
 | California | Los Angeles | 5 | 5 | Restaurant, Grocery, Church |
 | Colorado | Aurora, Denver | 6 | 5 | Restaurant, Grocery, Church |
 | District of Columbia | Washington | 20 | 15 | Restaurant, Grocery, Church, Community |
-| Georgia | Atlanta metro | 4 | 3 | Restaurant, Church |
+| Georgia | Atlanta metro | 9 | 6 | Restaurant, Church, Community |
 | Maryland | Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 21 | 16 | Restaurant, Grocery, Shopping, Church, Community, Professional, Beauty |
 | Minnesota | Minneapolis | 6 | 5 | Restaurant, Grocery, Church |
 | New Jersey | Newark, South Orange | 2 | 1 | Restaurant, Church |
 | New York | New York City | 5 | 5 | Restaurant |
 | Ohio | Columbus metro, Cleveland metro, Cincinnati, Dayton, Akron | 33 | 21 | Restaurant, Grocery, Church, Community |
-| Texas | Dallas metro, Houston | 11 | 9 | Restaurant, Grocery, Shopping, Church, Community |
+| Texas | Dallas metro, Houston metro, Austin metro, San Antonio | 33 | 25 | Restaurant, Grocery, Shopping, Church, Community |
 | Virginia | Alexandria, Arlington, Falls Church, Springfield, Sterling, Woodbridge | 22 | 19 | Restaurant, Grocery, Shopping, Church, Community, Beauty |
 | Washington | Seattle | 6 | 6 | Restaurant, Grocery, Community |
 
-Churches by tradition: Orthodox 24, Protestant/Evangelical 12, Catholic 1.
+Churches by tradition: Orthodox 29, Protestant/Evangelical 16, Catholic 1.
 
 ## Categories still needing research (all states)
 
@@ -62,6 +62,10 @@ Auto, Home services, Healthcare, Childcare/family (only Amharic lessons at ECSAC
 - Ohio leads not added (evidence too thin): Addis Auto Repair LLC (Columbus, name only), Ethiopians Community Network (Columbus, IRS only), Mekane Semayit St. George EOTC (Cincinnati, no address), Somalia and Ethiopia Restaurant (Columbus, no activity since 2020).
 - Ohio closed, not added: Empress Taytu (Cleveland), reviews since late 2023 report it permanently closed.
 - Ohio rechecks: Cincinnati Ethiopian Evangelical Church (single directory source), Hiwot Injera (no storefront address), Tizita Eats (pop-up).
+
+- Texas not added: Harar Ethiopian Restaurant (Houston, its space became Jano and then a Latin restaurant), Dallul (Dallas, Inwood Rd location closed; Coit Rd location unconfirmed), Aster's Ethiopian (Austin, closed), Rehoboth Eritrean-Ethiopian (San Antonio, closed). Leads: Amen Cafe (San Antonio), Houston Kidane Mihret monastery, Horn of Africa Grocery (Houston).
+- Georgia leads: Atlanta Orthodox churches known only from Facebook (Genete Tsigie St. Georgis & St. Arsema, St. Mary / Kidist Mariam, Salite Meheret); Yeshi Food Mart and Balagru Food Mart (Clarkston). Need addresses.
+- Richardson TX: EHPA and MAAEC share 300 S Cottonwood Dr (validator flags it; not a duplicate).
 
 ## Source quality notes
 
