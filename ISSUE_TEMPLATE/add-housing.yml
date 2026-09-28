@@ -1,0 +1,67 @@
+name: Add housing
+description: Room for rent, roommate wanted, room to share, apartment or house
+title: '[Housing]: '
+labels:
+- needs-review
+- housing
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: dropdown
+  id: type
+  attributes:
+    label: Type
+    options:
+    - Room for rent
+    - Roommate wanted
+    - Room to share
+    - Apartment
+    - House
+  validations:
+    required: true
+- type: input
+  id: city
+  attributes:
+    label: City
+  validations:
+    required: true
+- type: input
+  id: state
+  attributes:
+    label: State
+  validations:
+    required: true
+- type: input
+  id: area
+  attributes:
+    label: General area or neighborhood
+    description: Do NOT include a street address
+- type: input
+  id: rent
+  attributes:
+    label: Monthly rent
+- type: input
+  id: room
+  attributes:
+    label: Private or shared room
+- type: input
+  id: date_posted
+  attributes:
+    label: Date posted
+- type: input
+  id: contact
+  attributes:
+    label: Contact method you want shown publicly
+- type: input
+  id: link
+  attributes:
+    label: Original post link, if any
+- type: checkboxes
+  id: consent
+  attributes:
+    label: Permission
+    options:
+    - label: I am offering this housing or have the poster's permission to share it publicly.
+      required: true

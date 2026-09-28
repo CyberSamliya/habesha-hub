@@ -1,0 +1,27 @@
+name: Report incorrect information
+description: Closed, moved, wrong phone, wrong category or duplicate
+title: '[Correction]: '
+labels:
+- needs-review
+- correction
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: listing
+  attributes:
+    label: Listing name or ID
+  validations:
+    required: true
+- type: textarea
+  id: problem
+  attributes:
+    label: What is incorrect, and what is correct?
+  validations:
+    required: true
+- type: input
+  id: source
+  attributes:
+    label: Source link

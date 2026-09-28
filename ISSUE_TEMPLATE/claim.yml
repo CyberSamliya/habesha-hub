@@ -1,0 +1,30 @@
+name: Claim this business
+description: Owners and managers can confirm or update a listing
+title: '[Claim]: '
+labels:
+- needs-review
+- claim
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: listing
+  attributes:
+    label: Listing name or ID
+  validations:
+    required: true
+- type: input
+  id: role
+  attributes:
+    label: Your role
+  validations:
+    required: true
+- type: textarea
+  id: updates
+  attributes:
+    label: Updates to make
+- type: markdown
+  attributes:
+    value: We confirm claims through the business's public phone number or website before changing anything.

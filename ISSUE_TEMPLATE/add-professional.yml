@@ -1,0 +1,65 @@
+name: Add a professional
+description: Lawyer, doctor, accountant, realtor or other professional
+title: '[Add professional]: '
+labels:
+- needs-review
+- add-listing
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: name
+  attributes:
+    label: Name
+    description: Official business or organization name
+  validations:
+    required: true
+- type: input
+  id: profession
+  attributes:
+    label: Profession
+  validations:
+    required: true
+- type: input
+  id: license
+  attributes:
+    label: License lookup link or number
+    description: For licensed professions such as law, medicine, real estate and insurance
+- type: input
+  id: address
+  attributes:
+    label: Street address
+    description: Public business address only
+- type: input
+  id: city
+  attributes:
+    label: City
+  validations:
+    required: true
+- type: input
+  id: state
+  attributes:
+    label: State
+  validations:
+    required: true
+- type: input
+  id: zip
+  attributes:
+    label: ZIP
+- type: input
+  id: phone
+  attributes:
+    label: Public business phone
+- type: input
+  id: website
+  attributes:
+    label: Website or official social page
+- type: checkboxes
+  id: consent
+  attributes:
+    label: Permission
+    options:
+    - label: I am this professional, or I have their permission to list their public office details.
+      required: true

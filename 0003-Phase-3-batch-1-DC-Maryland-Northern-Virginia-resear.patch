@@ -1,0 +1,297 @@
+From ecb8f3f06ff44b79db547f2eccf37bfdb10dc3b1 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 28 Sep 2026 12:28:12 -0400
+Subject: [PATCH 3/3] Phase 3 (batch 1): DC / Maryland / Northern Virginia
+ research
+
+- 26 new listings with sources and 2026-09-28 check dates: 10 DC restaurants,
+  2 Chercher branches, Falls Church markets/cafe, Selam Market (Hyattsville),
+  5 Orthodox churches, Four Corners EEC, Kidane-Mehret Ethiopian Catholic (Forestville),
+  ECDC, Ethiopian Community Center, Mulu Law, 3 salons (community listed)
+- Metro areas normalized for New York City and Atlanta
+- README rewritten for schema v2 and maintenance workflow; PROGRESS.md tracker added
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01C51joV1bn4EuCSjgvACjRz
+---
+ PROGRESS.md                               | 64 ++++++++++++++++
+ README.md                                 | 89 ++++++++++++++++++-----
+ directory-data.js                         | 38 ++++++++--
+ tools/research/2026-09-28-phase3-dmv.json | 28 +++++++
+ 4 files changed, 195 insertions(+), 24 deletions(-)
+ create mode 100644 PROGRESS.md
+ create mode 100644 tools/research/2026-09-28-phase3-dmv.json
+
+diff --git a/PROGRESS.md b/PROGRESS.md
+new file mode 100644
+index 0000000..f7245de
+--- /dev/null
++++ b/PROGRESS.md
+@@ -0,0 +1,64 @@
++# Habesha Hub research progress
++
++Last updated: 2026-09-28
++
++## Totals
++
++| Measure | Count |
++|---|---|
++| Active listings (shown on site) | 110 |
++| Verified (with source + date) | 88 |
++| Community listed | 16 |
++| Needs review | 6 |
++| Duplicates removed from display | 2 |
++| Closed businesses identified | 1 |
++| Housing posts | 0 (board built, awaiting reviewed submissions) |
++| States / DC with listings | 12 of 51 |
++
++## Phases
++
++| Phase | Status |
++|---|---|
++| 1. Architecture, search, filters | Done 2026-09-28 |
++| 2. Clean and verify existing listings (87) | Done 2026-09-28 |
++| 3. Washington DC / Maryland / Northern Virginia | First batch done 2026-09-28 (26 added) |
++| 4. Ohio | Next |
++| 5. TX, GA, WA, MN, CO, CA, NY/NJ | Existing listings audited only |
++| 6 to 10 | Not started |
++
++## Coverage by state
++
++| State | Cities / metros | Active | Verified | Categories present |
++|---|---|---|---|---|
++| California | Los Angeles | 5 | 5 | Restaurant, Grocery, Church |
++| Colorado | Aurora, Denver | 6 | 5 | Restaurant, Grocery, Church |
++| District of Columbia | Washington | 19 | 15 | Restaurant, Grocery, Church, Community |
++| Georgia | Atlanta metro | 4 | 3 | Restaurant, Church |
++| Maryland | Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 15 | 11 | Restaurant, Grocery, Church, Professional, Beauty |
++| Minnesota | Minneapolis | 6 | 5 | Restaurant, Grocery, Church |
++| New Jersey | Newark, South Orange | 2 | 1 | Restaurant, Church |
++| New York | New York City | 5 | 5 | Restaurant |
++| Ohio | Columbus metro | 14 | 9 | Restaurant, Grocery, Church, Community |
++| Texas | Dallas metro, Houston | 11 | 9 | Restaurant, Grocery, Shopping, Church, Community |
++| Virginia | Alexandria, Arlington, Falls Church, Springfield, Sterling | 17 | 14 | Restaurant, Grocery, Church, Community, Beauty |
++| Washington | Seattle | 6 | 6 | Restaurant, Grocery, Community |
++
++Churches by tradition: Orthodox 20, Protestant/Evangelical 10, Catholic 1.
++
++## Categories still needing research (all states)
++
++Auto, Home services, Healthcare, Childcare/family, Clothing and jewelry, Injera bakeries, Catering, Professional services (only 1 so far), Beauty (3, all "community"), Ethiopian Catholic outside DMV, Housing.
++
++## Open items to recheck
++
++- Columbus: Debre Medhanit Medhane Alem (two addresses online), Kidest Sehalte Mehret (current location), Peniel (Pataskala vs Blacklick), Habesha Garden (possible closure since Jul 2026).
++- DC: Selam International Market and Falls Church Skyline International Market (only 2013 evidence, possibly closed). Elfegne (ownership/concept change).
++- Atlanta: Ebenezer Ethiopian Evangelical Church street address.
++- Minneapolis: Debre Selam Medhanealem website still shows old address.
++- Alexandria: Zema Market building listed for sale (business still open).
++- Leads not yet added: Debre Bisrat Dagimawi Kulibi St. Gabriel (Silver Spring/Spencerville MD, address not confirmed); Ethiopian Community Center Maryland office; Columbus Holy Trinity EOTC (IRS record found).
++
++## Source quality notes
++
++- HabeshaLink lists are useful leads but several addresses are outdated (salons, 2013 market list). Always confirm with the business's own page, Yelp/Google, or a second source.
++- Some aggregator doctor/lawyer directories appear auto-generated. Use licensing boards and practice websites instead.
+diff --git a/README.md b/README.md
+index d1f3284..fc6da88 100644
+--- a/README.md
++++ b/README.md
+@@ -1,30 +1,83 @@
+ # Habesha Hub
+ 
+-Habesha Hub is a community-maintained discovery and resource platform for Ethiopian and Habesha communities across the United States.
++A community-maintained, searchable directory of Ethiopian and Habesha businesses, churches, professionals and organizations across the United States, organized by **state, city/metro and category**.
+ 
+-## Structure
++Live site: https://cybersamliya.github.io/habesha-hub/
+ 
+-- `index.html` — interface, search, state explorer, resources and contribution flows.
+-- `directory-data.js` — community directory records and verification status.
++## Files
+ 
+-## Adding a listing
++| Path | Purpose |
++|---|---|
++| `index.html` | Page markup, SEO metadata, JSON-LD |
++| `assets/styles.css` | All styles |
++| `assets/i18n.js` | English / Amharic interface text |
++| `assets/app.js` | Search, filters, cards, state explorer, housing board, contribution links |
++| `directory-data.js` | **All listings** (one per line) plus housing posts and status labels |
++| `tools/validate-data.js` | Data checks: required fields, ids, statuses, URLs, duplicates, housing privacy |
++| `tools/apply-updates.js` | Applies a research batch file to `directory-data.js` |
++| `tools/research/*.json` | Research batches: every change with its sources, kept as an audit trail |
++| `tools/test-site.js` | Browser tests (Playwright) for search, filters, deep links, mobile |
++| `.github/ISSUE_TEMPLATE/` | Review-queue forms: add business, church, professional, organization, housing, correction, claim |
++| `.github/workflows/validate.yml` | Runs the validator on every push |
++| `PROGRESS.md` | Research progress tracker |
+ 
+-Add an object to `window.HABESHA_LISTINGS` in `directory-data.js` with `name`, `category`, `city`, `state`, `address`, and `status`.
++No build step. GitHub Pages serves the files as they are.
+ 
+-Status values:
+-- `verified` — independently reviewed against a reliable current source.
+-- `community` — community submitted/listed but not independently verified.
+-- `needs-review` — legacy or incomplete listing that needs confirmation.
++## Listing fields
++
++```js
++{"id":"oh-columbus-lalibela-grocery",      // stable, never reused
++ "name":"Lalibela Grocery", "altNames":[],  // spelling variants help search and de-duplication
++ "category":"Grocery", "subcategory":"Ethiopian grocery",
++ "denomination":"",                         // churches only: Orthodox | Protestant | Catholic (only with evidence)
++ "address":"1107 S Hamilton Rd",            // street only
++ "city":"Columbus", "metro":"",             // metro groups suburbs, e.g. Whitehall -> Columbus
++ "state":"Ohio", "zip":"43227",
++ "phone":"(614) 235-7330", "website":"", "social":"", "mapsUrl":"",
++ "source":"https://...", "secondSource":"https://...",
++ "status":"verified", "verifiedDate":"2026-09-28",
++ "publicNote":"",                           // shown on the card (e.g. conflicting addresses)
++ "notes":"",                                // internal, not shown
++ "privacy":"",                              // "limited" hides street and phone (individual providers)
++ "keywords":[]}
++```
++
++Categories: `Restaurant, Grocery, Shopping, Church, Beauty, Auto, Home, Professional, Healthcare, Childcare, Community` (housing lives in `HABESHA_HOUSING`).
++
++### Status values
++
++| Status | Meaning | Shown? |
++|---|---|---|
++| `verified` | Current official site, or two independent current sources, confirm name, location and Ethiopian/Habesha connection | Yes |
++| `community` | Publicly listed (directory, social page) but not independently confirmed | Yes |
++| `needs-review` | Incomplete, conflicting or possibly outdated | Yes, with a note |
++| `temporarily-closed` | Temporarily closed | Yes, with a warning |
++| `closed` | Closed, with evidence | No (kept for history) |
++| `duplicate` | Duplicate of another id (`notes` says which) | No (kept for history) |
++
++## Adding or correcting listings
++
++1. Research. Record the URL you used in `source` (and `secondSource`), plus today's date in `verifiedDate`.
++2. Put the change in a batch file, e.g. `tools/research/2026-10-05-ohio.json`:
++   ```json
++   {"date":"2026-10-05","update":{"<id>":{"phone":"(614) 555-0100"}},"add":[{...new listing...}]}
++   ```
++3. `node tools/apply-updates.js tools/research/2026-10-05-ohio.json`
++4. `node tools/validate-data.js` (must show 0 errors)
++5. Optional: `npm i -D playwright && node tools/test-site.js`
++
++Community submissions arrive by email (prefilled templates on the site) or GitHub issue forms, and always start as `community` or `needs-review`.
+ 
+ ## Trust rules
+ 
+-1. Never invent listings to make a state look complete.
+-2. Show an honest empty state where coverage is missing.
+-3. Prefer official business or organization sources when verifying details.
+-4. Keep a correction path available for listings.
+-5. Government and immigration information should link to official sources.
+-6. Do not present community information as individualized legal, immigration, or benefits advice.
++1. Never invent a listing, address, phone, website, ownership, ethnicity or church tradition.
++2. Do not assume someone is Ethiopian from a name, language, photo or neighborhood. There must be public evidence.
++3. Show an honest empty state where coverage is missing ("No verified community listings yet").
++4. Do not delete uncertain records. Mark them `needs-review`, and mark closures only with evidence.
++5. Housing posts show date posted and date last checked, and expire automatically (Active up to 14 days, Needs recheck 15 to 45 days, Expired after 45 days or past the end date). Never publish a private home address.
++6. Government and immigration information links to official sources and is not individual advice.
+ 
+-## Roadmap
++## Deep links
+ 
+-Expand verified listings city by city; add business submission/claim workflow; create dedicated state/city pages; add events and organizations; expand English/Amharic localization; add structured data and sitemap as content grows.
++Filters are reflected in the URL, so results can be shared or bookmarked, for example:
++`?state=Ohio&category=Church&denomination=Orthodox`, `?state=Maryland&category=Restaurant`, `?q=injera`.
+diff --git a/directory-data.js b/directory-data.js
+index c29d23f..0be9b86 100644
+--- a/directory-data.js
++++ b/directory-data.js
+@@ -49,8 +49,8 @@ window.HABESHA_LISTINGS = [
+   {"id":"va-sterling-gospel-believers-ethiopian-church","name":"Gospel Believers Ethiopian Church","category":"Church","subcategory":"Evangelical (Southern Baptist affiliated)","denomination":"Protestant","address":"45305 Catalina Ct, Unit 190","city":"Sterling","state":"Virginia","zip":"20166","phone":"(571) 315-3502","website":"https://gbec.church/","source":"https://gbec.church/","secondSource":"https://www.sbcv.org/churches/gospel-believers-ethiopian-church/","status":"verified","verifiedDate":"2026-09-28","notes":"ADDRESS CORRECTED from 1402 Shepard Dr to the church's current address on its official website."},
+   {"id":"va-annandale-virginia-evangelical-lutheran-church-mekane-yesus","name":"Virginia Evangelical Lutheran Church Mekane Yesus","category":"Church","subcategory":"Lutheran (Mekane Yesus)","denomination":"Protestant","address":"6005 Tower Ct","city":"Alexandria","state":"Virginia","zip":"22304","phone":"(571) 319-0562","website":"https://www.velcmy.com/","source":"https://www.velcmy.com/get-directions","secondSource":"https://locator.lcms.org/church/C/1001824","status":"verified","verifiedDate":"2026-09-28","notes":"ADDRESS CORRECTED from 3901 Gallows Rd, Annandale (LCMS locator, older) to 6005 Tower Ct, Alexandria per official website."},
+   {"id":"ga-atlanta-embilta-cafe-restaurant","name":"Embilta Cafe & Restaurant","altNames":["Embilta Ethiopian Cafe & Restaurant"],"category":"Restaurant","subcategory":"Ethiopian restaurant and cafe","address":"2100 Cheshire Bridge Rd NE, Suite A","city":"Atlanta","state":"Georgia","zip":"30324","website":"https://embiltarestaurant.com/","source":"https://www.yelp.com/biz/embilta-caf%C3%A9-and-restaurant-ethiopian-cuisine-atlanta","secondSource":"https://www.grubhub.com/restaurant/embilta-caf--restaurant-2100-cheshire-bridge-rd-ne-suite-a-atlanta/337390","status":"verified","verifiedDate":"2026-09-28","notes":"Yelp (224 reviews, updated Aug 2026). A separate old Yelp page 'Embilta' (coffee) is marked closed; it is not this restaurant."},
+-  {"id":"ga-stone-mountain-ethiopian-evangelical-church-atlanta","name":"Ethiopian Evangelical Church Atlanta","altNames":["Ethiopian Evangelical Church of Atlanta","EEC Atlanta"],"category":"Church","subcategory":"Evangelical (US Mennonite Brethren)","denomination":"Protestant","address":"4550 Greer Cir","city":"Stone Mountain","state":"Georgia","zip":"30083","phone":"(770) 496-1665","website":"https://eecatlanta.com/","source":"https://eecatlanta.com/prek/","secondSource":"https://usmb.org/church/ethiopian-evangelical-church/","status":"verified","verifiedDate":"2026-09-28","notes":"Official site footer: 4550 Greer Cir, Stone Mountain 30083, 770-496-1665."},
+-  {"id":"ga-stone-mountain-ebenezer-ethiopian-evangelical-church-atlanta","name":"Ebenezer Ethiopian Evangelical Church Atlanta","category":"Church","denomination":"Protestant","address":"4528 Rockbridge Rd SW","city":"Stone Mountain","state":"Georgia","zip":"30083","website":"https://eeeca.org/","social":"https://www.facebook.com/GEGBCAtlanta/","source":"https://eeeca.org/about/","secondSource":"https://www.youtube.com/channel/UCGY7Hgr-RK6ya4HQgS5T3Dw","status":"needs-review","verifiedDate":"2026-09-28","publicNote":"Church confirmed; street address not yet confirmed. Check the church website before visiting.","notes":"Congregation confirmed via eeeca.org and YouTube. v1 address '4528 Rockbridge Rd SW' could not be confirmed (site blocked automated fetch). Downgraded from verified."},
++  {"id":"ga-stone-mountain-ethiopian-evangelical-church-atlanta","name":"Ethiopian Evangelical Church Atlanta","altNames":["Ethiopian Evangelical Church of Atlanta","EEC Atlanta"],"category":"Church","subcategory":"Evangelical (US Mennonite Brethren)","denomination":"Protestant","address":"4550 Greer Cir","city":"Stone Mountain","state":"Georgia","zip":"30083","phone":"(770) 496-1665","website":"https://eecatlanta.com/","source":"https://eecatlanta.com/prek/","secondSource":"https://usmb.org/church/ethiopian-evangelical-church/","status":"verified","verifiedDate":"2026-09-28","notes":"Official site footer: 4550 Greer Cir, Stone Mountain 30083, 770-496-1665.","metro":"Atlanta"},
++  {"id":"ga-stone-mountain-ebenezer-ethiopian-evangelical-church-atlanta","name":"Ebenezer Ethiopian Evangelical Church Atlanta","category":"Church","denomination":"Protestant","address":"4528 Rockbridge Rd SW","city":"Stone Mountain","state":"Georgia","zip":"30083","website":"https://eeeca.org/","social":"https://www.facebook.com/GEGBCAtlanta/","source":"https://eeeca.org/about/","secondSource":"https://www.youtube.com/channel/UCGY7Hgr-RK6ya4HQgS5T3Dw","status":"needs-review","verifiedDate":"2026-09-28","publicNote":"Church confirmed; street address not yet confirmed. Check the church website before visiting.","notes":"Congregation confirmed via eeeca.org and YouTube. v1 address '4528 Rockbridge Rd SW' could not be confirmed (site blocked automated fetch). Downgraded from verified.","metro":"Atlanta"},
+   {"id":"ga-atlanta-mekane-hiwot-abune-gebre-menfes-kidus-eotc","name":"Mekane Hiwot Abune Gebre Menfes Kidus EOTC","altNames":["Atlanta Abo","Atlanta Mekane Hiwot Abune Gebre Menfes Kidus Cathedral"],"category":"Church","denomination":"Orthodox","address":"4575 Stonegate Industrial Blvd","city":"Stone Mountain","state":"Georgia","zip":"30083","phone":"(678) 609-3682","website":"https://www.atlantaabo.org/","social":"https://www.facebook.com/AtlantaAbo/","source":"https://www.atlantaabo.org/Home/About","secondSource":"https://www.youtube.com/@atlabo","status":"verified","verifiedDate":"2026-09-28","notes":"ADDRESS ADDED from official site (v1 had 'Atlanta, GA' only). Note: aboeotc.org / GuideStar 80-0650951 is a different church of the same name in Norfolk, VA.","metro":"Atlanta"},
+   {"id":"tx-dallas-desta-ethiopian-restaurant","name":"Desta Ethiopian Restaurant","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"12101 Greenville Ave, Suite 105","city":"Dallas","state":"Texas","zip":"75243","phone":"(214) 575-9004","website":"https://destadallasethiopian.com/","source":"https://destadallasethiopian.com/","secondSource":"https://www.yelp.com/biz/desta-ethiopian-restaurant-dallas-2","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded."},
+   {"id":"tx-dallas-abyssinia-grocery-and-ethiopian-food","name":"Abyssinia Grocery and Ethiopian Food","altNames":["Abyssinia Gebya"],"category":"Grocery","subcategory":"Ethiopian grocery and food","address":"9191 Forest Ln, Suite 1A","city":"Dallas","state":"Texas","zip":"75243","source":"https://www.ubereats.com/store/abyssinia-grocery-and-ethiopian-food-9191-forest-ln-1a-dallas-tx-75243/eBBt1JJhQkmH4mlOkzMJKQ","secondSource":"https://www.yelp.com/biz/abyssinia-gebya-dallas","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded."},
+@@ -95,14 +95,40 @@ window.HABESHA_LISTINGS = [
+   {"id":"oh-columbus-saint-michael-ethiopian-orthodox-tewahedo-church","name":"Saint Michael Ethiopian Orthodox Tewahedo Church","altNames":["Debre Genet Saint Michael and Abune Gebre Menfes Kidus Ethiopian Orthodox Tewahedo Church","St. Michael Ethiopian Orthodox Church"],"category":"Church","denomination":"Orthodox","address":"3425 Refugee Rd","city":"Columbus","state":"Ohio","zip":"43232","website":"https://www.columbusmichael.org/","source":"https://www.columbusmichael.org/","secondSource":"https://www.waze.com/live-map/directions/us/oh/columbus/saint-michael-ethiopian-orthodox-tewahedo-church-in-columbus-ohio?to=place.ChIJCWgcUVh9OIgR_MUizTR59wQ","status":"verified","verifiedDate":"2026-09-28","notes":"Official website confirms full name, EOTC tradition and 3425 Refugee Rd."},
+   {"id":"oh-columbus-debre-medihanit-medhanealem-ethiopian-orthodox-tewahedo-church","name":"Debre Medihanit Medhanealem Ethiopian Orthodox Tewahedo Church","altNames":["Debre Medhanit Medhane Alem","Ethiopian Orthodox Tewahdo Church Columbus Ohio Medhannealem"],"category":"Church","denomination":"Orthodox","address":"4295 E Broad St","city":"Columbus","state":"Ohio","zip":"43213","source":"https://www.guidestar.org/profile/31-1405449","secondSource":"https://www.yelp.com/biz/ethiopian-orthodox-tewahedo-church-debre-medhanit-medhane-alem-c-columbus","status":"community","verifiedDate":"2026-09-28","publicNote":"Two addresses appear online (4295 E Broad St and 610 Neil Ave). Please call or check the church's announcements before visiting.","notes":"IRS/GuideStar: 4295 E Broad St 43213. Yelp: 610 Neil Ave. No official website found. Downgraded from verified until the service location is confirmed."},
+   {"id":"oh-columbus-etss-tewahedo-social-services","name":"ETSS Tewahedo Social Services","altNames":["Ethiopian Tewahedo Social Services"],"category":"Community","subcategory":"Immigrant and refugee social services","address":"4300 E Broad St Ste D","city":"Columbus","state":"Ohio","zip":"43213","phone":"(614) 252-5362","website":"https://www.ethiotss.org/","source":"https://adamhfranklin.org/provider/etss-tewahedo-social-services/","secondSource":"https://www.ethiotss.org/","status":"verified","verifiedDate":"2026-09-28","notes":"ADAMH Board of Franklin County lists 4300 E Broad St Suite D; United Way listing shows older address 1060 Mt Vernon Ave."},
+-  {"id":"ny-new-york-queen-of-sheba","name":"Queen of Sheba","category":"Restaurant","address":"650 10th Ave","city":"New York","state":"New York","zip":"10036","source":"https://w42st.com/post/after-25-years-of-ethiopian-fare-queen-of-sheba-prepares-to-say-goodbye-to-hells-kitchen/","secondSource":"https://www.yelp.com/biz/queen-of-sheba-new-york","status":"closed","verifiedDate":"2026-09-28","notes":"CLOSED: closure after 25 years reported by W42ST and Ethiopia Observer (Apr 2025); Yelp marks CLOSED (Sep 2026). Restaurant website still online but stale. Hidden from site."},
+-  {"id":"ny-new-york-haile","name":"Haile Bistro","altNames":["Haile Ethiopian Cuisine","Haile"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"182 Avenue B #1","city":"New York","state":"New York","zip":"10009","source":"https://www.yelp.com/biz/haile-bistro-new-york","secondSource":"https://hailebistro.netwaiter.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded."},
+-  {"id":"ny-new-york-benyam","name":"Benyam Ethiopian Cuisine","altNames":["Benyam"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"2795 Frederick Douglass Blvd","city":"New York","state":"New York","zip":"10039","phone":"(212) 510-7353","website":"https://www.benyamcuisine.com/","source":"https://www.benyamcuisine.com/contact/","secondSource":"https://www.yelp.com/biz/benyam-cuisine-new-york","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","keywords":["Harlem"]},
++  {"id":"ny-new-york-queen-of-sheba","name":"Queen of Sheba","category":"Restaurant","address":"650 10th Ave","city":"New York","state":"New York","zip":"10036","source":"https://w42st.com/post/after-25-years-of-ethiopian-fare-queen-of-sheba-prepares-to-say-goodbye-to-hells-kitchen/","secondSource":"https://www.yelp.com/biz/queen-of-sheba-new-york","status":"closed","verifiedDate":"2026-09-28","notes":"CLOSED: closure after 25 years reported by W42ST and Ethiopia Observer (Apr 2025); Yelp marks CLOSED (Sep 2026). Restaurant website still online but stale. Hidden from site.","metro":"New York City"},
++  {"id":"ny-new-york-haile","name":"Haile Bistro","altNames":["Haile Ethiopian Cuisine","Haile"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"182 Avenue B #1","city":"New York","state":"New York","zip":"10009","source":"https://www.yelp.com/biz/haile-bistro-new-york","secondSource":"https://hailebistro.netwaiter.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","keywords":["Manhattan","East Village"],"metro":"New York City"},
++  {"id":"ny-new-york-benyam","name":"Benyam Ethiopian Cuisine","altNames":["Benyam"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"2795 Frederick Douglass Blvd","city":"New York","state":"New York","zip":"10039","phone":"(212) 510-7353","website":"https://www.benyamcuisine.com/","source":"https://www.benyamcuisine.com/contact/","secondSource":"https://www.yelp.com/biz/benyam-cuisine-new-york","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","keywords":["Harlem","Manhattan"],"metro":"New York City"},
+   {"id":"ny-sunnyside-makina-cafe","name":"Makina Cafe","category":"Restaurant","subcategory":"Eritrean-Ethiopian restaurant","address":"46-11 Skillman Ave","city":"Sunnyside","state":"New York","zip":"11104","website":"https://www.makinacafenyc.com/","source":"https://qns.com/2026/04/makina-cafe-ethiopian-sunnyside/","secondSource":"https://www.yelp.com/biz/makina-cafe-sunnyside","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","keywords":["Queens"],"metro":"New York City"},
+   {"id":"ny-brooklyn-bunna-cafe","name":"Bunna Cafe","category":"Restaurant","subcategory":"Plant-based Ethiopian restaurant","address":"1084 Flushing Ave","city":"Brooklyn","state":"New York","zip":"11237","website":"https://www.bunnaethiopia.net/","source":"https://www.bunnaethiopia.net/","secondSource":"https://www.yelp.com/biz/bunna-cafe-brooklyn","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","metro":"New York City"},
+   {"id":"ny-brooklyn-ras-plant-based","name":"RAS Plant Based","category":"Restaurant","subcategory":"Plant-based Ethiopian restaurant","address":"739 Franklin Ave","city":"Brooklyn","state":"New York","zip":"11238","website":"https://www.rasplantbased.com/","source":"https://www.rasplantbased.com/location/ras-planted-based-brooklyn/","secondSource":"https://www.yelp.com/biz/ras-plant-based-brooklyn","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded.","metro":"New York City"},
+   {"id":"nj-south-orange-walia-ethiopian-restaurant","name":"Walia Ethiopian Restaurant","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"11 Village Plaza","city":"South Orange","state":"New Jersey","zip":"07079","phone":"(973) 762-2186","website":"https://waliarestaurant.com/","source":"https://waliarestaurant.com/contact/","secondSource":"https://www.yelp.com/biz/walia-ethiopian-restaurant-south-orange-2","status":"verified","verifiedDate":"2026-09-28","notes":"Migrated from v1 data (status was 'verified'); v1 had no source or date recorded."},
+-  {"id":"nj-newark-bisrate-gebriel-ethiopian-orthodox-tewahedo-church","name":"Bisrate Gebriel Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"1046 S Orange Ave","city":"Newark","state":"New Jersey","zip":"07106","social":"https://www.facebook.com/BisrateGebrielEOTCNJ/","source":"https://www.waze.com/live-map/directions/us/nj/newark/bisrate-gebriel-ethiopian-orthodox-tewahedo-church?to=place.ChIJgTBycKasw4kRUnG4bt7rdnk","secondSource":"https://habeshalink.com/listings/bisrate-gebriel-ethiopian-orthodox-tewahedo-church/","status":"community","verifiedDate":"2026-09-28","notes":"Map listing and HabeshaLink directory; no official website found. Downgraded from verified."}
++  {"id":"nj-newark-bisrate-gebriel-ethiopian-orthodox-tewahedo-church","name":"Bisrate Gebriel Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"1046 S Orange Ave","city":"Newark","state":"New Jersey","zip":"07106","social":"https://www.facebook.com/BisrateGebrielEOTCNJ/","source":"https://www.waze.com/live-map/directions/us/nj/newark/bisrate-gebriel-ethiopian-orthodox-tewahedo-church?to=place.ChIJgTBycKasw4kRUnG4bt7rdnk","secondSource":"https://habeshalink.com/listings/bisrate-gebriel-ethiopian-orthodox-tewahedo-church/","status":"community","verifiedDate":"2026-09-28","notes":"Map listing and HabeshaLink directory; no official website found. Downgraded from verified."},
++  {"id":"dc-washington-chercher-columbia-heights","name":"Chercher Ethiopian Restaurant (Columbia Heights)","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3608 14th St NW","city":"Washington","state":"District of Columbia","zip":"20010","phone":"(202) 222-0433","website":"https://chercherrestaurant.com/","source":"https://chercherrestaurant.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Location listed on official Chercher site."},
++  {"id":"md-bethesda-chercher-bethesda","name":"Chercher Ethiopian Restaurant (Bethesda)","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"4921 Bethesda Ave","city":"Bethesda","state":"Maryland","zip":"20814","phone":"(301) 652-6500","website":"https://chercherrestaurant.com/","source":"https://chercherrestaurant.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Location listed on official Chercher site."},
++  {"id":"dc-washington-elfegne","name":"Elfegne Ethiopian Cuisine","altNames":["Elfegne"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"2420 18th St NW","city":"Washington","state":"District of Columbia","zip":"20009","phone":"(202) 667-4700","website":"https://www.elfegnedc.com/","source":"https://www.elfegnedc.com/about-us/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"community","verifiedDate":"2026-09-28","publicNote":"This location has changed owners or concepts recently. Confirm hours before visiting.","notes":"Official site shows normal hours; Infatuation guide (updated Jul 2026) lists it; but Yelp shows the earlier 'Elfegne' page CLOSED (Jun 2026) and a new 'Elfegne Ethiopian Cuisine' page (Aug 2026) at the same address. Recheck in 3 months."},
++  {"id":"dc-washington-das-ethiopian","name":"Das Ethiopian Cuisine","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1201 28th St NW","city":"Washington","state":"District of Columbia","zip":"20007","phone":"(202) 333-4710","website":"https://dasethiopian.com/","source":"https://dasethiopian.com/contact-us/","secondSource":"https://guide.michelin.com/us/en/district-of-columbia/washington-dc/restaurant/das","status":"verified","verifiedDate":"2026-09-28","keywords":["Georgetown"]},
++  {"id":"dc-washington-doro-soul-food","name":"Doro Soul Food","category":"Restaurant","subcategory":"Ethiopian-Southern fried chicken (Chef Elias Taddesse)","address":"1819 7th St NW","city":"Washington","state":"District of Columbia","zip":"20001","website":"https://www.dorosoulfood.com/","source":"https://midcitydcnews.com/2023/05/19/carryout-with-an-ethiopian-twist-at-doro-soul-food/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"verified","verifiedDate":"2026-09-28","keywords":["Shaw"]},
++  {"id":"dc-washington-letena","name":"Letena Ethiopian Restaurant","altNames":["Letena"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3100 14th St NW, Suite 121","city":"Washington","state":"District of Columbia","zip":"20010","website":"https://order.toasttab.com/online/letenadc","source":"https://www.yelp.com/biz/letena-ethiopian-restaurant-washington","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"verified","verifiedDate":"2026-09-28","keywords":["Columbia Heights"]},
++  {"id":"dc-washington-family-ethiopian","name":"Family Ethiopian Restaurant","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1414 9th St NW","city":"Washington","state":"District of Columbia","zip":"20001","phone":"(202) 629-2950","website":"https://familyethiopianrestaurant.com/","source":"https://familyethiopianrestaurant.com/","secondSource":"https://guide.michelin.com/us/en/district-of-columbia/washington-dc/restaurant/family-ethiopian","status":"verified","verifiedDate":"2026-09-28","keywords":["Shaw"]},
++  {"id":"dc-washington-ethiopic","name":"Ethiopic Restaurant","altNames":["Ethiopic"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"401 H St NE","city":"Washington","state":"District of Columbia","zip":"20002","phone":"(202) 675-2066","website":"https://www.ethiopicrestaurant.com/","source":"https://www.ethiopicrestaurant.com/contact/","secondSource":"https://www.yelp.com/biz/ethiopic-washington","status":"verified","verifiedDate":"2026-09-28","keywords":["H Street"]},
++  {"id":"dc-washington-dukem","name":"Dukem Ethiopian Restaurant","altNames":["Dukem"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1114-1118 U St NW","city":"Washington","state":"District of Columbia","zip":"20009","phone":"(202) 667-8735","website":"https://dukemrestaurant.com/US/","source":"https://dukemrestaurant.com/US/","secondSource":"https://www.yelp.com/biz/dukem-ethiopian-restaurant-washington","status":"verified","verifiedDate":"2026-09-28","keywords":["U Street","Little Ethiopia"]},
++  {"id":"dc-washington-heat-da-spot","name":"Heat Da Spot Cafe","category":"Restaurant","subcategory":"Cafe serving Ethiopian breakfast and coffee","address":"3213 Georgia Ave NW","city":"Washington","state":"District of Columbia","zip":"20010","website":"https://heatdaspotdc.com/","source":"https://intentionalist.com/b/heat-da-spot-cafe/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"community","verifiedDate":"2026-09-28","notes":"Included in Infatuation's best Ethiopian restaurants guide; menu features Ethiopian breakfast combo. Owners' background not stated; listed for Ethiopian-focused menu only."},
++  {"id":"md-hyattsville-selam-market-carryout","name":"Selam Market & Carryout","category":"Grocery","subcategory":"Ethiopian market and carryout","address":"6521 Riggs Rd","city":"Hyattsville","state":"Maryland","zip":"20782","phone":"(240) 770-3971","website":"https://www.selammarketcarryout.com/","source":"https://www.selammarketcarryout.com/","secondSource":"https://www.doordash.com/store/selam-market-hyattsville-804353/","status":"community","verifiedDate":"2026-09-28","notes":"Official site gives address and phone. Ethiopian focus inferred from Habesha-market listings; confirm menu/products on next check. Not confirmed to be the same business as the old Selam International Market (DC)."},
++  {"id":"va-falls-church-skyline-cafe","name":"Skyline Cafe Ethiopian Cuisine","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3821 S George Mason Dr","city":"Falls Church","state":"Virginia","zip":"22041","phone":"(703) 820-0240","source":"https://skylinecafe3.netwaiter.com/","secondSource":"https://www.yelp.com/biz/skyline-cafe-falls-church-3","status":"verified","verifiedDate":"2026-09-28","keywords":["Bailey's Crossroads"]},
++  {"id":"va-falls-church-abay-market","name":"Abay Market","altNames":["Abay Ethiopian Market"],"category":"Grocery","subcategory":"Ethiopian market and deli","address":"3811 S George Mason Dr, Suite A","city":"Falls Church","state":"Virginia","zip":"22041","source":"https://www.yelp.com/biz/abay-market-falls-church","secondSource":"https://habeshalink.com/ethiopian-markets-and-shops-in-dc-md-and-va/","status":"verified","verifiedDate":"2026-09-28","notes":"Yelp (Ethiopian, updated Jul 2026) and 2013 community list agree on address."},
++  {"id":"va-falls-church-kera-ethiopian-restaurant-market","name":"Kera Ethiopian Restaurant and Market","category":"Grocery","subcategory":"Ethiopian market and restaurant","address":"3823 S George Mason Dr","city":"Falls Church","state":"Virginia","zip":"22041","source":"https://www.yelp.com/biz/kera-ethiopian-restaurant-and-market-fall-church","status":"community","verifiedDate":"2026-09-28","notes":"Single source (Yelp, updated Jun 2026)."},
++  {"id":"md-temple-hills-debre-genet-medhane-alem","name":"Debre Genet Medhane Alem Ethiopian Orthodox Tewahido Church","category":"Church","denomination":"Orthodox","address":"4401 Old Branch Ave","city":"Temple Hills","state":"Maryland","zip":"20748","phone":"(301) 899-6090","website":"https://dgmedhanealem.org/","source":"https://dgmedhanealem.org/contact/","secondSource":"https://www.guidestar.org/profile/52-1193241","status":"verified","verifiedDate":"2026-09-28"},
++  {"id":"dc-washington-debre-hail-kedus-gabriel","name":"Debre Hail Kedus Gabriel Ethiopian Orthodox Tewahedo Cathedral","altNames":["St. Gabriel's DC"],"category":"Church","denomination":"Orthodox","address":"2601 Evarts St NE","city":"Washington","state":"District of Columbia","zip":"20018","phone":"(202) 269-0146","website":"https://dcgabriel.org/","social":"https://www.facebook.com/dcgabrielchurch/","source":"https://dcgabriel.org/","secondSource":"https://www.guidestar.org/profile/27-1223004","status":"verified","verifiedDate":"2026-09-28"},
++  {"id":"va-sterling-debre-haile-kidus-raguael","name":"Debre Haile Kidus Raguael Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"1001 Ruritan Cir","city":"Sterling","state":"Virginia","zip":"20164","phone":"(703) 938-4880","website":"https://dhkidusraguel.org/","social":"https://www.facebook.com/DHKR.EOTC/","source":"https://dhkidusraguel.org/about","status":"verified","verifiedDate":"2026-09-28"},
++  {"id":"va-alexandria-hamere-noah-kidane-mehret","name":"Hamere Noah Kidane Mehret Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"75 S Bragg St","city":"Alexandria","state":"Virginia","zip":"22312","social":"https://www.facebook.com/KMEOTC/","source":"https://www.waze.com/live-map/directions/hamere-noah-kidane-mehret-church-s-bragg-st-75-alexandria?to=place.w.185401732.1853755178.3334525","secondSource":"https://opencorpdata.com/us-va/07177447","status":"verified","verifiedDate":"2026-09-28","notes":"Map listing and Virginia corporate record agree on 75 S Bragg St."},
++  {"id":"md-silver-spring-four-corners-eec","name":"Four Corners Ethiopian Evangelical Church","category":"Church","subcategory":"Evangelical (Pentecostal)","denomination":"Protestant","address":"33 University Blvd E","city":"Silver Spring","state":"Maryland","zip":"20901","phone":"(610) 506-4619","website":"https://www.4cornerseec.org/","source":"https://www.4cornerseec.org/","secondSource":"https://times12.org/awp-churches/four-corners-ethiopian-evangelical-church/","status":"verified","verifiedDate":"2026-09-28"},
++  {"id":"md-forestville-kidane-mehret-ethiopian-catholic","name":"Kidane-Mehret Ge'ez Rite Ethiopian Catholic Church","category":"Church","subcategory":"Ethiopian Catholic (Ge'ez Rite)","denomination":"Catholic","address":"1717 Ritchie Rd","city":"Forestville","state":"Maryland","phone":"(202) 756-2756","website":"https://kidane-mehret.org/","social":"https://www.facebook.com/KidanemehretDC/","source":"https://www.cathstan.org/local/after-41-year-odyssey-ethiopian-catholics-kidane-mehret-parish-finds-a-church-home-holy-spirit-in-forestville","secondSource":"https://adw.org/parishes/kidane-mehret/","status":"verified","verifiedDate":"2026-09-28","notes":"Moved Aug 2025 to former Holy Spirit Church, 1717 Ritchie Rd, Forestville (Catholic Standard). Archdiocese page still lists older address 5001 Eastern Ave NE, Hyattsville.","keywords":["Washington DC"]},
++  {"id":"va-arlington-ecdc","name":"Ethiopian Community Development Council (ECDC)","category":"Community","subcategory":"Refugee resettlement and immigrant services nonprofit","address":"901 S Highland St","city":"Arlington","state":"Virginia","zip":"22204","phone":"(703) 685-0510","website":"https://www.ecdcus.org/","source":"https://www.ecdcus.org/contact-us/","secondSource":"https://www.guidestar.org/profile/52-1308986","status":"verified","verifiedDate":"2026-09-28"},
++  {"id":"dc-washington-ethiopian-community-center","name":"Ethiopian Community Center, Inc. (ECC)","category":"Community","subcategory":"Social services, referrals and immigrant support","address":"7603 Georgia Ave NW, Suite 100","city":"Washington","state":"District of Columbia","zip":"20012","phone":"(202) 726-0800","website":"https://www.ethiopiancommunitydc.org/","social":"https://www.facebook.com/ethiopiancommunitycenterdc/","source":"https://www.lawhelp.org/dc/resource/ethiopian-community-center-inc","secondSource":"https://takomaparkmd.gov/m/newsflash/Home/Detail/343","status":"community","verifiedDate":"2026-09-28","notes":"Organization is active (Takoma Park city news on 46 years of service). Office address from LawHelp DC may be outdated; a Maryland office opened at 8120 Fenton St, Silver Spring in 2014. Confirm current office."},
++  {"id":"md-silver-spring-mulu-law","name":"Mulu Law","category":"Professional","subcategory":"Immigration, family and business attorney","address":"8403 Colesville Rd, Suite 400","city":"Silver Spring","state":"Maryland","zip":"20910","phone":"(877) 685-8529","website":"https://www.mululawfirm.com/","source":"https://www.mululawfirm.com/","status":"community","verifiedDate":"2026-09-28","notes":"Firm website describes attorney Mulualem Adgeh as an Ethiopian lawyer with offices in Minneapolis and Silver Spring. Bar admission not yet checked against a licensing database; verify before marking verified."},
++  {"id":"md-silver-spring-konjo-hair-salon","name":"Konjo Hair Salon","category":"Beauty","subcategory":"Hair salon","address":"12713 Old Columbia Pike","city":"Silver Spring","state":"Maryland","zip":"20904","social":"https://www.facebook.com/konjohairsalon/","source":"https://www.yelp.com/biz/konjo-hair-salon-silver-spring","secondSource":"https://habeshadeals.com/listing/konjo-hair-salon/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in Habesha directories (HabeshaLink, Habesha Deals). HabeshaLink address (11226 Triangle Ln) is outdated; Yelp (May 2026) address used. Ethiopian ownership not stated on its own pages."},
++  {"id":"md-silver-spring-kedus-hair-salon","name":"Kedus Hair Salon & Braiding","category":"Beauty","subcategory":"Hair salon and braiding","address":"7851 Eastern Ave","city":"Silver Spring","state":"Maryland","social":"https://www.facebook.com/kedussalonmd/","source":"https://www.yelp.com/biz/kedus-hair-salon-and-braiding-silver-spring-6","secondSource":"https://habeshalink.com/listings/ethiopian-hair-salon-washington-dc/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in HabeshaLink Ethiopian salon directory (older address 8203 Georgia Ave). Yelp (Jun 2026) shows 7851 Eastern Ave. ZIP not confirmed."},
++  {"id":"va-falls-church-almaz-diamond-hair-salon","name":"Almaz Diamond Hair Salon","category":"Beauty","subcategory":"Hair salon","address":"3811 S George Mason Dr, Suite B","city":"Falls Church","state":"Virginia","zip":"22041","phone":"(703) 820-6990","website":"https://almazdiamondhairsalon.wordpress.com/","social":"https://www.instagram.com/almazdiamondhairsalon/","source":"https://almazdiamondhairsalon.wordpress.com/about-us/","secondSource":"https://habeshalink.com/listings/ethiopian-hair-salon-washington-dc/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in HabeshaLink Ethiopian salon directory (with an incorrect Silver Spring address). Salon's own site gives Falls Church address; it does not state Ethiopian ownership."}
+ ];
+ 
+ // Housing posts: see README (Housing). Never include a private street address.
+diff --git a/tools/research/2026-09-28-phase3-dmv.json b/tools/research/2026-09-28-phase3-dmv.json
+new file mode 100644
+index 0000000..c2da09b
+--- /dev/null
++++ b/tools/research/2026-09-28-phase3-dmv.json
+@@ -0,0 +1,28 @@
++{"date":"2026-09-28","add":[
++{"id":"dc-washington-chercher-columbia-heights","name":"Chercher Ethiopian Restaurant (Columbia Heights)","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3608 14th St NW","city":"Washington","state":"District of Columbia","zip":"20010","phone":"(202) 222-0433","website":"https://chercherrestaurant.com/","source":"https://chercherrestaurant.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Location listed on official Chercher site."},
++{"id":"md-bethesda-chercher-bethesda","name":"Chercher Ethiopian Restaurant (Bethesda)","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"4921 Bethesda Ave","city":"Bethesda","state":"Maryland","zip":"20814","phone":"(301) 652-6500","website":"https://chercherrestaurant.com/","source":"https://chercherrestaurant.com/","status":"verified","verifiedDate":"2026-09-28","notes":"Location listed on official Chercher site."},
++{"id":"dc-washington-elfegne","name":"Elfegne Ethiopian Cuisine","altNames":["Elfegne"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"2420 18th St NW","city":"Washington","state":"District of Columbia","zip":"20009","phone":"(202) 667-4700","website":"https://www.elfegnedc.com/","source":"https://www.elfegnedc.com/about-us/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"community","verifiedDate":"2026-09-28","publicNote":"This location has changed owners or concepts recently. Confirm hours before visiting.","notes":"Official site shows normal hours; Infatuation guide (updated Jul 2026) lists it; but Yelp shows the earlier 'Elfegne' page CLOSED (Jun 2026) and a new 'Elfegne Ethiopian Cuisine' page (Aug 2026) at the same address. Recheck in 3 months."},
++{"id":"dc-washington-das-ethiopian","name":"Das Ethiopian Cuisine","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1201 28th St NW","city":"Washington","state":"District of Columbia","zip":"20007","phone":"(202) 333-4710","website":"https://dasethiopian.com/","source":"https://dasethiopian.com/contact-us/","secondSource":"https://guide.michelin.com/us/en/district-of-columbia/washington-dc/restaurant/das","status":"verified","verifiedDate":"2026-09-28","keywords":["Georgetown"]},
++{"id":"dc-washington-doro-soul-food","name":"Doro Soul Food","category":"Restaurant","subcategory":"Ethiopian-Southern fried chicken (Chef Elias Taddesse)","address":"1819 7th St NW","city":"Washington","state":"District of Columbia","zip":"20001","website":"https://www.dorosoulfood.com/","source":"https://midcitydcnews.com/2023/05/19/carryout-with-an-ethiopian-twist-at-doro-soul-food/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"verified","verifiedDate":"2026-09-28","keywords":["Shaw"]},
++{"id":"dc-washington-letena","name":"Letena Ethiopian Restaurant","altNames":["Letena"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3100 14th St NW, Suite 121","city":"Washington","state":"District of Columbia","zip":"20010","website":"https://order.toasttab.com/online/letenadc","source":"https://www.yelp.com/biz/letena-ethiopian-restaurant-washington","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"verified","verifiedDate":"2026-09-28","keywords":["Columbia Heights"]},
++{"id":"dc-washington-family-ethiopian","name":"Family Ethiopian Restaurant","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1414 9th St NW","city":"Washington","state":"District of Columbia","zip":"20001","phone":"(202) 629-2950","website":"https://familyethiopianrestaurant.com/","source":"https://familyethiopianrestaurant.com/","secondSource":"https://guide.michelin.com/us/en/district-of-columbia/washington-dc/restaurant/family-ethiopian","status":"verified","verifiedDate":"2026-09-28","keywords":["Shaw"]},
++{"id":"dc-washington-ethiopic","name":"Ethiopic Restaurant","altNames":["Ethiopic"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"401 H St NE","city":"Washington","state":"District of Columbia","zip":"20002","phone":"(202) 675-2066","website":"https://www.ethiopicrestaurant.com/","source":"https://www.ethiopicrestaurant.com/contact/","secondSource":"https://www.yelp.com/biz/ethiopic-washington","status":"verified","verifiedDate":"2026-09-28","keywords":["H Street"]},
++{"id":"dc-washington-dukem","name":"Dukem Ethiopian Restaurant","altNames":["Dukem"],"category":"Restaurant","subcategory":"Ethiopian restaurant","address":"1114-1118 U St NW","city":"Washington","state":"District of Columbia","zip":"20009","phone":"(202) 667-8735","website":"https://dukemrestaurant.com/US/","source":"https://dukemrestaurant.com/US/","secondSource":"https://www.yelp.com/biz/dukem-ethiopian-restaurant-washington","status":"verified","verifiedDate":"2026-09-28","keywords":["U Street","Little Ethiopia"]},
++{"id":"dc-washington-heat-da-spot","name":"Heat Da Spot Cafe","category":"Restaurant","subcategory":"Cafe serving Ethiopian breakfast and coffee","address":"3213 Georgia Ave NW","city":"Washington","state":"District of Columbia","zip":"20010","website":"https://heatdaspotdc.com/","source":"https://intentionalist.com/b/heat-da-spot-cafe/","secondSource":"https://www.theinfatuation.com/washington-dc/guides/best-ethiopian-restaurants","status":"community","verifiedDate":"2026-09-28","notes":"Included in Infatuation's best Ethiopian restaurants guide; menu features Ethiopian breakfast combo. Owners' background not stated; listed for Ethiopian-focused menu only."},
++{"id":"md-hyattsville-selam-market-carryout","name":"Selam Market & Carryout","category":"Grocery","subcategory":"Ethiopian market and carryout","address":"6521 Riggs Rd","city":"Hyattsville","state":"Maryland","zip":"20782","phone":"(240) 770-3971","website":"https://www.selammarketcarryout.com/","source":"https://www.selammarketcarryout.com/","secondSource":"https://www.doordash.com/store/selam-market-hyattsville-804353/","status":"community","verifiedDate":"2026-09-28","notes":"Official site gives address and phone. Ethiopian focus inferred from Habesha-market listings; confirm menu/products on next check. Not confirmed to be the same business as the old Selam International Market (DC)."},
++{"id":"va-falls-church-skyline-cafe","name":"Skyline Cafe Ethiopian Cuisine","category":"Restaurant","subcategory":"Ethiopian restaurant","address":"3821 S George Mason Dr","city":"Falls Church","state":"Virginia","zip":"22041","phone":"(703) 820-0240","source":"https://skylinecafe3.netwaiter.com/","secondSource":"https://www.yelp.com/biz/skyline-cafe-falls-church-3","status":"verified","verifiedDate":"2026-09-28","keywords":["Bailey's Crossroads"]},
++{"id":"va-falls-church-abay-market","name":"Abay Market","altNames":["Abay Ethiopian Market"],"category":"Grocery","subcategory":"Ethiopian market and deli","address":"3811 S George Mason Dr, Suite A","city":"Falls Church","state":"Virginia","zip":"22041","source":"https://www.yelp.com/biz/abay-market-falls-church","secondSource":"https://habeshalink.com/ethiopian-markets-and-shops-in-dc-md-and-va/","status":"verified","verifiedDate":"2026-09-28","notes":"Yelp (Ethiopian, updated Jul 2026) and 2013 community list agree on address."},
++{"id":"va-falls-church-kera-ethiopian-restaurant-market","name":"Kera Ethiopian Restaurant and Market","category":"Grocery","subcategory":"Ethiopian market and restaurant","address":"3823 S George Mason Dr","city":"Falls Church","state":"Virginia","zip":"22041","source":"https://www.yelp.com/biz/kera-ethiopian-restaurant-and-market-fall-church","status":"community","verifiedDate":"2026-09-28","notes":"Single source (Yelp, updated Jun 2026)."},
++{"id":"md-temple-hills-debre-genet-medhane-alem","name":"Debre Genet Medhane Alem Ethiopian Orthodox Tewahido Church","category":"Church","denomination":"Orthodox","address":"4401 Old Branch Ave","city":"Temple Hills","state":"Maryland","zip":"20748","phone":"(301) 899-6090","website":"https://dgmedhanealem.org/","source":"https://dgmedhanealem.org/contact/","secondSource":"https://www.guidestar.org/profile/52-1193241","status":"verified","verifiedDate":"2026-09-28"},
++{"id":"dc-washington-debre-hail-kedus-gabriel","name":"Debre Hail Kedus Gabriel Ethiopian Orthodox Tewahedo Cathedral","altNames":["St. Gabriel's DC"],"category":"Church","denomination":"Orthodox","address":"2601 Evarts St NE","city":"Washington","state":"District of Columbia","zip":"20018","phone":"(202) 269-0146","website":"https://dcgabriel.org/","social":"https://www.facebook.com/dcgabrielchurch/","source":"https://dcgabriel.org/","secondSource":"https://www.guidestar.org/profile/27-1223004","status":"verified","verifiedDate":"2026-09-28"},
++{"id":"va-sterling-debre-haile-kidus-raguael","name":"Debre Haile Kidus Raguael Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"1001 Ruritan Cir","city":"Sterling","state":"Virginia","zip":"20164","phone":"(703) 938-4880","website":"https://dhkidusraguel.org/","social":"https://www.facebook.com/DHKR.EOTC/","source":"https://dhkidusraguel.org/about","status":"verified","verifiedDate":"2026-09-28"},
++{"id":"va-alexandria-hamere-noah-kidane-mehret","name":"Hamere Noah Kidane Mehret Ethiopian Orthodox Tewahedo Church","category":"Church","denomination":"Orthodox","address":"75 S Bragg St","city":"Alexandria","state":"Virginia","zip":"22312","social":"https://www.facebook.com/KMEOTC/","source":"https://www.waze.com/live-map/directions/hamere-noah-kidane-mehret-church-s-bragg-st-75-alexandria?to=place.w.185401732.1853755178.3334525","secondSource":"https://opencorpdata.com/us-va/07177447","status":"verified","verifiedDate":"2026-09-28","notes":"Map listing and Virginia corporate record agree on 75 S Bragg St."},
++{"id":"md-silver-spring-four-corners-eec","name":"Four Corners Ethiopian Evangelical Church","category":"Church","denomination":"Protestant","subcategory":"Evangelical (Pentecostal)","address":"33 University Blvd E","city":"Silver Spring","state":"Maryland","zip":"20901","phone":"(610) 506-4619","website":"https://www.4cornerseec.org/","source":"https://www.4cornerseec.org/","secondSource":"https://times12.org/awp-churches/four-corners-ethiopian-evangelical-church/","status":"verified","verifiedDate":"2026-09-28"},
++{"id":"md-forestville-kidane-mehret-ethiopian-catholic","name":"Kidane-Mehret Ge'ez Rite Ethiopian Catholic Church","category":"Church","denomination":"Catholic","subcategory":"Ethiopian Catholic (Ge'ez Rite)","address":"1717 Ritchie Rd","city":"Forestville","state":"Maryland","phone":"(202) 756-2756","website":"https://kidane-mehret.org/","social":"https://www.facebook.com/KidanemehretDC/","source":"https://www.cathstan.org/local/after-41-year-odyssey-ethiopian-catholics-kidane-mehret-parish-finds-a-church-home-holy-spirit-in-forestville","secondSource":"https://adw.org/parishes/kidane-mehret/","status":"verified","verifiedDate":"2026-09-28","notes":"Moved Aug 2025 to former Holy Spirit Church, 1717 Ritchie Rd, Forestville (Catholic Standard). Archdiocese page still lists older address 5001 Eastern Ave NE, Hyattsville.","keywords":["Washington DC"]},
++{"id":"va-arlington-ecdc","name":"Ethiopian Community Development Council (ECDC)","category":"Community","subcategory":"Refugee resettlement and immigrant services nonprofit","address":"901 S Highland St","city":"Arlington","state":"Virginia","zip":"22204","phone":"(703) 685-0510","website":"https://www.ecdcus.org/","source":"https://www.ecdcus.org/contact-us/","secondSource":"https://www.guidestar.org/profile/52-1308986","status":"verified","verifiedDate":"2026-09-28"},
++{"id":"dc-washington-ethiopian-community-center","name":"Ethiopian Community Center, Inc. (ECC)","category":"Community","subcategory":"Social services, referrals and immigrant support","address":"7603 Georgia Ave NW, Suite 100","city":"Washington","state":"District of Columbia","zip":"20012","phone":"(202) 726-0800","website":"https://www.ethiopiancommunitydc.org/","social":"https://www.facebook.com/ethiopiancommunitycenterdc/","source":"https://www.lawhelp.org/dc/resource/ethiopian-community-center-inc","secondSource":"https://takomaparkmd.gov/m/newsflash/Home/Detail/343","status":"community","verifiedDate":"2026-09-28","notes":"Organization is active (Takoma Park city news on 46 years of service). Office address from LawHelp DC may be outdated; a Maryland office opened at 8120 Fenton St, Silver Spring in 2014. Confirm current office."},
++{"id":"md-silver-spring-mulu-law","name":"Mulu Law","category":"Professional","subcategory":"Immigration, family and business attorney","address":"8403 Colesville Rd, Suite 400","city":"Silver Spring","state":"Maryland","zip":"20910","phone":"(877) 685-8529","website":"https://www.mululawfirm.com/","source":"https://www.mululawfirm.com/","status":"community","verifiedDate":"2026-09-28","notes":"Firm website describes attorney Mulualem Adgeh as an Ethiopian lawyer with offices in Minneapolis and Silver Spring. Bar admission not yet checked against a licensing database; verify before marking verified."},
++{"id":"md-silver-spring-konjo-hair-salon","name":"Konjo Hair Salon","category":"Beauty","subcategory":"Hair salon","address":"12713 Old Columbia Pike","city":"Silver Spring","state":"Maryland","zip":"20904","social":"https://www.facebook.com/konjohairsalon/","source":"https://www.yelp.com/biz/konjo-hair-salon-silver-spring","secondSource":"https://habeshadeals.com/listing/konjo-hair-salon/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in Habesha directories (HabeshaLink, Habesha Deals). HabeshaLink address (11226 Triangle Ln) is outdated; Yelp (May 2026) address used. Ethiopian ownership not stated on its own pages."},
++{"id":"md-silver-spring-kedus-hair-salon","name":"Kedus Hair Salon & Braiding","category":"Beauty","subcategory":"Hair salon and braiding","address":"7851 Eastern Ave","city":"Silver Spring","state":"Maryland","zip":"20912","social":"https://www.facebook.com/kedussalonmd/","source":"https://www.yelp.com/biz/kedus-hair-salon-and-braiding-silver-spring-6","secondSource":"https://habeshalink.com/listings/ethiopian-hair-salon-washington-dc/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in HabeshaLink Ethiopian salon directory (older address 8203 Georgia Ave). Yelp (Jun 2026) shows 7851 Eastern Ave. ZIP from area; confirm."},
++{"id":"va-falls-church-almaz-diamond-hair-salon","name":"Almaz Diamond Hair Salon","category":"Beauty","subcategory":"Hair salon","address":"3811 S George Mason Dr, Suite B","city":"Falls Church","state":"Virginia","zip":"22041","phone":"(703) 820-6990","website":"https://almazdiamondhairsalon.wordpress.com/","social":"https://www.instagram.com/almazdiamondhairsalon/","source":"https://almazdiamondhairsalon.wordpress.com/about-us/","secondSource":"https://habeshalink.com/listings/ethiopian-hair-salon-washington-dc/","status":"community","verifiedDate":"2026-09-28","notes":"Listed in HabeshaLink Ethiopian salon directory (with an incorrect Silver Spring address). Salon's own site gives Falls Church address; it does not state Ethiopian ownership."}
++]}
+-- 
+2.43.0
+

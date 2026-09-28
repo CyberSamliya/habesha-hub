@@ -1,0 +1,84 @@
+name: Add a business
+description: Restaurant, grocery, salon, mechanic, contractor or other business
+title: '[Add business]: '
+labels:
+- needs-review
+- add-listing
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: name
+  attributes:
+    label: Name
+    description: Official business or organization name
+  validations:
+    required: true
+- type: dropdown
+  id: category
+  attributes:
+    label: Category
+    options:
+    - Restaurant or cafe
+    - Grocery or market
+    - Clothing or shopping
+    - Beauty or barber
+    - Auto
+    - Home services
+    - Professional services
+    - Healthcare
+    - Children and family
+  validations:
+    required: true
+- type: input
+  id: subcategory
+  attributes:
+    label: Type of business
+    description: 'For example: injera bakery, barber, immigration attorney'
+- type: input
+  id: address
+  attributes:
+    label: Street address
+    description: Public business address only
+- type: input
+  id: city
+  attributes:
+    label: City
+  validations:
+    required: true
+- type: input
+  id: state
+  attributes:
+    label: State
+  validations:
+    required: true
+- type: input
+  id: zip
+  attributes:
+    label: ZIP
+- type: input
+  id: phone
+  attributes:
+    label: Public business phone
+- type: input
+  id: website
+  attributes:
+    label: Website or official social page
+- type: textarea
+  id: evidence
+  attributes:
+    label: How is it connected to the Ethiopian / Habesha community?
+    description: Link to its website, menu, church page or other public evidence. We cannot list a place based on an owner's name alone.
+  validations:
+    required: true
+- type: dropdown
+  id: relationship
+  attributes:
+    label: Your relationship
+    options:
+    - Owner or staff
+    - Member
+    - Customer
+    - Other

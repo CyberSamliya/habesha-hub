@@ -1,0 +1,42 @@
+name: Add a community organization
+description: Association, nonprofit, youth, student or professional group, soccer club, festival
+title: '[Add organization]: '
+labels:
+- needs-review
+- add-listing
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: name
+  attributes:
+    label: Name
+    description: Official business or organization name
+  validations:
+    required: true
+- type: input
+  id: type
+  attributes:
+    label: Type of organization
+- type: input
+  id: city
+  attributes:
+    label: City
+  validations:
+    required: true
+- type: input
+  id: state
+  attributes:
+    label: State
+  validations:
+    required: true
+- type: input
+  id: phone
+  attributes:
+    label: Public business phone
+- type: input
+  id: website
+  attributes:
+    label: Website or official social page

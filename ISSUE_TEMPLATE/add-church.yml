@@ -1,0 +1,63 @@
+name: Add a church
+description: Ethiopian Orthodox, Protestant/Evangelical or Catholic congregation
+title: '[Add church]: '
+labels:
+- needs-review
+- add-listing
+body:
+- type: markdown
+  attributes:
+    value: Submissions are reviewed before they appear on Habesha Hub. New listings start as **Needs verification** or **Community listed** and become **Verified** only after the details are confirmed against
+      a public source. Please do not post private home addresses or personal phone numbers.
+- type: input
+  id: name
+  attributes:
+    label: Name
+    description: Official business or organization name
+  validations:
+    required: true
+- type: dropdown
+  id: tradition
+  attributes:
+    label: Tradition
+    options:
+    - Ethiopian Orthodox Tewahedo
+    - Ethiopian Protestant / Evangelical
+    - Ethiopian Catholic
+    - Not sure
+  validations:
+    required: true
+- type: input
+  id: tradition_source
+  attributes:
+    label: Where can we confirm the tradition?
+    description: Church website, diocese or fellowship listing
+- type: input
+  id: address
+  attributes:
+    label: Street address
+    description: Public business address only
+- type: input
+  id: city
+  attributes:
+    label: City
+  validations:
+    required: true
+- type: input
+  id: state
+  attributes:
+    label: State
+  validations:
+    required: true
+- type: input
+  id: zip
+  attributes:
+    label: ZIP
+- type: input
+  id: phone
+  attributes:
+    label: Public business phone
+- type: input
+  id: website
+  attributes:
+    label: Website or official social page
