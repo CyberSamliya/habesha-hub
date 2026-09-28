@@ -6,9 +6,9 @@ Last updated: 2026-09-28
 
 | Measure | Count |
 |---|---|
-| Active listings (shown on site) | 129 |
-| Verified (with source + date) | 100 |
-| Community listed | 22 |
+| Active listings (shown on site) | 141 |
+| Verified (with source + date) | 110 |
+| Community listed | 24 |
 | Needs review | 7 |
 | Duplicates removed from display | 2 |
 | Closed businesses identified | 1 |
@@ -21,7 +21,7 @@ Last updated: 2026-09-28
 |---|---|
 | 1. Architecture, search, filters | Done 2026-09-28 |
 | 2. Clean and verify existing listings (87) | Done 2026-09-28 |
-| 3. Washington DC / Maryland / Northern Virginia | First batch done 2026-09-28 (26 added) |
+| 3. Washington DC / Maryland / Northern Virginia | Batches 1-2 done 2026-09-28 (38 added) |
 | 4. Ohio | Batch 1 done 2026-09-28 (19 added: Columbus, Cleveland, Cincinnati, Dayton, Akron) |
 | 5. TX, GA, WA, MN, CO, CA, NY/NJ | Existing listings audited only |
 | 6 to 10 | Not started |
@@ -32,22 +32,22 @@ Last updated: 2026-09-28
 |---|---|---|---|---|
 | California | Los Angeles | 5 | 5 | Restaurant, Grocery, Church |
 | Colorado | Aurora, Denver | 6 | 5 | Restaurant, Grocery, Church |
-| District of Columbia | Washington | 19 | 15 | Restaurant, Grocery, Church, Community |
+| District of Columbia | Washington | 20 | 15 | Restaurant, Grocery, Church, Community |
 | Georgia | Atlanta metro | 4 | 3 | Restaurant, Church |
-| Maryland | Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 15 | 11 | Restaurant, Grocery, Church, Professional, Beauty |
+| Maryland | Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 21 | 16 | Restaurant, Grocery, Shopping, Church, Community, Professional, Beauty |
 | Minnesota | Minneapolis | 6 | 5 | Restaurant, Grocery, Church |
 | New Jersey | Newark, South Orange | 2 | 1 | Restaurant, Church |
 | New York | New York City | 5 | 5 | Restaurant |
 | Ohio | Columbus metro, Cleveland metro, Cincinnati, Dayton, Akron | 33 | 21 | Restaurant, Grocery, Church, Community |
 | Texas | Dallas metro, Houston | 11 | 9 | Restaurant, Grocery, Shopping, Church, Community |
-| Virginia | Alexandria, Arlington, Falls Church, Springfield, Sterling | 17 | 14 | Restaurant, Grocery, Church, Community, Beauty |
+| Virginia | Alexandria, Arlington, Falls Church, Springfield, Sterling, Woodbridge | 22 | 19 | Restaurant, Grocery, Shopping, Church, Community, Beauty |
 | Washington | Seattle | 6 | 6 | Restaurant, Grocery, Community |
 
 Churches by tradition: Orthodox 24, Protestant/Evangelical 12, Catholic 1.
 
 ## Categories still needing research (all states)
 
-Auto, Home services, Healthcare, Childcare/family, Clothing and jewelry, Injera bakeries, Catering, Professional services (only 1 so far), Beauty (3, all "community"), Ethiopian Catholic outside DMV, Housing.
+Auto, Home services, Healthcare, Childcare/family (only Amharic lessons at ECSAC), Injera bakeries with storefronts, Catering, Professional services (only 1 so far), Beauty (3, all "community"), Ethiopian Catholic outside DMV, Housing. Clothing now has 2 (DMV).
 
 ## Open items to recheck
 
@@ -56,6 +56,8 @@ Auto, Home services, Healthcare, Childcare/family, Clothing and jewelry, Injera 
 - Atlanta: Ebenezer Ethiopian Evangelical Church street address.
 - Minneapolis: Debre Selam Medhanealem website still shows old address.
 - Alexandria: Zema Market building listed for sale (business still open).
+- DMV market leads (Wass Injera stockist list, Ethiopian link from name only): Megenagna Market, Engocha Market, Spicy Market, Selam Ethio Market (Aspen Hill), Hanna Market, Juniper, Lena and Lamont Markets. Also YEP (Your Ethiopian Professionals), no address; Ethiopian Community Center MD (ethiopianccmd.org), site unreadable.
+- DMV auto, healthcare and childcare: no business found with public evidence of an Ethiopian connection. Needs community submissions.
 - Leads not yet added: Debre Bisrat Dagimawi Kulibi St. Gabriel (Silver Spring/Spencerville MD, address not confirmed); Ethiopian Community Center Maryland office.
 - Ohio leads not added (evidence too thin): Addis Auto Repair LLC (Columbus, name only), Ethiopians Community Network (Columbus, IRS only), Mekane Semayit St. George EOTC (Cincinnati, no address), Somalia and Ethiopia Restaurant (Columbus, no activity since 2020).
 - Ohio closed, not added: Empress Taytu (Cleveland), reviews since late 2023 report it permanently closed.
