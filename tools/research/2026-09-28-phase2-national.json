@@ -1,0 +1,453 @@
+{
+"date": "2026-09-28",
+"update": {
+"ga-atlanta-embilta-cafe-restaurant": {
+"name": "Embilta Cafe & Restaurant",
+"altNames": [
+"Embilta Ethiopian Cafe & Restaurant"
+],
+"subcategory": "Ethiopian restaurant and cafe",
+"address": "2100 Cheshire Bridge Rd NE, Suite A",
+"website": "https://embiltarestaurant.com/",
+"source": "https://www.yelp.com/biz/embilta-caf%C3%A9-and-restaurant-ethiopian-cuisine-atlanta",
+"secondSource": "https://www.grubhub.com/restaurant/embilta-caf--restaurant-2100-cheshire-bridge-rd-ne-suite-a-atlanta/337390",
+"verifiedDate": "2026-09-28",
+"notes": "Yelp (224 reviews, updated Aug 2026). A separate old Yelp page 'Embilta' (coffee) is marked closed; it is not this restaurant."
+},
+"ga-stone-mountain-ethiopian-evangelical-church-atlanta": {
+"altNames": [
+"Ethiopian Evangelical Church of Atlanta",
+"EEC Atlanta"
+],
+"subcategory": "Evangelical (US Mennonite Brethren)",
+"phone": "(770) 496-1665",
+"website": "https://eecatlanta.com/",
+"source": "https://eecatlanta.com/prek/",
+"secondSource": "https://usmb.org/church/ethiopian-evangelical-church/",
+"verifiedDate": "2026-09-28",
+"notes": "Official site footer: 4550 Greer Cir, Stone Mountain 30083, 770-496-1665."
+},
+"ga-stone-mountain-ebenezer-ethiopian-evangelical-church-atlanta": {
+"website": "https://eeeca.org/",
+"social": "https://www.facebook.com/GEGBCAtlanta/",
+"source": "https://eeeca.org/about/",
+"secondSource": "https://www.youtube.com/channel/UCGY7Hgr-RK6ya4HQgS5T3Dw",
+"status": "needs-review",
+"verifiedDate": "2026-09-28",
+"publicNote": "Church confirmed; street address not yet confirmed. Check the church website before visiting.",
+"notes": "Congregation confirmed via eeeca.org and YouTube. v1 address '4528 Rockbridge Rd SW' could not be confirmed (site blocked automated fetch). Downgraded from verified."
+},
+"ga-atlanta-mekane-hiwot-abune-gebre-menfes-kidus-eotc": {
+"altNames": [
+"Atlanta Abo",
+"Atlanta Mekane Hiwot Abune Gebre Menfes Kidus Cathedral"
+],
+"address": "4575 Stonegate Industrial Blvd",
+"city": "Stone Mountain",
+"metro": "Atlanta",
+"zip": "30083",
+"phone": "(678) 609-3682",
+"website": "https://www.atlantaabo.org/",
+"social": "https://www.facebook.com/AtlantaAbo/",
+"source": "https://www.atlantaabo.org/Home/About",
+"secondSource": "https://www.youtube.com/@atlabo",
+"verifiedDate": "2026-09-28",
+"notes": "ADDRESS ADDED from official site (v1 had 'Atlanta, GA' only). Note: aboeotc.org / GuideStar 80-0650951 is a different church of the same name in Norfolk, VA."
+},
+"tx-dallas-desta-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"address": "12101 Greenville Ave, Suite 105",
+"phone": "(214) 575-9004",
+"website": "https://destadallasethiopian.com/",
+"source": "https://destadallasethiopian.com/",
+"secondSource": "https://www.yelp.com/biz/desta-ethiopian-restaurant-dallas-2",
+"verifiedDate": "2026-09-28"
+},
+"tx-dallas-abyssinia-grocery-and-ethiopian-food": {
+"altNames": [
+"Abyssinia Gebya"
+],
+"subcategory": "Ethiopian grocery and food",
+"address": "9191 Forest Ln, Suite 1A",
+"source": "https://www.ubereats.com/store/abyssinia-grocery-and-ethiopian-food-9191-forest-ln-1a-dallas-tx-75243/eBBt1JJhQkmH4mlOkzMJKQ",
+"secondSource": "https://www.yelp.com/biz/abyssinia-gebya-dallas",
+"verifiedDate": "2026-09-28"
+},
+"tx-dallas-awudamet-market": {
+"altNames": [
+"አውዳመት ገበያ"
+],
+"subcategory": "Ethiopian market",
+"address": "9751 Walnut St, Unit 102",
+"social": "https://www.facebook.com/61568767259894/",
+"source": "https://www.facebook.com/61568767259894/posts/9751-walnut-st-dallas-tx-75243/122118204530625575/",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"notes": "Only the business's own Facebook page confirms location. Downgraded from verified until a second source (map/listing) is found."
+},
+"tx-garland-debre-mehret-st-michael-ethiopian-orthodox-tewahedo-cathedral": {
+"metro": "Dallas",
+"social": "https://www.facebook.com/DallasMichaeleotc/",
+"source": "https://www.guidestar.org/profile/75-2440445",
+"secondSource": "https://www.facebook.com/DallasMichaeleotc/",
+"verifiedDate": "2026-09-28",
+"notes": "IRS/GuideStar record and church Facebook page."
+},
+"tx-garland-ethiopian-evangelical-believers-church": {
+"metro": "Dallas",
+"altNames": [
+"EEBC Dallas",
+"Ethiopian Evangelical Baptist Church"
+],
+"subcategory": "Evangelical",
+"website": "http://wongelkedallas.org/",
+"social": "https://www.facebook.com/p/EEBC-Dallas-100077290596111/",
+"source": "https://www.guidestar.org/profile/75-2328171",
+"secondSource": "https://www.facebook.com/p/EEBC-Dallas-100077290596111/",
+"verifiedDate": "2026-09-28"
+},
+"tx-houston-blue-nile": {
+"name": "Blue Nile Ethiopian Restaurant",
+"subcategory": "Ethiopian restaurant",
+"phone": "(713) 814-5101",
+"website": "https://www.bluenilerestaurant.com/",
+"source": "https://www.bluenilerestaurant.com/",
+"secondSource": "https://www.yelp.com/biz/blue-nile-houston-5",
+"verifiedDate": "2026-09-28"
+},
+"tx-houston-bahel-ethiopian-mart-and-dining": {
+"subcategory": "Ethiopian restaurant and market",
+"phone": "(713) 234-6527",
+"source": "https://www.yelp.com/biz/bahel-ethiopian-mart-and-dining-houston",
+"secondSource": "https://www.texasmonthly.com/restaurant/bahel-ethiopian-mart-and-dining/",
+"verifiedDate": "2026-09-28"
+},
+"tx-houston-selam-ethio-eritrea-specialty-store": {
+"category": "Shopping",
+"subcategory": "Ethiopian and Eritrean clothing and specialty goods",
+"address": "5701 Bellaire Blvd, Suite D",
+"website": "https://selamspecialty.com/",
+"source": "https://selamspecialty.com/about-us/we-re-dedicated-to-excellence-6454785",
+"secondSource": "https://www.yelp.com/biz/selam-ethio-eritrea-speciality-store-houston",
+"verifiedDate": "2026-09-28",
+"notes": "Category changed Grocery to Shopping: listed as a specialty/fashion retail store."
+},
+"tx-houston-debre-selam-medhane-alem-ethiopian-orthodox-tewahedo-church": {
+"phone": "(713) 728-2333",
+"website": "https://houstonmedhanealem.org/",
+"source": "https://houstonmedhanealem.org/",
+"secondSource": "https://www.facebook.com/Houstonmedhanealem/",
+"verifiedDate": "2026-09-28"
+},
+"tx-houston-holy-trinity-and-saint-mary-ethiopian-orthodox-tewahedo-church": {
+"website": "https://holytrinitystmary.org/",
+"social": "https://www.facebook.com/p/Holy-Trinity-and-Saint-Mary-Ethiopian-Orthodox-Tewahedo-Church-100068433464657/",
+"source": "https://holytrinitystmary.org/about-the-church/",
+"secondSource": "https://www.charitynavigator.org/ein/473553023",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"notes": "Church and website confirmed; street address 8231 McGee Ln comes from map directories only (official site timed out). Downgraded from verified."
+},
+"tx-houston-ethiopian-community-organization-in-houston": {
+"altNames": [
+"ECOH"
+],
+"subcategory": "Community association",
+"address": "6671 Southwest Fwy, Suite 439",
+"phone": "(832) 277-2360",
+"website": "https://www.ecohouston.org/",
+"source": "https://www.ecohouston.org/",
+"secondSource": "https://www.guidestar.org/profile/76-0583932",
+"verifiedDate": "2026-09-28"
+},
+"wa-seattle-delish-ethiopian-cuisine": {
+"subcategory": "Ethiopian restaurant",
+"phone": "(206) 723-3821",
+"website": "https://delishethiopianfood.com/",
+"source": "https://delishethiopianfood.com/",
+"secondSource": "https://www.yelp.com/biz/delish-ethiopian-cuisine-seattle-2",
+"verifiedDate": "2026-09-28"
+},
+"wa-seattle-jebena-cafe": {
+"subcategory": "Ethiopian restaurant and cafe",
+"phone": "(206) 365-0757",
+"website": "https://jebenacafe.com/",
+"source": "https://jebenacafe.com/directions/",
+"secondSource": "https://www.yelp.com/biz/jebena-cafe-seattle",
+"verifiedDate": "2026-09-28"
+},
+"wa-seattle-nazareth-market": {
+"subcategory": "Ethiopian grocery and deli",
+"source": "https://www.yelp.com/biz/nazareth-market-seattle-2",
+"secondSource": "https://www.selamlist.com/business/nazareth-market-seattle",
+"verifiedDate": "2026-09-28",
+"notes": "Yelp (Ethiopian category, updated Aug 2026) and SelamList Habesha directory."
+},
+"wa-seattle-east-african-imports-restaurant": {
+"subcategory": "Ethiopian restaurant and import store",
+"address": "306 23rd Ave S, Suite 104",
+"source": "https://www.yelp.com/biz/east-african-imports-and-restaurant-seattle",
+"secondSource": "https://www.waze.com/live-map/directions/us/wa/seattle/east-african-imports-and-restaurant?to=place.ChIJn_vTfelqkFQRfsPOJiRMiEM",
+"verifiedDate": "2026-09-28",
+"notes": "Category left as Grocery (imports store with restaurant)."
+},
+"wa-seattle-addis-market-seattle": {
+"name": "Addis Market",
+"subcategory": "Ethiopian grocery",
+"address": "13500 Aurora Ave N, Suite B",
+"phone": "(206) 367-3162",
+"website": "https://www.addismarketseattle.com/",
+"source": "https://www.addismarketseattle.com/our-store",
+"secondSource": "https://www.yelp.com/biz/addis-market-seattle",
+"verifiedDate": "2026-09-28"
+},
+"wa-seattle-ethiopian-community-in-seattle": {
+"altNames": [
+"ECS"
+],
+"subcategory": "Community association and senior services",
+"address": "8323 Rainier Ave S, Suite A",
+"phone": "(206) 325-0304",
+"website": "https://www.ecseattle.org/",
+"source": "https://www.ecseattle.org/",
+"secondSource": "https://www.wagives.org/organization/ethiopian-community-in-seattle",
+"verifiedDate": "2026-09-28"
+},
+"mn-minneapolis-mesob-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"website": "https://mesobmn.com/",
+"source": "https://www.yelp.com/biz/mesob-ethiopian-restaurant-minneapolis",
+"secondSource": "https://mnblackbusiness.com/businesses/mesob-ethiopian-restaurant/",
+"verifiedDate": "2026-09-28"
+},
+"mn-minneapolis-the-red-sea-ethiopian-restaurant": {
+"subcategory": "Ethiopian and Eritrean restaurant",
+"phone": "(612) 333-1644",
+"website": "https://theredseampls.com/",
+"source": "https://theredseampls.com/",
+"secondSource": "https://www.yelp.com/biz/the-red-sea-ethiopian-restaurant-minneapolis-3",
+"verifiedDate": "2026-09-28"
+},
+"mn-minneapolis-kela-market": {
+"subcategory": "Ethiopian grocery and cookware",
+"website": "https://kelamarket.com/",
+"social": "https://www.instagram.com/kela.market.mn/",
+"source": "https://www.longfellowwhatever.com/specialty-ethiopian-grocer-opens-at-40th-and-minnehaha/",
+"secondSource": "https://www.instagram.com/kela.market.mn/",
+"verifiedDate": "2026-09-28",
+"notes": "Opened Nov 2025 per Longfellow Whatever."
+},
+"mn-minneapolis-shabelle-ethiopian-grocery": {
+"altNames": [
+"Shabelle Grocery",
+"Shabelle Ethiopian Grocery and Restaurant"
+],
+"subcategory": "Ethiopian grocery and restaurant",
+"source": "https://www.yelp.com/biz/shabelle-grocery-minneapolis",
+"secondSource": "https://www.waze.com/en-GB/live-map/directions/shabelle-ethiopian-grocery-and-restaurant-e-franklin-ave-2325-minneapolis?to=place.w.174850498.1748242832.3747323",
+"verifiedDate": "2026-09-28"
+},
+"mn-minneapolis-reese-adbarat-tserha-aryam-kidist-selassie-ethiopian-orthodox-tewahedo-cathedral": {
+"altNames": [
+"Holy Trinity Cathedral EOTC Minneapolis"
+],
+"website": "https://minnesotaselassie.org/",
+"social": "https://www.facebook.com/ReEseAdbaratTserhaAryam/",
+"source": "https://www.guidestar.org/profile/47-0983091",
+"secondSource": "https://www.facebook.com/ReEseAdbaratTserhaAryam/",
+"verifiedDate": "2026-09-28"
+},
+"mn-minneapolis-debre-selam-medhanealem-ethiopian-orthodox-tewahedo-church": {
+"social": "https://www.facebook.com/Debreselameotc/",
+"website": "https://www.debreselam.net/",
+"source": "https://www.longfellownokomismessenger.com/stories/debre-selam-medhanealem-ethiopian-orthodox-tewahedo-churchfinds-new-home-in-seward,161305",
+"secondSource": "https://www.waze.com/live-map/directions/us/mn/minneapolis/debre-selam-medhanealem-ethiopian-orthodox-tewahdo-church?to=place.ChIJfeTHjawp9ocRNULiAMeMEOs",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"publicNote": "The church moved to 2629 30th Ave S (Seward). Its website still shows the older address, 4401 Minnehaha Ave S.",
+"notes": "News article + city land-use application (2024) + map listing support 2629 30th Ave S; church website shows 4401 Minnehaha Ave S, (612) 721-1222. Downgraded until the church site is updated."
+},
+"co-aurora-eatopia-eat-ethiopian": {
+"altNames": [
+"Eatopia Ethiopia Food & Coffee"
+],
+"subcategory": "Ethiopian restaurant and coffee",
+"address": "1030 Havana St, Unit B",
+"phone": "(303) 862-5322",
+"website": "https://eat-opia.com/",
+"source": "https://eat-opia.com/",
+"secondSource": "https://www.yelp.com/biz/eatopia-ethiopia-food-and-coffee-aurora-2",
+"verifiedDate": "2026-09-28"
+},
+"co-aurora-gursha-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"phone": "(303) 600-8650",
+"website": "https://www.gurshaethiopianrestaurant.com/",
+"source": "https://www.gurshaethiopianrestaurant.com/",
+"secondSource": "https://www.yelp.com/biz/gursha-ethiopian-restaurant-aurora",
+"verifiedDate": "2026-09-28"
+},
+"co-aurora-piassa-retail-store-restaurant": {
+"altNames": [
+"Piassa Ethio Mart",
+"PIASSA Retail Store, Restaurant & Meat Market"
+],
+"subcategory": "Ethiopian market, butcher and restaurant",
+"address": "601 Salida Way, Unit B5",
+"phone": "(303) 593-0056",
+"website": "https://www.piassadenver.com/",
+"source": "https://www.piassadenver.com/contact",
+"secondSource": "https://www.yelp.com/biz/piassa-aurora",
+"verifiedDate": "2026-09-28"
+},
+"co-aurora-gihon-international-market": {
+"subcategory": "Ethiopian and Eritrean grocery",
+"social": "https://www.facebook.com/Gihonintmarket/",
+"source": "https://www.yelp.com/biz/gihon-international-market-aurora",
+"secondSource": "https://meazafood.com/store/gihon-international-market/",
+"verifiedDate": "2026-09-28"
+},
+"co-denver-ethiopian-orthodox-tewahedo-debre-selam-medhanealem-church": {
+"website": "https://denvermedhanealem.org/",
+"social": "https://www.facebook.com/denvermeotc/",
+"source": "https://www.yelp.com/biz/medhanealem-ethiopian-orthodox-tewahedo-church-denver",
+"secondSource": "https://www.guidestar.org/profile/59-3798077",
+"verifiedDate": "2026-09-28"
+},
+"co-aurora-st-mary-ethiopian-orthodox-tewahedo-church": {
+"source": "https://orthodox-world.org/en/i/28866/united-states/colorado/aurora/church/st.-mary%E2%80%99s-ethiopian-orthodox-tewahedo-church",
+"secondSource": "https://www.charitynavigator.org/ein/841234649",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"notes": "Directory listings give 16250 E Colfax Ave; Yelp shows 16200 E Colfax Ave. No official website found. Downgraded from verified."
+},
+"ca-los-angeles-messob-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"phone": "(323) 938-8827",
+"website": "https://www.messob.com/",
+"source": "https://www.messob.com/contact",
+"secondSource": "https://www.yelp.com/biz/messob-ethiopian-restaurant-los-angeles-2",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Little Ethiopia"
+]
+},
+"ca-los-angeles-rosalinds-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"website": "https://www.rosalindsla.com/",
+"source": "https://www.yelp.com/biz/rosalinds-ethiopian-restaurant-los-angeles",
+"secondSource": "https://www.discoverlosangeles.com/eat-drink/rosalinds-ethiopian-restaurant",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Little Ethiopia"
+]
+},
+"ca-los-angeles-buna-ethiopian-restaurant-market": {
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant and market",
+"phone": "(323) 964-9731",
+"website": "https://bunaethiopianmarket.com/",
+"source": "https://bunaethiopianmarket.com/page/contact-us-",
+"secondSource": "https://www.yelp.com/biz/buna-ethiopian-restaurant-and-market-los-angeles-2",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Little Ethiopia"
+],
+"notes": "Category changed Grocery to Restaurant (primarily a restaurant with a market)."
+},
+"ca-los-angeles-gojo-ethio-market": {
+"subcategory": "Ethiopian grocery and household goods",
+"phone": "(323) 325-2993",
+"website": "https://www.gojoethiomarket.com/",
+"source": "https://www.gojoethiomarket.com/contact-us",
+"secondSource": "https://www.waze.com/live-map/directions/us/ca/los-angeles/gojo-ethio-market?to=place.ChIJsxK65RW5woARD69aPaHl0Fc",
+"verifiedDate": "2026-09-28"
+},
+"ca-los-angeles-st-marys-ethiopian-orthodox-tewahedo-church": {
+"keywords": [
+"Ladera Heights"
+],
+"website": "https://www.ethiopianorthodoxchurch.org/",
+"social": "https://www.facebook.com/St.MaryEthiopianOrthodoxChurchLA/",
+"source": "https://locator.lacounty.gov/dcfs/Location/3177141/st-marys-ethiopian-orthodox-tewahedo-church",
+"secondSource": "https://www.waze.com/live-map/directions/st-marys-ethiopian-orthodox-tewahedo-church-w-slauson-ave-5505-ladera-heights?to=place.w.158335316.1583484231.810728",
+"verifiedDate": "2026-09-28"
+},
+"ny-new-york-queen-of-sheba": {
+"status": "closed",
+"source": "https://w42st.com/post/after-25-years-of-ethiopian-fare-queen-of-sheba-prepares-to-say-goodbye-to-hells-kitchen/",
+"secondSource": "https://www.yelp.com/biz/queen-of-sheba-new-york",
+"verifiedDate": "2026-09-28",
+"notes": "CLOSED: closure after 25 years reported by W42ST and Ethiopia Observer (Apr 2025); Yelp marks CLOSED (Sep 2026). Restaurant website still online but stale. Hidden from site."
+},
+"ny-new-york-haile": {
+"name": "Haile Bistro",
+"altNames": [
+"Haile Ethiopian Cuisine",
+"Haile"
+],
+"subcategory": "Ethiopian restaurant",
+"source": "https://www.yelp.com/biz/haile-bistro-new-york",
+"secondSource": "https://hailebistro.netwaiter.com/",
+"verifiedDate": "2026-09-28"
+},
+"ny-new-york-benyam": {
+"name": "Benyam Ethiopian Cuisine",
+"altNames": [
+"Benyam"
+],
+"subcategory": "Ethiopian restaurant",
+"keywords": [
+"Harlem"
+],
+"phone": "(212) 510-7353",
+"website": "https://www.benyamcuisine.com/",
+"source": "https://www.benyamcuisine.com/contact/",
+"secondSource": "https://www.yelp.com/biz/benyam-cuisine-new-york",
+"verifiedDate": "2026-09-28"
+},
+"ny-sunnyside-makina-cafe": {
+"subcategory": "Eritrean-Ethiopian restaurant",
+"metro": "New York City",
+"keywords": [
+"Queens"
+],
+"website": "https://www.makinacafenyc.com/",
+"source": "https://qns.com/2026/04/makina-cafe-ethiopian-sunnyside/",
+"secondSource": "https://www.yelp.com/biz/makina-cafe-sunnyside",
+"verifiedDate": "2026-09-28"
+},
+"ny-brooklyn-bunna-cafe": {
+"subcategory": "Plant-based Ethiopian restaurant",
+"metro": "New York City",
+"website": "https://www.bunnaethiopia.net/",
+"source": "https://www.bunnaethiopia.net/",
+"secondSource": "https://www.yelp.com/biz/bunna-cafe-brooklyn",
+"verifiedDate": "2026-09-28"
+},
+"ny-brooklyn-ras-plant-based": {
+"subcategory": "Plant-based Ethiopian restaurant",
+"metro": "New York City",
+"website": "https://www.rasplantbased.com/",
+"source": "https://www.rasplantbased.com/location/ras-planted-based-brooklyn/",
+"secondSource": "https://www.yelp.com/biz/ras-plant-based-brooklyn",
+"verifiedDate": "2026-09-28"
+},
+"nj-south-orange-walia-ethiopian-restaurant": {
+"subcategory": "Ethiopian restaurant",
+"phone": "(973) 762-2186",
+"website": "https://waliarestaurant.com/",
+"source": "https://waliarestaurant.com/contact/",
+"secondSource": "https://www.yelp.com/biz/walia-ethiopian-restaurant-south-orange-2",
+"verifiedDate": "2026-09-28"
+},
+"nj-newark-bisrate-gebriel-ethiopian-orthodox-tewahedo-church": {
+"social": "https://www.facebook.com/BisrateGebrielEOTCNJ/",
+"source": "https://www.waze.com/live-map/directions/us/nj/newark/bisrate-gebriel-ethiopian-orthodox-tewahedo-church?to=place.ChIJgTBycKasw4kRUnG4bt7rdnk",
+"secondSource": "https://habeshalink.com/listings/bisrate-gebriel-ethiopian-orthodox-tewahedo-church/",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"notes": "Map listing and HabeshaLink directory; no official website found. Downgraded from verified."
+}
+}
+}
