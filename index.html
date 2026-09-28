@@ -148,20 +148,7 @@ section{padding:70px 0;scroll-margin-top:80px}.section-head{display:flex;justify
 </footer>
 <script>
 const STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","District of Columbia"];
-const LISTINGS=[
-{name:"Habesha Market",category:"Grocery",city:"Columbus",state:"Ohio",address:"1391 S Hamilton Rd, Columbus, OH",status:"Community listed"},
-{name:"Addis Ababa Grocery",category:"Grocery",city:"Columbus",state:"Ohio",address:"Columbus, OH",status:"Needs verification"},
-{name:"Dire Dawa Grocery Store",category:"Grocery",city:"Columbus",state:"Ohio",address:"Columbus, OH",status:"Needs verification"},
-{name:"Lalibela Grocery",category:"Grocery",city:"Columbus",state:"Ohio",address:"Columbus, OH",status:"Needs verification"},
-{name:"St. Michael Ethiopian Orthodox Church",category:"Church",city:"Columbus",state:"Ohio",address:"Columbus, OH",status:"Community listed"},
-{name:"Debre Medhanit Medhane Alem",category:"Church",city:"Columbus",state:"Ohio",address:"610 Neil Ave, Columbus, OH",status:"Community listed"},
-{name:"Kidest Sehalte Mehret & St. Urael",category:"Church",city:"Columbus",state:"Ohio",address:"Columbus, OH",status:"Community listed"},
-{name:"Selam International Market",category:"Grocery",city:"Washington",state:"District of Columbia",address:"Washington, DC",status:"Needs verification"},
-{name:"Merkato Ethiopian Market",category:"Grocery",city:"Springfield",state:"Virginia",address:"Springfield, VA",status:"Needs verification"},
-{name:"Tana Ethiopian Market",category:"Grocery",city:"Silver Spring",state:"Maryland",address:"Silver Spring, MD",status:"Needs verification"},
-{name:"Skyline International Market",category:"Grocery",city:"Falls Church",state:"Virginia",address:"Falls Church, VA",status:"Needs verification"}
-];
-const selects=[document.getElementById("heroState"),document.getElementById("dirState"),document.getElementById("stateExplorer")];
+const LISTINGS=window.HABESHA_LISTINGS || [];\nconst STATUS_LABELS=window.HABESHA_STATUS_LABELS || {};\nconst selects=[document.getElementById("heroState"),document.getElementById("dirState"),document.getElementById("stateExplorer")];
 selects.forEach((s,i)=>{if(!s)return;if(i===2)s.innerHTML="";STATES.forEach(st=>{const o=document.createElement("option");o.value=st;o.textContent=st;s.appendChild(o)})});
 document.getElementById("stateExplorer").value="Ohio";
 const q=document.getElementById("q"), ds=document.getElementById("dirState"), dc=document.getElementById("dirCategory"), grid=document.getElementById("listingGrid"), meta=document.getElementById("resultMeta");
@@ -172,7 +159,7 @@ function renderListings(){
  meta.textContent=rows.length+" listing"+(rows.length===1?"":"s")+" shown"+(state?" in "+state:"")+".";
  grid.innerHTML=rows.length?rows.map(x=>'<article class="listing"><span class="type">'+safe(x.category)+'</span><h3>'+safe(x.name)+'</h3><p>'+safe(x.address)+'</p><span class="badge">'+safe(STATUS_LABELS[x.status] || x.status)+'</span><div class="listing-actions"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x.name+" "+x.address)+'">Directions ↗</a><a href="mailto:samra8293101@gmail.com?subject='+encodeURIComponent("Habesha Hub correction: "+x.name)+'">Correct listing</a></div></article>').join(""):'<div class="empty"><strong>No community listings yet for these filters.</strong><br>Habesha Hub supports all states, but it will not invent businesses. Help add a verified local listing below.</div>';
 }
-[q,ds,dc].forEach(el=>el.addEventListener("input",renderListings));
+[q,ds,dc].forEach(el=>{el.addEventListener("input",renderListings);el.addEventListener("change",renderListings)});
 document.getElementById("clearFilters").onclick=()=>{q.value="";ds.value="";dc.value="";renderListings()};
 document.querySelectorAll("[data-category]").forEach(a=>a.addEventListener("click",()=>{dc.value=a.dataset.category;setTimeout(renderListings,0)}));
 document.getElementById("heroSearch").addEventListener("submit",e=>{e.preventDefault();q.value=document.getElementById("heroWhat").value;ds.value=document.getElementById("heroState").value;renderListings();document.getElementById("directory").scrollIntoView()});
