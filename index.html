@@ -460,8 +460,17 @@
       education:{en:"Education", am:"ትምህርት"},
       health:{en:"Children's Health", am:"የልጆች ጤና"}
     };
-    // Reviewed vlog submissions go here once approved. Each entry:
-    // {title, cat: "church"|"soccer"|"education"|"health", url, desc}
+    // Vlogs are loaded live from a public Google Sheet, so Samra can add a
+    // row there and have it show up here without touching this file.
+    // Sheet: https://docs.google.com/spreadsheets/d/1xkzSfX-Cwi8-ye39BgJLhMweoef-2SGKpUGQKjzgXDU/edit
+    var VLOG_SHEET_URL = "https://docs.google.com/spreadsheets/d/1xkzSfX-Cwi8-ye39BgJLhMweoef-2SGKpUGQKjzgXDU/gviz/tq?tqx=out:csv&gid=175047855";
+    var CAT_BY_LABEL = {
+      "orthodox church": "church",
+      "soccer": "soccer",
+      "education": "education",
+      "children's health": "health",
+      "childrens health": "health"
+    };
     var VLOGS = [];
 
     var grid = document.getElementById('vlogGrid');
@@ -469,6 +478,51 @@
     var filterBtns = document.querySelectorAll('.vlog-filter-btn');
     if(!grid || !empty || !filterBtns.length) return;
     var activeCat = null;
+
+    // Minimal CSV line parser: handles quoted fields with commas/quotes inside.
+    function parseCSV(text){
+      var rows = [];
+      var row = [];
+      var field = '';
+      var inQuotes = false;
+      for(var i = 0; i < text.length; i++){
+        var c = text[i];
+        if(inQuotes){
+          if(c === '"'){
+            if(text[i+1] === '"'){ field += '"'; i++; }
+            else { inQuotes = false; }
+          } else { field += c; }
+        } else {
+          if(c === '"'){ inQuotes = true; }
+          else if(c === ','){ row.push(field); field = ''; }
+          else if(c === '\n' || c === '\r'){
+            if(c === '\r' && text[i+1] === '\n') i++;
+            row.push(field); field = '';
+            rows.push(row); row = [];
+          } else { field += c; }
+        }
+      }
+      if(field.length || row.length){ row.push(field); rows.push(row); }
+      return rows.filter(function(r){ return r.length && r.some(function(c){ return c.trim(); }); });
+    }
+
+    function loadVlogs(){
+      fetch(VLOG_SHEET_URL)
+        .then(function(res){ return res.ok ? res.text() : Promise.reject(new Error('fetch failed')); })
+        .then(function(text){
+          var rows = parseCSV(text);
+          rows.shift(); // header row: Title, Category, VideoURL, Description
+          VLOGS = rows.map(function(r){
+            var title = (r[0] || '').trim();
+            var catLabel = (r[1] || '').trim().toLowerCase();
+            var url = (r[2] || '').trim();
+            var desc = (r[3] || '').trim();
+            return { title: title, cat: CAT_BY_LABEL[catLabel] || '', url: url, desc: desc };
+          }).filter(function(v){ return v.title && v.cat && v.url; });
+          render();
+        })
+        .catch(function(){ /* leave VLOGS empty; empty-state message still shows */ });
+    }
 
     function render(){
       grid.innerHTML = '';
@@ -509,6 +563,7 @@
     });
 
     render();
+    loadVlogs();
   })();
 
   var STATES = [
