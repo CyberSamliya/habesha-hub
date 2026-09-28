@@ -260,7 +260,15 @@
 
   function renderListings(resetPaging) {
     if (resetPaging) shown = PAGE_SIZE;
-    var rows = currentRows(), state = el.state.value, city = el.city.value, cat = el.cat.value, denom = el.denom.value;
+    var state = el.state.value, city = el.city.value, cat = el.cat.value, denom = el.denom.value;
+    if (!state) {
+      el.meta.textContent = "Select a state to explore Ethiopian/Habesha businesses and community resources.";
+      el.grid.innerHTML = "";
+      el.more.classList.add("hidden");
+      renderHousing();
+      return;
+    }
+    var rows = currentRows();
     var parts = [];
     if (city) parts.push(city); if (state) parts.push(state);
     var desc = rows.length + " " + (rows.length === 1 ? t("listing_shown_singular") : t("listing_shown_plural")) +
