@@ -94,7 +94,7 @@ const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!
   await page.click("#coverageToggle summary");
   ok(await page.isVisible("#coverageGrid"), "state grid opens on click");
   await page.click('#coverageGrid button[data-state="Ohio"]');
-  ok(/Ohio/.test(await page.textContent("#stateSummary")) && await page.$('#stateSummary a[href="states/ohio.html"]'), "state button updates summary with state page link");
+  ok(/Ohio/.test(await page.textContent("#stateSummary")) && await page.$('#stateSummary a[href="ohio.html"]'), "state button updates summary with state page link");
   await page.click("#coverageToggle summary");
   ok(await page.isHidden("#coverageGrid"), "state grid closes again");
   ok(await page.$$eval(".state-links a", a => a.length) === new Set(data.map(x => x.state)).size, "footer links one page per state with listings");
@@ -122,14 +122,14 @@ const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!
   const sp = await browser.newPage();
   await sp.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
   const spErrs = []; sp.on("pageerror", e => spErrs.push(e.message));
-  await sp.goto(target.replace(/index\.html$/, "") + "states/ohio.html");
+  await sp.goto(target.replace(/index\.html$/, "") + "ohio.html");
   const ohAll = expect(x => x.state === "Ohio");
   ok(await sp.$$eval(".listing", n => n.length) === ohAll, "Ohio state page lists all " + ohAll + " Ohio listings");
   ok(await sp.$$eval("#church-orthodox + .grid .listing", n => n.length) === expect(x => x.state === "Ohio" && x.category === "Church" && x.denomination === "Orthodox"), "Ohio page Orthodox section count");
   ok(await sp.$$eval("#church-protestant + .grid .listing", n => n.length) === expect(x => x.state === "Ohio" && x.category === "Church" && x.denomination === "Protestant"), "Ohio page Protestant section count");
   const ld = await sp.$eval('script[type="application/ld+json"]', s => JSON.parse(s.textContent));
   ok(ld["@graph"].some(g => g["@type"] === "ItemList" && g.itemListElement.length > 0), "state page has ItemList structured data");
-  ok(/Ohio/.test(await sp.title()) && await sp.$('link[rel="canonical"][href$="states/ohio.html"]'), "state page title and canonical");
+  ok(/Ohio/.test(await sp.title()) && await sp.$('link[rel="canonical"][href$="/habesha-hub/ohio.html"]'), "state page title and canonical");
   await sp.setViewportSize({ width: 375, height: 800 });
   ok(!(await sp.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)), "state page: no horizontal scroll on mobile");
   ok(await sp.isVisible(".crumbs") && await sp.isVisible(".state-links li a"), "state page: breadcrumb and state links visible on mobile");

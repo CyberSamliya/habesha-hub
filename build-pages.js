@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Builds one static, crawlable page per state that has listings (states/<slug>.html),
+// Builds one static, crawlable page per state that has listings (<slug>.html in the site root, e.g. ohio.html),
 // refreshes sitemap.xml, and writes the state link list into the index.html footer.
 // Run after every data change:  node tools/build-pages.js
 // No dependencies. Pages contain no JavaScript; the full search lives on the home page.
@@ -76,7 +76,7 @@ function schemaItem(x, i) {
 }
 
 function page(state, rows, allStates, updated) {
-  const name = disp(state), s = slug(state), url = SITE + "states/" + s + ".html";
+  const name = disp(state), s = slug(state), url = SITE + s + ".html";
   const present = CATS.filter(c => rows.some(r => r.category === c[0]));
   const areas = {}; rows.forEach(r => { areas[area(r)] = (areas[area(r)] || 0) + 1; });
   const topAreas = Object.keys(areas).sort((a, b) => areas[b] - areas[a] || a.localeCompare(b));
@@ -99,7 +99,7 @@ function page(state, rows, allStates, updated) {
     body += `</section>`;
   }
   const jumps = present.map(c => `<a href="#${slug(c[0])}">${esc(c[1])} (${rows.filter(r => r.category === c[0]).length})</a>`).join("");
-  const cityChips = topAreas.sort().map(a => `<a class="chip" href="../?state=${encodeURIComponent(state)}&amp;city=${encodeURIComponent(a)}#directory">${esc(a)} (${areas[a]})</a>`).join("");
+  const cityChips = topAreas.sort().map(a => `<a class="chip" href="./?state=${encodeURIComponent(state)}&amp;city=${encodeURIComponent(a)}#directory">${esc(a)} (${areas[a]})</a>`).join("");
   const others = allStates.map(o => o === state ? `<li aria-current="page"><strong>${esc(o)}</strong></li>` : `<li><a href="${slug(o)}.html">${esc(o)}</a></li>`).join("");
   const ld = { "@context": "https://schema.org", "@graph": [
     { "@type": "BreadcrumbList", "itemListElement": [
@@ -130,15 +130,15 @@ function page(state, rows, allStates, updated) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/styles.css?v=20260929">
+<link rel="stylesheet" href="assets/styles.css?v=20260929">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
 </head>
 <body class="state-page">
 <a class="skip" href="#main">Skip to main content</a>
-<header><div class="wrap nav"><a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Habesha Hub</a><a class="btn secondary" href="../?state=${encodeURIComponent(state)}#directory">Search and filter</a></div></header>
+<header><div class="wrap nav"><a class="brand" href="./"><span class="mark" aria-hidden="true"></span>Habesha Hub</a><a class="btn secondary" href="./?state=${encodeURIComponent(state)}#directory">Search and filter</a></div></header>
 <main id="main">
 <section class="state-hero"><div class="wrap">
- <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="../">Home</a> › <a href="../#states">States</a> › <span aria-current="page">${esc(state)}</span></div>
+ <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="./">Home</a> › <a href="./#states">States</a> › <span aria-current="page">${esc(state)}</span></div>
  <h1>Ethiopian &amp; Habesha community in ${esc(name)}</h1>
  <p>${rows.length} ${rows.length === 1 ? "listing" : "listings"} (${verified} verified)${churches.length ? `, including ${churches.length} ${churches.length === 1 ? "church" : "churches"}` : ""}. Every listing shows where the information came from and when it was last checked. Call ahead before visiting.</p>
  <div class="jump">${jumps}</div>
@@ -146,12 +146,12 @@ function page(state, rows, allStates, updated) {
 </div></section>
 <div class="wrap state-body">
 ${body}
-<div class="notice"><strong>Know a place we missed or something that changed?</strong> Use <a href="../#contribute">Add a listing or report a correction</a> on the home page. Submissions are reviewed before they appear.</div>
+<div class="notice"><strong>Know a place we missed or something that changed?</strong> Use <a href="./#contribute">Add a listing or report a correction</a> on the home page. Submissions are reviewed before they appear.</div>
 </div>
 </main>
 <footer><div class="wrap">
  <div class="state-links" role="navigation" aria-labelledby="otherStates"><h2 id="otherStates">Ethiopian community in other states</h2><ul>${others}</ul></div>
- <p class="foot-note">© Habesha Hub, a community project. Directory data updated ${esc(updated)}. <a href="../">Back to the full directory</a></p>
+ <p class="foot-note">© Habesha Hub, a community project. Directory data updated ${esc(updated)}. <a href="./">Back to the full directory</a></p>
 </div></footer>
 </body>
 </html>
@@ -165,19 +165,19 @@ function main() {
   const byState = {};
   rows.forEach(r => (byState[r.state] = byState[r.state] || []).push(r));
   const states = Object.keys(byState).sort();
-  const dir = path.join(ROOT, "states");
-  fs.mkdirSync(dir, { recursive: true });
+  // State pages live in the site root so they can be uploaded without folders.
+  const dir = ROOT;
   const keep = new Set(states.map(s => slug(s) + ".html"));
-  for (const f of fs.readdirSync(dir)) if (f.endsWith(".html") && !keep.has(f)) fs.unlinkSync(path.join(dir, f));
+  for (const s of Object.keys(ABBR)) { const f = slug(s) + ".html"; if (!keep.has(f) && fs.existsSync(path.join(dir, f))) { fs.unlinkSync(path.join(dir, f)); console.log("Removed " + f + " (no active listings)"); } }
   for (const s of states) fs.writeFileSync(path.join(dir, slug(s) + ".html"), page(s, byState[s], states, updated));
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
-    .concat(states.map(s => `  <url><loc>${SITE}states/${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`));
+    .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
   const idx = path.join(ROOT, "index.html");
   const html = fs.readFileSync(idx, "utf8");
-  const links = "<ul>" + states.map(s => `<li><a href="states/${slug(s)}.html">${esc(s)}</a></li>`).join("") + "</ul>";
+  const links = "<ul>" + states.map(s => `<li><a href="${slug(s)}.html">${esc(s)}</a></li>`).join("") + "</ul>";
   const out = html.replace(/<!--STATE_LINKS-->[\s\S]*?<!--\/STATE_LINKS-->/, `<!--STATE_LINKS-->${links}<!--/STATE_LINKS-->`);
   if (out === html && !html.includes(links)) console.warn("WARN index.html has no STATE_LINKS markers");
   fs.writeFileSync(idx, out);
