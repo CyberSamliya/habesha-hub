@@ -6,14 +6,14 @@ Last updated: 2026-09-28
 
 | Measure | Count |
 |---|---|
-| Active listings (shown on site) | 284 |
-| Verified (with source + date) | 228 |
-| Community listed | 48 |
-| Needs review | 8 |
+| Active listings (shown on site) | 323 |
+| Verified (with source + date) | 251 |
+| Community listed | 58 |
+| Needs review | 14 |
 | Duplicates removed from display | 2 |
 | Closed businesses identified | 1 |
 | Housing posts | 0 (board built, awaiting reviewed submissions) |
-| States / DC with listings | 27 of 51 |
+| States / DC with listings | 40 of 51 |
 
 ## Phases
 
@@ -25,41 +25,55 @@ Last updated: 2026-09-28
 | 4. Ohio | Batch 1 done 2026-09-28 (19 added: Columbus, Cleveland, Cincinnati, Dayton, Akron) |
 | 5. TX, GA, WA, MN, CO, CA, NY/NJ | Texas batch 1 done (22 added: Dallas, Houston, Austin, San Antonio); Georgia batch 1 done (5 added); Washington, Minnesota, Colorado batch 1 done (25 added); California, New York, New Jersey batch 1 done (24 added). Phase 5 first pass complete |
 | 6. Other metros | Batch 1 done 2026-09-28 (45 added: Las Vegas, Phoenix, Boston, Chicago, Portland, Baltimore, Philadelphia, Nashville, Charlotte). Batch 2 done 2026-09-28 (22 added: Salt Lake City, Sacramento, Kansas City, St. Louis, Omaha, Raleigh-Durham, Richmond, Tampa, Orlando, metro Detroit, Indianapolis, Louisville). Restaurants only so far in these metros |
-| 7 to 10 | Not started |
+| 7. Remaining states | First pass done 2026-09-28 (39 added in 13 states). 11 states with no verified listings found: AR, DE, ME, MS, MT, NH, ND, RI, SC, WV, WY |
+| 8 to 10 | Not started |
 
 ## Coverage by state
 
 | State | Cities / metros | Active | Verified | Categories present |
 |---|---|---|---|---|
+| Alabama | Birmingham, Huntsville | 2 | 1 | Restaurant, Church |
+| Alaska | Anchorage | 1 | 1 | Restaurant |
 | Arizona | Phoenix | 5 | 2 | Restaurant, Church |
 | California | Los Angeles, Sacramento, San Diego metro, San Francisco Bay Area | 25 | 24 | Restaurant, Grocery, Church, Community |
 | Colorado | Aurora, Denver metro (incl. Edgewater, Lafayette) | 15 | 14 | Restaurant, Grocery, Church, Community |
+| Connecticut | New Haven metro (Hamden), Stamford, East Hartford | 6 | 5 | Restaurant, Church, Community |
 | District of Columbia | Washington | 20 | 15 | Restaurant, Grocery, Church, Community |
 | Florida | Orlando, Tampa | 3 | 3 | Restaurant |
 | Georgia | Atlanta metro | 9 | 6 | Restaurant, Church, Community |
+| Hawaii | Honolulu | 1 | 1 | Restaurant |
+| Idaho | Boise | 1 | 1 | Restaurant |
 | Illinois | Chicago | 6 | 5 | Restaurant, Church, Community |
 | Indiana | Indianapolis | 3 | 2 | Restaurant |
+| Iowa | Des Moines | 3 | 2 | Restaurant, Church |
+| Kansas | Wichita, Kansas City metro (Shawnee) | 4 | 3 | Restaurant, Church |
 | Kentucky | Louisville | 3 | 2 | Restaurant |
+| Louisiana | New Orleans | 3 | 2 | Restaurant, Church |
 | Maryland | Baltimore, Bethesda, Forestville, Hyattsville, Mount Rainier, Silver Spring, Temple Hills | 23 | 18 | Restaurant, Grocery, Shopping, Church, Community, Professional, Beauty |
 | Massachusetts | Boston metro (Cambridge, Brookline) | 4 | 4 | Restaurant, Church |
 | Michigan | Detroit metro (Ferndale) | 1 | 1 | Restaurant |
 | Minnesota | Minneapolis-Saint Paul metro | 13 | 12 | Restaurant, Grocery, Church, Community |
-| Missouri | Kansas City, St. Louis | 3 | 2 | Restaurant |
+| Missouri | Kansas City, St. Louis | 4 | 2 | Restaurant, Community |
 | Nebraska | Omaha | 1 | 1 | Restaurant |
 | Nevada | Las Vegas metro | 10 | 9 | Restaurant, Church |
 | New Jersey | Newark, South Orange, Montclair, New Brunswick, Asbury Park | 5 | 4 | Restaurant, Church |
+| New Mexico | Albuquerque | 1 | 1 | Restaurant |
 | New York | New York City | 8 | 8 | Restaurant, Church |
 | North Carolina | Charlotte, Raleigh-Durham | 4 | 3 | Restaurant |
 | Ohio | Columbus metro, Cleveland metro, Cincinnati, Dayton, Akron | 33 | 21 | Restaurant, Grocery, Church, Community |
+| Oklahoma | Oklahoma City, Tulsa metro (Broken Arrow) | 3 | 1 | Restaurant, Church |
 | Oregon | Portland | 4 | 0 | Restaurant |
 | Pennsylvania | Philadelphia | 9 | 9 | Restaurant |
+| South Dakota | Sioux Falls | 7 | 1 | Restaurant, Church |
 | Tennessee | Nashville | 3 | 1 | Restaurant |
 | Texas | Dallas metro, Houston metro, Austin metro, San Antonio | 33 | 25 | Restaurant, Grocery, Shopping, Church, Community |
 | Utah | Salt Lake City | 2 | 2 | Restaurant (Mahider also has a market) |
+| Vermont | Burlington metro (South Burlington) | 1 | 0 | Restaurant (catering) |
 | Virginia | Alexandria, Arlington, Falls Church, Richmond, Springfield, Sterling, Woodbridge | 24 | 21 | Restaurant, Grocery, Shopping, Church, Community, Beauty |
 | Washington | Seattle metro (incl. Burien, Skyway) | 15 | 14 | Restaurant, Grocery, Church, Community |
+| Wisconsin | Milwaukee metro (incl. Oak Creek), Madison | 6 | 5 | Restaurant, Church |
 
-Churches by tradition: Orthodox 42, Protestant/Evangelical 19, Catholic 1, not yet confirmed 1.
+Churches by tradition: Orthodox 52, Protestant/Evangelical 24, Catholic 1, not yet confirmed 2.
 
 ## Categories still needing research (all states)
 
@@ -90,6 +104,9 @@ Auto, Home services, Healthcare, Childcare/family (only Amharic lessons at ECSAC
 - Phase 6 leads: Boston (Blue Nile JP, Fasika Cafe, Habesha Malden, Lucy Ethiopian Cafe, Sheger Cafe, Ethiopian Restaurant Malden, Ethiopian Evangelical Church, Boston Ethiopian Christian Fellowship) need a current check; Chicago (Debretsion Medhanealem, Debre Edom St. Mary, Holy Trinity; Facebook only); Portland, Nashville, Charlotte churches and community groups not yet searched; Ethiopian Famous Restaurant (Phoenix, 2012 source only).
 
 - Phase 6 batch 2 leads: Abol Ethiopian Restaurant (Durham, address not fetched); Ye Ethiopian (St. Louis); churches and community groups in these 12 metros not yet searched; Oromian (SLC) and Blue Nile Ferndale need ZIP/phone.
+
+- Phase 7 closed, not added: Ghion Cultural Hall (Birmingham AL), Abyssinian (Hartford CT), Nile (Coralville IA), Elsa's, Desta's and Abol (Overland Park KS), Shiro Cafe and Abeba (Jackson MS), Cafe Roha (Santa Fe NM), Eritrean & Ethiopian Cafe (Tulsa) and Lalibela (Broken Arrow OK), Abyssinia (Providence RI), Habesha (Fargo ND), Harambe, Sophie and Ethiopian Taste (Columbia / North Charleston SC).
+- Phase 7 leads: St. George EOTC Columbia SC (IRS record only, activity unconfirmed); Sarah's Savory Greenville SC (home-kitchen business, conflicting phones); Ethiopian Eats RI (farmers-market vendor); Red Sea Portland ME (describes itself as Eritrean); Ethiopian Community Association of Oklahoma (okethiopians.org, SSL error) and Tulsa association (Facebook only); Ethiopian and Eritrean Community Development Project Boise (2016 only); Louisiana EOTC Facebook page (may equal St. Mary NOLA); Sioux Falls: Africa Market (pan-African, sells injera), Shalom Ethiopian Coffee House, Sheger Addis grocery, Peniel and Bethel Ethiopian fellowships, Greater Sioux Falls Ethiopian Community Association, Debre Selam St Michael & St Gebriel (may equal St. Michael's); Milwaukee Ethiopian Community Organization; ECFC Kansas vs Olathe listing.
 
 ## Source quality notes
 
