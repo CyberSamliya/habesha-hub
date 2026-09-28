@@ -27,7 +27,8 @@ Last updated: 2026-09-28
 | 6. Other metros | Batch 1 done 2026-09-28 (45 added: Las Vegas, Phoenix, Boston, Chicago, Portland, Baltimore, Philadelphia, Nashville, Charlotte). Batch 2 done 2026-09-28 (22 added: Salt Lake City, Sacramento, Kansas City, St. Louis, Omaha, Raleigh-Durham, Richmond, Tampa, Orlando, metro Detroit, Indianapolis, Louisville). Restaurants only so far in these metros |
 | 7. Remaining states | First pass done 2026-09-28 (39 added in 13 states). 11 states with no verified listings found: AR, DE, ME, MS, MT, NH, ND, RI, SC, WV, WY |
 | 8. National duplicate and accuracy audit | Done 2026-09-28: all 14 needs-review and 58 community listings rechecked; 210 websites link-checked; 31 upgraded to verified, 1 closed, 3 moved to needs-review, 1 hijacked website replaced (Lideta Mariam, Austin), 1 dead website removed, 1 added (Abol, Durham). No true duplicates found (same-name pairs are separate businesses or branches) |
-| 9 to 10 | Not started |
+| 9. SEO, accessibility, performance, mobile | Done 2026-09-28: 40 static state pages (titles, descriptions, canonical, breadcrumb, ItemList schema), sitemap with 41 URLs, footer state links, collapsible "Show all 50 states + DC" panel. axe-core WCAG 2 A/AA + best practice: 0 violations on home and state pages at desktop and phone width. Page weight about 68 KB gzipped; home page ready in about 0.13 s locally. 53 browser tests pass |
+| 10. Final QC | Not started |
 
 ## Coverage by state
 

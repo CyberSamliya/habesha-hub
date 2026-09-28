@@ -13,6 +13,8 @@ Live site: https://cybersamliya.github.io/habesha-hub/
 | `assets/i18n.js` | English / Amharic interface text |
 | `assets/app.js` | Search, filters, cards, state explorer, housing board, contribution links |
 | `directory-data.js` | **All listings** (one per line) plus housing posts and status labels |
+| `states/*.html` | One static page per state with listings (generated, do not edit by hand) |
+| `tools/build-pages.js` | Rebuilds the state pages, `sitemap.xml` and the footer state links from the data |
 | `tools/validate-data.js` | Data checks: required fields, ids, statuses, URLs, duplicates, housing privacy |
 | `tools/apply-updates.js` | Applies a research batch file to `directory-data.js` |
 | `tools/research/*.json` | Research batches: every change with its sources, kept as an audit trail |
@@ -64,7 +66,9 @@ Categories: `Restaurant, Grocery, Shopping, Church, Beauty, Auto, Home, Professi
    ```
 3. `node tools/apply-updates.js tools/research/2026-10-05-ohio.json`
 4. `node tools/validate-data.js` (must show 0 errors)
-5. Optional: `npm i -D playwright && node tools/test-site.js`
+5. `node tools/build-pages.js` (rebuilds state pages, sitemap and footer links; run after every data change)
+6. Optional: `npm i -D playwright && node tools/test-site.js`
+7. Upload `directory-data.js`, `index.html`, `sitemap.xml` and the `states` folder.
 
 Community submissions arrive by email (prefilled templates on the site) or GitHub issue forms, and always start as `community` or `needs-review`.
 
@@ -81,3 +85,9 @@ Community submissions arrive by email (prefilled templates on the site) or GitHu
 
 Filters are reflected in the URL, so results can be shared or bookmarked, for example:
 `?state=Ohio&category=Church&denomination=Orthodox`, `?state=Maryland&category=Restaurant`, `?q=injera`.
+
+## Search engines
+
+- Each state with listings has its own page (for example `states/ohio.html`) with a descriptive title, meta description, canonical URL, breadcrumb and Schema.org `ItemList` of verified listings (Restaurant, GroceryStore, Church, Organization and so on).
+- `sitemap.xml` lists the home page and every state page. Because the site lives under `/habesha-hub/`, search engines will not read this folder's `robots.txt`; submit `https://cybersamliya.github.io/habesha-hub/sitemap.xml` in Google Search Console and Bing Webmaster Tools instead.
+- States without listings get no page, so there are no thin or empty pages.
