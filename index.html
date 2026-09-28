@@ -143,6 +143,22 @@
   .copybtn{border:1px solid var(--ink); background:var(--card); border-radius:var(--radius); padding:5px 10px; font-family:"Source Serif 4",serif; font-size:.78rem; cursor:pointer; color:var(--ink);}
   .gform-embed{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); margin-top:14px;}
   .gform-embed iframe{display:block; width:100%; min-height:820px; border:0;}
+
+  /* mobile nav */
+  .navtoggle{display:none; background:transparent; border:1px solid var(--ink); border-radius:var(--radius); width:42px; height:42px; align-items:center; justify-content:center; cursor:pointer; flex:none; color:var(--ink); font-size:1.1rem; padding:0;}
+  @media (max-width:760px){
+    .navrow{flex-wrap:wrap;}
+    .navwrap{overflow-x:visible;}
+    .navtoggle{display:flex;}
+    nav.links{display:none; flex-direction:column; align-items:stretch; gap:0; width:100%; order:3;}
+    nav.links.open{display:flex;}
+    nav.links a{width:100%; padding:14px 4px; border-top:1px solid var(--line); text-align:left;}
+  }
+
+  /* about */
+  .about-card{max-width:74ch;}
+  .about-card p + p{margin-top:12px;}
+  .about-card .am{font-size:.86em; margin-top:10px; color:var(--rust);}
 </style>
 </head>
 <body>
@@ -150,7 +166,9 @@
   <div class="wrap navwrap">
     <div class="navrow">
       <a href="#top" class="brand"><span class="mark"></span>Habesha Hub</a>
-      <nav class="links">
+      <button class="navtoggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+      <nav class="links" id="navLinks">
+        <a href="#about">About<span class="am">ስለ እኛ</span></a>
         <a href="#aid">Aid &amp; Benefits<span class="am">እርዳታ እና ጥቅማ ጥቅሞች</span></a>
         <a href="#states">State Guide<span class="am">የክፍለ ሀገር መመሪያ</span></a>
         <a href="#legal">Legal &amp; Immigration<span class="am">ህግ እና ስደት</span></a>
@@ -176,6 +194,20 @@
       <div class="disclaimer-banner">
         <span>ⓘ</span>
         <span><strong>This is a community information site, not legal advice.</strong> Benefit rules and immigration consequences depend on your specific status and state. For anything that affects your case, confirm with the official agency or a licensed legal aid organization linked on this page.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Who's behind this</span>
+        <h2>Built by one Habesha family, for the community<span class="am">ለማህበረሰቡ በአንድ ሀበሻ ቤተሰብ የተገነባ</span></h2>
+      </div>
+      <div class="card about-card">
+        <p>Habesha Hub is a volunteer project started by Samra, an Ethiopian American in Columbus, Ohio, after seeing how scattered and confusing it is to find one trustworthy starting point for aid, immigration, and community resources here in the US. It isn't a law firm, a government office, or a nonprofit with staff. It's one page, kept up by one person and the community.</p>
+        <p>Every guide on this site links back to the real government or nonprofit source it summarizes, so you're never relying on this page alone for something that affects your case. If a link is outdated, a listing is wrong, or your state or city isn't covered yet, use the form below to send a correction.</p>
+        <p class="am">ሀበሻ ሀብ በዩናይትድ ስቴትስ ውስጥ ላሉ ሀበሻ ቤተሰቦች እርዳታ፣ ስደት እና ማህበረሰብ መረጃዎችን በአንድ ቦታ ለማቅረብ በኮሎምበስ ኦሃዮ በምትገኝ ሳምራ በተባለች ኢትዮጵያዊት አሜሪካዊት የተጀመረ በጎ ፈቃደኛ ፕሮጀክት ነው። ማህበረሰቡ እርማቶችን እና አዳዲስ ዝርዝሮችን በላከ ቁጥር ይዘምናል።</p>
       </div>
     </div>
   </section>
@@ -389,6 +421,26 @@
 </main>
 
 <script>
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if(!toggle || !links) return;
+    function closeMenu(){
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    }
+    toggle.addEventListener('click', function(){
+      var isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 760) closeMenu();
+    });
+  })();
+
   var STATES = [
     {c:"AL",n:"Alabama",portal:"https://mydhr.dhr.alabama.gov",label:"mydhr.dhr.alabama.gov"},
     {c:"AK",n:"Alaska",portal:"https://health.alaska.gov/dpa",label:"Alaska Division of Public Assistance"},
