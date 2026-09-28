@@ -136,6 +136,15 @@
   .store .saddr{color:var(--ink-soft); margin-top:2px; font-style:italic;}
   .verify-note{font-size:.8rem; color:var(--ink-soft); margin-top:14px; font-style:italic;}
 
+  /* vlog */
+  .vlog-filter-btn{cursor:pointer; font:inherit; text-align:left; color:var(--ink); transition:background .15s,border-color .15s; width:100%;}
+  .vlog-filter-btn:hover{border-color:var(--rust);}
+  .vlog-filter-btn.active{background:var(--rust-soft); border-color:var(--rust);}
+  .vlog-card .vc-cat{display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;}
+  .vlog-card h3{font-size:1.02rem; margin-bottom:6px;}
+  .vlog-card p{color:var(--ink-soft); font-size:.88rem;}
+  .vlog-card a.watch{display:inline-block; margin-top:10px; font-size:.88rem; font-weight:600;}
+
   footer{border-top:3px double var(--ink); padding-block:34px; margin-top:10px;}
   footer .foot-row{display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-start;}
   footer p{color:var(--ink-soft); font-size:.85rem; max-width:50ch;}
@@ -373,16 +382,19 @@
       </div>
 
       <div class="dir-cat" style="margin-bottom:28px;">
-        <div class="store-list" style="grid-template-columns:repeat(4,1fr);">
-          <div class="store"><div class="sname">✝️ Orthodox Church<span class="am">ኦርቶዶክስ ቤተክርስቲያን</span></div></div>
-          <div class="store"><div class="sname">⚽ Soccer<span class="am">እግር ኳስ</span></div></div>
-          <div class="store"><div class="sname">📚 Education<span class="am">ትምህርት</span></div></div>
-          <div class="store"><div class="sname">🩺 Children's Health<span class="am">የልጆች ጤና</span></div></div>
+        <div class="store-list" id="vlogFilters" style="grid-template-columns:repeat(4,1fr);">
+          <button type="button" class="store vlog-filter-btn" data-cat="church"><div class="sname">✝️ Orthodox Church<span class="am">ኦርቶዶክስ ቤተክርስቲያን</span></div></button>
+          <button type="button" class="store vlog-filter-btn" data-cat="soccer"><div class="sname">⚽ Soccer<span class="am">እግር ኳስ</span></div></button>
+          <button type="button" class="store vlog-filter-btn" data-cat="education"><div class="sname">📚 Education<span class="am">ትምህርት</span></div></button>
+          <button type="button" class="store vlog-filter-btn" data-cat="health"><div class="sname">🩺 Children's Health<span class="am">የልጆች ጤና</span></div></button>
         </div>
+        <p class="verify-note">Tap a category to filter the vlogs below. Tap it again to see all of them.</p>
       </div>
 
-      <div class="soon-card" style="margin-bottom:20px;">
-        No vlogs posted yet — this is a brand-new section. Submit the first one below and it'll be reviewed and added here, grouped by category.
+      <div class="grid grid-2" id="vlogGrid" style="margin-bottom:20px;"></div>
+
+      <div class="soon-card" id="vlogEmpty" style="margin-bottom:20px;">
+        No vlogs posted yet in this category — submissions are reviewed before they're added here.
       </div>
 
       <details class="acc" open>
@@ -439,6 +451,64 @@
     window.addEventListener('resize', function(){
       if(window.innerWidth > 760) closeMenu();
     });
+  })();
+
+  (function(){
+    var CAT_LABELS = {
+      church:{en:"Orthodox Church", am:"ኦርቶዶክስ ቤተክርስቲያን"},
+      soccer:{en:"Soccer", am:"እግር ኳስ"},
+      education:{en:"Education", am:"ትምህርት"},
+      health:{en:"Children's Health", am:"የልጆች ጤና"}
+    };
+    // Reviewed vlog submissions go here once approved. Each entry:
+    // {title, cat: "church"|"soccer"|"education"|"health", url, desc}
+    var VLOGS = [];
+
+    var grid = document.getElementById('vlogGrid');
+    var empty = document.getElementById('vlogEmpty');
+    var filterBtns = document.querySelectorAll('.vlog-filter-btn');
+    if(!grid || !empty || !filterBtns.length) return;
+    var activeCat = null;
+
+    function render(){
+      grid.innerHTML = '';
+      var shown = 0;
+      VLOGS.forEach(function(v){
+        if(activeCat && v.cat !== activeCat) return;
+        shown++;
+        var label = CAT_LABELS[v.cat] || {en:'', am:''};
+        var card = document.createElement('div');
+        card.className = 'card vlog-card';
+        card.innerHTML =
+          '<span class="vc-cat">' + label.en + '</span>' +
+          '<h3>' + v.title + '</h3>' +
+          (v.desc ? '<p>' + v.desc + '</p>' : '') +
+          '<a class="watch" href="' + v.url + '" target="_blank" rel="noopener">Watch this vlog &#8594;</a>';
+        grid.appendChild(card);
+      });
+      empty.style.display = shown ? 'none' : 'block';
+      if(!shown){
+        empty.textContent = activeCat
+          ? 'No vlogs posted yet in ' + (CAT_LABELS[activeCat] ? CAT_LABELS[activeCat].en : 'this category') + ' — submissions are reviewed before they\'re added here.'
+          : 'No vlogs posted yet — this is a brand-new section. Submit the first one below and it\'ll be reviewed and added here, grouped by category.';
+      }
+    }
+
+    filterBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var cat = btn.getAttribute('data-cat');
+        if(activeCat === cat){
+          activeCat = null;
+          filterBtns.forEach(function(b){ b.classList.remove('active'); });
+        } else {
+          activeCat = cat;
+          filterBtns.forEach(function(b){ b.classList.toggle('active', b === btn); });
+        }
+        render();
+      });
+    });
+
+    render();
   })();
 
   var STATES = [
