@@ -74,6 +74,7 @@ window.HABESHA_LISTINGS = [
   {name:"St Mary's Ethiopian Orthodox Tewahedo Church",category:"Church",city:"Los Angeles",state:"California",address:"5505 W Slauson Ave, Los Angeles, CA 90056",status:"verified"},
   {name:"Addis Restaurant",category:"Restaurant",city:"Columbus",state:"Ohio",address:"3750 Cleveland Ave, Columbus, OH 43224",status:"verified"},
   {name:"The Habesha Garden Restaurant",category:"Restaurant",city:"Columbus",state:"Ohio",address:"4520 Josephus Ln, Columbus, OH 43227",status:"verified"},
+  {name:"Debre Selam Kidus Gebriel",category:"Church",city:"Columbus",state:"Ohio",address:"1049 E Broad St, Columbus, OH 43205",status:"community"},
   {name:"Saint Michael Ethiopian Orthodox Tewahedo Church",category:"Church",city:"Columbus",state:"Ohio",address:"3425 Refugee Rd, Columbus, OH 43232",status:"verified"},
   {name:"Debre Medihanit Medhanealem Ethiopian Orthodox Tewahedo Church",category:"Church",city:"Columbus",state:"Ohio",address:"4295 E Broad St, Columbus, OH 43213",status:"verified"},
   {name:"ETSS Tewahedo Social Services",category:"Community",city:"Columbus",state:"Ohio",address:"4300 E Broad St Ste D, Columbus, OH 43213",status:"verified"},
