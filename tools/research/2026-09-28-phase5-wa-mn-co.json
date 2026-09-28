@@ -1,0 +1,465 @@
+{
+"date": "2026-09-28",
+"add": [
+{
+"id": "wa-seattle-kezira-cafe",
+"name": "Kezira Cafe",
+"altNames": [
+"Kezira Restaurant and Coffee Bar"
+],
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant and coffee bar",
+"address": "5100 Rainier Ave S",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98118",
+"source": "https://www.yelp.com/biz/kezira-cafe-seattle-3",
+"secondSource": "https://essentialseseattle.com/business/kezira-restaurant/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Columbia City"
+]
+},
+{
+"id": "wa-seattle-zagol",
+"name": "Zagol Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "2722 E Cherry St",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98122",
+"source": "https://m.yelp.com/biz/zagol-ethiopian-restaurant-seattle-3",
+"secondSource": "https://intentionalist.com/b/zagol/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Central District"
+]
+},
+{
+"id": "wa-seattle-cafe-selam",
+"name": "Cafe Selam",
+"category": "Restaurant",
+"subcategory": "Ethiopian cafe",
+"address": "2715 E Cherry St, Suite B",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98122",
+"source": "https://www.yelp.com/biz/cafe-selam-seattle",
+"secondSource": "https://intentionalist.com/b/cafe-selam/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Central District"
+]
+},
+{
+"id": "wa-seattle-habesha-cafe",
+"name": "Habesha Cafe",
+"category": "Restaurant",
+"subcategory": "Eritrean and Ethiopian restaurant, deli and sweet shop",
+"address": "5710 Rainier Ave S",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98118",
+"website": "https://habesha.cafe/",
+"social": "https://www.facebook.com/HabeshaCafeSeattle/",
+"source": "https://habesha.cafe/directions-and-hours/",
+"secondSource": "https://www.yelp.com/biz/habesha-cafe-seattle",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Hillman City"
+]
+},
+{
+"id": "wa-seattle-enat",
+"name": "Enat Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "11546 15th Ave NE",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98125",
+"social": "https://www.facebook.com/EnatEthiopianRestaurant/",
+"source": "https://www.yelp.com/biz/enat-ethiopian-restaurant-seattle",
+"secondSource": "https://everout.com/seattle/locations/enat-ethiopian-restaurant/l38756/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Lake City"
+]
+},
+{
+"id": "wa-seattle-agelgil",
+"name": "Agelgil Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "2800 E Cherry St, Suite A",
+"city": "Seattle",
+"state": "Washington",
+"zip": "98122",
+"phone": "(206) 324-6402",
+"website": "https://seattleethiopianrestaurant.com/",
+"source": "https://www.yelp.com/biz/agelgil-ethiopian-restaurant-seattle-3",
+"secondSource": "https://intentionalist.com/b/agelgil-ethiopia-restaurant/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Central District"
+],
+"notes": "Not the same business as Agelgil in Saint Paul, MN (Tripadvisor)."
+},
+{
+"id": "wa-seattle-debre-mihret-st-michael",
+"name": "Seattle Debre Mihret St. Michael Ethiopian Orthodox Tewahedo Church",
+"category": "Church",
+"denomination": "Orthodox",
+"address": "10056 Renton Ave S",
+"city": "Seattle",
+"state": "Washington",
+"keywords": [
+"Skyway"
+],
+"social": "https://www.facebook.com/p/Seattle-Debre-Mihret-StMichael-Ethiopian-Orthodox-Tewahedo-Church-100064480521183/",
+"source": "https://www.yelp.com/biz/debre-mihret-st-michael-ethiopian-orthodox-tewahedo-church-seattle",
+"secondSource": "https://seattleglobalist.com/2016/05/02/skyway-ethiopian-orthodox-church/50775",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Converted library building in Skyway (Seattle Globalist 2016); Yelp updated May 2026."
+},
+{
+"id": "wa-seattle-medhane-alem-evangelical",
+"name": "Medhane-Alem Evangelical Church (Ethiopian)",
+"category": "Church",
+"denomination": "Protestant",
+"subcategory": "Evangelical",
+"address": "8445 Rainier Ave S",
+"city": "Seattle",
+"state": "Washington",
+"source": "https://www.yelp.com/biz/medhane-alem-evangelical-church-ethiopian-seattle",
+"status": "community",
+"verifiedDate": "2026-09-28",
+"notes": "Single source (Yelp, updated Jul 2026)."
+},
+{
+"id": "wa-burien-eec-seattle-ambassadors",
+"name": "Ethiopian Evangelical Church of Seattle Ambassadors",
+"altNames": [
+"EECSA",
+"Seattle Ambassadors Church"
+],
+"category": "Church",
+"denomination": "Protestant",
+"subcategory": "Evangelical",
+"address": "520 S 150th St",
+"city": "Burien",
+"metro": "Seattle",
+"state": "Washington",
+"zip": "98148",
+"website": "https://www.seattleambassadors.org/",
+"social": "https://www.facebook.com/ambassadors.eecs/",
+"source": "https://www.seattleambassadors.org/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Official site content gives Burien address; its search-engine title still shows an older Bellevue address (5833 119th Ave SE)."
+},
+{
+"id": "mn-saint-paul-bole",
+"name": "Bole Ethiopian Cuisine",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "1341 Pascal St N",
+"city": "Saint Paul",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55108",
+"phone": "(651) 330-2492",
+"website": "https://boleethiopiancuisine.com/",
+"source": "https://boleethiopiancuisine.com/",
+"secondSource": "https://www.tripadvisor.com/Restaurants-g3982387-c10785-Metro_Minneapolis_Saint_Paul_Minnesota.html",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "mn-saint-paul-demera",
+"name": "Demera Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "823 University Ave W",
+"city": "Saint Paul",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"phone": "(651) 323-1424",
+"website": "https://demeraethiopianmn.com/",
+"source": "https://demeraethiopianmn.com/",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "mn-minneapolis-dilla",
+"name": "Dilla Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "1813 Riverside Ave",
+"city": "Minneapolis",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55454",
+"phone": "(612) 217-1909",
+"website": "https://dillasethiopianmn.com/",
+"source": "https://dillasethiopianmn.com/",
+"secondSource": "https://www.tripadvisor.com/Restaurants-g3982387-c10785-Metro_Minneapolis_Saint_Paul_Minnesota.html",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Cedar-Riverside"
+]
+},
+{
+"id": "mn-minneapolis-lulu-ethiovegan",
+"name": "Lulu's EthioVegan Cuisine",
+"category": "Restaurant",
+"subcategory": "Vegan Ethiopian restaurant",
+"address": "12 E Franklin Ave",
+"city": "Minneapolis",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55404",
+"website": "https://luluethiovegan.com/",
+"source": "https://www.yelp.com/biz/lulus-ethiovegan-cuisine-minneapolis",
+"secondSource": "https://luluethiovegan.com/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"vegan"
+]
+},
+{
+"id": "mn-columbia-heights-adama",
+"name": "Adama Restaurant and Awash Bakery",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant, bakery and grocery",
+"address": "3970 Central Ave NE",
+"city": "Columbia Heights",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55421",
+"phone": "(763) 789-4486",
+"website": "https://adamarestaurant-mn.com/",
+"source": "https://adamarestaurant-mn.com/",
+"secondSource": "https://www.tripadvisor.com/Restaurants-g3982387-c10785-Metro_Minneapolis_Saint_Paul_Minnesota.html",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"bakery",
+"injera"
+],
+"notes": "Official site phone ends 4486; one directory shows 4485."
+},
+{
+"id": "mn-saint-paul-ethiopian-evangelical-church",
+"name": "Ethiopian Evangelical Church of Minnesota",
+"category": "Church",
+"denomination": "Protestant",
+"subcategory": "Evangelical",
+"address": "770 7th St E",
+"city": "Saint Paul",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55106",
+"phone": "(651) 772-9227",
+"website": "https://eecmn.org/",
+"social": "https://www.instagram.com/eecmn1/",
+"source": "https://www.yelp.com/biz/ethiopian-evangelical-church-saint-paul",
+"secondSource": "https://www.netministries.org/churches/ch15872",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Net Ministries shows 700 7th St E; Yelp (Mar 2026) and another directory show 770."
+},
+{
+"id": "mn-saint-paul-ethiopian-community-in-minnesota",
+"name": "Ethiopian Community in Minnesota",
+"category": "Community",
+"subcategory": "Community association: notary, referrals, cultural and civic programs",
+"address": "616 Rice St",
+"city": "Saint Paul",
+"metro": "Minneapolis-Saint Paul",
+"state": "Minnesota",
+"zip": "55103",
+"website": "https://ethiopiancommunitymn.org/",
+"source": "https://ethiopiancommunitymn.org/",
+"secondSource": "https://www.givemn.org/organization/Ethiopian-Community-In-Minnesota",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "co-denver-the-ethiopian-restaurant",
+"name": "The Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "2816 E Colfax Ave",
+"city": "Denver",
+"state": "Colorado",
+"source": "https://www.yelp.com/biz/ethiopian-restaurant-denver",
+"secondSource": "https://5280.com/best-ethiopian-restaurants-in-denver-aurora/",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "co-denver-mesob",
+"name": "Mesob Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "1422 Poplar St",
+"city": "Denver",
+"state": "Colorado",
+"phone": "(303) 370-1370",
+"website": "https://www.mesobethiopianrestaurant.com/",
+"source": "https://www.yelp.com/biz/mesob-ethiopian-restaurant-denver-2",
+"secondSource": "https://5280.com/best-ethiopian-restaurants-in-denver-aurora/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Not the same business as Mesob in Minneapolis."
+},
+{
+"id": "co-denver-abyssinia",
+"name": "Abyssinia Ethiopian Restaurant and Bar",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "5707 E Colfax Ave",
+"city": "Denver",
+"state": "Colorado",
+"zip": "80220",
+"source": "https://www.yelp.com/biz/abyssinia-ethiopian-restaurant-and-bar-denver-2",
+"secondSource": "https://5280.com/restaurant/abyssinia-ethiopian-restaurant/",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "co-denver-lucy",
+"name": "Lucy Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "7401 E Colfax Ave",
+"city": "Denver",
+"state": "Colorado",
+"website": "https://lucyethiopianrestaurant.us/",
+"source": "https://www.yelp.com/biz/lucy-ethiopian-restaurant-denver",
+"secondSource": "https://www.waze.com/live-map/directions/us/co/denver/lucy-ethiopian-restaurant?to=place.ChIJbxNKwnp8bIcRMZ40acLugIw",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Not the same business as Lucy in Houston."
+},
+{
+"id": "co-edgewater-konjo",
+"name": "Konjo Ethiopian Food",
+"category": "Restaurant",
+"subcategory": "Ethiopian food stall (Edgewater Public Market)",
+"address": "5505 W 20th Ave, Suite 106",
+"city": "Edgewater",
+"metro": "Denver",
+"state": "Colorado",
+"website": "https://www.konjoethiopianfood.com/",
+"source": "https://www.konjoethiopianfood.com/edgewater",
+"secondSource": "https://www.yelp.com/biz/konjo-ethiopian-food-edgewater",
+"status": "verified",
+"verifiedDate": "2026-09-28"
+},
+{
+"id": "co-lafayette-ras-kassas",
+"name": "Ras Kassa's Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "802 S Public Rd",
+"city": "Lafayette",
+"metro": "Denver",
+"state": "Colorado",
+"social": "https://www.facebook.com/RasKassas/",
+"source": "https://www.yelp.com/biz/ras-kassas-ethiopian-restaurant-lafayette",
+"secondSource": "https://visitoldtownlafayette.com/our-directory/food-and-beverage/ras-kassas-ethiopian-restaurant/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Boulder"
+]
+},
+{
+"id": "co-aurora-nile",
+"name": "Nile Ethiopian Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant",
+"address": "1951 S Havana St",
+"city": "Aurora",
+"state": "Colorado",
+"zip": "80014",
+"phone": "(720) 748-0239",
+"website": "https://nileethiopianrestaurantcolorado.com/",
+"source": "https://nileethiopianrestaurantcolorado.com/",
+"secondSource": "https://www.westword.com/best-of-denver/2026/food-and-drink/best-ethiopian-40862440/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"notes": "Westword Best of Denver 2026: Best Ethiopian."
+},
+{
+"id": "co-aurora-geez-habesha",
+"name": "Geez Habesha Bar & Restaurant",
+"category": "Restaurant",
+"subcategory": "Ethiopian restaurant and bar",
+"address": "262 Havana St",
+"city": "Aurora",
+"state": "Colorado",
+"source": "https://www.yelp.com/biz/geez-habesha-restaurant-and-bar-aurora",
+"secondSource": "https://www.westword.com/food-drink/explore-auroras-little-ethiopia-at-geez-habesha-on-havana-street-40826466/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"Havana Street",
+"Little Ethiopia"
+]
+},
+{
+"id": "co-aurora-colorado-ethiopian-community",
+"name": "Colorado Ethiopian Community",
+"category": "Community",
+"subcategory": "Community association: youth center, newcomer support, edir",
+"address": "1450 S Havana St, Suite 300",
+"city": "Aurora",
+"state": "Colorado",
+"zip": "80012",
+"phone": "(720) 507-3826",
+"website": "https://ethioco.org/",
+"source": "https://www.ethioco.org/about",
+"secondSource": "https://www.causeiq.com/organizations/ethiopian-community-of-colorado,455424318/",
+"status": "verified",
+"verifiedDate": "2026-09-28",
+"keywords": [
+"youth",
+"edir",
+"refugees"
+]
+}
+],
+"update": {
+"mn-minneapolis-mesob-ethiopian-restaurant": {
+"metro": "Minneapolis-Saint Paul"
+},
+"mn-minneapolis-the-red-sea-ethiopian-restaurant": {
+"metro": "Minneapolis-Saint Paul"
+},
+"mn-minneapolis-kela-market": {
+"metro": "Minneapolis-Saint Paul"
+},
+"mn-minneapolis-shabelle-ethiopian-grocery": {
+"metro": "Minneapolis-Saint Paul"
+},
+"mn-minneapolis-reese-adbarat-tserha-aryam-kidist-selassie-ethiopian-orthodox-tewahedo-cathedral": {
+"metro": "Minneapolis-Saint Paul"
+},
+"mn-minneapolis-debre-selam-medhanealem-ethiopian-orthodox-tewahedo-church": {
+"metro": "Minneapolis-Saint Paul"
+}
+}
+}
