@@ -1,0 +1,415 @@
+{
+ "date": "2026-09-28",
+ "update": {
+  "ga-stone-mountain-ebenezer-ethiopian-evangelical-church-atlanta": {
+   "status": "community",
+   "address": null,
+   "zip": null,
+   "publicNote": "Street address not yet confirmed. Check the church website before visiting.",
+   "notes": "Congregation confirmed via eeeca.org, YouTube and Facebook (Stone Mountain). Unconfirmed v1 address 4528 Rockbridge Rd SW removed 2026-09-28. Separate church from Ethiopian Evangelical Church Atlanta (4550 Greer Cir).",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-pataskala-peniel-ethiopian-evangelical-church": {
+   "status": "community",
+   "address": "6191 Taylor Rd",
+   "city": "Blacklick",
+   "zip": "43004",
+   "phone": "(614) 322-0085",
+   "source": "https://www.yellowpages.com/blacklick-oh/mip/peniel-ethiopian-evangelical-church-20003806",
+   "secondSource": "https://local.yahoo.com/info-15432771-peniel-ethiopian-evangelical-church-columbus/",
+   "publicNote": null,
+   "notes": "YellowPages, Yahoo Local, Yelp (May 2026) and IRS all show Blacklick. Waze alone shows 5457 York Rd SW, Pataskala (possible second site).",
+   "verifiedDate": "2026-09-28"
+  },
+  "tx-missouri-city-ecfc-houston": {
+   "status": "community",
+   "address": "401 Present St",
+   "zip": "77489",
+   "phone": "(713) 484-5530",
+   "secondSource": "https://www.yellowpages.com/missouri-city-tx/mip/ethiopian-christian-fellowship-6321632",
+   "publicNote": "Some listings show 8526 Northern St, Houston. Check the church website before visiting.",
+   "verifiedDate": "2026-09-28"
+  },
+  "al-huntsville-debre-salem-st-john": {
+   "status": "community",
+   "phone": "(704) 620-5703",
+   "publicNote": null,
+   "notes": "Church site: first EOTC in Alabama, inaugurated 2017; publishes phone (NC area code). Also in orientalorthodoxy.com parish finder. No 2025-2026 activity seen. Not the same as Debre Salem St. John parishes in WA or VA.",
+   "verifiedDate": "2026-09-28"
+  },
+  "ks-shawnee-ecfc": {
+   "status": "verified",
+   "denomination": "Protestant",
+   "subcategory": "Ethiopian Evangelical church (Mennonite Brethren)",
+   "secondSource": "https://usmb.org/church/ethiopian-christian-fellowship-3/",
+   "publicNote": null,
+   "notes": "Official site (2026) and USMB list 15000 W 63rd St. USMB gives alt phone (913) 254-7450 and site ecfcks.org. A Yelp listing shows 14345 W 119th St, Olathe; official address kept.",
+   "verifiedDate": "2026-09-28"
+  },
+  "ok-broken-arrow-rehoboth": {
+   "status": "community",
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-st-michael-eotc": {
+   "status": "community",
+   "publicNote": null,
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-hamer-noh-kidane-mihret": {
+   "status": "community",
+   "zip": "57104",
+   "secondSource": "https://us.trip.com/travel-guide/attraction/sioux-falls/sioux-falls-hamer-noh-kidanemhiret-ethiopian-orthodox-tewahedo-church-142497555/",
+   "publicNote": null,
+   "verifiedDate": "2026-09-28"
+  },
+  "wi-madison-st-arsema": {
+   "status": "community",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-columbus-debre-medihanit-medhanealem-ethiopian-orthodox-tewahedo-church": {
+   "address": "610 Neil Ave",
+   "zip": "43215",
+   "phone": "(614) 280-0626",
+   "source": "https://www.manta.com/c/mtmp7bl/ethiopian-orthodox-tewahedo-church-debre-medhanit-medhane-alem-cathedral",
+   "secondSource": "https://www.yelp.com/biz/ethiopian-orthodox-tewahedo-church-debre-medhanit-medhane-alem-c-columbus",
+   "publicNote": "Older records show 4295 E Broad St. Call before visiting.",
+   "notes": "Manta and Yelp (May 2026) show the cathedral at 610 Neil Ave. 4295 E Broad St comes from an IRS record with filings from 2005 or earlier.",
+   "verifiedDate": "2026-09-28"
+  },
+  "mn-minneapolis-debre-selam-medhanealem-ethiopian-orthodox-tewahedo-church": {
+   "phone": "(612) 721-1222",
+   "publicNote": "The church website still shows its former address, 4401 Minnehaha Ave S.",
+   "verifiedDate": "2026-09-28"
+  },
+  "va-alexandria-zema-market": {
+   "notes": "Rechecked 2026-09-28: official site (2026) current, no closure notice. Building listed for sale (MLS); recheck in 3 months.",
+   "verifiedDate": "2026-09-28"
+  },
+  "il-chicago-ras-dashen": {
+   "status": "closed",
+   "address": "5846 N Broadway",
+   "notes": "Closed: Yelp and HappyCow both show CLOSED (checked 2026-09-28).",
+   "verifiedDate": "2026-09-28"
+  },
+  "az-phoenix-kare": {
+   "status": "verified",
+   "zip": "85008",
+   "website": "https://kareethiopianrestaurant.com/",
+   "secondSource": "https://kareethiopianrestaurant.com/",
+   "verifiedDate": "2026-09-28"
+  },
+  "az-phoenix-first-cup": {
+   "status": "verified",
+   "zip": "85015",
+   "phone": "(602) 265-1049",
+   "website": "https://site.zingmyorder.com/domain/22870",
+   "secondSource": "https://zingmyorder.com/restaurants/first-cup-ethiopian-restaurant-cafe-4432-n-19th-ave-phoenix-az-85015-usa",
+   "verifiedDate": "2026-09-28"
+  },
+  "or-portland-lalibela": {
+   "status": "verified",
+   "zip": "97212",
+   "phone": "(503) 300-1842",
+   "website": "https://lalibelaethiopianresto.com/",
+   "secondSource": "https://lalibelaethiopianresto.com/",
+   "verifiedDate": "2026-09-28"
+  },
+  "or-portland-sisters": {
+   "status": "verified",
+   "zip": "97233",
+   "phone": "(971) 544-7065",
+   "website": "https://sistersethiopianrestaurant.com/",
+   "secondSource": "https://sistersethiopianrestaurant.com/",
+   "verifiedDate": "2026-09-28"
+  },
+  "mo-kansas-city-j-and-k": {
+   "status": "verified",
+   "name": "J&K Ethiopian Restaurant",
+   "zip": "64151",
+   "phone": "(816) 997-9005",
+   "website": "https://www.jandkethio.com/",
+   "source": "https://www.jandkethio.com/",
+   "secondSource": "https://kansascitymag.com/an-ethiopian-restaurant-has-opened-in-the-northland/",
+   "notes": "Kansas City Magazine (Jan 2025): owners are natives of Ethiopia.",
+   "verifiedDate": "2026-09-28"
+  },
+  "ky-louisville-addis-ababa": {
+   "status": "verified",
+   "name": "Addis Ababa Ethiopian Bar & Restaurant",
+   "altNames": [
+    "Addis Abeba"
+   ],
+   "zip": "40218",
+   "website": "https://addisababaethiopian.com/",
+   "source": "https://addisababaethiopian.com/",
+   "notes": "Yelp listing active May 2026.",
+   "verifiedDate": "2026-09-28"
+  },
+  "nc-charlotte-enat": {
+   "status": "verified",
+   "address": "4450 The Plaza, Suite D",
+   "zip": "28215",
+   "phone": "(980) 237-0716",
+   "website": "https://enatethiopianrestaurant.com/",
+   "source": "https://enatethiopianrestaurant.com/",
+   "secondSource": "https://www.tripadvisor.ca/Restaurant_Review-g49022-d13436360-Reviews-Enat_Ethiopian_Restaurant-Charlotte_North_Carolina.html",
+   "verifiedDate": "2026-09-28"
+  },
+  "tn-nashville-awash": {
+   "status": "verified",
+   "address": "976 Murfreesboro Pike, Suite 11",
+   "zip": "37217",
+   "phone": "(615) 366-9911",
+   "secondSource": "https://www.eatokra.com/businesses/awash-ethiopian-restaurant-tn",
+   "verifiedDate": "2026-09-28"
+  },
+  "wa-seattle-medhane-alem-evangelical": {
+   "zip": "98118",
+   "phone": "(206) 720-0181",
+   "website": "https://medhanealem.org/",
+   "secondSource": "https://usmb.org/church/medhane-alem-evangelical-church/",
+   "notes": "Official site and USMB confirm address; Ethiopian link from Yelp listing name only. Keep community until confirmed.",
+   "verifiedDate": "2026-09-28"
+  },
+  "nv-spring-valley-kidane-meheret-st-michael": {
+   "status": "verified",
+   "website": "https://hamerenoahlv.org/",
+   "social": "https://www.facebook.com/HamereNoahLV/",
+   "secondSource": "https://www.reviewjournal.com/business/little-ethiopia-business-community-ready-to-feel-more-at-home-2882537/attachment/hamere-noah-kidane-mehret-and-st-michael-ethiopian-orthodox-tewahedo-church-at-5985-s-lindell-r/",
+   "verifiedDate": "2026-09-28"
+  },
+  "ok-oklahoma-city-st-george-eotc": {
+   "status": "verified",
+   "secondSource": "https://www.yellowpages.com/oklahoma-city-ok/mip/st-george-ethiopian-orthodox-tewahedo-church-10002208",
+   "notes": "Also Charity Navigator EIN 54-2115341 (Genete Tsige St. George Ethiopian Orthodox Tewahedo Church Inc.).",
+   "verifiedDate": "2026-09-28"
+  },
+  "ct-east-hartford-ecac": {
+   "status": "verified",
+   "source": "https://ecact.org/contact/",
+   "verifiedDate": "2026-09-28"
+  },
+  "mo-kansas-city-eco-kc": {
+   "status": "verified",
+   "social": "https://www.facebook.com/ECOKC1/",
+   "secondSource": "https://www.facebook.com/ECOKC1/",
+   "notes": "Official site current (2026, Ethiopia Day 2025). Mailing address PO Box 8594, Kansas City MO 64141.",
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-iecf": {
+   "status": "verified",
+   "website": "https://intlethiopianchristianfellowshipchurch.com/",
+   "secondSource": "https://intlethiopianchristianfellowshipchurch.com/contact-us",
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-mekane-yesus": {
+   "status": "verified",
+   "phone": "(605) 332-3401",
+   "website": "https://faithlutheransiouxfalls.360unite.com/ethiopian-ministry",
+   "notes": "Phone is the Faith Lutheran church office.",
+   "verifiedDate": "2026-09-28"
+  },
+  "ca-san-jose-st-mary-eotc": {
+   "status": "needs-review",
+   "publicNote": "Church affiliation not yet confirmed. Call before visiting.",
+   "notes": "Search also shows 'San Jose Debre Genet Kidist Maryam' and 'St. Mary Tigrean Orthodox Tewahedo Church' pages; affiliation may differ. No official site found.",
+   "verifiedDate": "2026-09-28"
+  },
+  "or-portland-enjoni-cafe": {
+   "status": "needs-review",
+   "altNames": [
+    "E'Njoni Ethiopian Fusion"
+   ],
+   "publicNote": "May now operate as E'Njoni Ethiopian Fusion. Call before visiting.",
+   "secondSource": "https://www.grubhub.com/restaurant/enjoni-ethiopian-fusion-910-n-killingsworth-st-portland/12966944",
+   "verifiedDate": "2026-09-28"
+  },
+  "ga-atlanta-ethiopian-community-association": {
+   "notes": "Two office addresses online: 2791 Clairmont Rd NE, Atlanta (Yelp 2025) and 5616 Memorial Dr, Stone Mountain (map listing). Cause IQ lists Stone Mountain. Address left off until confirmed.",
+   "verifiedDate": "2026-09-28"
+  },
+  "tx-mesquite-genete-tsige-st-george": {
+   "secondSource": "https://www.visitmesquitetx.com/business/genete-tsige-st-george-church",
+   "social": "https://www.facebook.com/GeneteTsigeStGeorgeEOTC/",
+   "verifiedDate": "2026-09-28"
+  },
+  "az-phoenix-holy-trinity-st-stephen": {
+   "secondSource": "https://www.orientalorthodoxy.com/parish-finder/arizona/holy-trinity-st-stephen-eotc/",
+   "verifiedDate": "2026-09-28"
+  },
+  "or-portland-aberus": {
+   "secondSource": "https://everout.com/portland/locations/aberus-ethiopian-restaurant/l20499/",
+   "social": "https://www.facebook.com/AberusEthiopian/",
+   "verifiedDate": "2026-09-28"
+  },
+  "tn-nashville-rehoboth-cafe": {
+   "social": "https://www.facebook.com/p/Rehoboth-Ethiopian-Cafe-100075945285798/",
+   "secondSource": "https://www.facebook.com/p/Rehoboth-Ethiopian-Cafe-100075945285798/",
+   "verifiedDate": "2026-09-28"
+  },
+  "in-indianapolis-major-restaurant": {
+   "status": "verified",
+   "source": "https://www.yelp.com/biz/major-restaurant-east-african-authentic-food-indianapolis-2",
+   "secondSource": "https://www.visitindy.com/directory/major-restaurant/",
+   "subcategory": "Ethiopian & Eritrean restaurant",
+   "notes": "Visit Indy describes Ethiopian/Eritrean dining; Yelp active Sept 2026.",
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-hagere": {
+   "status": "verified",
+   "secondSource": "https://siouxfalls.business/ethiopian-restaurant-to-open-on-minnesota-avenue/",
+   "verifiedDate": "2026-09-28"
+  },
+  "sd-sioux-falls-fasika": {
+   "secondSource": "https://www.yellowpages.com/sioux-falls-sd/mip/fasika-ethiopian-restaurant-548739572",
+   "verifiedDate": "2026-09-28"
+  },
+  "ia-des-moines-ethiopian-eritrean-evangelical": {
+   "secondSource": "https://openbiblemessage.org/2020/01/former-enemies-worship-together-the-ethiopian-and-eritrean-fellowship-church/",
+   "notes": "Open Bible Churches article (2020): launched 2014, joined Open Bible Churches 2019. Current address not confirmed.",
+   "verifiedDate": "2026-09-28"
+  },
+  "vt-south-burlington-taste-of-abyssinia": {
+   "subcategory": "Ethiopian & Eritrean catering, takeout and cooking classes",
+   "verifiedDate": "2026-09-28"
+  },
+  "tx-houston-holy-trinity-and-saint-mary-ethiopian-orthodox-tewahedo-church": {
+   "status": "verified",
+   "secondSource": "https://www.guidestar.org/profile/47-3553023",
+   "verifiedDate": "2026-09-28"
+  },
+  "co-aurora-st-mary-ethiopian-orthodox-tewahedo-church": {
+   "phone": "(303) 364-2595",
+   "secondSource": "https://www.yellowpages.com/aurora-co/mip/st-mary-ethiopan-orthodox-church-10432779",
+   "notes": "YellowPages confirms 16250 E Colfax Ave; Yelp (May 2026) shows 16200 E Colfax Ave.",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-columbus-holy-trinity-eotc": {
+   "status": "verified",
+   "secondSource": "https://www.charitynavigator.org/ein/311449580",
+   "notes": "IRS-based profiles plus Yelp listing active March 2026 at 684 Oakwood Ave.",
+   "verifiedDate": "2026-09-28"
+  },
+  "dc-washington-elfegne": {
+   "status": "verified",
+   "secondSource": "https://www.ramw.org/restaurant/elfegne",
+   "verifiedDate": "2026-09-28"
+  },
+  "dc-washington-heat-da-spot": {
+   "status": "verified",
+   "phone": "(202) 836-4719",
+   "source": "https://heatdaspotdc.com/",
+   "secondSource": "https://intentionalist.com/b/heat-da-spot-cafe/",
+   "verifiedDate": "2026-09-28"
+  },
+  "md-hyattsville-selam-market-carryout": {
+   "status": "verified",
+   "secondSource": "https://www.grubhub.com/restaurant/selam-market-6521-riggs-rd-hyattsville/1060767",
+   "verifiedDate": "2026-09-28"
+  },
+  "va-falls-church-kera-ethiopian-restaurant-market": {
+   "secondSource": "https://ethiopiandining.com/listings/united-states/virginia/baileys-crossroads/restaurants/kera-ethiopian-restaurant-market/",
+   "verifiedDate": "2026-09-28"
+  },
+  "dc-washington-ethiopian-community-center": {
+   "status": "verified",
+   "source": "https://www.ethiopiancommunitydc.org/",
+   "secondSource": "https://www.findhelp.org/provider/ethiopian-community-center--washington-dc/6619365994659840",
+   "verifiedDate": "2026-09-28"
+  },
+  "md-silver-spring-mulu-law": {
+   "status": "verified",
+   "notes": "Official site describes the attorney as an Ethiopian lawyer. Firm also has a Minneapolis office (120 S 6th St #1515).",
+   "verifiedDate": "2026-09-28"
+  },
+  "md-silver-spring-kedus-hair-salon": {
+   "zip": "20910",
+   "phone": "(301) 495-0114",
+   "website": "https://www.kedushairsalonandbraiding.com/",
+   "notes": "Listed in HabeshaLink Ethiopian salon directory (older address 8203 Georgia Ave). Yelp (Jun 2026) and own site show 7851 Eastern Ave. Own site does not mention Ethiopian/Habesha; keep community.",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-columbus-hiwot-injera": {
+   "status": "verified",
+   "notes": "Official site: Columbus Ethiopian injera and grocery shop, 10+ years. Site phone has a 512 area code (not published here). A SNAP retailer record suggests 4419 E Main St 43213; not added until confirmed.",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-cincinnati-tizita-eats": {
+   "subcategory": "Ethiopian pop-up",
+   "social": "https://www.instagram.com/tizita_eats/",
+   "publicNote": "Pop-up with rotating venues. Check Instagram for the schedule.",
+   "verifiedDate": "2026-09-28"
+  },
+  "oh-akron-cafe-bereka": {
+   "status": "verified",
+   "address": "3308 S Main St",
+   "zip": "44319",
+   "secondSource": "https://everydayakron.com/2025/01/11/bereka-coffee-cafe-bereka/",
+   "verifiedDate": "2026-09-28"
+  },
+  "md-silver-spring-nazret-market": {
+   "status": "verified",
+   "zip": "20910",
+   "secondSource": "https://www.tsionafoods.com/find-us",
+   "verifiedDate": "2026-09-28"
+  },
+  "dc-washington-black-lion-market": {
+   "status": "verified",
+   "zip": "20010",
+   "secondSource": "https://columbiaheightsinsider.com/black-lion-market-on-14th-little/",
+   "verifiedDate": "2026-09-28"
+  },
+  "tx-dallas-banna-restaurant-bar": {
+   "status": "verified",
+   "subcategory": "Eritrean & Ethiopian restaurant",
+   "address": "9560 Skillman St, Suite 120",
+   "zip": "75243",
+   "phone": "(214) 758-0752",
+   "website": "https://bannarestaurant.com/",
+   "secondSource": "https://bannarestaurant.com/",
+   "verifiedDate": "2026-09-28"
+  },
+  "tx-pflugerville-lideta-mariam": {
+   "status": "verified",
+   "website": "https://eotc-lideta.org/",
+   "source": "https://eotc-lideta.org/",
+   "address": "16403 Mill Creek Rd",
+   "zip": "78660",
+   "notes": "Old domain austinlidetaeotc.org now redirects to an unrelated spam site; replaced 2026-09-28.",
+   "verifiedDate": "2026-09-28"
+  },
+  "ga-clarkston-ledet": {
+   "address": "4975 Memorial Dr",
+   "city": "Stone Mountain",
+   "source": "https://order.toasttab.com/online/ledet-restaurant-4975-memorial-dr",
+   "secondSource": "https://www.ledetethiopianrestaurant.com/",
+   "publicNote": "Some listings still show 447 N Indian Creek Dr, Clarkston. Call before visiting.",
+   "notes": "Website, Toast, OpenTable and Tripadvisor point to 4975 Memorial Dr, Stone Mountain (same phone). NetWaiter still shows Clarkston.",
+   "verifiedDate": "2026-09-28"
+  },
+  "nj-newark-bisrate-gebriel-ethiopian-orthodox-tewahedo-church": {
+   "secondSource": "https://habeshalink.com/listings/bisrate-gebriel-ethiopian-orthodox-tewahedo-church/",
+   "verifiedDate": "2026-09-28"
+  }
+ },
+ "add": [
+  {
+   "id": "nc-durham-abol",
+   "name": "Abol Ethiopian Restaurant",
+   "category": "Restaurant",
+   "subcategory": "Ethiopian restaurant",
+   "address": "2945 S Miami Blvd, Suite 102",
+   "city": "Durham",
+   "metro": "Raleigh-Durham",
+   "state": "North Carolina",
+   "zip": "27703",
+   "phone": "(984) 209-3411",
+   "website": "https://abolethiopiarestaurant.com/",
+   "source": "https://abolethiopiarestaurant.com/",
+   "secondSource": "https://www.discoverdurham.com/directory/abol-ethiopian-restaurant/",
+   "status": "verified",
+   "verifiedDate": "2026-09-28",
+   "notes": "Not related to the closed Abol in Overland Park KS."
+  }
+ ]
+}
