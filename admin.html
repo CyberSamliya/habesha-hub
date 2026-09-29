@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; connect-src https://yfzydixypuronzoeargv.supabase.co; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'">
+<title>Habesha Hub Admin Dashboard</title>
+<link rel="stylesheet" href="styles.css?v=20260929-cat4d2">
+<style>
+.admin-wrap{max-width:1200px;margin:auto;padding:24px}
+.admin-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 24px}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px}
+.admin-tabs button{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:10px 14px;cursor:pointer}
+.admin-tabs button.active{font-weight:800;border-color:#0f172a}
+.admin-panel{display:none}.admin-panel.active{display:block}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.admin-stat,.admin-box{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+.admin-stat strong{display:block;font-size:2rem}
+.admin-table-wrap{overflow:auto;background:#fff;border:1px solid #e5e7eb;border-radius:16px}
+.admin-table{width:100%;border-collapse:collapse;min-width:760px}
+.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top}
+.admin-muted{color:#64748b}.admin-danger{color:#991b1b}
+</style>
+</head>
+<body>
+<main class="admin-wrap">
+  <div class="admin-top">
+    <div><div class="eyebrow">Private administration</div><h1>Habesha Hub Admin Dashboard</h1><div id="adminIdentity" class="admin-muted"></div></div>
+    <button id="adminSignOut" class="btn secondary" type="button">Sign out</button>
+  </div>
+  <div id="adminGate" class="admin-box">Checking administrator access…</div>
+  <div id="adminApp" hidden>
+    <div class="admin-tabs" role="tablist">
+      <button class="active" data-tab="dashboard">Dashboard</button>
+      <button data-tab="members">Members</button>
+      <button data-tab="submissions">Submissions</button>
+      <button data-tab="businesses">Businesses</button>
+      <button data-tab="events">Events</button>
+      <button data-tab="reports">Reports</button>
+      <button data-tab="forms">Google Forms</button>
+      <button data-tab="settings">Settings</button>
+    </div>
+    <section id="panel-dashboard" class="admin-panel active">
+      <div class="admin-stats">
+        <div class="admin-stat"><span>Profiles</span><strong id="statProfiles">0</strong></div>
+        <div class="admin-stat"><span>Member requests</span><strong id="statMembers">0</strong></div>
+        <div class="admin-stat"><span>Business claims</span><strong id="statBusinesses">0</strong></div>
+        <div class="admin-stat"><span>Events</span><strong id="statEvents">0</strong></div>
+        <div class="admin-stat"><span>Reports</span><strong id="statReports">0</strong></div>
+      </div>
+    </section>
+    <section id="panel-members" class="admin-panel"><h2>Members</h2><div id="membersTable"></div></section>
+    <section id="panel-submissions" class="admin-panel"><h2>Membership submissions</h2><div id="submissionsTable"></div></section>
+    <section id="panel-businesses" class="admin-panel"><h2>Business claims</h2><div id="businessesTable"></div></section>
+    <section id="panel-events" class="admin-panel"><h2>Event submissions</h2><div id="eventsTable"></div></section>
+    <section id="panel-reports" class="admin-panel"><h2>Reports</h2><div id="reportsTable"></div></section>
+    <section id="panel-forms" class="admin-panel"><h2>Google Forms</h2><p class="admin-muted">Private form and response-sheet shortcuts will appear here after they are stored securely in the admin-only database table. No private Google links are stored in the public repository.</p><div id="formsTable"></div></section>
+    <section id="panel-settings" class="admin-panel"><h2>Settings</h2><div class="admin-box"><p>Administrator access is enforced by Supabase Authentication and Row Level Security. Only profiles with role <strong>admin</strong> and status <strong>active</strong> can access protected administrative data.</p></div></section>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+</body>
+</html>
