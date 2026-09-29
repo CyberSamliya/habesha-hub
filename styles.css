@@ -155,3 +155,50 @@ a.chip{text-decoration:none;display:inline-block}
 @media (prefers-reduced-motion:reduce) {
   #categoryGrid .cat,#categoryGrid .icon-3d { transition:none; transform:none !important; }
 }
+
+/* Category dimensional design v2 — intentionally visible at rest */
+#community { overflow:hidden; }
+#categoryGrid { gap:26px; perspective:1400px; padding:18px 8px 30px; }
+#categoryGrid .cat {
+  min-height:190px;
+  padding:24px 22px 22px;
+  border:1px solid rgba(72,58,35,.18);
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff 0%,#fffdf8 62%,#f2eadb 100%);
+  box-shadow:0 5px 0 #ded3bf, 0 13px 0 rgba(231,222,205,.72), 0 25px 34px rgba(38,31,20,.13);
+  transform:translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(0);
+}
+#categoryGrid .cat:nth-child(3n+2) { transform:translateY(calc(var(--lift) - 5px)) rotateX(var(--rx)) rotateY(var(--ry)); }
+#categoryGrid .cat::before {
+  background:linear-gradient(120deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.18) 36%,transparent 58%),
+             radial-gradient(circle at var(--mx,25%) var(--my,18%),rgba(255,255,255,.98),transparent 31%);
+  opacity:1;
+}
+#categoryGrid .cat::after {
+  left:8%; right:8%; bottom:-18px; height:28px;
+  background:rgba(52,40,24,.18); filter:blur(13px); opacity:.55;
+}
+#categoryGrid .icon-3d {
+  width:72px; height:72px; border-radius:22px; margin-top:-8px; margin-bottom:18px;
+  border:1px solid rgba(15,82,65,.22);
+  background:linear-gradient(145deg,#ffffff 8%,#f7f0df 55%,#e4d4b4 100%);
+  box-shadow:inset 3px 3px 7px rgba(255,255,255,.95), inset -4px -5px 9px rgba(109,82,42,.13),
+             0 8px 0 rgba(213,198,168,.78), 0 18px 24px rgba(32,26,17,.16);
+  transform:translateZ(48px) rotateX(-2deg);
+}
+#categoryGrid .icon-face { font-size:36px; filter:drop-shadow(0 7px 5px rgba(0,0,0,.23)); transform:translateY(-2px); }
+#categoryGrid .cat strong { font-size:1.03rem; transform:translateZ(30px); }
+#categoryGrid .cat > span:last-child { margin-top:7px; transform:translateZ(20px); }
+#categoryGrid .cat.is-active,
+#categoryGrid .cat:hover {
+  --lift:-11px;
+  box-shadow:0 6px 0 #d3c3a6,0 15px 0 rgba(224,210,184,.72),0 32px 46px rgba(30,24,16,.20);
+}
+#categoryGrid .cat.is-active .icon-3d,
+#categoryGrid .cat:hover .icon-3d { transform:translateZ(62px) translateY(-4px) scale(1.08); }
+@media (max-width:700px) {
+ #categoryGrid { gap:18px; padding-left:2px; padding-right:2px; }
+ #categoryGrid .cat { min-height:170px; box-shadow:0 4px 0 #ded3bf,0 10px 0 rgba(231,222,205,.65),0 18px 25px rgba(38,31,20,.11); }
+ #categoryGrid .cat:nth-child(3n+2) { transform:none; }
+ #categoryGrid .icon-3d { width:62px;height:62px; }
+}
