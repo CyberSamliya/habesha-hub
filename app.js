@@ -296,6 +296,32 @@
     renderHousing();
   }
 
+  // ---------- dimensional category interaction ----------
+  (function () {
+    var cards = document.querySelectorAll("#categoryGrid .cat");
+    if (!cards.length) return;
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        cards.forEach(function (c) { c.classList.remove("is-active"); });
+        card.classList.add("is-active");
+      });
+      if (!reduced && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        card.addEventListener("pointermove", function (e) {
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+          card.style.setProperty("--ry", ((x-.5)*8).toFixed(2)+"deg");
+          card.style.setProperty("--rx", ((.5-y)*7).toFixed(2)+"deg");
+          card.style.setProperty("--mx", (x*100).toFixed(1)+"%");
+          card.style.setProperty("--my", (y*100).toFixed(1)+"%");
+        });
+        card.addEventListener("pointerleave", function () {
+          card.style.setProperty("--rx","0deg"); card.style.setProperty("--ry","0deg");
+        });
+      }
+    });
+  })();
+
   // ---------- dimensional hero interaction ----------
   (function () {
     var scene = $("scene3d");
