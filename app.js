@@ -295,6 +295,30 @@
     renderHousing();
   }
 
+  // ---------- dimensional hero interaction ----------
+  (function () {
+    var scene = $("scene3d");
+    if (!scene) return;
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduced && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      scene.addEventListener("pointermove", function (e) {
+        var r = scene.getBoundingClientRect();
+        var rx = ((e.clientY - r.top) / r.height - .5) * -5;
+        var ry = ((e.clientX - r.left) / r.width - .5) * 7;
+        scene.style.transform = "rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg)";
+      });
+      scene.addEventListener("pointerleave", function () { scene.style.transform = ""; });
+    }
+    document.querySelectorAll("[data-scene-category]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var cat = link.getAttribute("data-scene-category") || "";
+        el.cat.value = cat;
+        syncDenomVisibility();
+        if (el.state.value) renderListings(true);
+      });
+    });
+  })();
+
   // ---------- URL, title (shareable + crawlable filter states) ----------
   var BASE_TITLE = document.title;
   function updateUrlAndTitle() {
