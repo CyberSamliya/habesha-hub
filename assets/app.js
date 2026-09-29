@@ -7,7 +7,6 @@
   "use strict";
 
   // ---------- configuration ----------
-  var CONTACT_EMAIL = "samra8293101@gmail.com"; // change here to move submissions to a dedicated inbox
   var SITE_URL = "https://cybersamliya.github.io/habesha-hub/";
   var GITHUB_ISSUES = "https://github.com/CyberSamliya/habesha-hub/issues/new/choose";
   var PAGE_SIZE = 48;
@@ -176,7 +175,7 @@
     try { return dt.toLocaleDateString(LANG === "am" ? "am-ET" : "en-US", {year:"numeric", month:"short", day:"numeric", timeZone:"UTC"}); } catch (e) { return iso; }
   }
   function cityLine(x) { return [x.city, (ABBR[x.state] || x.state) + (x.zip ? " " + x.zip : "")].filter(Boolean).join(", "); }
-  function mailto(subject, body) { return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body); }
+  function mailto(subject, body) { return "submission.html?legacy=" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body); }
   function mapsHref(x) {
     if (httpUrl(x.mapsUrl)) return x.mapsUrl;
     var q = x.address ? x.name + ", " + x.address + ", " + cityLine(x) : x.name + " " + x.city + " " + x.state;
@@ -406,7 +405,7 @@
       return '<a class="contrib" href="' + esc(mailto("Habesha Hub - " + c.subj, c.body)) + '"><strong>' + esc(t(c.k + "_t")) + "</strong><span>" + esc(t(c.k + "_d")) + "</span></a>";
     }).join("") + '<a class="contrib" href="' + GITHUB_ISSUES + '" target="_blank" rel="noopener"><strong>GitHub</strong><span>' + esc(t("github_alt")) + "</span></a>";
     $("housingSubmit").href = mailto("Habesha Hub - Add Housing", CONTRIB[4].body);
-    $("footerContact").href = "mailto:" + CONTACT_EMAIL;
+    $("footerContact").href = "submission.html?legacy=" + CONTACT_EMAIL;
   }
 
   // ---------- structured data for search engines ----------
