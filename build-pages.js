@@ -164,15 +164,22 @@ function main() {
   const updated = meta.updated || new Date().toISOString().slice(0, 10);
   const byState = {};
   rows.forEach(r => (byState[r.state] = byState[r.state] || []).push(r));
-  const states = Object.keys(byState).sort();
+  const states = Object.keys(ABBR).sort();
   // State pages live in the site root so they can be uploaded without folders.
   const dir = ROOT;
   const keep = new Set(states.map(s => slug(s) + ".html"));
-  for (const s of Object.keys(ABBR)) { const f = slug(s) + ".html"; if (!keep.has(f) && fs.existsSync(path.join(dir, f))) { fs.unlinkSync(path.join(dir, f)); console.log("Removed " + f + " (no active listings)"); } }
-  for (const s of states) fs.writeFileSync(path.join(dir, slug(s) + ".html"), page(s, byState[s], states, updated));
+  for (const s of states) {
+    const stateRows = byState[s] || [];
+    if (stateRows.length) fs.writeFileSync(path.join(dir, slug(s) + ".html"), page(s, stateRows, states, updated));
+    else {
+      const f = path.join(dir, slug(s) + ".html");
+      if (!fs.existsSync(f)) console.warn("WARN missing empty-state page: " + slug(s) + ".html");
+    }
+  }
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
-    .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`));
+    .concat(states.filter(s => (byState[s] || []).length).map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
+    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
   const idx = path.join(ROOT, "index.html");
@@ -181,6 +188,6 @@ function main() {
   const out = html.replace(/<!--STATE_LINKS-->[\s\S]*?<!--\/STATE_LINKS-->/, `<!--STATE_LINKS-->${links}<!--/STATE_LINKS-->`);
   if (out === html && !html.includes(links)) console.warn("WARN index.html has no STATE_LINKS markers");
   fs.writeFileSync(idx, out);
-  console.log(`Built ${states.length} state pages, sitemap with ${urls.length} URLs.`);
+  console.log(`Preserved all ${states.length} state pages; rebuilt populated state pages and sitemap with ${urls.length} URLs.`);
 }
 main();
