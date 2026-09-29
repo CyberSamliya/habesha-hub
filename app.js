@@ -260,6 +260,15 @@
   function renderListings(resetPaging) {
     if (resetPaging) shown = PAGE_SIZE;
     var state = el.state.value, city = el.city.value, cat = el.cat.value, denom = el.denom.value;
+    var hasFilter = !!(el.q.value.trim() || state || city || cat || denom || el.verified.checked);
+    if (!hasFilter) {
+      el.meta.textContent = "Search by name, service, city or ZIP, or choose a filter.";
+      el.grid.innerHTML = "";
+      el.more.classList.add("hidden");
+      updateUrlAndTitle();
+      renderHousing();
+      return;
+    }
     var rows = currentRows();
     var parts = [];
     if (city) parts.push(city); if (state) parts.push(state);
