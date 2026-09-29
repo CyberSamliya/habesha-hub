@@ -368,7 +368,13 @@
   // ---------- state explorer ----------
   function stateSlug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
   function renderState() {
-    var state = $("stateExplorer").value;\n    var box = $("stateSummary");\n    if (!state) { box.innerHTML = '<div class="empty">Select a state to see cities, categories and current community listings.</div>'; return; }\n    var rows = LISTINGS.filter(function (x) { return x.state === state; });
+    var state = $("stateExplorer").value;
+    var box = $("stateSummary");
+    if (!state) {
+      box.innerHTML = '<div class="empty">Select a state to see cities, categories and current community listings.</div>';
+      return;
+    }
+    var rows = LISTINGS.filter(function (x) { return x.state === state; });
     var cities = {}, cats = {};
     rows.forEach(function (x) { cities[area(x)] = (cities[area(x)] || 0) + 1; cats[x.category] = (cats[x.category] || 0) + 1; });
     var html = '<h3 class="state-title">' + esc(state) + "</h3>";
