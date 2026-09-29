@@ -61,7 +61,7 @@
     cat_house_t:{en:"Housing",am:"መኖሪያ ቤት"},cat_house_d:{en:"Rooms, roommates and rentals (dated listings)",am:"ክፍሎች፣ አብሮ ተከራዮች እና ኪራዮች (ቀን ያላቸው)"},
     f_what:{en:"What",am:"ምን"},f_state:{en:"State",am:"ግዛት"},f_city:{en:"City / metro",am:"ከተማ"},f_category:{en:"Category",am:"ምድብ"},f_denomination:{en:"Church tradition",am:"የቤተክርስቲያን ትውፊት"},
     dir_search_placeholder2:{en:"Name, service, city or ZIP",am:"ስም፣ አገልግሎት፣ ከተማ ወይም ZIP"},
-    choose_state_first:{en:"Choose a state first",am:"መጀመሪያ ግዛት ይምረጡ"},
+    choose_state_first:{en:"Select one",am:"አንዱን ይምረጡ"},select_city_opt:{en:"Select one",am:"አንዱን ይምረጡ"},
     all_cities_opt:{en:"All cities",am:"ሁሉም ከተሞች"},
     all_church_opt2:{en:"All Ethiopian churches",am:"ሁሉም የኢትዮጵያ አብያተ ክርስቲያናት"},
     denom_orthodox_full:{en:"Ethiopian Orthodox Tewahedo",am:"የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ"},
@@ -194,7 +194,7 @@
 
   function fillCities() {
     var state = el.state.value, prev = el.city.value;
-    if (!state) { el.city.innerHTML = '<option value="">' + esc(t("choose_state_first")) + "</option>"; el.city.disabled = true; return; }
+    if (!state) { el.city.innerHTML = '<option value="">' + esc(t("select_city_opt")) + "</option>"; el.city.disabled = true; return; }
     var counts = {};
     LISTINGS.forEach(function (x) { if (x.state === state) counts[area(x)] = (counts[area(x)] || 0) + 1; });
     var cities = Object.keys(counts).sort();
@@ -507,15 +507,6 @@
       var c = a.getAttribute("data-category"); if (c === "Housing") return;
       el.cat.value = c; el.q.value = ""; syncDenomVisibility(); renderListings(true);
     });
-  });
-  $("heroSearch").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var intent = applyIntent($("heroWhat").value);
-    el.q.value = intent.q; el.state.value = $("heroState").value; fillCities();
-    el.cat.value = intent.cat; syncDenomVisibility(); el.denom.value = intent.denom;
-    renderListings(true);
-    if (el.state.value) { $("stateExplorer").value = el.state.value; renderState(); }
-    $("directory").scrollIntoView();
   });
   $("shareLink").addEventListener("click", function (e) {
     e.preventDefault();
