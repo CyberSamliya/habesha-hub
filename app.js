@@ -7,7 +7,6 @@
   "use strict";
 
   // ---------- configuration ----------
-  var CONTACT_EMAIL = "samra8293101@gmail.com"; // change here to move submissions to a dedicated inbox
   var SITE_URL = "https://cybersamliya.github.io/habesha-hub/";
   var GITHUB_ISSUES = "https://github.com/CyberSamliya/habesha-hub/issues/new/choose";
   var PAGE_SIZE = 48;
@@ -180,7 +179,7 @@
     try { return dt.toLocaleDateString(LANG === "am" ? "am-ET" : "en-US", {year:"numeric", month:"short", day:"numeric", timeZone:"UTC"}); } catch (e) { return iso; }
   }
   function cityLine(x) { return [x.city, (ABBR[x.state] || x.state) + (x.zip ? " " + x.zip : "")].filter(Boolean).join(", "); }
-  function mailto(subject, body) { return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body); }
+  function submitUrl(type, x) { var q = new URLSearchParams({type:type}); if(x){ if(x.id) q.set("id",x.id); if(x.name) q.set("name",x.name); if(x.city) q.set("city",x.city); if(x.state) q.set("state",x.state); } return "submission.html?" + q.toString(); }
   function mapsHref(x) {
     if (httpUrl(x.mapsUrl)) return x.mapsUrl;
     var q = x.address ? x.name + ", " + x.address + ", " + cityLine(x) : x.name + " " + x.city + " " + x.state;
@@ -243,8 +242,8 @@
     if (web) actions.push('<a class="sec" href="' + esc(web) + '" target="_blank" rel="noopener" aria-label="' + esc(t("website_btn") + ": " + x.name) + '">' + esc(t("website_btn")) + "</a>");
     else if (soc) actions.push('<a class="sec" href="' + esc(soc) + '" target="_blank" rel="noopener">' + esc(t("website_btn")) + "</a>");
     if (!limited) actions.push('<a class="sec" href="' + esc(mapsHref(x)) + '" target="_blank" rel="noopener" aria-label="' + esc((x.address ? t("directions_btn") : t("map_btn")) + ": " + x.name) + '">' + esc(x.address ? t("directions_btn") : t("map_btn")) + "</a>");
-    var minor = '<a class="minor" href="' + esc(mailto("Habesha Hub correction: " + x.name + " [" + x.id + "]", fixBody)) + '">' + esc(t("report_btn")) + "</a>";
-    if (!isChurch && x.category !== "Community") minor += ' <a class="minor" href="' + esc(mailto("Habesha Hub claim: " + x.name + " [" + x.id + "]", claimBody)) + '">' + esc(t("claim_btn")) + "</a>";
+    var minor = '<a class="minor" href="' + esc(submitUrl("correction", x)) + '">' + esc(t("report_btn")) + "</a>"; minor += ' <a class="minor" href="' + esc(submitUrl("closed", x)) + '">Report closed/moved</a>';
+    if (!isChurch && x.category !== "Community") minor += ' <a class="minor" href="' + esc(submitUrl("claim", x)) + '">' + esc(t("claim_btn")) + "</a>";
     return '<article class="listing" id="l-' + esc(x.id) + '">' +
       '<span class="type">' + esc(typeLine) + "</span>" +
       "<h3>" + esc(x.name) + "</h3>" +
@@ -444,8 +443,8 @@
     $("contribGrid").innerHTML = CONTRIB.map(function (c) {
       return '<a class="contrib" href="' + esc(mailto("Habesha Hub - " + c.subj, c.body)) + '"><strong>' + esc(t(c.k + "_t")) + "</strong><span>" + esc(t(c.k + "_d")) + "</span></a>";
     }).join("") + '<a class="contrib" href="' + GITHUB_ISSUES + '" target="_blank" rel="noopener"><strong>GitHub</strong><span>' + esc(t("github_alt")) + "</span></a>";
-    $("housingSubmit").href = mailto("Habesha Hub - Add Housing", CONTRIB[4].body);
-    $("footerContact").href = "mailto:" + CONTACT_EMAIL;
+    $("housingSubmit").href = "submission.html?type=housing";
+    $("footerContact").href = "submission.html";
   }
 
   // ---------- structured data for search engines ----------
