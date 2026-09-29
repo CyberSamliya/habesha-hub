@@ -243,7 +243,7 @@
     else if (soc) actions.push('<a class="sec" href="' + esc(soc) + '" target="_blank" rel="noopener">' + esc(t("website_btn")) + "</a>");
     if (!limited) actions.push('<a class="sec" href="' + esc(mapsHref(x)) + '" target="_blank" rel="noopener" aria-label="' + esc((x.address ? t("directions_btn") : t("map_btn")) + ": " + x.name) + '">' + esc(x.address ? t("directions_btn") : t("map_btn")) + "</a>");
     var minor = '<a class="minor" href="' + esc(submitUrl("correction", x)) + '">' + esc(t("report_btn")) + "</a>"; minor += ' <a class="minor" href="' + esc(submitUrl("closed", x)) + '">Report closed/moved</a>';
-    if (!isChurch && x.category !== "Community") minor += ' <a class="minor" href="' + esc(submitUrl("claim", x)) + '">' + esc(t("claim_btn")) + "</a>";
+    minor += ' <a class="minor" href="' + esc(submitUrl("claim", x)) + '">' + esc(t("claim_btn")) + "</a>";
     return '<article class="listing" id="l-' + esc(x.id) + '">' +
       '<span class="type">' + esc(typeLine) + "</span>" +
       "<h3>" + esc(x.name) + "</h3>" +
