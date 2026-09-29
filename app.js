@@ -423,7 +423,7 @@
         "<p>" + esc(t("posted_word")) + " " + esc(fmtDate(h.datePosted)) + " · " + esc(t("last_checked")) + " " + esc(fmtDate(h.dateLastChecked)) + "</p>" +
         (h.contact ? "<p><strong>" + esc(t("contact_word")) + ":</strong> " + esc(h.contact) + "</p>" : "") +
         '<div><span class="status-pill ' + r.s + '">' + esc(label[r.s]) + "</span></div>" +
-        (src ? '<span class="meta-line"><a href="' + esc(src) + '" target="_blank" rel="noopener nofollow">' + esc(t("source_link")) + (h.source ? ": " + esc(h.source) : "") + "</a></span>" : "") + "</article>";
+        (src ? '<span class="meta-line"><a href="' + esc(src) + '" target="_blank" rel="noopener nofollow">' + esc(t("source_link")) + (h.source ? ": " + esc(h.source) : "") + "</a></span>" : "") + '<div class="listing-actions"><a class="sec" href="submission.html?type=scam&name=' + encodeURIComponent(h.title || "") + '&city=' + encodeURIComponent(h.city || "") + '&state=' + encodeURIComponent(h.state || "") + '">Report scam / safety issue</a><a class="sec" href="housing-safety.html">Housing safety</a></div></article>';
     }).join("") : '<div class="empty">' + esc(t("housing_empty")) + "</div>";
   }
 
