@@ -441,7 +441,7 @@
   ];
   function renderContrib() {
     $("contribGrid").innerHTML = CONTRIB.map(function (c) {
-      return '<a class="contrib" href="' + esc(mailto("Habesha Hub - " + c.subj, c.body)) + '"><strong>' + esc(t(c.k + "_t")) + "</strong><span>" + esc(t(c.k + "_d")) + "</span></a>";
+      var types={c_biz:"add",c_church:"church",c_pro:"professional",c_org:"add",c_house:"housing",c_fix:"correction",c_claim:"claim",c_event:"event"}; return '<a class="contrib" href="submission.html?type=' + (types[c.k]||"add") + '"><strong>' + esc(t(c.k + "_t")) + "</strong><span>" + esc(t(c.k + "_d")) + "</span></a>";
     }).join("") + '<a class="contrib" href="' + GITHUB_ISSUES + '" target="_blank" rel="noopener"><strong>GitHub</strong><span>' + esc(t("github_alt")) + "</span></a>";
     $("housingSubmit").href = "submission.html?type=housing";
     $("footerContact").href = "submission.html";
