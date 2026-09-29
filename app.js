@@ -359,7 +359,7 @@
   // ---------- state explorer ----------
   function stateSlug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
   function renderState() {
-    var state = $("stateExplorer").value, rows = LISTINGS.filter(function (x) { return x.state === state; });
+    var state = $("stateExplorer").value;\n    var box = $("stateSummary");\n    if (!state) { box.innerHTML = '<div class="empty">Select a state to see cities, categories and current community listings.</div>'; return; }\n    var rows = LISTINGS.filter(function (x) { return x.state === state; });
     var cities = {}, cats = {};
     rows.forEach(function (x) { cities[area(x)] = (cities[area(x)] || 0) + 1; cats[x.category] = (cats[x.category] || 0) + 1; });
     var html = '<h3 class="state-title">' + esc(state) + "</h3>";
@@ -371,7 +371,7 @@
       html += "<strong>" + esc(t("categories_h")) + '</strong><div class="chips">' + CATEGORIES.filter(function (c) { return cats[c.id]; }).map(function (c) { return '<button type="button" class="chip" data-cat="' + c.id + '">' + esc(t(c.key)) + " (" + cats[c.id] + ")</button>"; }).join("") + "</div>";
     }
     html += '<div class="quicklinks">' + (rows.length ? '<a href="' + stateSlug(state) + '.html">' + esc(t("state_page_link")) + " " + esc(state) + "</a>" : "") + '<a href="#directory" id="seeState">' + esc(t("view_directory")) + '</a><a href="submission.html?type=add&state=' + encodeURIComponent(state) + '">' + esc(t("add_state_listing")) + " " + esc(state) + '</a><a href="https://www.fns.usda.gov/snap/state-directory" target="_blank" rel="noopener">' + esc(t("official_snap")) + '</a><a href="https://www.hud.gov/states" target="_blank" rel="noopener">' + esc(t("hud_resources")) + "</a></div>";
-    var box = $("stateSummary"); box.innerHTML = html;
+    box.innerHTML = html;
     function go(city, cat) {
       el.state.value = state; fillCities(); el.city.value = city || ""; el.cat.value = cat || ""; syncDenomVisibility(); el.q.value = "";
       renderListings(true); $("directory").scrollIntoView();
@@ -514,7 +514,7 @@
   $("langBtn").addEventListener("click", function () { LANG = LANG === "am" ? "en" : "am"; storeSet("hh_lang", LANG); applyLang(); });
 
   // ---------- init ----------
-  $("stateExplorer").value = "Ohio";
+  $("stateExplorer").value = "";
   readUrl();
   if (el.state.value) $("stateExplorer").value = el.state.value;
   renderStats();
