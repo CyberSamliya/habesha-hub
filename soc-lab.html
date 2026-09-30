@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; connect-src https://yfzydixypuronzoeargv.supabase.co; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'">
+<title>Habesha Hub SOC Lab</title>
+<link rel="stylesheet" href="styles.css?v=20260929-cat4d2">
+<style>
+body{background:#f8fafc}
+.soc-shell{max-width:1500px;margin:0 auto;padding:18px}
+.soc-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
+.soc-grid{display:grid;grid-template-columns:minmax(320px,40%) minmax(0,60%);gap:16px;align-items:start}
+.soc-pane{background:#fff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 10px 28px rgba(15,23,42,.06);overflow:hidden}
+.soc-head{padding:16px 18px;border-bottom:1px solid #e2e8f0;background:#f8fafc}
+.soc-body{padding:18px}
+.step{border-left:4px solid #0f766e;padding:10px 12px;margin:12px 0;background:#f8fafc;border-radius:8px}
+.logbox{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem;white-space:pre-wrap;line-height:1.5;max-height:330px;overflow:auto}
+.alert-card{border:1px solid #cbd5e1;border-radius:14px;padding:14px;margin-bottom:12px}
+.alert-high{border-left:5px solid #b91c1c}
+.alert-med{border-left:5px solid #b45309}
+label{font-weight:700;display:block;margin-top:12px}
+textarea,select,input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font:inherit}
+textarea{min-height:110px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#e2e8f0;font-size:.8rem;font-weight:700}
+.hidden{display:none!important}
+@media(max-width:900px){.soc-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="soc-shell">
+  <div class="soc-top">
+    <div>
+      <div class="eyebrow">Private hands-on training</div>
+      <h1>Habesha Hub SOC Lab</h1>
+      <div id="socIdentity" class="admin-muted"></div>
+    </div>
+    <div>
+      <a class="btn secondary" href="admin.html">Admin</a>
+      <button id="socSignOut" class="btn secondary" type="button">Sign out</button>
+    </div>
+  </div>
+
+  <div id="socGate" class="soc-pane"><div class="soc-body">Checking administrator access…</div></div>
+
+  <div id="socApp" class="soc-grid hidden">
+    <section class="soc-pane">
+      <div class="soc-head">
+        <span class="badge">Lesson 1</span>
+        <h2>Alert Triage Fundamentals</h2>
+      </div>
+      <div class="soc-body">
+        <p><strong>Goal:</strong> learn how a SOC analyst turns an alert into a reasoned decision.</p>
+        <div class="step"><strong>1. Read the alert.</strong><br>Identify who, what, when, where, and why it fired.</div>
+        <div class="step"><strong>2. Validate context.</strong><br>Is the activity expected for this user, host, or application?</div>
+        <div class="step"><strong>3. Examine evidence.</strong><br>Review log details before deciding whether the alert is benign or suspicious.</div>
+        <div class="step"><strong>4. Classify.</strong><br>Choose True Positive, False Positive, or Needs Investigation.</div>
+        <div class="step"><strong>5. Document.</strong><br>Record evidence and the reasoning behind your decision.</div>
+        <h3>Why this matters</h3>
+        <p>Most SOC work is not just reading alerts. The analyst must separate normal behavior from meaningful risk and leave a defensible record of the decision.</p>
+        <h3>Today’s scenario</h3>
+        <p>An administrator account has several failed sign-ins, followed by one successful sign-in. Your task is to determine whether this looks like a typo, password spraying, credential stuffing, or another suspicious pattern.</p>
+        <h3>What to look for</h3>
+        <ul>
+          <li>Source IP consistency</li>
+          <li>Timing between failures</li>
+          <li>Whether the successful login came from the same source</li>
+          <li>User agent changes</li>
+          <li>Whether the pattern repeats</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="soc-pane">
+      <div class="soc-head">
+        <span class="badge">Practice Console</span>
+        <h2>Investigate the Alert</h2>
+      </div>
+      <div class="soc-body">
+        <article class="alert-card alert-high">
+          <strong>Alert: Multiple Failed Admin Logins Followed by Success</strong>
+          <p><b>Severity:</b> High<br><b>Asset:</b> Habesha Hub Admin Portal<br><b>User:</b> admin user<br><b>Time window:</b> 07:12–07:16 ET</p>
+        </article>
+
+        <h3>Authentication log sample</h3>
+        <div class="logbox">2026-09-30T07:12:03-04:00 auth login_failed user=admin src_ip=198.51.100.24 user_agent="Chrome/154 Windows"
+2026-09-30T07:12:21-04:00 auth login_failed user=admin src_ip=198.51.100.24 user_agent="Chrome/154 Windows"
+2026-09-30T07:13:04-04:00 auth login_failed user=admin src_ip=198.51.100.24 user_agent="Chrome/154 Windows"
+2026-09-30T07:15:48-04:00 auth login_success user=admin src_ip=198.51.100.24 user_agent="Chrome/154 Windows"
+2026-09-30T07:16:12-04:00 admin resource_access resource="Google Forms" src_ip=198.51.100.24</div>
+
+        <div class="row">
+          <div>
+            <label for="classification">Classification</label>
+            <select id="classification">
+              <option value="">Select one</option>
+              <option>False Positive</option>
+              <option>True Positive</option>
+              <option>Needs Investigation</option>
+            </select>
+          </div>
+          <div>
+            <label for="severity">Your severity</label>
+            <select id="severity">
+              <option value="">Select one</option>
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+              <option>Critical</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="evidence">Evidence observed</label>
+        <textarea id="evidence" placeholder="Write the facts you can prove from the logs."></textarea>
+
+        <label for="reasoning">Analyst reasoning</label>
+        <textarea id="reasoning" placeholder="Explain why the evidence supports your classification."></textarea>
+
+        <label for="nextAction">Recommended next action</label>
+        <textarea id="nextAction" placeholder="Example: verify with the account owner, review additional sign-in logs, block source, reset credentials, or close as benign."></textarea>
+
+        <p><button id="checkAnswer" class="btn primary" type="button">Check my analysis</button></p>
+        <div id="feedback" class="alert-card hidden" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="soc-lab.js"></script>
+</body>
+</html>
