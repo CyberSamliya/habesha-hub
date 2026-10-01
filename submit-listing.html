@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Submit a Listing — Habesha Hub</title>
+<title>Submit, Correct or Report — Habesha Hub</title>
 <style>
   :root {
     --accent: #173b2c;
@@ -12,6 +12,9 @@
     --muted: #5b6a61;
     --border: #d9e3dc;
     --bg: #ffffff;
+    --warn-bg: #fff8e6;
+    --warn-border: #e9c46a;
+    --warn-text: #6b4e00;
   }
   * { box-sizing: border-box; }
   body {
@@ -45,25 +48,59 @@
     color: var(--muted);
     font-size: 15px;
     line-height: 1.6;
-    margin: 0 0 32px;
+    margin: 0 0 28px;
   }
+
+  .type-picker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .type-picker label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 16px 10px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+  }
+  .type-picker input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .type-picker label .emoji { font-size: 22px; }
+  .type-picker input:checked + label,
+  .type-picker label.active {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
   form {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 28px;
   }
-  .field {
-    margin-bottom: 20px;
-  }
-  label {
+  .field { margin-bottom: 20px; }
+  label.field-label {
     display: block;
     font-weight: 600;
     font-size: 14px;
     margin-bottom: 6px;
     color: var(--text);
   }
-  label .optional {
+  label.field-label .optional {
     font-weight: 400;
     color: var(--muted);
     font-size: 12px;
@@ -88,22 +125,26 @@
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-light);
   }
-  textarea {
-    min-height: 100px;
-    resize: vertical;
-  }
-  .row {
-    display: flex;
-    gap: 16px;
-  }
+  textarea { min-height: 100px; resize: vertical; }
+  .row { display: flex; gap: 16px; }
   .row .field { flex: 1; }
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+  .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .safety-banner {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
+  .safety-banner a { color: var(--warn-text); font-weight: 700; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
   button[type="submit"] {
     width: 100%;
     background: var(--accent);
@@ -115,40 +156,18 @@
     border-radius: 8px;
     cursor: pointer;
   }
-  button[type="submit"]:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  button[type="submit"]:hover:not(:disabled) {
-    background: #0f2b20;
-  }
-  .status {
-    margin-top: 16px;
-    padding: 14px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    display: none;
-  }
-  .status.success {
-    display: block;
-    background: var(--accent-light);
-    color: var(--accent);
-    border: 1px solid var(--accent);
-  }
-  .status.error {
-    display: block;
-    background: #fdecec;
-    color: #8a1f1f;
-    border: 1px solid #e3a8a8;
-  }
-  .note {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 24px;
-    line-height: 1.6;
-  }
-  @media (max-width: 480px) {
+  button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
+  button[type="submit"]:hover:not(:disabled) { background: #0f2b20; }
+
+  .status { margin-top: 16px; padding: 14px 16px; border-radius: 8px; font-size: 14px; display: none; }
+  .status.success { display: block; background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent); }
+  .status.error { display: block; background: #fdecec; color: #8a1f1f; border: 1px solid #e3a8a8; }
+
+  .note { font-size: 13px; color: var(--muted); margin-top: 24px; line-height: 1.6; }
+
+  @media (max-width: 520px) {
     .row { flex-direction: column; gap: 0; }
+    .type-picker { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -159,12 +178,31 @@
 </header>
 
 <main>
-  <h1>Submit a Listing</h1>
+  <h1>Submit, Correct or Report</h1>
   <p class="intro">
-    Know a restaurant, church, market, service, or resource that belongs in the directory?
-    Submit it below. Every listing starts as <strong>"needs verification"</strong> until it's
-    checked, so please give us accurate details.
+    Use this form to add a new listing, fix something on an existing one, or flag a
+    problem. Everything is reviewed privately before anything changes on Habesha Hub.
   </p>
+
+  <div class="type-picker" id="type-picker">
+    <input type="radio" name="request-type-picker" id="type-new" value="new" checked>
+    <label for="type-new" class="active" data-target="new">
+      <span class="emoji">➕</span>
+      Submit a new listing
+    </label>
+
+    <input type="radio" name="request-type-picker" id="type-correct" value="correct">
+    <label for="type-correct" data-target="correct">
+      <span class="emoji">✏️</span>
+      Correct a listing
+    </label>
+
+    <input type="radio" name="request-type-picker" id="type-report" value="report">
+    <label for="type-report" data-target="report">
+      <span class="emoji">⚠️</span>
+      Report a problem
+    </label>
+  </div>
 
   <form id="listing-form" action="https://formspree.io/f/xwlpjaze" method="POST">
 
@@ -174,104 +212,212 @@
       <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
     </div>
 
-    <div class="field">
-      <label for="name">Business / resource name *</label>
-      <input type="text" id="name" name="Resource name" required>
+    <input type="hidden" name="Request type" id="request-type-field" value="New listing">
+
+    <!-- ===== SECTION: NEW LISTING ===== -->
+    <div class="section active" id="section-new">
+      <div class="field">
+        <label class="field-label" for="name">Business / resource name *</label>
+        <input type="text" id="name" name="Resource name" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="field-label" for="category">Category *</label>
+          <select id="category" name="Category" required>
+            <option value="">Select one</option>
+            <option>Restaurants &amp; Cafés</option>
+            <option>Groceries &amp; Markets</option>
+            <option>Clothing &amp; Shopping</option>
+            <option>Churches &amp; Faith</option>
+            <option>Barbers &amp; Beauty</option>
+            <option>Auto &amp; Mechanics</option>
+            <option>Home Services</option>
+            <option>Professional Services</option>
+            <option>Healthcare</option>
+            <option>Children &amp; Family</option>
+            <option>Community &amp; Culture</option>
+            <option>Housing</option>
+            <option>Government Resource</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="state">State *</label>
+          <select id="state" name="State" required>
+            <option value="Ohio" selected>Ohio</option>
+            <option value="Other">Other (specify city/state below)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="field-label" for="city">City *</label>
+          <input type="text" id="city" name="City" required>
+        </div>
+        <div class="field">
+          <label class="field-label" for="phone">Phone <span class="optional">(optional)</span></label>
+          <input type="tel" id="phone" name="Phone">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="address">Address <span class="optional">(optional, but helps verification)</span></label>
+        <input type="text" id="address" name="Address">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="website">Website or social media <span class="optional">(optional)</span></label>
+        <input type="url" id="website" name="Website" placeholder="https://">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="languages">Languages spoken <span class="optional">(optional)</span></label>
+        <input type="text" id="languages" name="Languages spoken" placeholder="e.g. Amharic, English, Tigrinya">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="description">Description *</label>
+        <textarea id="description" name="Description" placeholder="What do they offer? Anything the community should know?"></textarea>
+      </div>
     </div>
 
-    <div class="row">
+    <!-- ===== SECTION: CORRECT A LISTING ===== -->
+    <div class="section" id="section-correct">
       <div class="field">
-        <label for="category">Category *</label>
-        <select id="category" name="Category" required>
+        <label class="field-label" for="correct-listing">Which listing needs correcting? *</label>
+        <input type="text" id="correct-listing" name="Listing to correct" placeholder="Name of the listing, or paste its link">
+      </div>
+      <div class="field">
+        <label class="field-label" for="correct-details">What needs to change? *</label>
+        <textarea id="correct-details" name="Correction details" placeholder="e.g. new phone number, moved address, closed permanently, wrong hours..."></textarea>
+      </div>
+    </div>
+
+    <!-- ===== SECTION: REPORT A PROBLEM ===== -->
+    <div class="section" id="section-report">
+      <div class="safety-banner">
+        If you lost money or feel unsafe because of a housing post, please also report it
+        to your local police and to the FTC at
+        <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">reportfraud.ftc.gov</a>.
+        This form alone does not notify law enforcement.
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="report-type">What are you reporting? *</label>
+        <select id="report-type" name="Report type">
           <option value="">Select one</option>
-          <option>Restaurants &amp; Cafés</option>
-          <option>Groceries &amp; Markets</option>
-          <option>Clothing &amp; Shopping</option>
-          <option>Churches &amp; Faith</option>
-          <option>Barbers &amp; Beauty</option>
-          <option>Auto &amp; Mechanics</option>
-          <option>Home Services</option>
-          <option>Professional Services</option>
-          <option>Healthcare</option>
-          <option>Children &amp; Family</option>
-          <option>Community &amp; Culture</option>
-          <option>Housing</option>
-          <option>Government Resource</option>
+          <option>Scam or fraud</option>
+          <option>Safety concern</option>
+          <option>Inaccurate information</option>
+          <option>Inappropriate or spam listing</option>
           <option>Other</option>
         </select>
       </div>
+
       <div class="field">
-        <label for="state">State *</label>
-        <select id="state" name="State" required>
-          <option value="Ohio" selected>Ohio</option>
-          <option value="Other">Other (specify city/state below)</option>
-        </select>
+        <label class="field-label" for="report-listing">Related listing <span class="optional">(name or link, if applicable)</span></label>
+        <input type="text" id="report-listing" name="Related listing">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="report-details">Details *</label>
+        <textarea id="report-details" name="Report details" placeholder="Please describe what happened."></textarea>
       </div>
     </div>
 
+    <!-- ===== Shared contact fields ===== -->
     <div class="row">
       <div class="field">
-        <label for="city">City *</label>
-        <input type="text" id="city" name="City" required>
-      </div>
-      <div class="field">
-        <label for="phone">Phone <span class="optional">(optional)</span></label>
-        <input type="tel" id="phone" name="Phone">
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="address">Address <span class="optional">(optional, but helps verification)</span></label>
-      <input type="text" id="address" name="Address">
-    </div>
-
-    <div class="field">
-      <label for="website">Website or social media <span class="optional">(optional)</span></label>
-      <input type="url" id="website" name="Website" placeholder="https://">
-    </div>
-
-    <div class="field">
-      <label for="languages">Languages spoken <span class="optional">(optional)</span></label>
-      <input type="text" id="languages" name="Languages spoken" placeholder="e.g. Amharic, English, Tigrinya">
-    </div>
-
-    <div class="field">
-      <label for="description">Description *</label>
-      <textarea id="description" name="Description" required placeholder="What do they offer? Anything the community should know?"></textarea>
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <label for="submitter_name">Your name <span class="optional">(optional)</span></label>
+        <label class="field-label" for="submitter_name">Your name <span class="optional">(optional)</span></label>
         <input type="text" id="submitter_name" name="Submitted by">
       </div>
       <div class="field">
-        <label for="submitter_email">Your email <span class="optional">(optional, for follow-up only — never published)</span></label>
+        <label class="field-label" for="submitter_email">Your email <span class="optional">(optional, for follow-up only — never published)</span></label>
         <input type="email" id="submitter_email" name="Submitter email">
       </div>
     </div>
 
-    <button type="submit" id="submit-btn">Submit listing</button>
+    <button type="submit" id="submit-btn">Submit</button>
 
     <div class="status" id="status"></div>
   </form>
 
   <p class="note">
-    Submissions are reviewed before going live and will show a "community listed" or
-    "needs verification" badge until confirmed. We never publish your email address.
+    Your request is received privately and reviewed before anything changes on Habesha
+    Hub. New and corrected listings show a "community listed" or "needs verification"
+    badge until confirmed. We never publish your email address.
   </p>
 </main>
 
 <script>
+  const picker = document.getElementById('type-picker');
+  const radios = picker.querySelectorAll('input[type="radio"]');
+  const labels = picker.querySelectorAll('label');
+  const sections = {
+    new: document.getElementById('section-new'),
+    correct: document.getElementById('section-correct'),
+    report: document.getElementById('section-report')
+  };
+  const requestTypeField = document.getElementById('request-type-field');
+  const submitBtn = document.getElementById('submit-btn');
+  const typeLabels = { new: 'New listing', correct: 'Correction', report: 'Report a problem' };
+  const submitLabels = { new: 'Submit listing', correct: 'Submit correction', report: 'Submit report' };
+
+  function setRequired(section, isActive) {
+    section.querySelectorAll('input, select, textarea').forEach(function (el) {
+      if (el.hasAttribute('data-required') || el.required) {
+        el.required = isActive;
+      }
+      el.disabled = !isActive;
+    });
+  }
+
+  // Mark which fields are required when active, before wiring up toggling.
+  ['name', 'category', 'state', 'city', 'description'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) { el.setAttribute('data-required', 'true'); el.required = true; }
+  });
+  ['correct-listing', 'correct-details'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute('data-required', 'true');
+  });
+  ['report-type', 'report-details'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute('data-required', 'true');
+  });
+
+  function showType(type) {
+    Object.keys(sections).forEach(function (key) {
+      const isActive = key === type;
+      sections[key].classList.toggle('active', isActive);
+      setRequired(sections[key], isActive);
+    });
+    requestTypeField.value = typeLabels[type];
+    submitBtn.textContent = submitLabels[type];
+    labels.forEach(function (label) {
+      label.classList.toggle('active', label.getAttribute('data-target') === type);
+    });
+  }
+
+  radios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      showType(radio.value);
+    });
+  });
+
+  showType('new');
+
   const form = document.getElementById('listing-form');
   const statusEl = document.getElementById('status');
-  const submitBtn = document.getElementById('submit-btn');
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     statusEl.className = 'status';
     statusEl.textContent = '';
     submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
     submitBtn.textContent = 'Submitting…';
 
     try {
@@ -283,8 +429,10 @@
 
       if (response.ok) {
         statusEl.className = 'status success';
-        statusEl.textContent = "Thanks! Your listing was submitted and will show as \"needs verification\" once it's added.";
+        statusEl.textContent = 'Thank you. Your request was received privately and will be reviewed before anything changes on Habesha Hub.';
         form.reset();
+        showType('new');
+        document.getElementById('type-new').checked = true;
       } else {
         const data = await response.json().catch(() => null);
         const msg = data && data.errors ? data.errors.map(x => x.message).join(', ') : 'Something went wrong. Please try again.';
@@ -296,7 +444,7 @@
       statusEl.textContent = 'Network error — please check your connection and try again.';
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit listing';
+      submitBtn.textContent = originalLabel;
     }
   });
 </script>
