@@ -238,6 +238,7 @@
     var fixBody = "Listing ID: " + x.id + "\nName: " + x.name + "\nCity/State: " + x.city + ", " + x.state + "\n\nWhat is incorrect? (closed, moved, phone, website, category, church tradition, other)\n\nCorrect information:\n\nHow do you know? (link to official website, Google Maps, or your relationship to the business)\n";
     var claimBody = "Listing ID: " + x.id + "\nName: " + x.name + "\n\nYour name:\nYour role (owner, manager, pastor, board member):\nBusiness phone or email we can use to confirm:\n\nUpdates you would like to make:\n";
     var actions = [];
+    if (x.profile && /^[a-z0-9-]+\.html$/.test(x.profile)) actions.push('<a class="pri" href="' + esc(x.profile) + '">View photos &amp; menu</a>');
     if (tel) actions.push('<a class="pri" href="' + esc(tel) + '" aria-label="' + esc(t("call_btn") + " " + x.name) + '">' + esc(t("call_btn")) + "</a>");
     if (web) actions.push('<a class="sec" href="' + esc(web) + '" target="_blank" rel="noopener" aria-label="' + esc(t("website_btn") + ": " + x.name) + '">' + esc(t("website_btn")) + "</a>");
     else if (soc) actions.push('<a class="sec" href="' + esc(soc) + '" target="_blank" rel="noopener">' + esc(t("website_btn")) + "</a>");
@@ -245,6 +246,7 @@
     var minor = '<a class="minor" href="' + esc(submitUrl("correction", x)) + '">' + esc(t("report_btn")) + "</a>"; minor += ' <a class="minor" href="' + esc(submitUrl("closed", x)) + '">Report closed/moved</a>';
     minor += ' <a class="minor" href="' + esc(submitUrl("claim", x)) + '">' + esc(t("claim_btn")) + "</a>";
     return '<article class="listing" id="l-' + esc(x.id) + '">' +
+      (x.profile === 'habesha-garden.html' ? '<a href="habesha-garden.html" aria-label="View Habesha Garden photos and menu"><img class="listing-photo" src="assets/habesha-garden/tibs.webp" alt="Tibs served with injera" loading="lazy" width="600" height="400"></a>' : '') +
       '<span class="type">' + esc(typeLine) + "</span>" +
       "<h3>" + esc(x.name) + "</h3>" +
       "<address>" + addr + "</address>" +

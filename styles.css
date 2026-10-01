@@ -202,3 +202,5 @@ a.chip{text-decoration:none;display:inline-block}
  #categoryGrid .cat:nth-child(3n+2) { transform:none; }
  #categoryGrid .icon-3d { width:62px;height:62px; }
 }
+
+.listing-photo{width:100%;height:190px;object-fit:cover;border-radius:10px;display:block;margin-bottom:16px}
