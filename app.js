@@ -551,9 +551,48 @@
     else window.prompt("Copy this link:", url);
   });
   $("stateExplorer").addEventListener("change", renderState);
-  $("menuBtn").addEventListener("click", function () { var n = $("mainNav"), open = n.classList.toggle("open"); this.setAttribute("aria-expanded", open ? "true" : "false"); });
-  document.querySelectorAll("#mainNav a").forEach(function (a) { a.addEventListener("click", function () { $("mainNav").classList.remove("open"); $("menuBtn").setAttribute("aria-expanded", "false"); }); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && $("mainNav").classList.contains("open")) { $("mainNav").classList.remove("open"); $("menuBtn").setAttribute("aria-expanded", "false"); $("menuBtn").focus(); } });
+  var mainNav = $("mainNav");
+  var navGroups = Array.prototype.slice.call(mainNav.querySelectorAll(".nav-group"));
+  function closeNavGroups(except) {
+    navGroups.forEach(function (group) { if (group !== except) group.open = false; });
+  }
+  navGroups.forEach(function (group) {
+    group.querySelector("summary").addEventListener("click", function (e) {
+      e.preventDefault();
+      var shouldOpen = !group.open;
+      closeNavGroups();
+      group.open = shouldOpen;
+    });
+  });
+  $("menuBtn").addEventListener("click", function () {
+    var open = mainNav.classList.toggle("open");
+    this.setAttribute("aria-expanded", open ? "true" : "false");
+    if (!open) closeNavGroups();
+  });
+  mainNav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      closeNavGroups();
+      mainNav.classList.remove("open");
+      $("menuBtn").setAttribute("aria-expanded", "false");
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!mainNav.contains(e.target) && !$("menuBtn").contains(e.target)) {
+      closeNavGroups();
+      mainNav.classList.remove("open");
+      $("menuBtn").setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var activeGroup = navGroups.find(function (group) { return group.open; });
+    closeNavGroups();
+    if (mainNav.classList.contains("open")) {
+      mainNav.classList.remove("open");
+      $("menuBtn").setAttribute("aria-expanded", "false");
+      $("menuBtn").focus();
+    } else if (activeGroup) activeGroup.querySelector("summary").focus();
+  });
   $("langBtn").addEventListener("click", function () { LANG = LANG === "am" ? "en" : "am"; storeSet("hh_lang", LANG); applyLang(); });
 
   // ---------- init ----------
