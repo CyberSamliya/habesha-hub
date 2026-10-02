@@ -204,3 +204,20 @@ a.chip{text-decoration:none;display:inline-block}
 }
 
 .listing-photo{width:100%;height:190px;object-fit:cover;border-radius:10px;display:block;margin-bottom:16px}
+
+/* Grouped navigation with raised, accessible 3D tabs */
+#mainNav{gap:12px}
+.nav-group{position:relative}
+.nav-group summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;white-space:nowrap;padding:10px 16px;border:1px solid #c5d3c9;border-radius:12px;color:#173b2c;background:linear-gradient(180deg,#fff,#eaf1eb);font-size:.92rem;font-weight:700;box-shadow:0 4px 0 #b8c9bd,0 7px 12px #173b2c12;transition:transform .16s,box-shadow .16s}
+.nav-group summary::-webkit-details-marker{display:none}
+.nav-group summary::after{content:"⌄";font-size:1rem}
+.nav-group summary:hover{transform:translateY(-2px);box-shadow:0 6px 0 #b8c9bd,0 10px 16px #173b2c18}
+.nav-group[open] summary{background:linear-gradient(180deg,#28563f,#173b2c);color:#fff;border-color:#173b2c;box-shadow:0 3px 0 #0d291c}
+.nav-group summary:focus-visible,.nav-panel a:focus-visible{outline:3px solid #b88817;outline-offset:4px}
+.nav-panel{position:absolute;top:calc(100% + 12px);left:0;min-width:240px;padding:8px;display:grid;gap:4px;background:#fff;border:1px solid #d8e1d9;border-radius:14px;box-shadow:0 16px 35px #173b2c24;z-index:40}
+.nav-group:last-child .nav-panel{left:auto;right:0}
+#mainNav .nav-panel a{display:block;padding:10px 12px;border-radius:8px;white-space:normal;font-size:.9rem;line-height:1.4}
+#mainNav .nav-panel a:hover{background:#edf3ee;color:#173b2c}
+.nav-panel small{display:block;font-size:.74rem;font-weight:400;color:#59695e;margin-top:3px}
+@media(max-width:900px){#mainNav{top:100%;padding:16px 18px;gap:12px;max-height:calc(100dvh - 72px);overflow-y:auto}.nav-group summary{width:100%;box-sizing:border-box}.nav-panel,.nav-group:last-child .nav-panel{position:static;margin-top:10px;min-width:0;box-shadow:none}.nav{gap:12px}}
+@media(prefers-reduced-motion:reduce){.nav-group summary{transition:none}.nav-group summary:hover{transform:none}}
