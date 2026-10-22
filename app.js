@@ -248,7 +248,7 @@
     return '<article class="listing" id="l-' + esc(x.id) + '">' +
       (x.profile === 'habesha-garden.html' ? '<a href="habesha-garden.html" aria-label="View Habesha Garden photos and menu"><img class="listing-photo" src="assets/habesha-garden/tibs.webp" alt="Tibs served with injera" loading="lazy" width="600" height="400"></a>' : '') +
       '<span class="type">' + esc(typeLine) + "</span>" +
-      "<h3>" + esc(x.name) + "</h3>" +
+      '<h3><a href="listing.html?id=' + encodeURIComponent(x.id) + '">' + esc(x.name) + "</a></h3>" +
       "<address>" + addr + "</address>" +
       (x.phone && !limited ? '<p><a href="' + esc(tel) + '">' + esc(x.phone) + "</a></p>" : "") +
       (x.publicNote ? '<p class="note">' + esc(x.publicNote) + "</p>" : "") +
@@ -291,7 +291,7 @@
       rows.forEach(function (x) { var g = state ? area(x) : x.state; groupCounts[g] = (groupCounts[g] || 0) + 1; });
       slice.forEach(function (x) {
         var g = state ? area(x) : x.state;
-        if (g !== lastGroup) { html += '<h3 class="city-group">' + esc(state ? area(x) + ", " + (ABBR[x.state] || "") + (x.metro ? " area" : "") : x.state) + "<small>" + groupCounts[g] + " " + esc(t("listings_word")) + "</small></h3>"; lastGroup = g; }
+        if (g !== lastGroup) { html += '<h3 class="city-group">' + esc(state ? area(x) + ", " + (ABBR[x.state] || "") + (x.metro ? " area" : "") : x.state) + "<small>" + groupCounts[g] + " " + esc(t(groupCounts[g]===1?"listing_one":"listings_word")) + "</small></h3>"; lastGroup = g; }
         html += card(x);
       });
       el.grid.innerHTML = html;
@@ -484,7 +484,7 @@
       var types={c_biz:"add",c_church:"church",c_pro:"professional",c_org:"add",c_house:"housing",c_fix:"correction",c_claim:"claim",c_event:"event"}; return '<a class="contrib" href="submission.html?type=' + (types[c.k]||"add") + '"><strong>' + esc(t(c.k + "_t")) + "</strong><span>" + esc(t(c.k + "_d")) + "</span></a>";
     }).join("") + '<a class="contrib" href="' + GITHUB_ISSUES + '" target="_blank" rel="noopener"><strong>GitHub</strong><span>' + esc(t("github_alt")) + "</span></a>";
     $("housingSubmit").href = "submission.html?type=housing";
-    $("footerContact").href = "submission.html";
+    $("footerContact").href = "contact.html";
   }
 
   // ---------- structured data for search engines ----------
@@ -509,7 +509,7 @@
       var count=category==='Housing' ? (window.HABESHA_HOUSING||[]).filter(function(x){return housingStatus(x)!=='expired';}).length : LISTINGS.filter(function(x){return x.category===category;}).length;
       var badge=a.querySelector('.category-count');
       if(!badge){badge=document.createElement('span');badge.className='category-count';a.appendChild(badge);}
-      badge.textContent=count ? count+' '+t('listings_word') : t('build_category');
+      badge.textContent=count ? count+' '+t(count===1?'listing_one':'listings_word') : t('build_category');
     });
   }
   // ---------- language ----------

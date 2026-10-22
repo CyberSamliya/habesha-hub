@@ -91,3 +91,14 @@ Filters are reflected in the URL, so results can be shared or bookmarked, for ex
 - Each state with listings has its own page (for example `ohio.html`) with a descriptive title, meta description, canonical URL, breadcrumb and Schema.org `ItemList` of verified listings (Restaurant, GroceryStore, Church, Organization and so on).
 - `sitemap.xml` lists the home page and every state page. Because the site lives under `/habesha-hub/`, search engines will not read this folder's `robots.txt`; submit `https://cybersamliya.github.io/habesha-hub/sitemap.xml` in Google Search Console and Bing Webmaster Tools instead.
 - States without listings get no page, so there are no thin or empty pages.
+
+
+## Community quality update — October 22, 2026
+- Every public listing links to listing.html?id=<stable-id>, with sources, honest missing-field guidance, corrections and local saved places.
+- saved.html uses device-local bookmarks; contact.html routes requests by purpose.
+- submission.html prepares a bilingual draft locally. The visitor explicitly continues to the existing Google Form; the site never claims a draft was submitted.
+- quality-i18n.js holds supporting English/Amharic pairs. Human review is still required before describing these translations as professionally verified.
+- State pages remain crawlable without JavaScript, with optional persisted-language navigation.
+- New listings and their evidence are recorded in tools/research/2026-10-22-services.json. Do not infer ethnicity or credentials from a name.
+- Run npm install, npx playwright install chromium --only-shell, npm test, npm run test:quality, npm run validate, and npm run build.
+- Automated checks cover WCAG A/AA rules, keyboard navigation, 320/390/768/1280px widths, all tool workspaces, draft preparation, bookmarks, links and JavaScript errors. Physical phones and screen-reader testing remain distinct human acceptance checks.

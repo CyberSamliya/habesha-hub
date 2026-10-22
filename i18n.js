@@ -104,3 +104,5 @@ window.HH_I18N={
 };
 
 Object.assign(window.HH_I18N,{"show_results": {"en": "Show results", "am": "ውጤቶችን አሳይ"}, "search_hint": {"en": "Search by name, service, city or ZIP, or choose a filter.", "am": "በስም፣ በአገልግሎት፣ በከተማ ወይም በዚፕ ኮድ ይፈልጉ፤ ወይም ማጣሪያ ይምረጡ።"}, "empty_search": {"en": "No matches for your search.", "am": "ከፍለጋዎ ጋር የሚዛመድ ውጤት የለም።"}, "empty_search_help": {"en": "Check the spelling, try fewer words, or clear filters to search a wider area.", "am": "አጻጻፉን ያረጋግጡ፣ ጥቂት ቃላትን ይሞክሩ ወይም ሰፊ አካባቢ ለመፈለግ ማጣሪያዎችን ያጽዱ።"}, "empty_filter_help": {"en": "Try another category or a wider area, or help build this category by submitting a resource for review.", "am": "ሌላ ምድብ ወይም ሰፊ አካባቢ ይሞክሩ፤ ወይም መረጃ ለግምገማ በማስገባት ምድቡን ለማሳደግ ያግዙ።"}, "build_category": {"en": "No listings yet · Help build this category", "am": "ገና ዝርዝር የለም · ይህን ምድብ ለማሳደግ ያግዙ"}});
+
+window.HH_I18N.listing_one={en:"listing",am:"ዝርዝር"};
