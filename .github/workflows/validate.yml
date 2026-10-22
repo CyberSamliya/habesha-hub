@@ -1,0 +1,24 @@
+name: Validate website
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --ignore-scripts
+      - run: npx playwright install --with-deps chromium --only-shell
+      - run: node tools/validate-data.js
+      - run: node build-pages.js
+      - name: Reject stale generated pages
+        run: git diff --exit-code -- '*.html' sitemap.xml
+      - run: node tools/test-improvements.js
+        env:
+          HH_OUTPUT_DIR: test-results

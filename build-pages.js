@@ -161,7 +161,7 @@ ${body}
 function main() {
   const { listings, meta } = loadData();
   const rows = listings.filter(r => !HIDDEN.has(r.status));
-  const updated = meta.updated || new Date().toISOString().slice(0, 10);
+  const updated = rows.reduce((d,r)=>r.verifiedDate>d?r.verifiedDate:d, meta.updated || "");
   const byState = {};
   rows.forEach(r => (byState[r.state] = byState[r.state] || []).push(r));
   const states = Object.keys(ABBR).sort();
@@ -178,8 +178,8 @@ function main() {
   }
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
-    .concat(states.filter(s => (byState[s] || []).length).map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
-    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
+    .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
+    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
   const idx = path.join(ROOT, "index.html");
