@@ -221,3 +221,9 @@ a.chip{text-decoration:none;display:inline-block}
 .nav-panel small{display:block;font-size:.74rem;font-weight:400;color:#59695e;margin-top:3px}
 @media(max-width:900px){#mainNav{top:100%;padding:16px 18px;gap:12px;max-height:calc(100dvh - 72px);overflow-y:auto}.nav-group summary{width:100%;box-sizing:border-box}.nav-panel,.nav-group:last-child .nav-panel{position:static;margin-top:10px;min-width:0;box-shadow:none}.nav{gap:12px}}
 @media(prefers-reduced-motion:reduce){.nav-group summary{transition:none}.nav-group summary:hover{transform:none}}
+
+#directory{scroll-margin-top:100px}#directory:focus{outline:2px solid #173b2c;outline-offset:-4px}
+.clear-wrap{display:flex;gap:.6rem;grid-column:1/-1}.clear-wrap #clearFilters{background:transparent;color:#173b2c;border:1px solid #65766c}.category-count{display:block;margin-top:.6rem;font-weight:700;color:#173b2c}
+@media(max-width:600px){.clear-wrap{flex-wrap:wrap}.clear-wrap button{flex:1}.hero-3d{display:none}}
+
+.hero .filters .clear-wrap{grid-column:1/-1;align-items:center}.hero .filters .clear-wrap button{width:auto;min-height:44px;white-space:nowrap}#searchResults{display:inline-flex;gap:.25rem;align-items:center}

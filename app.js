@@ -222,8 +222,8 @@
       return true;
     }).sort(function (a, b) {
       return (state ? 0 : a.state.localeCompare(b.state)) || area(a).localeCompare(area(b)) ||
-        (CAT_BY_ID[a.category] ? CAT_BY_ID[a.category].order : 99) - (CAT_BY_ID[b.category] ? CAT_BY_ID[b.category].order : 99) ||
-        (STATUS_ORDER[a.status] || 5) - (STATUS_ORDER[b.status] || 5) || a.name.localeCompare(b.name);
+        (STATUS_ORDER[a.status] ?? 5) - (STATUS_ORDER[b.status] ?? 5) ||
+        (CAT_BY_ID[a.category] ? CAT_BY_ID[a.category].order : 99) - (CAT_BY_ID[b.category] ? CAT_BY_ID[b.category].order : 99) || a.name.localeCompare(b.name);
     });
   }
 
@@ -259,12 +259,14 @@
       "</article>";
   }
 
+  var browseAll = false;
   function renderListings(resetPaging) {
     if (resetPaging) shown = PAGE_SIZE;
     var state = el.state.value, city = el.city.value, cat = el.cat.value, denom = el.denom.value;
-    var hasFilter = !!(el.q.value.trim() || state || city || cat || denom || el.verified.checked);
+    var hasFilter = browseAll || !!(el.q.value.trim() || state || city || cat || denom || el.verified.checked);
     if (!hasFilter) {
-      el.meta.textContent = "Search by name, service, city or ZIP, or choose a filter.";
+      $("searchCount").textContent = "";
+      el.meta.textContent = t("search_hint");
       el.grid.innerHTML = "";
       el.more.classList.add("hidden");
       updateUrlAndTitle();
@@ -276,11 +278,13 @@
     if (city) parts.push(city); if (state) parts.push(state);
     var desc = rows.length + " " + (rows.length === 1 ? t("listing_shown_singular") : t("listing_shown_plural")) +
       (parts.length ? " " + t("in_word") + " " + parts.join(", ") : "") + (cat ? " · " + catLabel(cat) : "") + (denom ? " · " + denomLabel(denom) : "") + ".";
+    $("searchCount").textContent = " ("+rows.length+")";
     el.meta.textContent = desc + (rows.length > 1 ? " " + t("sort_note") : "");
     if (!rows.length) {
       var s = state ? state : "";
-      el.grid.innerHTML = '<div class="empty"><strong>' + esc(state && !LISTINGS.some(function (x) { return x.state === state; }) ? t("no_listings_state") : t("empty_title")) + "</strong><br>" + esc(t("empty_body")) + '<br><br><a href="#contribute">' + esc(t("add_listing_btn")) + (s ? " · " + esc(s) : "") + "</a></div>";
+      el.grid.innerHTML = '<div class="empty"><strong>' + esc(el.q.value.trim() ? t("empty_search") : state && !LISTINGS.some(function (x) { return x.state === state; }) ? t("no_listings_state") : t("empty_title")) + "</strong><br>" + esc(t(el.q.value.trim() ? "empty_search_help" : "empty_filter_help")) + '<br><button type="button" class="btn secondary" id="resetResults">' + esc(t("clear_btn")) + '</button>' + '<br><br><a href="#contribute">' + esc(t("add_listing_btn")) + (s ? " · " + esc(s) : "") + "</a></div>";
       el.more.classList.add("hidden");
+      $("resetResults").addEventListener("click",function(){$("clearFilters").click();});
     } else {
       var html = "", lastGroup = null, slice = rows.slice(0, shown);
       var groupCounts = {};
@@ -499,6 +503,15 @@
     document.head.appendChild(s);
   }
 
+  function renderCategoryCounts() {
+    document.querySelectorAll('#categoryGrid [data-category]').forEach(function(a){
+      var category=a.dataset.category;
+      var count=category==='Housing' ? (window.HABESHA_HOUSING||[]).filter(function(x){return housingStatus(x)!=='expired';}).length : LISTINGS.filter(function(x){return x.category===category;}).length;
+      var badge=a.querySelector('.category-count');
+      if(!badge){badge=document.createElement('span');badge.className='category-count';a.appendChild(badge);}
+      badge.textContent=count ? count+' '+t('listings_word') : t('build_category');
+    });
+  }
   // ---------- language ----------
   function applyLang() {
     document.documentElement.lang = LANG;
@@ -508,7 +521,7 @@
     document.querySelectorAll("[data-i18n-placeholder]").forEach(function (n) { var k = n.getAttribute("data-i18n-placeholder"); if (I18N[k]) n.placeholder = t(k); });
     var lb = $("langBtn"); lb.textContent = LANG === "am" ? "Switch to English" : "Switch to አማርኛ"; lb.lang = LANG === "am" ? "en" : "am";
     lb.setAttribute("aria-label", LANG === "am" ? "Switch to English" : "Switch to Amharic");
-    fillCities(); renderContrib(); renderCoverage(); renderListings(false); renderState();
+    fillCities(); renderContrib(); renderCoverage(); renderListings(false); renderState(); renderCategoryCounts();
   }
 
   // ---------- stats ----------
@@ -519,7 +532,7 @@
     $("statVerified").textContent = LISTINGS.filter(function (x) { return x.status === "verified"; }).length;
     $("statStates").textContent = Object.keys(states).length;
     $("statCities").textContent = Object.keys(cities).length;
-    $("dataUpdated").textContent = META.updated ? fmtDate(META.updated) : "";
+    $("dataUpdated").textContent = fmtDate(LISTINGS.reduce(function(d,x){return x.verifiedDate>d?x.verifiedDate:d;},META.updated||""));
     $("year").textContent = new Date().getFullYear();
   }
 
@@ -530,11 +543,11 @@
   el.cat.addEventListener("change", function () { syncDenomVisibility(); renderListings(true); });
   el.denom.addEventListener("change", function () { renderListings(true); });
   el.verified.addEventListener("change", function () { renderListings(true); });
-  $("filterForm").addEventListener("submit", function (e) { e.preventDefault(); renderListings(true); });
+  $("filterForm").addEventListener("submit", function (e) { e.preventDefault(); browseAll = true; renderListings(true); $("directory").scrollIntoView({block:"start"}); $("directory").focus({preventScroll:true}); });
   el.more.addEventListener("click", function () { shown += PAGE_SIZE; renderListings(false); });
   $("showExpired").addEventListener("change", renderHousing);
   $("clearFilters").addEventListener("click", function () {
-    el.q.value = ""; el.state.value = ""; el.cat.value = ""; el.denom.value = ""; el.verified.checked = false;
+    browseAll = false; el.q.value = ""; el.state.value = ""; el.cat.value = ""; el.denom.value = ""; el.verified.checked = false;
     fillCities(); syncDenomVisibility(); renderListings(true); el.q.focus();
   });
   document.querySelectorAll("#categoryGrid [data-category]").forEach(function (a) {
