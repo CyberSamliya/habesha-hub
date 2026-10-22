@@ -227,3 +227,14 @@ a.chip{text-decoration:none;display:inline-block}
 @media(max-width:600px){.clear-wrap{flex-wrap:wrap}.clear-wrap button{flex:1}.hero-3d{display:none}}
 
 .hero .filters .clear-wrap{grid-column:1/-1;align-items:center}.hero .filters .clear-wrap button{width:auto;min-height:44px;white-space:nowrap}#searchResults{display:inline-flex;gap:.25rem;align-items:center}
+
+/* Consistent supporting pages and readable profiles */
+.support-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}.support-nav nav,.support-footer{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.support-nav nav a,.support-footer a{min-height:44px;display:inline-flex;align-items:center}.support-footer{padding-block:20px}
+.profile-actions{display:flex;gap:12px;flex-wrap:wrap;margin-block:24px}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.profile-grid section{padding:24px;background:white;border:1px solid var(--line);border-radius:16px}.profile-grid h2{margin-top:0}.profile-grid .btn{margin:6px 8px 6px 0}.profile-grid address{font-style:normal}.profile-grid p{overflow-wrap:anywhere}.hero-summary{display:block!important}.hero-title-3d{text-shadow:none!important}.profile-actions button{font:inherit}
+.intake{max-width:780px}.intake form{display:grid;grid-template-columns:1fr 1fr;gap:18px}.intake label{display:grid;gap:6px;font-weight:600}.intake input,.intake select,.intake textarea{font:inherit;width:100%;padding:12px;border:1px solid #728078;border-radius:8px;background:white;color:var(--ink)}.intake .full{grid-column:1/-1}.intake textarea{min-height:130px}.intake [hidden]{display:none!important}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #946200;outline-offset:4px}button,.btn{min-height:44px}body{overflow-wrap:break-word}
+@media(max-width:700px){.profile-grid,.intake form{grid-template-columns:1fr}.support-nav{align-items:flex-start}.support-nav nav{order:3;width:100%;gap:12px}.hero-summary{margin-top:0}.hero-grid{gap:24px}.profile-actions .btn{flex:1}.intake .full{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:450px){.nav{flex-wrap:wrap;gap:8px}.nav .brand{flex:1}.nav .lang{order:3;flex-basis:100%;margin-left:0;text-align:center}#directory{scroll-margin-top:150px}.nav #mainNav{top:100%}}
+
+.hero-title-3d span{text-shadow:none!important}

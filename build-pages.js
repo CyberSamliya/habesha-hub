@@ -54,7 +54,7 @@ function card(x) {
     (src2 ? ` · <a href="${esc(src2)}" target="_blank" rel="noopener nofollow">2nd source</a>` : "");
   return `<article class="listing" id="l-${esc(x.id)}">` +
     (type ? `<span class="type">${esc(type)}</span>` : "") +
-    `<h3>${esc(x.name)}</h3><address>${addr}</address>` +
+    `<h3><a href="listing.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3><address>${addr}</address>` +
     (x.phone && !limited ? `<p><a href="${esc(tel)}">${esc(x.phone)}</a></p>` : "") +
     (x.publicNote ? `<p class="note">${esc(x.publicNote)}</p>` : "") +
     `<div><span class="badge s-${esc(x.status)}">${esc(STATUS[x.status] || x.status)}</span></div>` +
@@ -114,7 +114,7 @@ function page(state, rows, allStates, updated) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
@@ -130,7 +130,7 @@ function page(state, rows, allStates, updated) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260929">
+<link rel="stylesheet" href="styles.css?v=20261022-quality">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
 </head>
 <body class="state-page">
@@ -139,7 +139,7 @@ function page(state, rows, allStates, updated) {
 <main id="main">
 <section class="state-hero"><div class="wrap">
  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="./">Home</a> › <a href="./#states">States</a> › <span aria-current="page">${esc(state)}</span></div>
- <h1>Ethiopian &amp; Habesha community in ${esc(name)}</h1>
+ <h1 data-en="Ethiopian &amp; Habesha community in ${esc(name)}" data-am="በ${esc(name)} ያለው የኢትዮጵያ እና የሐበሻ ማህበረሰብ">Ethiopian &amp; Habesha community in ${esc(name)}</h1>
  <p>${rows.length} ${rows.length === 1 ? "listing" : "listings"} (${verified} verified)${churches.length ? `, including ${churches.length} ${churches.length === 1 ? "church" : "churches"}` : ""}. Every listing shows where the information came from and when it was last checked. Call ahead before visiting.</p>
  <div class="jump">${jumps}</div>
  <h2 class="sub">Cities and metros</h2><div class="chips">${cityChips}</div>
@@ -153,7 +153,7 @@ ${body}
  <div class="state-links" role="navigation" aria-labelledby="otherStates"><h2 id="otherStates">Ethiopian community in other states</h2><ul>${others}</ul></div>
  <p class="foot-note">© Habesha Hub, a community project. Directory data updated ${esc(updated)}. <a href="./">Back to the full directory</a></p>
 </div></footer>
-</body>
+<script src="i18n.js?v=20261022-quality" defer></script><script src="site-shell.js?v=20261022-quality" defer></script><script src="quality-i18n.js?v=20261022-quality" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
 </html>
 `;
 }
@@ -179,7 +179,8 @@ function main() {
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
     .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
-    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
+    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
+  urls.push(...rows.map(r=>`  <url><loc>${SITE}listing.html?id=${encodeURIComponent(r.id)}</loc><lastmod>${esc(r.verifiedDate||updated)}</lastmod></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
   const idx = path.join(ROOT, "index.html");

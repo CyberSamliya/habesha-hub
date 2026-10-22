@@ -13,6 +13,19 @@ if(q.get("id"))p.set("entry.1798896994",q.get("id").slice(0,80));
 var target=FORM+"?"+p.toString();
 var link=document.getElementById("openPrivateForm");
 if(link)link.href=target;
+var direct=document.getElementById("directForm");if(direct)direct.href=target;
 var frame=document.getElementById("privateFormFrame");
 if(frame)frame.src=target.replace("/viewform?","/viewform?embedded=true&");
+const form=document.getElementById('intakeForm');
+if(form){
+ const typeField=document.getElementById('intakeType'),nameField=document.getElementById('intakeName'),cityField=document.getElementById('intakeCity'),stateField=document.getElementById('intakeState');
+ const states=['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+ states.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;stateField.append(o);});
+ typeField.value=map[q.get('type')]?q.get('type'):'contact';nameField.value=(q.get('name')||'').slice(0,120);cityField.value=(q.get('city')||'').slice(0,80);stateField.value=q.get('state')||'';
+ form.addEventListener('submit',e=>{e.preventDefault();const params=new URLSearchParams({usp:'pp_url'});params.set('entry.2143705137',map[typeField.value]);params.set('entry.1710451381',nameField.value);params.set('entry.860530315',cityField.value);params.set('entry.447872666',stateField.value);if(q.get('id'))params.set('entry.1798896994',q.get('id'));
+ const summary=[map[typeField.value],nameField.value,cityField.value,stateField.value,document.getElementById('intakeDetails').value].filter(Boolean).join('\n');
+ document.getElementById('intakeSummary').value=summary;document.getElementById('openPrivateForm').href=FORM+'?'+params;document.getElementById('intakeReview').hidden=false;document.getElementById('intakeReview').focus();
+ });
+ document.getElementById('copyIntake').addEventListener('click',async()=>{const field=document.getElementById('intakeSummary');try{await navigator.clipboard.writeText(field.value);document.getElementById('intakeStatus').textContent='Summary copied. Paste it into the details field in Google Forms.';}catch{field.focus();field.select();document.getElementById('intakeStatus').textContent='Select and copy the summary, then paste it into Google Forms.';}});
+}
 })();

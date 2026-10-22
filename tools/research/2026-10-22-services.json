@@ -1,0 +1,252 @@
+{
+  "date": "2026-10-22",
+  "method": "Primary official pages for service/contact facts; community status retained for self-reported or secondary community connections. No independent licensing certification.",
+  "add": [
+    {
+      "id": "oh-columbus-eshetu-obole",
+      "name": "Eshetu Obole, MD",
+      "category": "Healthcare",
+      "subcategory": "Nephrology; Amharic-speaking",
+      "city": "Columbus",
+      "state": "Ohio",
+      "zip": "43203",
+      "address": "543 Taylor Ave, Suite 3084",
+      "phone": "(614) 293-4997",
+      "website": "https://wexnermedical.osu.edu/find-a-doctor/eshetu-obole-100001758",
+      "status": "verified",
+      "languages": [
+        "Amharic"
+      ],
+      "services": [
+        "Nephrology"
+      ],
+      "description": "Ohio State Wexner Medical Center lists this kidney specialist at Outpatient Care East and Dublin. Contact the practice to confirm the appointment location, referral requirements and language support.",
+      "descriptionAm": "የOhio State Wexner Medical Center ይህን የኩላሊት ሐኪም በOutpatient Care East እና Dublin ይዘረዝራል። የቀጠሮ ቦታን፣ የሪፈራል መስፈርትን እና የቋንቋ ድጋፍን ከክሊኒኩ ጋር ያረጋግጡ።",
+      "notes": "Official provider page explicitly lists Amharic. Verification is of the directory facts, not an independent licensing audit.",
+      "source": "https://wexnermedical.osu.edu/find-a-doctor/eshetu-obole-100001758",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "md-silver-spring-bestone-financial",
+      "name": "BestOne Financial LLC",
+      "category": "Professional",
+      "subcategory": "Tax preparation and accounting; Amharic and Afaan Oromo",
+      "city": "Silver Spring",
+      "state": "Maryland",
+      "address": "817 Silver Spring Ave, Suite 408",
+      "zip": "20910",
+      "phone": "(240) 640-1500",
+      "website": "https://bestonefinancial.com/",
+      "source": "https://bestonefinancial.com/about",
+      "secondSource": "https://bestonefinancial.com/contact",
+      "status": "verified",
+      "languages": [
+        "English",
+        "Amharic",
+        "Afaan Oromo"
+      ],
+      "services": [
+        "Tax preparation",
+        "Accounting"
+      ],
+      "hours": "By appointment",
+      "hoursAm": "በቀጠሮ",
+      "description": "The firm describes tax and accounting services in English, Amharic and Afaan Oromo. Contact the office about scope, pricing and preparer credentials.",
+      "descriptionAm": "ድርጅቱ በእንግሊዝኛ፣ በአማርኛ እና በአፋን ኦሮሞ የግብርና የሂሳብ አገልግሎት እንደሚሰጥ ይገልጻል። የአገልግሎት ወሰንን፣ ዋጋን እና የአዘጋጁን ብቃት ከቢሮው ጋር ያረጋግጡ።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "nv-las-vegas-nahom-insurance-tax",
+      "name": "Nahom Insurance and Tax",
+      "category": "Professional",
+      "subcategory": "Insurance and tax preparation; Amharic-speaking",
+      "city": "Las Vegas",
+      "state": "Nevada",
+      "address": "4880 West University Avenue, B5",
+      "zip": "89103",
+      "phone": "(702) 778-5585",
+      "website": "https://nahomtax.com/",
+      "secondSource": "https://nextdoor.com/pages/nahom-insurance-las-vegas-nv/",
+      "status": "community",
+      "languages": [
+        "English",
+        "Amharic"
+      ],
+      "services": [
+        "Tax preparation",
+        "Insurance"
+      ],
+      "description": "The business advertises English and Amharic support for tax preparation and insurance. Professional credentials and individual suitability have not been independently checked.",
+      "descriptionAm": "ንግዱ ለግብር ዝግጅት እና ለኢንሹራንስ በእንግሊዝኛና በአማርኛ ድጋፍ እንደሚሰጥ ያስታውቃል። ሙያዊ ብቃት እና ለግለሰቡ ተስማሚነት በተናጠል አልተረጋገጡም።",
+      "source": "https://nahomtax.com/",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "va-arlington-ed-international-auto",
+      "name": "E&D International Auto Repair & Alignment",
+      "category": "Auto",
+      "subcategory": "Auto repair, maintenance and alignment",
+      "city": "Arlington",
+      "state": "Virginia",
+      "address": "3800 S Four Mile Run Dr, Suite F",
+      "zip": "22206",
+      "phone": "(571) 319-0418",
+      "website": "https://ed-auto.com/",
+      "source": "https://ed-auto.com/",
+      "secondSource": "https://www.checkbook.org/va/arlington/auto-repair-shops/e-and-d-international-auto-repair/nabt8",
+      "status": "community",
+      "services": [
+        "Auto maintenance",
+        "Engine repair",
+        "Alignment"
+      ],
+      "description": "An Arlington repair shop offering maintenance, diagnostics and alignment. A published customer account identifies an Ethiopian community connection; ownership background is not independently confirmed by Habesha Hub.",
+      "descriptionAm": "በArlington የመኪና ጥገና፣ ምርመራ እና አላይንመንት የሚሰጥ ጋራዥ። የታተመ የደንበኛ አስተያየት ከኢትዮጵያ ማህበረሰብ ጋር ግንኙነት እንዳለው ይጠቅሳል፤ የባለቤቱ ዳራ በHabesha Hub በተናጠል አልተረጋገጠም።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "wa-lynnwood-yoal-cleaning",
+      "name": "YOAL Cleaning Service",
+      "category": "Home",
+      "subcategory": "Residential and commercial cleaning; Amharic-speaking",
+      "city": "Lynnwood",
+      "metro": "Seattle",
+      "state": "Washington",
+      "zip": "98087",
+      "website": "https://www.angi.com/companylist/us/wa/lynnwood/yoal-cleaning-service-reviews-125259359.htm",
+      "status": "community",
+      "languages": [
+        "English",
+        "Amharic"
+      ],
+      "services": [
+        "Residential cleaning",
+        "Commercial cleaning",
+        "Move-in / move-out cleaning"
+      ],
+      "description": "The business profile advertises routine, deep, move-in/move-out and office cleaning, with English and Amharic communication. Contact through the linked profile; service area, insurance and availability need confirmation.",
+      "descriptionAm": "የንግዱ መገለጫ መደበኛ፣ ጥልቅ፣ የመግቢያ/መውጫ እና የቢሮ ጽዳትን በእንግሊዝኛና በአማርኛ ግንኙነት ያስታውቃል። በአገናኙ በኩል ያግኙ፤ የአገልግሎት አካባቢ፣ ኢንሹራንስ እና ክፍት ጊዜ ማረጋገጥ ያስፈልጋል።",
+      "source": "https://www.angi.com/companylist/us/wa/lynnwood/yoal-cleaning-service-reviews-125259359.htm",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "va-arlington-enterprise-development-group",
+      "name": "Enterprise Development Group (EDG)",
+      "category": "Professional",
+      "subcategory": "Tax assistance and business training; Amharic resources",
+      "city": "Arlington",
+      "state": "Virginia",
+      "address": "901 S. Highland Street",
+      "zip": "22204",
+      "phone": "(703) 685-0510",
+      "website": "https://edgus.org/services/",
+      "status": "verified",
+      "services": [
+        "Tax assistance",
+        "Business training"
+      ],
+      "description": "EDG describes tax assistance for eligible low-income residents in the DC area and business education resources, including Amharic media. Contact EDG for current eligibility and schedules; the directory does not arrange loans or tax advice.",
+      "descriptionAm": "EDG በDC አካባቢ ላሉ ብቁ ዝቅተኛ ገቢ ላላቸው ነዋሪዎች የግብር ድጋፍ እና የንግድ ትምህርት መረጃ፣ የአማርኛ ሚዲያንም ጨምሮ፣ እንዳለው ይገልጻል። የአሁኑን ብቁነት እና መርሃ ግብር ከEDG ጋር ያረጋግጡ።",
+      "source": "https://edgus.org/services/",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "wa-seattle-rewa-beacon-hill",
+      "name": "ReWA Early Learning — Beacon Hill",
+      "category": "Childcare",
+      "subcategory": "Early learning; Amharic enrollment materials",
+      "city": "Seattle",
+      "state": "Washington",
+      "address": "6230 Beacon Avenue South",
+      "zip": "98108",
+      "phone": "(206) 723-3304",
+      "website": "https://www.rewa.org/services/early-learning-centers/",
+      "source": "https://www.rewa.org/services/early-learning-centers/",
+      "secondSource": "https://www.rewa.org/contact/",
+      "status": "verified",
+      "services": [
+        "Early learning",
+        "Preschool"
+      ],
+      "description": "Refugee Women's Alliance operates early learning programs at this location. Its website provides Amharic enrollment material. Confirm ages served, vacancies, fees, eligibility and available classroom languages directly with the center.",
+      "descriptionAm": "Refugee Women's Alliance በዚህ ቦታ የቅድመ ትምህርት ፕሮግራም ያካሂዳል። ድረ ገጹ በአማርኛ የምዝገባ መረጃ ይሰጣል። የዕድሜ ክልልን፣ ክፍት ቦታን፣ ክፍያን፣ ብቁነትን እና የክፍል ቋንቋዎችን ከማዕከሉ ጋር ያረጋግጡ።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "wa-seattle-rewa-lake-city",
+      "name": "ReWA Early Learning — Lake City",
+      "category": "Childcare",
+      "subcategory": "Early learning; Amharic enrollment materials",
+      "city": "Seattle",
+      "state": "Washington",
+      "address": "2828 NE 127th St",
+      "zip": "98125",
+      "phone": "(206) 743-8560",
+      "website": "https://www.rewa.org/services/early-learning-centers/",
+      "source": "https://www.rewa.org/services/early-learning-centers/",
+      "secondSource": "https://www.rewa.org/contact/",
+      "status": "verified",
+      "services": [
+        "Early learning",
+        "Preschool"
+      ],
+      "description": "Refugee Women's Alliance operates early learning programs at this location. Its website provides Amharic enrollment material. Confirm ages served, vacancies, fees, eligibility and available classroom languages directly with the center.",
+      "descriptionAm": "Refugee Women's Alliance በዚህ ቦታ የቅድመ ትምህርት ፕሮግራም ያካሂዳል። ድረ ገጹ በአማርኛ የምዝገባ መረጃ ይሰጣል። የዕድሜ ክልልን፣ ክፍት ቦታን፣ ክፍያን፣ ብቁነትን እና የክፍል ቋንቋዎችን ከማዕከሉ ጋር ያረጋግጡ።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "wa-seattle-rewa-othello",
+      "name": "ReWA Early Learning — Othello",
+      "category": "Childcare",
+      "subcategory": "Early learning; Amharic enrollment materials",
+      "city": "Seattle",
+      "state": "Washington",
+      "address": "7530 Martin Luther King Jr. Way South",
+      "zip": "98118",
+      "phone": "(206) 704-6889",
+      "website": "https://www.rewa.org/services/early-learning-centers/",
+      "source": "https://www.rewa.org/services/early-learning-centers/",
+      "secondSource": "https://www.rewa.org/contact/",
+      "status": "verified",
+      "services": [
+        "Early learning",
+        "Preschool"
+      ],
+      "description": "Refugee Women's Alliance operates early learning programs at this location. Its website provides Amharic enrollment material. Confirm ages served, vacancies, fees, eligibility and available classroom languages directly with the center.",
+      "descriptionAm": "Refugee Women's Alliance በዚህ ቦታ የቅድመ ትምህርት ፕሮግራም ያካሂዳል። ድረ ገጹ በአማርኛ የምዝገባ መረጃ ይሰጣል። የዕድሜ ክልልን፣ ክፍት ቦታን፣ ክፍያን፣ ብቁነትን እና የክፍል ቋንቋዎችን ከማዕከሉ ጋር ያረጋግጡ።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    },
+    {
+      "id": "wa-seattle-rewa-northaven",
+      "name": "ReWA Early Learning — Northaven / Nook",
+      "category": "Childcare",
+      "subcategory": "Early learning; Amharic enrollment materials",
+      "city": "Seattle",
+      "state": "Washington",
+      "address": "11057 8th Ave NE",
+      "zip": "98125",
+      "phone": "(206) 704-6890",
+      "website": "https://www.rewa.org/services/early-learning-centers/",
+      "source": "https://www.rewa.org/services/early-learning-centers/",
+      "secondSource": "https://www.rewa.org/contact/",
+      "status": "verified",
+      "services": [
+        "Early learning",
+        "Preschool"
+      ],
+      "description": "Refugee Women's Alliance operates early learning programs at this location. Its website provides Amharic enrollment material. Confirm ages served, vacancies, fees, eligibility and available classroom languages directly with the center.",
+      "descriptionAm": "Refugee Women's Alliance በዚህ ቦታ የቅድመ ትምህርት ፕሮግራም ያካሂዳል። ድረ ገጹ በአማርኛ የምዝገባ መረጃ ይሰጣል። የዕድሜ ክልልን፣ ክፍት ቦታን፣ ክፍያን፣ ብቁነትን እና የክፍል ቋንቋዎችን ከማዕከሉ ጋር ያረጋግጡ።",
+      "verifiedDate": "2026-10-22",
+      "detailsChecked": "2026-10-22"
+    }
+  ]
+}

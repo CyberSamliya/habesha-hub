@@ -1,0 +1,43 @@
+const fs=require('fs'),http=require('http'),path=require('path'),assert=require('assert/strict');const {chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),out=process.env.HH_OUTPUT_DIR||path.resolve(root,'../../outputs'),mime={'.js':'text/javascript','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml'};
+(async()=>{
+ const server=http.createServer((req,res)=>{let f=path.join(root,decodeURIComponent(req.url.split('?')[0]));if(req.url.split('?')[0].endsWith('/'))f=path.join(f,'index.html');if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'Content-Type':mime[path.extname(f)]||'text/html'});res.end(e?'Not found':b);});}).listen(0,'127.0.0.1');
+ await new Promise(r=>server.on('listening',r));const url='http://127.0.0.1:'+server.address().port;
+ const browser=await chromium.launch();let count=0;const report=[];const ok=(c,m)=>{assert.ok(c,m);count++;console.log('PASS '+m);};
+ try{
+ const context=await browser.newContext();await context.addInitScript({path:require.resolve('axe-core/axe.min.js')});const p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ async function axe(label){await p.waitForLoadState('domcontentloaded');const r=await p.evaluate(async()=>{const a=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});return a.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)}));});report.push({page:label,violations:r});ok(!r.length,'WCAG automated scan: '+label+' '+JSON.stringify(r));}
+ const pages=['index.html','daily-tools.html','submission.html','events.html','join.html','community.html','advertise.html','contact.html','privacy.html','terms.html','listing-policy.html','housing-safety.html','disclaimer.html','accessibility.html','founder.html','ohio.html','arkansas.html','habesha-garden.html','listing.html?id=oh-columbus-eshetu-obole','saved.html'];
+ for(const file of pages){await p.goto(url+'/'+file);await axe(file);for(const width of [320,390,768,1280]){await p.setViewportSize({width,height:900});ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No overflow '+file+' at '+width+' '+JSON.stringify(await p.evaluate(()=>Array.from(document.querySelectorAll('body *')).filter(e=>e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>({tag:e.tagName,id:e.id,cls:e.className,right:e.getBoundingClientRect().right})))));}await p.setViewportSize({width:1280,height:900});}
+ // Menu and keyboard focus, including phone-width controls.
+ await p.goto(url);await p.keyboard.press('Tab');ok(await p.locator('.skip').evaluate(e=>document.activeElement===e),'Skip link is first keyboard stop');await p.keyboard.press('Enter');ok(await p.evaluate(()=>location.hash==='#main'),'Skip link targets main');
+ await p.setViewportSize({width:390,height:900});await p.click('#menuBtn');ok(await p.getAttribute('#menuBtn','aria-expanded')==='true','Mobile menu opens');await p.keyboard.press('Escape');ok(await p.getAttribute('#menuBtn','aria-expanded')==='false','Escape closes mobile menu');
+ // Real profile, safe invalid IDs, local bookmarks and language persistence.
+ await p.goto(url+'/listing.html?id=oh-columbus-eshetu-obole');ok((await p.textContent('h1'))==='Eshetu Obole, MD','Provider profile renders correct record');ok((await p.textContent('#profile')).includes('543 Taylor Ave'),'Profile includes sourced office address');
+ await p.getByRole('button',{name:'Save place',exact:true}).click();await p.goto(url+'/saved.html');ok((await p.textContent('#savedPlaces')).includes('Eshetu Obole'),'Saved place persists on separate page');
+ await p.goto(url+'/listing.html?id=oh-columbus-eshetu-obole');await p.getByRole('button',{name:'Remove saved place',exact:true}).click();await p.goto(url+'/saved.html');ok((await p.textContent('#savedPlaces')).includes('No saved places'),'Removal persists');
+ await p.goto(url+'/listing.html?id=%3Cscript%3Ealert(1)%3C/script%3E');ok((await p.textContent('h1'))==='Listing not found','Invalid profile IDs fail safely');
+ // Submission draft is local; known fields are prefilled only into the explicit continuation URL.
+ await p.goto(url+'/submission.html?type=correction&id=test-id&name=Test%20Business&city=Columbus&state=Ohio');
+ ok(await p.inputValue('#intakeType')==='correction','Correction type prefilled');ok(await p.inputValue('#intakeState')==='Ohio','State prefilled');
+ ok(await p.locator('iframe').count()===0,'No embedded third-party form loads automatically');
+ await p.fill('#intakeDetails','A public correction for review.');await p.getByRole('button',{name:'Review request',exact:true}).click();
+ ok((await p.inputValue('#intakeSummary')).includes('A public correction'),'Draft preview contains entered details');
+ const href=await p.getAttribute('#openPrivateForm','href');ok(href.includes('entry.1798896994=test-id')&&!href.includes('public+correction'),'Continuation includes listing ID but excludes private draft details');
+ await p.locator('[data-language-toggle]').click();await p.waitForFunction(()=>document.documentElement.lang==='am');ok((await p.textContent('h1')).includes('መረጃ'),'Submission heading translated: '+await p.textContent('h1')+' errors: '+errors.join(';'));await axe('Amharic submission');
+ await p.setViewportSize({width:320,height:900});ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Amharic submission fits 320px');
+ await p.setViewportSize({width:1280,height:900});
+ await p.goto(url+'/listing.html?id=oh-columbus-eshetu-obole');await p.waitForFunction(()=>document.documentElement.lang==='am');ok((await p.locator('[data-am]').first().textContent()).includes('የOhio'),'Bilingual profile description follows language');
+ await p.goto(url+'/daily-tools.html');await p.waitForFunction(()=>document.documentElement.lang==='am');
+ for(const key of ['budget','reminders','grocery','help','phrases','jobs','family','scam','events','requests']){await p.click('[data-key="'+key+'"]');await axe('Amharic tool '+key);await p.setViewportSize({width:320,height:900});ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Amharic tool fits 320px '+key);await p.setViewportSize({width:1280,height:900});}
+ await p.locator('[data-language-toggle]').click();await p.waitForFunction(()=>document.documentElement.lang==='en');ok((await p.textContent('#toolTitle'))==='Service request drafts','English restored after language switch');
+ for(const key of ['budget','reminders','grocery','help','phrases','jobs','family','scam','events','requests']){await p.click('[data-key="'+key+'"]');await axe('English tool '+key);}
+ // Every internal URL/fragment on the static public pages resolves locally.
+ for(const file of pages.filter(x=>!x.includes('?'))){await p.goto(url+'/'+file);const links=await p.locator('a[href]').evaluateAll(as=>as.map(a=>a.getAttribute('href')).filter(h=>!h.startsWith('http')&&!h.startsWith('tel:')&&!h.startsWith('mailto:')));for(const h of links){const target=new URL(h,url+'/'+file);const local=path.join(root,decodeURIComponent(target.pathname));ok(fs.existsSync(local)||target.pathname==='/',file+' internal link '+h);
+ if(target.hash){const f=target.pathname.endsWith('/')?path.join(local,'index.html'):local;const source=fs.readFileSync(f,'utf8');const id=decodeURIComponent(target.hash.slice(1));if(target.pathname.endsWith('/daily-tools.html')&&['budget','reminders','grocery','help','phrases','jobs','family','scam','events','requests'].includes(id)){await p.goto(target.href);ok(await p.locator('[data-key="'+id+'"]').count()===1,file+' tool route '+h);}else {await p.goto(target.href);ok(await p.evaluate(id=>!!document.getElementById(id),id),file+' fragment '+h);}}}}
+ fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'quality-accessibility-report.json'),JSON.stringify({date:'2026-10-22',checks:count,scans:report,limitations:'Automated WCAG checks and emulated widths do not replace screen-reader, fluent-language or physical-device testing.'},null,2));
+ await p.goto(url);await p.setViewportSize({width:1280,height:900});await p.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,0);});await p.screenshot({path:path.join(out,'habesha-hub-quality-desktop.png')});
+ await p.setViewportSize({width:390,height:844});await p.screenshot({path:path.join(out,'habesha-hub-quality-mobile.png'),fullPage:false});
+ ok(errors.length===0,'No browser JavaScript errors: '+errors.join(';'));console.log(count+' quality checks passed; '+report.length+' accessibility scans');
+ }finally{await browser.close();server.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});
