@@ -301,6 +301,8 @@ window.HH_EXTRA_TRANSLATIONS={
   "Advertising helps keep searching free for everyone": "ማስታወቂያ ፍለጋን ለሁሉም ነጻ ለማድረግ ይረዳል",
   "See ad options": "የማስታወቂያ አማራጮችን ይመልከቱ",
   "Featured community sponsor": "ተለይቶ የቀረበ የማህበረሰብ ስፖንሰር",
+  "Our project": "የእኛ ፕሮጀክት",
+  "From the founder of Habesha Hub": "ከHabesha Hub መሥራች",
   "Your ad could appear here": "ማስታወቂያዎ እዚህ ሊታይ ይችላል",
   "Example campaign: Ewket Kids · homepage spotlight": "የምሳሌ ማስታወቂያ፦ Ewket Kids · በመነሻ ገጽ ጎልቶ የቀረበ",
   "Featured listing": "ተለይቶ የቀረበ ዝርዝር",
