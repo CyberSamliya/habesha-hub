@@ -103,7 +103,19 @@
 
 <section class="soft" id="directory" tabindex="-1" aria-label="Directory results">
  <div class="wrap">
-  <div class="section-head"><div><div class="eyebrow" data-i18n="directory_eyebrow">Community directory</div><h2 data-i18n="directory_h2">Find Habesha businesses & organizations</h2><p data-i18n="directory_p">Search by name, city, state or category. Listings are community-maintained; always confirm hours and details before a special trip.</p></div><a class="btn secondary" href="#contribute" data-i18n="add_listing_btn">Add a listing</a></div>
+  <div class="hh-dir-card">
+   <div class="hh-dir-brand">Habesha <span>Hub</span></div>
+   <h2 data-i18n="directory_h2">Find Habesha businesses & organizations</h2>
+   <div class="hh-dir-row">
+    <form class="hh-dir-search" action="index.html#directory" method="get" role="search">
+     <label class="sr-only" for="dirQuick">Search the directory</label>
+     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+     <input id="dirQuick" name="q" type="search" placeholder="Search by name, city, state or category" data-i18n-placeholder="dir_search_placeholder2" autocomplete="off">
+     <button type="submit" class="hh-dir-go" data-i18n="search_btn">Search</button>
+    </form>
+    <a class="hh-dir-add" href="#contribute" data-i18n="add_listing_btn">Add a listing</a>
+   </div>
+  </div>
 
   <div class="result-meta" id="resultMeta" role="status" aria-live="polite"></div>
   <div class="grid listings" id="listingGrid"></div>
@@ -111,6 +123,7 @@
  </div>
 </section>
 
+<div class="hh-mid">
 <section id="community">
  <div class="wrap">
   <div class="section-head"><div><div class="eyebrow" data-i18n="community_eyebrow">Start here</div><h2 data-i18n="community_h2">What are you looking for?</h2><p data-i18n="community_p2">Choose a category, then narrow by state and city.</p></div></div>
@@ -151,6 +164,7 @@
   </details>
  </div>
 </section>
+</div>
 
 <section class="hh-spot-feature" id="spotlight" aria-labelledby="spotHeading">
  <div class="wrap">
