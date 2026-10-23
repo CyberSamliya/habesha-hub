@@ -40,6 +40,8 @@
 
   // ---------- extra interface text ----------
   var EXTRA = {
+    hero_h1b:{en:"The home of the Habesha community <span>in America.</span>",am:"በአሜሪካ ያለው የሐበሻ ማህበረሰብ <span>ማዕከል።</span>"},
+    hero_p3:{en:"Find trusted restaurants, churches, groceries, professionals and newcomer resources — every listing sourced, dated and community-reviewed.",am:"የታመኑ ምግብ ቤቶችን፣ አብያተ ክርስቲያናትን፣ ግሮሰሪዎችን፣ ባለሙያዎችን እና ለአዲስ መጤዎች የሚሆኑ መረጃዎችን ያግኙ — እያንዳንዱ ዝርዝር ምንጭ፣ ቀን እና የማህበረሰብ ግምገማ አለው።"},
     nav_housing:{en:"Housing",am:"መኖሪያ ቤት"},
     hero_card_p2:{en:"Every listing shows where the information came from and when it was last checked. Nothing is invented to make a state look complete.",am:"እያንዳንዱ ዝርዝር መረጃው ከየት እንደመጣ እና መቼ እንደተረጋገጠ ያሳያል። አንድን ግዛት ሙሉ ለማስመሰል ምንም ነገር አይፈጠርም።"},
     stat_verified_label:{en:"verified with sources",am:"በምንጭ የተረጋገጡ"},
@@ -302,29 +304,14 @@
     renderHousing();
   }
 
-  // ---------- dimensional category interaction ----------
+  // ---------- category selection highlight ----------
   (function () {
     var cards = document.querySelectorAll("#categoryGrid .cat");
-    if (!cards.length) return;
-    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     cards.forEach(function (card) {
       card.addEventListener("click", function () {
         cards.forEach(function (c) { c.classList.remove("is-active"); });
         card.classList.add("is-active");
       });
-      if (!reduced && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        card.addEventListener("pointermove", function (e) {
-          var r = card.getBoundingClientRect();
-          var x = (e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
-          card.style.setProperty("--ry", ((x-.5)*8).toFixed(2)+"deg");
-          card.style.setProperty("--rx", ((.5-y)*7).toFixed(2)+"deg");
-          card.style.setProperty("--mx", (x*100).toFixed(1)+"%");
-          card.style.setProperty("--my", (y*100).toFixed(1)+"%");
-        });
-        card.addEventListener("pointerleave", function () {
-          card.style.setProperty("--rx","0deg"); card.style.setProperty("--ry","0deg");
-        });
-      }
     });
   })();
 
@@ -427,6 +414,41 @@
     box.querySelectorAll("[data-city]").forEach(function (b) { b.addEventListener("click", function () { go(b.getAttribute("data-city"), ""); }); });
     box.querySelectorAll("[data-cat]").forEach(function (b) { b.addEventListener("click", function () { go("", b.getAttribute("data-cat")); }); });
     $("coverageGrid").querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-state") === state ? "true" : "false"); });
+    markSelectedState(state);
+  }
+  // Tile map: one square per state, placed roughly where the state sits on a U.S. map.
+  var TILE_POS = {AK:[0,0],ME:[0,11],WI:[1,6],VT:[1,10],NH:[1,11],WA:[2,1],ID:[2,2],MT:[2,3],ND:[2,4],MN:[2,5],IL:[2,6],MI:[2,7],NY:[2,9],MA:[2,10],
+    OR:[3,1],NV:[3,2],WY:[3,3],SD:[3,4],IA:[3,5],IN:[3,6],OH:[3,7],PA:[3,8],NJ:[3,9],CT:[3,10],RI:[3,11],CA:[4,1],UT:[4,2],CO:[4,3],NE:[4,4],MO:[4,5],KY:[4,6],WV:[4,7],VA:[4,8],MD:[4,9],DE:[4,10],
+    AZ:[5,2],NM:[5,3],KS:[5,4],AR:[5,5],TN:[5,6],NC:[5,7],SC:[5,8],DC:[5,9],OK:[6,4],LA:[6,5],MS:[6,6],AL:[6,7],GA:[6,8],HI:[7,0],TX:[7,4],FL:[7,9]};
+  function stateCounts() { var c = {}; LISTINGS.forEach(function (x) { c[x.state] = (c[x.state] || 0) + 1; }); return c; }
+  function pickState(s) { $("stateExplorer").value = s; renderState(); $("stateSummary").scrollIntoView({block:"nearest"}); }
+  function renderTileMap() {
+    var map = $("tileMap"), top = $("topStates"); if (!map) return;
+    var counts = stateCounts();
+    map.innerHTML = STATES.map(function (s) {
+      var p = TILE_POS[ABBR[s]], n = counts[s] || 0, b = n === 0 ? 0 : n < 5 ? 1 : n < 15 ? 2 : 3;
+      return '<button type="button" class="tile b' + b + '" data-state="' + esc(s) + '" aria-pressed="false" aria-label="' + esc(s + ": " + (n ? n + " " + t("listings_word") : t("no_listings_state"))) + '">' + ABBR[s] + "</button>";
+    }).join("");
+    // Positions go through the CSSOM: the page's CSP blocks inline style attributes.
+    map.querySelectorAll(".tile").forEach(function (b) { var p = TILE_POS[ABBR[b.getAttribute("data-state")]]; b.style.gridRow = String(p[0] + 1); b.style.gridColumn = String(p[1] + 1); });
+    top.innerHTML = STATES.filter(function (s) { return counts[s]; }).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); }).slice(0, 6).map(function (s) {
+      return '<button type="button" data-state="' + esc(s) + '" aria-pressed="false">' + esc(s) + "<span>" + counts[s] + "</span></button>";
+    }).join("");
+    [map, top].forEach(function (box) { box.querySelectorAll("button").forEach(function (b) { b.addEventListener("click", function () { pickState(b.getAttribute("data-state")); }); }); });
+    markSelectedState($("stateExplorer").value);
+  }
+  function markSelectedState(state) {
+    ["tileMap", "topStates"].forEach(function (id) { var box = $(id); if (box) box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-state") === state ? "true" : "false"); }); });
+  }
+  // Hero: the most recently verified listings, one per category, as a live preview of the directory.
+  function renderHeroPicks() {
+    var box = $("heroPicks"); if (!box) return;
+    var seen = {}, picks = LISTINGS.filter(function (x) { return x.status === "verified" && x.privacy !== "limited" && x.verifiedDate; })
+      .sort(function (a, b) { return b.verifiedDate.localeCompare(a.verifiedDate) || a.name.localeCompare(b.name); })
+      .filter(function (x) { if (seen[x.category]) return false; seen[x.category] = 1; return true; }).slice(0, 3);
+    box.innerHTML = picks.map(function (x) {
+      return '<a class="hero-pick" href="listing.html?id=' + encodeURIComponent(x.id) + '"><span class="ini" aria-hidden="true">' + esc(x.name.replace(/^The /, "").charAt(0)) + '</span><span class="txt"><b>' + esc(x.name) + "</b><small>" + esc(catLabel(x.category) + " · " + cityLine(x)) + "</small><small>" + esc(t("last_checked") + " " + fmtDate(x.verifiedDate)) + '</small></span><span class="chk">' + esc(statusLabel("verified")) + "</span></a>";
+    }).join("");
   }
   function renderCoverage() {
     var counts = {}; LISTINGS.forEach(function (x) { counts[x.state] = (counts[x.state] || 0) + 1; });
@@ -521,7 +543,7 @@
     document.querySelectorAll("[data-i18n-placeholder]").forEach(function (n) { var k = n.getAttribute("data-i18n-placeholder"); if (I18N[k]) n.placeholder = t(k); });
     var lb = $("langBtn"); lb.textContent = LANG === "am" ? "Switch to English" : "Switch to አማርኛ"; lb.lang = LANG === "am" ? "en" : "am";
     lb.setAttribute("aria-label", LANG === "am" ? "Switch to English" : "Switch to Amharic");
-    fillCities(); renderContrib(); renderCoverage(); renderListings(false); renderState(); renderCategoryCounts();
+    fillCities(); renderContrib(); renderCoverage(); renderTileMap(); renderHeroPicks(); renderListings(false); renderState(); renderCategoryCounts();
   }
 
   // ---------- stats ----------

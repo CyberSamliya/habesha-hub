@@ -10,6 +10,8 @@ Live site: https://cybersamliya.github.io/habesha-hub/
 |---|---|
 | `index.html` | Page markup, SEO metadata, JSON-LD |
 | `styles.css` | All styles |
+| `redesign.css` | Homepage redesign (midnight, emerald and gold; "Advertise here" section). Loaded only by `index.html`, scoped to `body.rd` |
+| `assets/ads/` | Sponsor creative shown in the homepage "Advertise here" section |
 | `i18n.js` | English / Amharic interface text |
 | `app.js` | Search, filters, cards, state explorer, housing board, contribution links |
 | `directory-data.js` | **All listings** (one per line) plus housing posts and status labels |
