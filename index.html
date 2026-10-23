@@ -7,7 +7,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Habesha Hub | Ethiopian Community Directory USA: Businesses, Churches & Resources</title>
 <meta name="description" content="Find Ethiopian and Habesha restaurants, groceries, churches (Orthodox, Protestant/Evangelical, Catholic), services and community organizations by state and city across the United States. Every listing shows its source and last-checked date.">
-<meta name="theme-color" content="#173b2c">
+<meta name="theme-color" content="#0e1a2b">
 <link rel="canonical" href="https://cybersamliya.github.io/habesha-hub/">
 <meta property="og:site_name" content="Habesha Hub">
 <meta property="og:title" content="Habesha Hub | Ethiopian Community Directory USA">
@@ -22,8 +22,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='10' height='30' fill='%231f6a45'/%3E%3Crect x='10' width='10' height='30' fill='%23e1b53e'/%3E%3Crect x='20' width='10' height='30' fill='%23a83d2c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261022-quality">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261023-redesign">
+<link rel="stylesheet" href="redesign.css?v=20261023-redesign">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://cybersamliya.github.io/habesha-hub/#website","url":"https://cybersamliya.github.io/habesha-hub/","name":"Habesha Hub","inLanguage":["en","am"],"description":"Community directory of Ethiopian and Habesha businesses, churches and organizations in the United States.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://cybersamliya.github.io/habesha-hub/?q={search_term_string}#directory"},"query-input":"required name=search_term_string"}},
@@ -31,14 +32,19 @@
 ]}
 </script>
 <meta property="og:image" content="https://cybersamliya.github.io/habesha-hub/assets/social-preview.png"><meta property="og:image:alt" content="Habesha Hub — Ethiopian and Habesha community resources"><meta name="twitter:image" content="https://cybersamliya.github.io/habesha-hub/assets/social-preview.png"></head>
-<body>
+<body class="rd">
 <a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+<div class="topbar">
+ <div class="wrap topbar-in">
+  <span>Free, volunteer-run directory for Ethiopian &amp; Habesha communities in the U.S.</span>
+  <span class="topbar-links"><a class="topbar-ad" href="advertise.html">Advertise with us</a><a href="submission.html?type=correction">Report a correction</a></span>
+ </div>
+</div>
 <header>
  <div class="wrap nav">
-  <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Habesha Hub</a>
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true">ሀ</span>Habesha Hub</a>
   <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" data-i18n="menu_btn">Menu</button>
   <nav id="mainNav" aria-label="Main navigation">
-   <a class="nav-cta" href="daily-tools.html">Daily Life Tools</a>
    <details class="nav-group"><summary>Explore</summary><div class="nav-panel">
     <a href="#directory" data-i18n="nav_directory">Directory</a>
     <a href="#states" data-i18n="nav_states">Explore States</a>
@@ -56,17 +62,20 @@
     <a href="advertise.html" target="_blank" rel="noopener">Advertise &amp; business services</a>
     <a href="#contribute" data-i18n="nav_cta">+ Add to the Hub</a>
    </div></details>
+   <a class="nav-link" href="daily-tools.html">Daily Life Tools</a>
+   <a class="nav-link nav-biz" href="#advertise">For businesses</a>
   </nav>
   <button class="lang" id="langBtn" type="button" lang="am">Switch to አማርኛ</button>
+  <a class="nav-add" href="#contribute">Add a listing</a>
  </div>
 </header>
 <main id="main">
 <section class="hero" id="top">
  <div class="wrap hero-grid">
   <div class="hero-copy">
-   <div class="eyebrow" data-i18n="hero_eyebrow">Community-built across America</div>
-   <h1 class="hero-title-3d" data-i18n-html="hero_h1">Ethiopian Community Resources<br><span>Across the U.S.</span></h1>
-   <p data-i18n="hero_p">Find Ethiopian and Habesha businesses, churches, professionals, services, housing and community resources nationwide.</p>
+   <p class="hero-welcome"><span class="am" lang="am">እንኳን ደህና መጡ</span><span class="dot" aria-hidden="true"></span><span>Welcome to the community</span></p>
+   <h1 data-i18n-html="hero_h1b">The home of the Habesha community in America.</h1>
+   <p class="hero-lede" data-i18n="hero_p3">Find trusted restaurants, churches, groceries, professionals and newcomer resources — every listing sourced, dated and community-reviewed.</p>
    <form class="filters" id="filterForm" role="search" aria-label="Directory filters">
    <label class="f" for="q"><span data-i18n="f_what">What</span><input id="q" name="q" type="search" placeholder="Name, service, city or ZIP" data-i18n-placeholder="dir_search_placeholder2" autocomplete="off"></label>
    <label class="f" for="dirState"><span data-i18n="f_state">State</span><select id="dirState" name="state"><option value="" data-i18n="select_state_opt">Select one</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select></label>
@@ -76,21 +85,22 @@
    <div class="clear-wrap"><button id="searchResults" class="primary" type="submit" ><span data-i18n="show_results">Show results</span><span id="searchCount" aria-hidden="true"></span></button><button id="clearFilters" type="button" data-i18n="clear_btn">Clear</button></div>
   </form>
   <div class="filter-extra"><label><input type="checkbox" id="verifiedOnly"> <span data-i18n="verified_only">Show verified listings only</span></label><a href="#" id="shareLink" data-i18n="copy_link">Copy link to these results</a></div>
-
-  </div>
-
-  <aside class="hero-card hero-summary" aria-label="Directory summary">
-   <h2 data-i18n="hero_card_h2">Built for useful discovery</h2>
-   <p data-i18n="hero_card_p2">Every listing shows where the information came from and when it was last checked. Nothing is invented to make a state look complete.</p>
-   <div class="stats">
+   <div class="hero-stats" aria-label="Directory summary">
     <div class="stat"><strong id="statListings">0</strong><span data-i18n="stat2_label">community listings</span></div>
-    <div class="stat"><strong id="statVerified">0</strong><span data-i18n="stat_verified_label">verified with sources</span></div>
+    <div class="stat"><strong id="statVerified" class="gold">0</strong><span data-i18n="stat_verified_label">verified with sources</span></div>
     <div class="stat"><strong id="statStates">0</strong><span data-i18n="stat_states_label">states with listings</span></div>
     <div class="stat"><strong id="statCities">0</strong><span data-i18n="stat_cities_label">cities and metros</span></div>
    </div>
+  </div>
+  <aside class="hero-visual" aria-label="Recently verified listings">
+   <svg class="hero-pattern" aria-hidden="true" focusable="false"><defs><pattern id="heroTibeb" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#13233a"/><path d="M28 6 50 28 28 50 6 28Z" fill="none" stroke="#e9b949" stroke-opacity=".35" stroke-width="1.5"/><path d="M28 18 38 28 28 38 18 28Z" fill="#0e7c57" fill-opacity=".55"/><circle cx="28" cy="28" r="3" fill="#e9b949" fill-opacity=".7"/><circle cx="0" cy="0" r="3" fill="#c2452d" fill-opacity=".6"/><circle cx="56" cy="56" r="3" fill="#c2452d" fill-opacity=".6"/></pattern></defs><rect width="100%" height="100%" rx="28" fill="url(#heroTibeb)"/></svg>
+   <p class="hero-visual-label">Recently verified</p>
+   <div class="hero-picks" id="heroPicks"></div>
   </aside>
  </div>
 </section>
+<div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+
 <section class="soft" id="directory" tabindex="-1" aria-label="Directory results">
  <div class="wrap">
   <div class="section-head"><div><div class="eyebrow" data-i18n="directory_eyebrow">Community directory</div><h2 data-i18n="directory_h2">Find Habesha businesses & organizations</h2><p data-i18n="directory_p">Search by name, city, state or category. Listings are community-maintained; always confirm hours and details before a special trip.</p></div><a class="btn secondary" href="#contribute" data-i18n="add_listing_btn">Add a listing</a></div>
@@ -105,23 +115,75 @@
  <div class="wrap">
   <div class="section-head"><div><div class="eyebrow" data-i18n="community_eyebrow">Start here</div><h2 data-i18n="community_h2">What are you looking for?</h2><p data-i18n="community_p2">Choose a category, then narrow by state and city.</p></div></div>
   <div class="grid cats" id="categoryGrid">
-   <a class="cat" href="#directory" data-category="Restaurant"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🍽️</span></span><strong data-i18n="cat1_t">Restaurants & Cafés</strong><span data-i18n="cat1_d">Ethiopian food, coffee, bakeries and catering</span></a>
-   <a class="cat" href="#directory" data-category="Grocery"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🛒</span></span><strong data-i18n="cat2_t">Groceries & Markets</strong><span data-i18n="cat2_d">Injera, teff, spices, butchers and imports</span></a>
-   <a class="cat" href="#directory" data-category="Shopping"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🧺</span></span><strong data-i18n="cat_shop_t">Clothing & Shopping</strong><span data-i18n="cat_shop_d">Traditional clothing, jewelry and import stores</span></a>
-   <a class="cat" href="#directory" data-category="Church"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">⛪</span></span><strong data-i18n="cat3_t">Churches & Faith</strong><span data-i18n="cat3_d">Orthodox, Protestant/Evangelical and Catholic</span></a>
-   <a class="cat" href="#directory" data-category="Beauty"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">✂️</span></span><strong data-i18n="cat4_t">Barbers & Beauty</strong><span data-i18n="cat4_d">Hair, braiding, makeup and wedding beauty</span></a>
-   <a class="cat" href="#directory" data-category="Auto"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🚗</span></span><strong data-i18n="cat5_t">Auto & Mechanics</strong><span data-i18n="cat5_d">Repair, body shops, tires and transport</span></a>
-   <a class="cat" href="#directory" data-category="Home"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🏠</span></span><strong data-i18n="cat6_t">Home Services</strong><span data-i18n="cat6_d">Contractors, cleaning, moving and repair</span></a>
-   <a class="cat" href="#directory" data-category="Professional"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">💼</span></span><strong data-i18n="cat7_t">Professional Services</strong><span data-i18n="cat7_d">Legal, tax, real estate, insurance and IT</span></a>
-   <a class="cat" href="#directory" data-category="Healthcare"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🩺</span></span><strong data-i18n="cat_health_t">Healthcare</strong><span data-i18n="cat_health_d">Doctors, dentists, pharmacies and home care</span></a>
-   <a class="cat" href="#directory" data-category="Childcare"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🧒</span></span><strong data-i18n="cat_child_t">Children & Family</strong><span data-i18n="cat_child_d">Childcare, tutoring and Amharic classes</span></a>
-   <a class="cat" href="#directory" data-category="Community"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🤝</span></span><strong data-i18n="cat_comm_t">Community & Culture</strong><span data-i18n="cat_comm_d">Associations, nonprofits, youth and sports</span></a>
-   <a class="cat" href="#housing" data-category="Housing"><span class="icon icon-3d" aria-hidden="true"><span class="icon-face">🔑</span></span><strong data-i18n="cat_house_t">Housing</strong><span data-i18n="cat_house_d">Rooms, roommates and rentals (dated listings)</span></a>
+   <a class="cat" href="#directory" data-category="Restaurant"><span class="icon tone-clay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M6 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span><strong data-i18n="cat1_t">Restaurants & Cafés</strong><span data-i18n="cat1_d">Ethiopian food, coffee, bakeries and catering</span></a>
+   <a class="cat" href="#directory" data-category="Grocery"><span class="icon tone-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11h14l-1.5 9h-11Z"/><path d="m9 11 3-7 3 7"/></svg></span><strong data-i18n="cat2_t">Groceries & Markets</strong><span data-i18n="cat2_d">Injera, teff, spices, butchers and imports</span></a>
+   <a class="cat" href="#directory" data-category="Shopping"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2Z"/></svg></span><strong data-i18n="cat_shop_t">Clothing & Shopping</strong><span data-i18n="cat_shop_d">Traditional clothing, jewelry and import stores</span></a>
+   <a class="cat" href="#directory" data-category="Church"><span class="icon tone-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M9 5h6"/><path d="M6 22V12l6-4 6 4v10"/><path d="M10 22v-5h4v5"/><path d="M3 22h18"/></svg></span><strong data-i18n="cat3_t">Churches & Faith</strong><span data-i18n="cat3_d">Orthodox, Protestant/Evangelical and Catholic</span></a>
+   <a class="cat" href="#directory" data-category="Beauty"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9"/><path d="M14.5 14.5 20 20"/><path d="M8.1 8.1 12 12"/></svg></span><strong data-i18n="cat4_t">Barbers & Beauty</strong><span data-i18n="cat4_d">Hair, braiding, makeup and wedding beauty</span></a>
+   <a class="cat" href="#directory" data-category="Auto"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 17h14v-5l-2-5H7l-2 5Z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg></span><strong data-i18n="cat5_t">Auto & Mechanics</strong><span data-i18n="cat5_d">Repair, body shops, tires and transport</span></a>
+   <a class="cat" href="#directory" data-category="Home"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11H3Z"/><path d="M9 21v-6h6v6"/></svg></span><strong data-i18n="cat6_t">Home Services</strong><span data-i18n="cat6_d">Contractors, cleaning, moving and repair</span></a>
+   <a class="cat" href="#directory" data-category="Professional"><span class="icon tone-gold" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span><strong data-i18n="cat7_t">Professional Services</strong><span data-i18n="cat7_d">Legal, tax, real estate, insurance and IT</span></a>
+   <a class="cat" href="#directory" data-category="Healthcare"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span><strong data-i18n="cat_health_t">Healthcare</strong><span data-i18n="cat_health_d">Doctors, dentists, pharmacies and home care</span></a>
+   <a class="cat" href="#directory" data-category="Childcare"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 14c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5"/><path d="M9 9h.01M15 9h.01"/></svg></span><strong data-i18n="cat_child_t">Children & Family</strong><span data-i18n="cat_child_d">Childcare, tutoring and Amharic classes</span></a>
+   <a class="cat" href="#directory" data-category="Community"><span class="icon tone-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 12 0v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M22 21v-1a6 6 0 0 0-4-5.6"/></svg></span><strong data-i18n="cat_comm_t">Community & Culture</strong><span data-i18n="cat_comm_d">Associations, nonprofits, youth and sports</span></a>
+   <a class="cat" href="#housing" data-category="Housing"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2"/><path d="m16 7 3 3"/></svg></span><strong data-i18n="cat_house_t">Housing</strong><span data-i18n="cat_house_d">Rooms, roommates and rentals (dated listings)</span></a>
   </div>
  </div>
 </section>
 
-<section class="soft" id="daily-life">
+<section class="soft" id="states">
+ <div class="wrap">
+  <div class="section-head"><div><div class="eyebrow" data-i18n="states_eyebrow">Nationwide framework</div><h2 data-i18n="states_h2">Explore by state</h2><p data-i18n="states_p2">All 50 states and Washington, DC. States without listings say so honestly instead of showing placeholder results.</p></div></div>
+  <div class="state-layout">
+   <div class="tile-card">
+    <div class="tile-map" id="tileMap" aria-label="Map of states by number of listings"></div>
+    <div class="tile-legend" aria-hidden="true"><strong>Listings on record</strong><span><i class="b0"></i>None yet</span><span><i class="b1"></i>1–4</span><span><i class="b2"></i>5–14</span><span><i class="b3"></i>15+</span></div>
+   </div>
+   <div class="state-side">
+    <div class="state-picker"><label for="stateExplorer"><strong data-i18n="choose_state">Choose a state</strong></label><select id="stateExplorer"><option value="">Select one</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select><p class="result-meta" data-i18n="state_hint">Use this to see what Habesha Hub currently knows about that state.</p></div>
+    <div class="top-states"><p class="top-states-h">Largest communities on the Hub</p><div id="topStates"></div></div>
+   </div>
+  </div>
+  <div class="resource-card state-summary" id="stateSummary" aria-live="polite"></div>
+  <details class="coverage-toggle" id="coverageToggle">
+   <summary><span data-i18n="all_states_btn">Show all 50 states + DC</span> <span class="count-pill" id="coverageCount"></span></summary>
+   <div class="coverage" id="coverageGrid" aria-label="Listings per state"></div>
+  </details>
+ </div>
+</section>
+
+<section class="ad-feature" id="advertise" aria-labelledby="adHeading">
+ <div class="wrap">
+  <div class="ad-grid">
+   <div class="ad-copy">
+    <span class="ad-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>Advertise here</span>
+    <h2 id="adHeading">Grow your business with the community that already knows you.</h2>
+    <p class="ad-lede">Habesha Hub is where families look for a place to eat, worship, shop and get help. Put your restaurant, store, church, salon, auto shop or service in front of them at the moment they are searching.</p>
+    <ul class="ad-benefits">
+     <li><strong>Reach every generation</strong><span>Parents, youth, elders, newcomers and professionals</span></li>
+     <li><strong>Local and targeted</strong><span>Shown by city, state and category</span></li>
+     <li><strong>Trusted placement</strong><span>Next to sourced, verified listings</span></li>
+     <li><strong>Support the community</strong><span>Advertising helps keep searching free for everyone</span></li>
+    </ul>
+    <div class="ad-actions"><a class="ad-cta" href="advertise.html">Advertise with us →</a><a class="ad-cta2" href="advertise.html#options">See ad options</a></div>
+   </div>
+   <figure class="ad-creative">
+    <div class="ad-creative-top"><span><span class="sponsored">Sponsored</span>Featured community sponsor</span><span>Your ad could appear here</span></div>
+    <div class="ad-frame"><img src="assets/ads/ewket-kids-ad.webp" width="1774" height="887" loading="lazy" decoding="async" alt="Ewket Kids advertisement: a free educational website for preschool to grade 6 in Amharic and English, inviting restaurants, grocery stores, churches, auto shops, salons and professional services to advertise on Habesha Hub."></div>
+    <figcaption>Example campaign: Ewket Kids · homepage spotlight</figcaption>
+   </figure>
+  </div>
+  <div class="ad-options">
+   <div><strong>Featured listing</strong><span>Enhanced presentation of your listing with a visible Featured label.</span></div>
+   <div><strong>City or category sponsor</strong><span>Clearly disclosed sponsorship of a city or category page.</span></div>
+   <div><strong>Homepage spotlight</strong><span>A large placement like the one above. Ask about availability.</span></div>
+   <div><strong>Website &amp; digital services</strong><span>Simple small-business websites, scoped and priced up front.</span></div>
+  </div>
+  <p class="ad-note">Paid placement never changes a listing’s verification status, and sponsored content is always labeled.</p>
+ </div>
+</section>
+
+<section id="daily-life">
  <div class="wrap">
   <div class="section-head"><div><div class="eyebrow">Free everyday tools</div><h2>Make everyday life a little easier</h2><p>Budget, plan meals, track jobs, organize family tasks and find useful community resources. No account needed; planner entries stay on your device.</p></div><a class="btn primary" href="daily-tools.html">Open all 10 tools</a></div>
   <div class="grid resource-grid">
@@ -129,21 +191,6 @@
    <article class="about-card"><h3>Organize your next step</h3><p>Job applications, school tasks, events and service request drafts.</p><a href="daily-tools.html#jobs">Track applications →</a></article>
    <article class="about-card"><h3>Find help and stay informed</h3><p>Local support links, Amharic–English phrases and scam warning signs.</p><a href="daily-tools.html#help">Find local help →</a></article>
   </div>
- </div>
-</section>
-
-
-<section id="states">
- <div class="wrap">
-  <div class="section-head"><div><div class="eyebrow" data-i18n="states_eyebrow">Nationwide framework</div><h2 data-i18n="states_h2">Explore by state</h2><p data-i18n="states_p2">All 50 states and Washington, DC. States without listings say so honestly instead of showing placeholder results.</p></div></div>
-  <div class="state-panel">
-   <div class="state-picker"><label for="stateExplorer"><strong data-i18n="choose_state">Choose a state</strong></label><select id="stateExplorer"><option value="">Select one</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select><p class="result-meta" data-i18n="state_hint">Use this to see what Habesha Hub currently knows about that state.</p></div>
-   <div class="resource-card" id="stateSummary" aria-live="polite"></div>
-  </div>
-  <details class="coverage-toggle" id="coverageToggle">
-   <summary><span data-i18n="all_states_btn">Show all 50 states + DC</span> <span class="count-pill" id="coverageCount"></span></summary>
-   <div class="coverage" id="coverageGrid" aria-label="Listings per state"></div>
-  </details>
  </div>
 </section>
 
@@ -162,7 +209,7 @@
  </div>
 </section>
 
-<section id="resources">
+<section class="dark-band" id="resources">
  <div class="wrap">
   <div class="section-head"><div><div class="eyebrow" data-i18n="resources_eyebrow">Trusted starting points</div><h2 data-i18n="resources_h2">Help & newcomer resources</h2><p data-i18n="resources_p">Habesha Hub explains where to start, but government and legal decisions should always be confirmed with the official agency or a qualified professional.</p></div></div>
   <div class="grid resource-grid">
@@ -187,39 +234,47 @@
 
 <section class="contribute" id="contribute">
  <div class="wrap">
-  <div class="section-head"><div><div class="eyebrow light" data-i18n="contribute_eyebrow">Community-powered</div><h2 data-i18n="contribute_h2">Help grow Habesha Hub</h2><p data-i18n="contribute_p">A nationwide directory becomes useful when people contribute accurate local knowledge.</p></div></div>
+  <div class="section-head"><div><div class="eyebrow" data-i18n="contribute_eyebrow">Community-powered</div><h2 data-i18n="contribute_h2">Help grow Habesha Hub</h2><p data-i18n="contribute_p">A nationwide directory becomes useful when people contribute accurate local knowledge.</p></div></div>
   <div class="grid contribute-grid" id="contribGrid"></div>
   <p class="review-note" data-i18n="review_note">Every submission is reviewed first. New listings appear as "Needs verification" or "Community listed" and only become "Verified" after the details are confirmed against a public source.</p>
  </div>
 </section>
 
-<section class="soft" id="founder">
- <div class="wrap">
-  <div class="section-head"><div><div class="eyebrow">Founder &amp; Mission</div><h2>Meet the person behind Habesha Hub</h2></div><a class="btn secondary" href="founder.html" target="_blank" rel="noopener">Meet the Founder</a></div>
-  <div class="about-grid">
-   <article class="about-card"><div class="eyebrow">Founder</div><h3>Samra Ayele</h3><p>Habesha Hub was founded by Samra Ayele, an Ethiopian-American technology and operational excellence professional based in Ohio. Originally from Ethiopia, Samra created Habesha Hub to make it easier for Ethiopian and Habesha communities across the United States to find useful community resources in one place.</p></article>
-   <article class="about-card"><div class="eyebrow">Mission</div><h3>Community information that is easier to find and trust</h3><p>The goal is simple: make Ethiopian and Habesha community information easier to find, verify, correct and share while being transparent about where information comes from and when it was last checked.</p></article>
+<section id="founder">
+ <div class="wrap founder">
+  <div class="founder-quote">
+   <div class="eyebrow">Founder &amp; Mission</div>
+   <p class="quote">“Community information that is easier to find, verify, correct and share.”</p>
+   <p>Habesha Hub was founded by Samra Ayele, an Ethiopian-American technology and operational excellence professional based in Ohio. Originally from Ethiopia, Samra created Habesha Hub to make it easier for Ethiopian and Habesha communities across the United States to find useful community resources in one place.</p>
+   <a class="btn secondary" href="founder.html" target="_blank" rel="noopener">Meet the Founder</a>
   </div>
  </div>
 </section>
 
-<section id="about">
+<section class="soft" id="about">
  <div class="wrap about-grid">
   <article class="about-card"><div class="eyebrow" data-i18n="about1_eyebrow">About the project</div><h3 data-i18n="about1_h3">Built by the community, for the community</h3><p data-i18n="about1_p">Habesha Hub began as a volunteer effort to make useful information easier to find for Ethiopian families in the United States. Its goal is to connect community discovery with reliable starting points for practical resources.</p></article>
-  <article class="about-card"><div class="eyebrow" data-i18n="about2_eyebrow">Trust standard</div><h3 data-i18n="about2_h3">Useful without pretending to be the authority</h3><p data-i18n="about3_p">Verified: confirmed against a current official or reliable public source. Community listed: publicly listed but not yet independently confirmed. Needs verification: details incomplete or conflicting. Closed and duplicate records are kept for auditing but hidden from search.</p></article>
+  <article class="about-card"><div class="eyebrow" data-i18n="about2_eyebrow">Trust standard</div><h3 data-i18n="about2_h3">Useful without pretending to be the authority</h3>
+   <ul class="trust-list">
+    <li><span class="badge s-verified">Verified</span> Confirmed against a current official or reliable public source.</li>
+    <li><span class="badge s-community">Community listed</span> Publicly listed but not yet independently confirmed.</li>
+    <li><span class="badge s-needs-review">Needs verification</span> Details incomplete or conflicting.</li>
+   </ul>
+   <p>Closed and duplicate records are kept for auditing but hidden from search.</p></article>
  </div>
 </section>
 </main>
+<div class="tricolor thin" aria-hidden="true"><span></span><span></span><span></span></div>
 <footer>
  <div class="wrap foot">
-  <div><a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Habesha Hub</a><p data-i18n="footer_p">Community-maintained directory and resource hub for Ethiopian and Habesha communities across the United States.</p><p>Founded and maintained by <a href="founder.html" target="_blank" rel="noopener">Samra Ayele</a> · Ohio, USA.<br>© <span id="year"></span> Habesha Hub. <span data-i18n="footer_copy">Community project.</span> <span data-i18n="data_updated">Directory data updated</span> <span id="dataUpdated"></span>.</p></div>
+  <div><a class="brand" href="#top"><span class="mark" aria-hidden="true">ሀ</span>Habesha Hub</a><p data-i18n="footer_p">Community-maintained directory and resource hub for Ethiopian and Habesha communities across the United States.</p><p>Founded and maintained by <a href="founder.html" target="_blank" rel="noopener">Samra Ayele</a> · Ohio, USA.<br>© <span id="year"></span> Habesha Hub. <span data-i18n="footer_copy">Community project.</span> <span data-i18n="data_updated">Directory data updated</span> <span id="dataUpdated"></span>.</p></div>
   <div class="state-links" role="navigation" aria-labelledby="stateLinksH"><h2 id="stateLinksH" data-i18n="state_pages_h">Ethiopian community by state</h2><!--STATE_LINKS--><ul><li><a href="alabama.html">Alabama</a></li><li><a href="alaska.html">Alaska</a></li><li><a href="arizona.html">Arizona</a></li><li><a href="arkansas.html">Arkansas</a></li><li><a href="california.html">California</a></li><li><a href="colorado.html">Colorado</a></li><li><a href="connecticut.html">Connecticut</a></li><li><a href="delaware.html">Delaware</a></li><li><a href="district-of-columbia.html">District of Columbia</a></li><li><a href="florida.html">Florida</a></li><li><a href="georgia.html">Georgia</a></li><li><a href="hawaii.html">Hawaii</a></li><li><a href="idaho.html">Idaho</a></li><li><a href="illinois.html">Illinois</a></li><li><a href="indiana.html">Indiana</a></li><li><a href="iowa.html">Iowa</a></li><li><a href="kansas.html">Kansas</a></li><li><a href="kentucky.html">Kentucky</a></li><li><a href="louisiana.html">Louisiana</a></li><li><a href="maine.html">Maine</a></li><li><a href="maryland.html">Maryland</a></li><li><a href="massachusetts.html">Massachusetts</a></li><li><a href="michigan.html">Michigan</a></li><li><a href="minnesota.html">Minnesota</a></li><li><a href="mississippi.html">Mississippi</a></li><li><a href="missouri.html">Missouri</a></li><li><a href="montana.html">Montana</a></li><li><a href="nebraska.html">Nebraska</a></li><li><a href="nevada.html">Nevada</a></li><li><a href="new-hampshire.html">New Hampshire</a></li><li><a href="new-jersey.html">New Jersey</a></li><li><a href="new-mexico.html">New Mexico</a></li><li><a href="new-york.html">New York</a></li><li><a href="north-carolina.html">North Carolina</a></li><li><a href="north-dakota.html">North Dakota</a></li><li><a href="ohio.html">Ohio</a></li><li><a href="oklahoma.html">Oklahoma</a></li><li><a href="oregon.html">Oregon</a></li><li><a href="pennsylvania.html">Pennsylvania</a></li><li><a href="rhode-island.html">Rhode Island</a></li><li><a href="south-carolina.html">South Carolina</a></li><li><a href="south-dakota.html">South Dakota</a></li><li><a href="tennessee.html">Tennessee</a></li><li><a href="texas.html">Texas</a></li><li><a href="utah.html">Utah</a></li><li><a href="vermont.html">Vermont</a></li><li><a href="virginia.html">Virginia</a></li><li><a href="washington.html">Washington</a></li><li><a href="west-virginia.html">West Virginia</a></li><li><a href="wisconsin.html">Wisconsin</a></li><li><a href="wyoming.html">Wyoming</a></li></ul><!--/STATE_LINKS--></div>
-  <div class="footlinks"><a href="https://habesha-community-care-columbus.samra8293101.chatgpt.site" target="_blank" rel="noopener" title="Private Community Care preview — sign-in required">Community Care · Preview</a><a href="#directory" data-i18n="nav_directory">Directory</a><a href="#states" data-i18n="footer_states">States</a><a href="#housing" data-i18n="nav_housing">Housing</a><a href="#resources" data-i18n="nav_resources">Resources</a><a href="#about" data-i18n="nav_about">About</a><a id="footerContact" href="contact.html" data-i18n="footer_contact">Contact</a><a href="advertise.html" target="_blank" rel="noopener">Advertise &amp; Business Services</a><a href="privacy.html" target="_blank" rel="noopener">Privacy</a><a href="terms.html" target="_blank" rel="noopener">Terms</a><a href="listing-policy.html" target="_blank" rel="noopener">Listing Policy</a><a href="housing-safety.html" target="_blank" rel="noopener">Housing Safety</a><a href="disclaimer.html" target="_blank" rel="noopener">Disclaimer</a><a href="accessibility.html" target="_blank" rel="noopener">Accessibility</a></div>
+  <div class="footlinks"><a href="https://habesha-community-care-columbus.samra8293101.chatgpt.site" target="_blank" rel="noopener" title="Private Community Care preview — sign-in required">Community Care · Preview</a><a href="#directory" data-i18n="nav_directory">Directory</a><a href="#states" data-i18n="footer_states">States</a><a href="#housing" data-i18n="nav_housing">Housing</a><a href="#resources" data-i18n="nav_resources">Resources</a><a href="#about" data-i18n="nav_about">About</a><a id="footerContact" href="contact.html" data-i18n="footer_contact">Contact</a><a class="foot-ad" href="advertise.html" target="_blank" rel="noopener">Advertise &amp; Business Services</a><a href="privacy.html" target="_blank" rel="noopener">Privacy</a><a href="terms.html" target="_blank" rel="noopener">Terms</a><a href="listing-policy.html" target="_blank" rel="noopener">Listing Policy</a><a href="housing-safety.html" target="_blank" rel="noopener">Housing Safety</a><a href="disclaimer.html" target="_blank" rel="noopener">Disclaimer</a><a href="accessibility.html" target="_blank" rel="noopener">Accessibility</a></div>
  </div>
 </footer>
 <noscript><p class="wrap notice">The directory search needs JavaScript. You can still browse every listing on the state pages linked at the bottom of this page.</p></noscript>
-<script src="i18n.js?v=20261022-quality"></script>
-<script src="directory-data.js?v=20261022-quality"></script>
-<script src="app.js?v=20261022-quality"></script>
-<script src="quality-i18n.js?v=20261022-quality" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
+<script src="i18n.js?v=20261023-redesign"></script>
+<script src="directory-data.js?v=20261023-redesign"></script>
+<script src="app.js?v=20261023-redesign"></script>
+<script src="quality-i18n.js?v=20261023-redesign" defer></script><script src="bilingual.js?v=20261023-redesign" defer></script></body>
 </html>
