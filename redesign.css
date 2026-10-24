@@ -310,3 +310,15 @@ body.rd #directory:has(#listingGrid:empty) #resultMeta{display:none}
 body.rd .hh-mid #stateSummary{padding:12px}
 body.rd .hh-mid #stateSummary .empty{padding:14px;font-size:.88rem}
 @media (max-width:700px){body.rd .hh-mid #categoryGrid .cat{padding:12px 6px 10px}body.rd .hh-mid #categoryGrid .icon{width:40px;height:40px}}
+
+/* 2026-10-24: Columbus poster in the "Advertise here" area; Ewket Kids spotlight moves to its own row below */
+body.rd .hh-ad-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center}
+body.rd .hh-ad-poster{margin:0;max-width:460px;justify-self:end;width:100%}
+body.rd .hh-ad-poster-link{display:block;border-radius:18px;text-decoration:none}
+body.rd .hh-ad-poster-link:focus-visible{outline:3px solid var(--gold);outline-offset:6px}
+body.rd .hh-ad-poster img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid #2b3a52;box-shadow:0 40px 80px rgba(0,0,0,.45),0 0 0 8px rgba(233,185,73,.12);transition:transform .3s ease,box-shadow .3s ease}
+body.rd .hh-ad-poster-link:hover img{transform:translateY(-4px);box-shadow:0 48px 90px rgba(0,0,0,.55),0 0 0 8px rgba(233,185,73,.28)}
+body.rd .hh-ad-poster figcaption{margin-top:14px;font-size:.88rem;color:var(--on-dark-2)}
+body.rd .hh-spot-ewket{margin:72px auto 0;max-width:880px}
+@media(max-width:900px){body.rd .hh-ad-grid{grid-template-columns:1fr}body.rd .hh-ad-poster{justify-self:center;max-width:420px}body.rd .hh-spot-ewket{margin-top:56px}}
+@media(prefers-reduced-motion:reduce){body.rd .hh-ad-poster img{transition:none}}
