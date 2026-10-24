@@ -42,6 +42,13 @@ listings.forEach(r => {
     if (r.phone) { const p = r.phone.replace(/\D/g, ""); (byPhone[p] = byPhone[p] || []).push(r.id); }
   }
   if (r.status === "duplicate" && !/duplicate of/i.test(r.notes || "")) W(r, "duplicate without 'Duplicate of <id>' note");
+  if (r.featuredFrom || r.featuredUntil || r.featuredDetails) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(r.featuredFrom || "") || !/^\d{4}-\d{2}-\d{2}$/.test(r.featuredUntil || "")) E(r, "Featured needs featuredFrom and featuredUntil as YYYY-MM-DD");
+    else if (r.featuredUntil < r.featuredFrom) E(r, "featuredUntil is before featuredFrom");
+    else if ((Date.parse(r.featuredUntil) - Date.parse(r.featuredFrom)) / 864e5 > 30) W(r, "Featured period is longer than the 30 days sold");
+    if (r.featuredDetails && r.featuredDetails.length > 280) E(r, "featuredDetails is longer than 280 characters");
+    if (["closed","duplicate"].includes(r.status)) E(r, "Featured set on a hidden (closed or duplicate) listing");
+  }
 });
 Object.values(byKey).filter(v => v.length > 1).forEach(v => warnings.push(`possible duplicate (similar name): ${v.join(", ")}`));
 Object.values(byAddr).filter(v => v.length > 1).forEach(v => warnings.push(`possible duplicate (same address): ${v.join(", ")}`));

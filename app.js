@@ -40,6 +40,7 @@
 
   // ---------- extra interface text ----------
   var EXTRA = {
+    featured_label:{en:"Featured",am:"ተለይቶ የሚታይ"},
     hero_h1b:{en:"The home of the Habesha community <span>in America.</span>",am:"በአሜሪካ ያለው የሐበሻ ማህበረሰብ <span>ማዕከል።</span>"},
     hero_p3:{en:"Find trusted restaurants, churches, groceries, professionals and newcomer resources — every listing sourced, dated and community-reviewed.",am:"የታመኑ ምግብ ቤቶችን፣ አብያተ ክርስቲያናትን፣ ግሮሰሪዎችን፣ ባለሙያዎችን እና ለአዲስ መጤዎች የሚሆኑ መረጃዎችን ያግኙ — እያንዳንዱ ዝርዝር ምንጭ፣ ቀን እና የማህበረሰብ ግምገማ አለው።"},
     nav_housing:{en:"Housing",am:"መኖሪያ ቤት"},
@@ -188,6 +189,9 @@
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
   }
   function statusLabel(s) { var l = STATUS_LABELS[s]; if (!l) return s; return typeof l === "string" ? l : (l[LANG] || l.en); }
+  // Paid Featured placement: shown only between featuredFrom and featuredUntil (inclusive, local date). Never changes status or order.
+  function localToday() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function isFeatured(x) { var d = localToday(); return !!(x.featuredFrom && x.featuredUntil && x.featuredFrom <= d && d <= x.featuredUntil); }
 
   // ---------- filter state ----------
   var el = {q:$("q"), state:$("dirState"), city:$("dirCity"), cat:$("dirCategory"), denom:$("dirDenomination"), denomWrap:$("denomWrap"), verified:$("verifiedOnly"), grid:$("listingGrid"), meta:$("resultMeta"), more:$("showMore")};
@@ -247,14 +251,16 @@
     if (!limited) actions.push('<a class="sec" href="' + esc(mapsHref(x)) + '" target="_blank" rel="noopener" aria-label="' + esc((x.address ? t("directions_btn") : t("map_btn")) + ": " + x.name) + '">' + esc(x.address ? t("directions_btn") : t("map_btn")) + "</a>");
     var minor = '<a class="minor" href="' + esc(submitUrl("correction", x)) + '">' + esc(t("report_btn")) + "</a>"; minor += ' <a class="minor" href="' + esc(submitUrl("closed", x)) + '">Report closed/moved</a>';
     minor += ' <a class="minor" href="' + esc(submitUrl("claim", x)) + '">' + esc(t("claim_btn")) + "</a>";
-    return '<article class="listing" id="l-' + esc(x.id) + '">' +
+    var featured = isFeatured(x);
+    return '<article class="listing' + (featured ? " is-featured" : "") + '" id="l-' + esc(x.id) + '">' +
       (x.profile === 'habesha-garden.html' ? '<a href="habesha-garden.html" aria-label="View Habesha Garden photos and menu"><img class="listing-photo" src="assets/habesha-garden/tibs.webp" alt="Tibs served with injera" loading="lazy" width="600" height="400"></a>' : '') +
       '<span class="type">' + esc(typeLine) + "</span>" +
       '<h3><a href="listing.html?id=' + encodeURIComponent(x.id) + '">' + esc(x.name) + "</a></h3>" +
       "<address>" + addr + "</address>" +
       (x.phone && !limited ? '<p><a href="' + esc(tel) + '">' + esc(x.phone) + "</a></p>" : "") +
+      (featured && x.featuredDetails ? '<p class="featured-details">' + esc(x.featuredDetails) + "</p>" : "") +
       (x.publicNote ? '<p class="note">' + esc(x.publicNote) + "</p>" : "") +
-      '<div><span class="badge s-' + esc(x.status) + '">' + esc(statusLabel(x.status)) + "</span></div>" +
+      '<div><span class="badge s-' + esc(x.status) + '">' + esc(statusLabel(x.status)) + "</span>" + (featured ? ' <span class="badge s-featured">' + esc(t("featured_label")) + "</span>" : "") + "</div>" +
       '<span class="meta-line">' + checked + srcLinks + "</span>" +
       '<div class="listing-actions">' + actions.join("") + "</div>" +
       '<div class="listing-actions">' + minor + "</div>" +

@@ -74,6 +74,20 @@ Categories: `Restaurant, Grocery, Shopping, Church, Beauty, Auto, Home, Professi
 
 Community submissions arrive by email (prefilled templates on the site) or GitHub issue forms, and always start as `community` or `needs-review`.
 
+## Featuring a listing (paid, $25 for 30 days)
+
+Only after the business is approved and the Stripe payment shows in the dashboard:
+
+1. Add three fields to that listing in `directory-data.js` (through a batch file as above):
+   ```json
+   "featuredFrom":"2026-11-01","featuredUntil":"2026-11-30","featuredDetails":"Family-run since 2010. Catering for weddings and holidays."
+   ```
+   `featuredUntil` is the last day shown. `featuredDetails` is optional, plain text, up to 280 characters, written or approved by the business.
+2. `node tools/validate-data.js` (checks the dates, the 30-day length and the text length).
+3. Push. The search results and the listing's profile page show a gold **Featured** label and highlight from `featuredFrom` through `featuredUntil`, then stop by themselves. No one has to remember to switch it off.
+4. Featured never changes the listing's status (Verified, Community listed, Needs verification) or its place in the results. The generated state pages do not show the label, so they never show an expired one.
+5. When it ends, you may leave the fields in place as a record or remove them.
+
 ## Trust rules
 
 1. Never invent a listing, address, phone, website, ownership, ethnicity or church tradition.
