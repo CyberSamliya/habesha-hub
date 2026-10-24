@@ -7,6 +7,8 @@ function status(t){document.getElementById('profileStatus').textContent=t;}
 function button(text,fn){const b=E('button',text);b.type='button';b.className='btn secondary';b.addEventListener('click',fn);return b;}
 function link(text,url){const a=E('a',text);a.href=url;a.className='btn secondary';if(/^https?:/.test(url)){a.rel='noopener noreferrer';a.target='_blank';}return a;}
 function url(x){return 'listing.html?id='+encodeURIComponent(x.id);}
+// Paid Featured placement, active from featuredFrom through featuredUntil (local date).
+function featured(x){const d=new Date(),t=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');return !!(x.featuredFrom&&x.featuredUntil&&x.featuredFrom<=t&&t<=x.featuredUntil);}
 function request(type,x){return 'submission.html?'+new URLSearchParams({type,id:x.id,name:x.name,city:x.city,state:x.state});}
 function toggle(x,b){try{const a=saved(),exists=a.includes(x.id);localStorage.setItem(key,JSON.stringify(exists?a.filter(id=>id!==x.id):a.concat(x.id)));b.textContent=exists?'Save place':'Remove saved place';b.setAttribute('aria-pressed',String(!exists));status(exists?'Place removed.':'Place saved on this device.');}catch{status('Browser storage is unavailable. Bookmark this page instead.');}}
 function profile(x){
@@ -14,6 +16,7 @@ function profile(x){
  const back=link('Back to directory','./?state='+encodeURIComponent(x.state)+'#directory');wrap.append(back,E('p',x.city+', '+x.state),E('h1',x.name));
  document.title=x.name+' | Habesha Hub';document.querySelector('link[rel=canonical]').href='https://cybersamliya.github.io/habesha-hub/'+url(x);
  const badge=E('p',statuses[x.status]||'Needs verification');badge.className='badge s-'+x.status;wrap.append(badge);
+ if(featured(x)){const f=E('p','Featured');f.className='badge s-featured';wrap.append(f);if(x.featuredDetails){const d=E('p',x.featuredDetails);d.className='featured-details';d.lang='en';wrap.append(d);}}
  const intro=E('p',x.description||x.subcategory||'Community directory listing.');if(x.descriptionAm){intro.dataset.en=x.description;intro.dataset.am=x.descriptionAm;}else intro.lang='en';wrap.append(intro);
  const actions=E('div');actions.className='profile-actions';
  if(x.phone&&x.privacy!=='limited')actions.append(link('Call','tel:+1'+x.phone.replace(/\D/g,'')));

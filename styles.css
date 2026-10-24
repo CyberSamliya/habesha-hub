@@ -238,3 +238,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 @media(max-width:450px){.nav{flex-wrap:wrap;gap:8px}.nav .brand{flex:1}.nav .lang{order:3;flex-basis:100%;margin-left:0;text-align:center}#directory{scroll-margin-top:150px}.nav #mainNav{top:100%}}
 
 .hero-title-3d span{text-shadow:none!important}
+/* 2026-10-24: paid Featured placement (label and highlight only; never changes status or order) */
+.badge.s-featured{background:#fdf4dd;color:#6b4100;border:1px solid #e3b53a}
+.listing.is-featured,body.rd .listing.is-featured{border:2px solid #e3b53a;box-shadow:0 0 0 4px rgba(233,185,73,.15)}
+.featured-details{margin:0;padding:8px 10px;border-radius:8px;background:#fffaf0;color:#3a3220;font-size:.9rem}
