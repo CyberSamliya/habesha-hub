@@ -153,7 +153,7 @@ ${body}
  <div class="state-links" role="navigation" aria-labelledby="otherStates"><h2 id="otherStates">Ethiopian community in other states</h2><ul>${others}</ul></div>
  <p class="foot-note">© Habesha Hub, a community project. Directory data updated ${esc(updated)}. <a href="./">Back to the full directory</a></p>
 </div></footer>
-<script src="i18n.js?v=20261022-quality" defer></script><script src="site-shell.js?v=20261022-quality" defer></script><script src="quality-i18n.js?v=20261022-quality" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
+<script src="i18n.js?v=20261022-quality" defer></script><script src="site-shell.js?v=20261025-email" defer></script><script src="quality-i18n.js?v=20261022-quality" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
 </html>
 `;
 }
