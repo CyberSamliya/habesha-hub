@@ -5,7 +5,9 @@ if(!document.getElementById('mainNav')){
 }
 const footer=document.querySelector('footer');if(footer&&!document.getElementById('stateLinksH')){
  const links=document.createElement('nav');links.className='wrap support-footer';links.setAttribute('aria-label','Helpful links');
- for(const [text,url] of [['Contact','contact.html'],['Privacy','privacy.html'],['Terms','terms.html'],['Listing Policy','listing-policy.html'],['Accessibility','accessibility.html']]){const a=document.createElement('a');a.textContent=text;a.href=url;links.append(a);}footer.append(links);
+ // Wrap the links on every page, including pages whose stylesheet has no .support-footer rule (set through the CSSOM; the CSP blocks inline styles).
+ Object.assign(links.style,{display:'flex',flexWrap:'wrap',gap:'8px 14px'});
+ for(const [text,url] of [['info@habeshahubusa.com','mailto:info@habeshahubusa.com'],['Contact','contact.html'],['Privacy','privacy.html'],['Terms','terms.html'],['Listing Policy','listing-policy.html'],['Accessibility','accessibility.html']]){const a=document.createElement('a');a.textContent=text;a.href=url;links.append(a);}footer.append(links);
 }
 if(!document.querySelector('.skip')&&document.querySelector('main')){const a=document.createElement('a');a.className='skip';a.href='#'+(document.querySelector('main').id||'main');document.querySelector('main').id ||= 'main';a.textContent='Skip to main content';document.body.prepend(a);}
 })();
