@@ -14,9 +14,7 @@
    "address": "22 Green Springs Hwy",
    "phone": "(205) 848-5154",
    "website": "https://redseabham.com/",
-   "secondSource": "https://www.restaurantji.com/al/birmingham/red-sea-ethiopian-and-mediterranean-/",
-   "notes": "Official site describes authentic Ethiopian dishes and coffee ceremony. Ignore placeholder address in site footer. ZIP not confirmed."
-  },
+   "secondSource": "https://www.restaurantji.com/al/birmingham/red-sea-ethiopian-and-mediterranean-/"},
   {
    "id": "al-huntsville-debre-salem-st-john",
    "name": "Debre Salem St. John the Baptist Ethiopian Orthodox Tewahedo Church",
@@ -31,9 +29,7 @@
    "address": "2107 Mastin Lake Dr",
    "zip": "35810",
    "website": "https://theodrosm.wixsite.com/website",
-   "publicNote": "Current activity not yet confirmed.",
-   "notes": "Church site: first EOTC in Alabama, inaugurated 2017. Phone on site has NC area code; omitted pending confirmation. Not the same as Debre Salem St. John parishes in WA or VA."
-  },
+   "publicNote": "Current activity not yet confirmed."},
   {
    "id": "ak-anchorage-queen-of-sheba",
    "name": "Queen of Sheba Ethiopian Restaurant",
@@ -48,9 +44,7 @@
    "zip": "99503",
    "phone": "(907) 222-1010",
    "website": "https://queenofshebaalaska.com/",
-   "secondSource": "https://www.yelp.com/biz/queen-of-sheba-ethiopian-restaurant-anchorage",
-   "notes": "Not related to Queen of Sheba in Louisville, Oklahoma City or the closed NYC restaurant."
-  },
+   "secondSource": "https://www.yelp.com/biz/queen-of-sheba-ethiopian-restaurant-anchorage"},
   {
    "id": "ct-new-haven-lalibela",
    "name": "Lalibela Ethiopian Restaurant",
@@ -65,9 +59,7 @@
    "zip": "06510",
    "phone": "(203) 789-1232",
    "website": "https://lalibelact.com/",
-   "secondSource": "https://www.yelp.com/biz/lalibela-ethiopian-restaurant-new-haven",
-   "notes": "Open since 1999. Not related to other restaurants named Lalibela."
-  },
+   "secondSource": "https://www.yelp.com/biz/lalibela-ethiopian-restaurant-new-haven"},
   {
    "id": "ct-new-haven-habesha",
    "name": "Habesha Ethiopian Restaurant & Bar",
@@ -82,9 +74,7 @@
    "zip": "06510",
    "phone": "(203) 535-0910",
    "website": "https://www.habeshaethiopian-ct.com/",
-   "secondSource": "https://visitnewhaven.com/places/habesha-restaurant-bar/",
-   "notes": "Also runs a food truck."
-  },
+   "secondSource": "https://visitnewhaven.com/places/habesha-restaurant-bar/"},
   {
    "id": "ct-stamford-teff",
    "name": "Teff Eritrean & Ethiopian Cuisine",
@@ -99,9 +89,7 @@
    "zip": "06902",
    "phone": "(203) 998-7474",
    "website": "http://www.teffstamford.com/",
-   "secondSource": "https://www.yelp.com/biz/teff-eritrean-and-ethiopian-cuisine-stamford",
-   "notes": "Former address 84 W Park Pl (moved)."
-  },
+   "secondSource": "https://www.yelp.com/biz/teff-eritrean-and-ethiopian-cuisine-stamford"},
   {
    "id": "ct-hamden-medhanealem",
    "name": "Debre Medhanit Medhanealem Ethiopian Orthodox Tewahedo Church",
@@ -135,9 +123,7 @@
    "zip": "06118",
    "phone": "(860) 794-1960",
    "website": "https://ecact.org/",
-   "secondSource": "https://www.guidestar.org/profile/84-2274194",
-   "notes": "501(c)(3). No street address published; mailing PO Box in Stamford."
-  },
+   "secondSource": "https://www.guidestar.org/profile/84-2274194"},
   {
    "id": "hi-honolulu-ethiopian-love",
    "name": "Ethiopian Love",
@@ -151,9 +137,7 @@
    "address": "675 Auahi St, Suite 130",
    "social": "https://www.instagram.com/ethiopianlovehi/",
    "secondSource": "https://www.yelp.com/biz/ethiopian-love-honolulu-3",
-   "publicNote": "Reopened in Kaka'ako in 2026 as a pop-up with limited evening hours. The old Chinatown location is closed.",
-   "notes": "ZIP and phone not confirmed."
-  },
+   "publicNote": "Reopened in Kaka'ako in 2026 as a pop-up with limited evening hours. The old Chinatown location is closed."},
   {
    "id": "id-boise-kibroms",
    "name": "Kibrom's Ethiopian & Eritrean Restaurant",
@@ -184,9 +168,7 @@
    "zip": "50311",
    "phone": "(515) 630-1077",
    "website": "https://gurshaiowa.com",
-   "secondSource": "https://gursha-ethiopian-grill.wheree.com/",
-   "notes": "Not related to Gursha in Aurora CO or Las Vegas."
-  },
+   "secondSource": "https://gursha-ethiopian-grill.wheree.com/"},
   {
    "id": "ia-des-moines-habesha",
    "name": "Habesha Ethio-Eritrean Restaurant",
@@ -200,9 +182,7 @@
    "address": "3500 Merle Hay Rd",
    "zip": "50310",
    "social": "https://www.facebook.com/people/Habesha-Ethio-Eritrean-Restaurant/61575047192668/",
-   "secondSource": "https://www.yelp.com/search?find_desc=Habesha&find_loc=Des+Moines%2C+IA",
-   "notes": "Opened April 2025; Little Village review March 2026. Phone not confirmed."
-  },
+   "secondSource": "https://www.yelp.com/search?find_desc=Habesha&find_loc=Des+Moines%2C+IA"},
   {
    "id": "ia-des-moines-ethiopian-eritrean-evangelical",
    "name": "Ethiopian Eritrean Evangelical Church DSM",
@@ -214,9 +194,7 @@
    "verifiedDate": "2026-09-28",
    "subcategory": "Ethiopian Evangelical church",
    "denomination": "Protestant",
-   "social": "https://www.facebook.com/EthiopianEritreanEvangelicalChurchDSMIA/",
-   "notes": "Facebook only; address not confirmed."
-  },
+   "social": "https://www.facebook.com/EthiopianEritreanEvangelicalChurchDSMIA/"},
   {
    "id": "ks-wichita-sara-and-tedros",
    "name": "Sara and Tedros Ethiopian and Eritrean Restaurant",
@@ -252,9 +230,7 @@
    "altNames": [
     "Kidane Mehret",
     "St. Kidane Mihiret"
-   ],
-   "notes": "Waze shows 2921 Minnesota Ave; official site says 2915."
-  },
+   ]},
   {
    "id": "ks-kansas-city-debre-sahel-medhane-alem",
    "name": "Debre Sahel Medhane Alem Ethiopian Orthodox Tewahedo Church",
@@ -287,9 +263,7 @@
    "zip": "66216",
    "phone": "(913) 980-1664",
    "website": "https://www.ecfckansas.org",
-   "publicNote": "Another listing shows an Olathe address. Tradition not yet confirmed.",
-   "notes": "Yelp lists Ethiopian Christian Fellowship Church at 14345 W 119th St, Olathe; separate site ecfcks.org exists. Could be one church that moved, or two."
-  },
+   "publicNote": "Another listing shows an Olathe address. Tradition not yet confirmed."},
   {
    "id": "la-new-orleans-addis-nola",
    "name": "Addis NOLA",
@@ -304,9 +278,7 @@
    "zip": "70119",
    "phone": "(504) 323-2944",
    "website": "https://www.addisnola.com",
-   "secondSource": "https://guide.michelin.com/us/en/louisiana/new-orleans_2906000/restaurant/addis-nola",
-   "notes": "Michelin lists a different phone (504-218-5321); official site number used."
-  },
+   "secondSource": "https://guide.michelin.com/us/en/louisiana/new-orleans_2906000/restaurant/addis-nola"},
   {
    "id": "la-new-orleans-cafe-abyssinia",
    "name": "Cafe Abyssinia",
@@ -334,9 +306,7 @@
    "verifiedDate": "2026-09-28",
    "subcategory": "Ethiopian Orthodox church",
    "denomination": "Orthodox",
-   "website": "https://nolamariam.org",
-   "notes": "Address not confirmed (site timed out). A Facebook page 'The Ethiopian Orthodox Tewahedo Church of Louisiana' may be the same church."
-  },
+   "website": "https://nolamariam.org"},
   {
    "id": "mo-kansas-city-eco-kc",
    "name": "Ethiopian Community Organization of Kansas City",
@@ -347,9 +317,7 @@
    "status": "community",
    "verifiedDate": "2026-09-28",
    "subcategory": "Community association",
-   "website": "https://ecokc.org",
-   "notes": "Mailing address is a PO Box; no street address published."
-  },
+   "website": "https://ecokc.org"},
   {
    "id": "nm-albuquerque-clay-pot",
    "name": "Clay Pot Ethiopian Cuisine",
@@ -384,9 +352,7 @@
    "zip": "73127",
    "phone": "(405) 606-8616",
    "social": "https://www.facebook.com/p/Queen-of-Sheba-OKC-100063625239759/",
-   "secondSource": "https://thelostogle.com/2026/04/28/tlo-restaurant-review-queen-of-sheba-2",
-   "notes": "Hours conflict between sources; not listed."
-  },
+   "secondSource": "https://thelostogle.com/2026/04/28/tlo-restaurant-review-queen-of-sheba-2"},
   {
    "id": "ok-oklahoma-city-st-george-eotc",
    "name": "St. George Ethiopian Orthodox Tewahedo Church",
@@ -420,9 +386,7 @@
    "subcategory": "Ethiopian Evangelical church",
    "denomination": "Protestant",
    "social": "https://www.facebook.com/Rehobothtulsa/",
-   "publicNote": "Address not yet confirmed.",
-   "notes": "IRS record headquartered Broken Arrow. reect.org may have the address."
-  },
+   "publicNote": "Address not yet confirmed."},
   {
    "id": "sd-sioux-falls-lalibela",
    "name": "Lalibela",
@@ -437,9 +401,7 @@
    "zip": "57104",
    "phone": "(605) 271-0747",
    "website": "https://www.lalibela605.com/",
-   "secondSource": "https://www.restaurantji.com/sd/sioux-falls/lalibela-/",
-   "notes": "Not related to other restaurants named Lalibela."
-  },
+   "secondSource": "https://www.restaurantji.com/sd/sioux-falls/lalibela-/"},
   {
    "id": "sd-sioux-falls-hagere",
    "name": "Hagere Ethiopian Restaurant",
@@ -515,9 +477,7 @@
    "altNames": [
     "Kidus Michael"
    ],
-   "publicNote": "Address from a church website that is currently offline.",
-   "notes": "Address seen only in search snippet of st-michaelort.org. May be same as Facebook 'Debre Selam St Michael & St Gebriel EOTC'."
-  },
+   "publicNote": "Address from a church website that is currently offline."},
   {
    "id": "sd-sioux-falls-hamer-noh-kidane-mihret",
    "name": "Hamer Noh Kidane Mihret Ethiopian Orthodox Tewahedo Church",
@@ -543,7 +503,7 @@
    "verifiedDate": "2026-09-28",
    "subcategory": "Ethiopian & Eritrean catering and takeout",
    "metro": "Burlington",
-   
+
    "website": "https://atasteofabyssinia.com/",
    "secondSource": "https://www.helloburlingtonvt.com/listing/a-taste-of-abyssinia/2066/",
    "publicNote": "No storefront. Weekly takeout, catering and cooking classes; see website.",
@@ -581,9 +541,7 @@
    "subcategory": "Ethiopian restaurant",
    "address": "1824 N Farwell Ave",
    "phone": "(414) 224-5226",
-   "secondSource": "https://shepherdexpress.com/food/lets-eat/breaking-bread-at-milwaukee-s-ethiopian-restaurants/",
-   "notes": "ZIP not confirmed. Own site ethiopiancottagerest.com had SSL error."
-  },
+   "secondSource": "https://shepherdexpress.com/food/lets-eat/breaking-bread-at-milwaukee-s-ethiopian-restaurants/"},
   {
    "id": "wi-madison-buraka",
    "name": "Buraka",
@@ -633,9 +591,7 @@
    "zip": "53219",
    "phone": "(262) 293-6676",
    "website": "https://eecmke.org/",
-   "secondSource": "https://usmb.org/church/medhanialem-ethiopian-evangelical-church/",
-   "notes": "USMB page shows older address 1820 E North Ave; official site used."
-  },
+   "secondSource": "https://usmb.org/church/medhanialem-ethiopian-evangelical-church/"},
   {
    "id": "wi-madison-st-arsema",
    "name": "St. Arsema Ethiopian Orthodox Tewahedo Church",

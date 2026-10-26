@@ -13,7 +13,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "4850 W Flamingo Rd, Suite 10",
 "zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026). Not related to Lucy in Houston or Denver.",
+
 "secondSource": "https://www.yelp.com/biz/lucy-ethiopian-restaurant-las-vegas"
 },
 {
@@ -28,7 +28,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "3711 S Valley View Blvd, Suite H",
 "zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026). Not related to Gursha in Aurora, CO.",
+
 "website": "https://gurshaethiopianrestaurantlasvegas.com/"
 },
 {
@@ -43,7 +43,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "4850 W Flamingo Rd, Suite 48",
 "zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026).",
+
 "keywords": [
 "market",
 "grocery"
@@ -61,7 +61,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "4780 W Tropicana Ave, Suite 108",
 "zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026).",
+
 "secondSource": "https://www.yelp.com/biz/abyssinia-ethiopian-restaurant-las-vegas"
 },
 {
@@ -75,9 +75,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "6182 W Flamingo Rd",
-"zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026)."
-},
+"zip": "89103"},
 {
 "id": "nv-las-vegas-luhena",
 "name": "Cafe Luhena",
@@ -90,7 +88,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "4825 W Flamingo Rd, Suites 6-7",
 "zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026).",
+
 "secondSource": "https://www.yelp.com/biz/luhena-restaurant-and-bar-las-vegas"
 },
 {
@@ -104,9 +102,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "6370 W Flamingo Rd, Suite 30",
-"zip": "89103",
-"notes": "Listed in Vegas Always guide (May 2026)."
-},
+"zip": "89103"},
 {
 "id": "nv-las-vegas-samsara",
 "name": "Samsara Ethio Fusion",
@@ -118,9 +114,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "3300 S Decatur Blvd, Unit 7",
-"zip": "89102",
-"notes": "Listed in Vegas Always guide (May 2026)."
-},
+"zip": "89102"},
 {
 "id": "nv-las-vegas-debre-bisrat-st-gabriel",
 "name": "Debre Bisrat St. Gabriel Ethiopian Orthodox Tewahdo Church",
@@ -150,9 +144,7 @@
 "denomination": "Orthodox",
 "address": "5985 Lindell Rd",
 "social": "https://www.facebook.com/stmichaelvegas/",
-"secondSource": "https://www.guidestar.org/profile/47-0949296",
-"notes": "Map listing gives address; IRS record confirms the church. No website found."
-},
+"secondSource": "https://www.guidestar.org/profile/47-0949296"},
 {
 "id": "az-phoenix-authentic-ethioafrican",
 "name": "Authentic EthioAfrican",
@@ -176,9 +168,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
-"address": "4729 E McDowell Rd",
-"notes": "Single source (Yelp, Aug 2026)."
-},
+"address": "4729 E McDowell Rd"},
 {
 "id": "az-phoenix-first-cup",
 "name": "First Cup Ethiopian Restaurant",
@@ -189,9 +179,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant and coffee",
-"address": "4432 N 19th Ave",
-"notes": "Single source (Yelp, Sep 2026)."
-},
+"address": "4432 N 19th Ave"},
 {
 "id": "az-phoenix-st-mary-eotc",
 "name": "Debre Metemaqe Saint Mary Ethiopian Orthodox Tewahedo Church",
@@ -300,9 +288,7 @@
 "secondSource": "https://www.yelp.com/biz/awash-ethiopian-restaurant-chicago",
 "keywords": [
 "Edgewater"
-],
-"notes": "Not related to Awash restaurants in Nashville or LA."
-},
+]},
 {
 "id": "il-chicago-ethiopian-diamond",
 "name": "Ethiopian Diamond Restaurant & Bar",
@@ -318,9 +304,7 @@
 "secondSource": "https://ethiopiandiamondrestaurant.com/",
 "keywords": [
 "Edgewater"
-],
-"notes": "Its second location at 7537 N Clark St is marked closed on Yelp."
-},
+]},
 {
 "id": "il-chicago-tesfa-cuisine",
 "name": "Tesfa Cuisine",
@@ -351,9 +335,7 @@
 "subcategory": "Ethiopian restaurant",
 "keywords": [
 "Edgewater"
-],
-"notes": "Infatuation review (date not shown); address not confirmed."
-},
+]},
 {
 "id": "il-chicago-st-mary-eotc",
 "name": "Saint Mary Ethiopian Orthodox Tewahedo Church",
@@ -384,9 +366,7 @@
 "zip": "60659",
 "phone": "(773) 508-0303",
 "website": "https://ecachicago.org/",
-"secondSource": "https://www.dhs.state.il.us/page.aspx?item=145218",
-"notes": "Yelp shows an older address (4750 N Sheridan Rd); official site used."
-},
+"secondSource": "https://www.dhs.state.il.us/page.aspx?item=145218"},
 {
 "id": "or-portland-lalibela",
 "name": "Lalibela Ethiopian Restaurant",
@@ -397,9 +377,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
-"address": "3939 NE Martin Luther King Jr Blvd",
-"notes": "Single source (Yelp, Ethiopian category, updated 2026)."
-},
+"address": "3939 NE Martin Luther King Jr Blvd"},
 {
 "id": "or-portland-sisters",
 "name": "Sisters Ethiopian Restaurant",
@@ -410,9 +388,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
-"address": "1720 SE 122nd Ave",
-"notes": "Single source (Yelp, Ethiopian category, updated 2026)."
-},
+"address": "1720 SE 122nd Ave"},
 {
 "id": "or-portland-aberus",
 "name": "Aberus Ethiopian Restaurant",
@@ -424,7 +400,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "438 NE Killingsworth St",
-"notes": "Single source (Yelp, Ethiopian category, updated 2026).",
+
 "phone": "(503) 284-6434"
 },
 {
@@ -437,9 +413,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
-"address": "910 N Killingsworth St",
-"notes": "Single source (Yelp, Ethiopian category, updated 2026)."
-},
+"address": "910 N Killingsworth St"},
 {
 "id": "md-baltimore-dukem",
 "name": "Dukem Ethiopian Restaurant (Baltimore)",
@@ -478,9 +452,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "4533 Baltimore Ave",
-"zip": "19143",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19143"},
 {
 "id": "pa-philadelphia-kaffa-crossing",
 "name": "Kaffa Crossing",
@@ -492,9 +464,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "4423 Chestnut St",
-"zip": "19104",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19104"},
 {
 "id": "pa-philadelphia-almaz-cafe",
 "name": "Almaz Cafe",
@@ -506,9 +476,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "140 S 20th St",
-"zip": "19103",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19103"},
 {
 "id": "pa-philadelphia-buna-cafe",
 "name": "Buna Cafe",
@@ -520,9 +488,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "5121 Baltimore Ave",
-"zip": "19143",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19143"},
 {
 "id": "pa-philadelphia-abyssinia",
 "name": "Abyssinia Ethiopian Restaurant",
@@ -534,9 +500,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "229 S 45th St",
-"zip": "19104",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19104"},
 {
 "id": "pa-philadelphia-gojjo",
 "name": "Gojjo Ethiopian Bar & Restaurant",
@@ -549,7 +513,7 @@
 "subcategory": "Ethiopian restaurant",
 "address": "4540 Baltimore Ave",
 "zip": "19143",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026).",
+
 "secondSource": "https://www.yelp.com/biz/gojjo-bar-and-restaurant-philadelphia"
 },
 {
@@ -563,9 +527,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "5532 Greene St",
-"zip": "19144",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19144"},
 {
 "id": "pa-philadelphia-era",
 "name": "Era",
@@ -577,9 +539,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "2743 Poplar St",
-"zip": "19130",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19130"},
 {
 "id": "pa-philadelphia-dahlak",
 "name": "Dahlak",
@@ -591,9 +551,7 @@
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
 "address": "4708 Baltimore Ave",
-"zip": "19143",
-"notes": "Listed in The Infatuation's best Ethiopian restaurants in Philly (updated Jul 2026)."
-},
+"zip": "19143"},
 {
 "id": "tn-nashville-awash",
 "name": "Awash Ethiopian Restaurant",
@@ -604,9 +562,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian restaurant",
-"address": "976 Murfreesboro Pike",
-"notes": "Single source (Yelp, Jun 2026)."
-},
+"address": "976 Murfreesboro Pike"},
 {
 "id": "tn-nashville-abyssinia",
 "name": "Abyssinia Ethiopian Restaurant",
@@ -630,9 +586,7 @@
 "status": "community",
 "verifiedDate": "2026-09-28",
 "subcategory": "Ethiopian cafe",
-"address": "1609 Murfreesboro Pike",
-"notes": "Single source (Yelp, Jul 2026)."
-},
+"address": "1609 Murfreesboro Pike"},
 {
 "id": "nc-charlotte-abugida",
 "name": "Abugida Ethiopian Cafe & Restaurant",
@@ -658,8 +612,6 @@
 "source": "https://www.tripadvisor.ca/Restaurant_Review-g49022-d13436360-Reviews-Enat_Ethiopian_Restaurant-Charlotte_North_Carolina.html",
 "status": "community",
 "verifiedDate": "2026-09-28",
-"subcategory": "Ethiopian restaurant",
-"notes": "Single source (Tripadvisor 2026); address not confirmed. Not related to Enat in Seattle."
-}
+"subcategory": "Ethiopian restaurant"}
 ]
 }

@@ -41,7 +41,8 @@ listings.forEach(r => {
     if (r.address) { const a = r.state + "|" + r.city.toLowerCase() + "|" + r.address.toLowerCase().replace(/[^a-z0-9]/g, ""); (byAddr[a] = byAddr[a] || []).push(r.id); }
     if (r.phone) { const p = r.phone.replace(/\D/g, ""); (byPhone[p] = byPhone[p] || []).push(r.id); }
   }
-  if (r.status === "duplicate" && !/duplicate of/i.test(r.notes || "")) W(r, "duplicate without 'Duplicate of <id>' note");
+  if (Object.hasOwn(r, "notes")) E(r, "private notes must not be published");
+  if (r.status === "verified" && r.connectionEvidence === "language-only") E(r, "language alone does not verify a community connection");
   if (r.featuredFrom || r.featuredUntil || r.featuredDetails) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(r.featuredFrom || "") || !/^\d{4}-\d{2}-\d{2}$/.test(r.featuredUntil || "")) E(r, "Featured needs featuredFrom and featuredUntil as YYYY-MM-DD");
     else if (r.featuredUntil < r.featuredFrom) E(r, "featuredUntil is before featuredFrom");

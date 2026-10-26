@@ -11,9 +11,7 @@
 "website": "https://embiltarestaurant.com/",
 "source": "https://www.yelp.com/biz/embilta-caf%C3%A9-and-restaurant-ethiopian-cuisine-atlanta",
 "secondSource": "https://www.grubhub.com/restaurant/embilta-caf--restaurant-2100-cheshire-bridge-rd-ne-suite-a-atlanta/337390",
-"verifiedDate": "2026-09-28",
-"notes": "Yelp (224 reviews, updated Aug 2026). A separate old Yelp page 'Embilta' (coffee) is marked closed; it is not this restaurant."
-},
+"verifiedDate": "2026-09-28"},
 "ga-stone-mountain-ethiopian-evangelical-church-atlanta": {
 "altNames": [
 "Ethiopian Evangelical Church of Atlanta",
@@ -24,9 +22,7 @@
 "website": "https://eecatlanta.com/",
 "source": "https://eecatlanta.com/prek/",
 "secondSource": "https://usmb.org/church/ethiopian-evangelical-church/",
-"verifiedDate": "2026-09-28",
-"notes": "Official site footer: 4550 Greer Cir, Stone Mountain 30083, 770-496-1665."
-},
+"verifiedDate": "2026-09-28"},
 "ga-stone-mountain-ebenezer-ethiopian-evangelical-church-atlanta": {
 "website": "https://eeeca.org/",
 "social": "https://www.facebook.com/GEGBCAtlanta/",
@@ -34,9 +30,7 @@
 "secondSource": "https://www.youtube.com/channel/UCGY7Hgr-RK6ya4HQgS5T3Dw",
 "status": "needs-review",
 "verifiedDate": "2026-09-28",
-"publicNote": "Church confirmed; street address not yet confirmed. Check the church website before visiting.",
-"notes": "Congregation confirmed via eeeca.org and YouTube. v1 address '4528 Rockbridge Rd SW' could not be confirmed (site blocked automated fetch). Downgraded from verified."
-},
+"publicNote": "Church confirmed; street address not yet confirmed. Check the church website before visiting."},
 "ga-atlanta-mekane-hiwot-abune-gebre-menfes-kidus-eotc": {
 "altNames": [
 "Atlanta Abo",
@@ -51,9 +45,7 @@
 "social": "https://www.facebook.com/AtlantaAbo/",
 "source": "https://www.atlantaabo.org/Home/About",
 "secondSource": "https://www.youtube.com/@atlabo",
-"verifiedDate": "2026-09-28",
-"notes": "ADDRESS ADDED from official site (v1 had 'Atlanta, GA' only). Note: aboeotc.org / GuideStar 80-0650951 is a different church of the same name in Norfolk, VA."
-},
+"verifiedDate": "2026-09-28"},
 "tx-dallas-desta-ethiopian-restaurant": {
 "subcategory": "Ethiopian restaurant",
 "address": "12101 Greenville Ave, Suite 105",
@@ -82,17 +74,13 @@
 "social": "https://www.facebook.com/61568767259894/",
 "source": "https://www.facebook.com/61568767259894/posts/9751-walnut-st-dallas-tx-75243/122118204530625575/",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Only the business's own Facebook page confirms location. Downgraded from verified until a second source (map/listing) is found."
-},
+"verifiedDate": "2026-09-28"},
 "tx-garland-debre-mehret-st-michael-ethiopian-orthodox-tewahedo-cathedral": {
 "metro": "Dallas",
 "social": "https://www.facebook.com/DallasMichaeleotc/",
 "source": "https://www.guidestar.org/profile/75-2440445",
 "secondSource": "https://www.facebook.com/DallasMichaeleotc/",
-"verifiedDate": "2026-09-28",
-"notes": "IRS/GuideStar record and church Facebook page."
-},
+"verifiedDate": "2026-09-28"},
 "tx-garland-ethiopian-evangelical-believers-church": {
 "metro": "Dallas",
 "altNames": [
@@ -129,9 +117,7 @@
 "website": "https://selamspecialty.com/",
 "source": "https://selamspecialty.com/about-us/we-re-dedicated-to-excellence-6454785",
 "secondSource": "https://www.yelp.com/biz/selam-ethio-eritrea-speciality-store-houston",
-"verifiedDate": "2026-09-28",
-"notes": "Category changed Grocery to Shopping: listed as a specialty/fashion retail store."
-},
+"verifiedDate": "2026-09-28"},
 "tx-houston-debre-selam-medhane-alem-ethiopian-orthodox-tewahedo-church": {
 "phone": "(713) 728-2333",
 "website": "https://houstonmedhanealem.org/",
@@ -145,9 +131,7 @@
 "source": "https://holytrinitystmary.org/about-the-church/",
 "secondSource": "https://www.charitynavigator.org/ein/473553023",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Church and website confirmed; street address 8231 McGee Ln comes from map directories only (official site timed out). Downgraded from verified."
-},
+"verifiedDate": "2026-09-28"},
 "tx-houston-ethiopian-community-organization-in-houston": {
 "altNames": [
 "ECOH"
@@ -180,17 +164,13 @@
 "subcategory": "Ethiopian grocery and deli",
 "source": "https://www.yelp.com/biz/nazareth-market-seattle-2",
 "secondSource": "https://www.selamlist.com/business/nazareth-market-seattle",
-"verifiedDate": "2026-09-28",
-"notes": "Yelp (Ethiopian category, updated Aug 2026) and SelamList Habesha directory."
-},
+"verifiedDate": "2026-09-28"},
 "wa-seattle-east-african-imports-restaurant": {
 "subcategory": "Ethiopian restaurant and import store",
 "address": "306 23rd Ave S, Suite 104",
 "source": "https://www.yelp.com/biz/east-african-imports-and-restaurant-seattle",
 "secondSource": "https://www.waze.com/live-map/directions/us/wa/seattle/east-african-imports-and-restaurant?to=place.ChIJn_vTfelqkFQRfsPOJiRMiEM",
-"verifiedDate": "2026-09-28",
-"notes": "Category left as Grocery (imports store with restaurant)."
-},
+"verifiedDate": "2026-09-28"},
 "wa-seattle-addis-market-seattle": {
 "name": "Addis Market",
 "subcategory": "Ethiopian grocery",
@@ -234,9 +214,7 @@
 "social": "https://www.instagram.com/kela.market.mn/",
 "source": "https://www.longfellowwhatever.com/specialty-ethiopian-grocer-opens-at-40th-and-minnehaha/",
 "secondSource": "https://www.instagram.com/kela.market.mn/",
-"verifiedDate": "2026-09-28",
-"notes": "Opened Nov 2025 per Longfellow Whatever."
-},
+"verifiedDate": "2026-09-28"},
 "mn-minneapolis-shabelle-ethiopian-grocery": {
 "altNames": [
 "Shabelle Grocery",
@@ -264,9 +242,7 @@
 "secondSource": "https://www.waze.com/live-map/directions/us/mn/minneapolis/debre-selam-medhanealem-ethiopian-orthodox-tewahdo-church?to=place.ChIJfeTHjawp9ocRNULiAMeMEOs",
 "status": "community",
 "verifiedDate": "2026-09-28",
-"publicNote": "The church moved to 2629 30th Ave S (Seward). Its website still shows the older address, 4401 Minnehaha Ave S.",
-"notes": "News article + city land-use application (2024) + map listing support 2629 30th Ave S; church website shows 4401 Minnehaha Ave S, (612) 721-1222. Downgraded until the church site is updated."
-},
+"publicNote": "The church moved to 2629 30th Ave S (Seward). Its website still shows the older address, 4401 Minnehaha Ave S."},
 "co-aurora-eatopia-eat-ethiopian": {
 "altNames": [
 "Eatopia Ethiopia Food & Coffee"
@@ -318,9 +294,7 @@
 "source": "https://orthodox-world.org/en/i/28866/united-states/colorado/aurora/church/st.-mary%E2%80%99s-ethiopian-orthodox-tewahedo-church",
 "secondSource": "https://www.charitynavigator.org/ein/841234649",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Directory listings give 16250 E Colfax Ave; Yelp shows 16200 E Colfax Ave. No official website found. Downgraded from verified."
-},
+"verifiedDate": "2026-09-28"},
 "ca-los-angeles-messob-ethiopian-restaurant": {
 "subcategory": "Ethiopian restaurant",
 "phone": "(323) 938-8827",
@@ -352,9 +326,7 @@
 "verifiedDate": "2026-09-28",
 "keywords": [
 "Little Ethiopia"
-],
-"notes": "Category changed Grocery to Restaurant (primarily a restaurant with a market)."
-},
+]},
 "ca-los-angeles-gojo-ethio-market": {
 "subcategory": "Ethiopian grocery and household goods",
 "phone": "(323) 325-2993",
@@ -377,9 +349,7 @@
 "status": "closed",
 "source": "https://w42st.com/post/after-25-years-of-ethiopian-fare-queen-of-sheba-prepares-to-say-goodbye-to-hells-kitchen/",
 "secondSource": "https://www.yelp.com/biz/queen-of-sheba-new-york",
-"verifiedDate": "2026-09-28",
-"notes": "CLOSED: closure after 25 years reported by W42ST and Ethiopia Observer (Apr 2025); Yelp marks CLOSED (Sep 2026). Restaurant website still online but stale. Hidden from site."
-},
+"verifiedDate": "2026-09-28"},
 "ny-new-york-haile": {
 "name": "Haile Bistro",
 "altNames": [
@@ -446,8 +416,6 @@
 "source": "https://www.waze.com/live-map/directions/us/nj/newark/bisrate-gebriel-ethiopian-orthodox-tewahedo-church?to=place.ChIJgTBycKasw4kRUnG4bt7rdnk",
 "secondSource": "https://habeshalink.com/listings/bisrate-gebriel-ethiopian-orthodox-tewahedo-church/",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Map listing and HabeshaLink directory; no official website found. Downgraded from verified."
-}
+"verifiedDate": "2026-09-28"}
 }
 }

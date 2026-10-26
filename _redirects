@@ -1,0 +1,11 @@
+# Defense in depth: retired administration surfaces must stay unavailable.
+/admin /404.html 404!
+/admin/* /404.html 404!
+/admin.html /404.html 404!
+/admin-login.html /404.html 404!
+/soc-lab.html /404.html 404!
+/soc-lab/* /404.html 404!
+/tools/* /404.html 404!
+/workflows/* /404.html 404!
+/ISSUE_TEMPLATE/* /404.html 404!
+/2026-09-28-*.json /404.html 404!

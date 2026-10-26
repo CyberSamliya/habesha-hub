@@ -3,48 +3,32 @@
  "update": {
   "al-birmingham-red-sea": {
    "status": "closed",
-   "verifiedDate": "2026-10-25",
-   "notes": "Official site describes authentic Ethiopian dishes and coffee ceremony. Ignore placeholder address in site footer. ZIP not confirmed. 2026-10-25 recheck: permanently closed per BhamNow, Dec 8 2025 (https://bhamnow.com/2025/12/08/red-sea-ethiopian-shutters-as-the-last-of-its-cuisine-in-birmingham/); website offline."
-  },
+   "verifiedDate": "2026-10-25"},
   "va-woodbridge-emaye-ethiopian-market": {
    "status": "needs-review",
    "website": null,
    "verifiedDate": "2026-10-25",
-   "publicNote": "We could not confirm this market is still open. Call before visiting.",
-   "notes": "2026-10-25 recheck: emayeethiopianmarket.com is now a 'Coming soon / under construction' page; no current listing found."
-  },
+   "publicNote": "We could not confirm this market is still open. Call before visiting."},
   "oh-columbus-debre-selam-kidus-gebriel": {
    "status": "community",
    "website": null,
    "source": "https://www.devout.org/churches/oh/columbus/debre-selam-kidus-gebriel-ethiopian-orthodox-tewahedo-church",
    "verifiedDate": "2026-10-25",
-   "publicNote": "The church's website is no longer online. Confirm service times with the parish before visiting.",
-   "notes": "Official website and IRS record agree on 1049 E Broad St 43205. 2026-10-25 recheck: debreselamkidusgabriel.com no longer exists (DNS). devout.org church directory and the IRS/GuideStar record still list 1049 E Broad St 43205; no current official source, so Community listed."
-  },
+   "publicNote": "The church's website is no longer online. Confirm service times with the parish before visiting."},
   "oh-columbus-habesha-market": {
    "phone": "(614) 867-5990",
-   "verifiedDate": "2026-10-25",
-   "notes": "Yelp lists as Ethiopian at 1391 S Hamilton Rd (updated Jun 2026); Facebook page 'Habesha market LLC'. Phone 614-867-5990 appears only on Buzzfile, not added. 2026-10-25 recheck: phone (614) 867-5990 now shown on Yelp as well as Buzzfile; two sources agree."
-  },
+   "verifiedDate": "2026-10-25"},
   "oh-columbus-hiwot-injera": {
    "hours": "Mon–Sat 8 AM–5 PM; Sun 8 AM–12 PM",
-   "verifiedDate": "2026-10-25",
-   "notes": "Official site: Columbus Ethiopian injera and grocery shop, 10+ years. Site phone has a 512 area code (not published here). A SNAP retailer record suggests 4419 E Main St 43213; not added until confirmed. 2026-10-25 recheck: hours from the official site hiwotinjeracolumbus.com. Phone left unpublished: listing is privacy-limited."
-  },
+   "verifiedDate": "2026-10-25"},
   "oh-columbus-lalibela-restaurant": {
    "hours": "Daily 11 AM–11 PM",
-   "verifiedDate": "2026-10-25",
-   "notes": "Next door to Lalibela Grocery (1107 S Hamilton Rd); separate listing. 2026-10-25 recheck: hours from the official site lalibelarestaurant.net."
-  },
+   "verifiedDate": "2026-10-25"},
   "oh-whitehall-axum-cafe": {
    "hours": "Mon–Fri 7 AM–4 PM; Sat 9 AM–5 PM; Sun closed",
-   "verifiedDate": "2026-10-25",
-   "notes": "2026-10-25 recheck: hours from the official site theaxumcafe.com."
-  },
+   "verifiedDate": "2026-10-25"},
   "oh-columbus-saint-michael-ethiopian-orthodox-tewahedo-church": {
    "hours": "Sunday Mass 7–10 AM (prayers from 4 AM); Mon–Sat morning prayer 6–8 AM; Fri evening prayer 5–7 PM",
-   "verifiedDate": "2026-10-25",
-   "notes": "Official website confirms full name, EOTC tradition and 3425 Refugee Rd. 2026-10-25 recheck: service times from columbusmichael.org/services-and-calendar."
-  }
+   "verifiedDate": "2026-10-25"}
  }
 }

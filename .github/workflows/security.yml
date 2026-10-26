@@ -1,0 +1,14 @@
+name: Public data security
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  public-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/validate-data.js
+      - run: node tools/test-public-data.js

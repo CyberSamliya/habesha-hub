@@ -109,9 +109,7 @@
 "verifiedDate": "2026-09-28",
 "keywords": [
 "Central District"
-],
-"notes": "Not the same business as Agelgil in Saint Paul, MN (Tripadvisor)."
-},
+]},
 {
 "id": "wa-seattle-debre-mihret-st-michael",
 "name": "Seattle Debre Mihret St. Michael Ethiopian Orthodox Tewahedo Church",
@@ -127,9 +125,7 @@
 "source": "https://www.yelp.com/biz/debre-mihret-st-michael-ethiopian-orthodox-tewahedo-church-seattle",
 "secondSource": "https://seattleglobalist.com/2016/05/02/skyway-ethiopian-orthodox-church/50775",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Converted library building in Skyway (Seattle Globalist 2016); Yelp updated May 2026."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "wa-seattle-medhane-alem-evangelical",
 "name": "Medhane-Alem Evangelical Church (Ethiopian)",
@@ -141,9 +137,7 @@
 "state": "Washington",
 "source": "https://www.yelp.com/biz/medhane-alem-evangelical-church-ethiopian-seattle",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Single source (Yelp, updated Jul 2026)."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "wa-burien-eec-seattle-ambassadors",
 "name": "Ethiopian Evangelical Church of Seattle Ambassadors",
@@ -163,9 +157,7 @@
 "social": "https://www.facebook.com/ambassadors.eecs/",
 "source": "https://www.seattleambassadors.org/",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Official site content gives Burien address; its search-engine title still shows an older Bellevue address (5833 119th Ave SE)."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "mn-saint-paul-bole",
 "name": "Bole Ethiopian Cuisine",
@@ -256,9 +248,7 @@
 "keywords": [
 "bakery",
 "injera"
-],
-"notes": "Official site phone ends 4486; one directory shows 4485."
-},
+]},
 {
 "id": "mn-saint-paul-ethiopian-evangelical-church",
 "name": "Ethiopian Evangelical Church of Minnesota",
@@ -276,9 +266,7 @@
 "source": "https://www.yelp.com/biz/ethiopian-evangelical-church-saint-paul",
 "secondSource": "https://www.netministries.org/churches/ch15872",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Net Ministries shows 700 7th St E; Yelp (Mar 2026) and another directory show 770."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "mn-saint-paul-ethiopian-community-in-minnesota",
 "name": "Ethiopian Community in Minnesota",
@@ -321,9 +309,7 @@
 "source": "https://www.yelp.com/biz/mesob-ethiopian-restaurant-denver-2",
 "secondSource": "https://5280.com/best-ethiopian-restaurants-in-denver-aurora/",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Not the same business as Mesob in Minneapolis."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "co-denver-abyssinia",
 "name": "Abyssinia Ethiopian Restaurant and Bar",
@@ -350,9 +336,7 @@
 "source": "https://www.yelp.com/biz/lucy-ethiopian-restaurant-denver",
 "secondSource": "https://www.waze.com/live-map/directions/us/co/denver/lucy-ethiopian-restaurant?to=place.ChIJbxNKwnp8bIcRMZ40acLugIw",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Not the same business as Lucy in Houston."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "co-edgewater-konjo",
 "name": "Konjo Ethiopian Food",
@@ -400,9 +384,7 @@
 "source": "https://nileethiopianrestaurantcolorado.com/",
 "secondSource": "https://www.westword.com/best-of-denver/2026/food-and-drink/best-ethiopian-40862440/",
 "status": "verified",
-"verifiedDate": "2026-09-28",
-"notes": "Westword Best of Denver 2026: Best Ethiopian."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "co-aurora-geez-habesha",
 "name": "Geez Habesha Bar & Restaurant",

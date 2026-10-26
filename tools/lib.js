@@ -9,11 +9,11 @@ function loadData(file = DATA_FILE) {
   return { listings: ctx.window.HABESHA_LISTINGS || [], housing: ctx.window.HABESHA_HOUSING || [], meta: ctx.window.HABESHA_META || {}, labels: ctx.window.HABESHA_STATUS_LABELS || {} };
 }
 
-const FIELD_ORDER = ["id","name","altNames","category","subcategory","denomination","address","city","state","zip","phone","website","social","mapsUrl","source","secondSource","status","verifiedDate","publicNote","notes","privacy","keywords"];
+const FIELD_ORDER = ["id","name","altNames","category","subcategory","denomination","address","city","state","zip","phone","website","social","mapsUrl","source","secondSource","status","verifiedDate","publicNote","privacy","keywords"];
 function orderRecord(r) {
   const o = {};
   FIELD_ORDER.forEach(k => { if (r[k] !== undefined && r[k] !== "" && !(Array.isArray(r[k]) && !r[k].length)) o[k] = r[k]; });
-  Object.keys(r).forEach(k => { if (!(k in o) && r[k] !== undefined && r[k] !== "" && !k.startsWith("_")) o[k] = r[k]; });
+  Object.keys(r).forEach(k => { if (k !== "notes" && !(k in o) && r[k] !== undefined && r[k] !== "" && !k.startsWith("_")) o[k] = r[k]; });
   return o;
 }
 
@@ -24,7 +24,7 @@ const HEADER = `// Habesha Hub community directory data (schema v2)
 // Orthodox | Protestant | Catholic, leave empty if not confirmed), address (street only), city, state (full name),
 // zip, phone (public business line only), website, social, mapsUrl, source (URL used to verify),
 // secondSource, status, verifiedDate (YYYY-MM-DD the details were last checked), publicNote (shown on card),
-// notes (internal, not shown), privacy ("limited" hides street/phone for individual providers), keywords[].
+// Public fields only. Keep private research outside this repository. privacy ("limited" hides street/phone for individual providers), keywords[].
 //
 // status: verified | community | needs-review | temporarily-closed | closed | duplicate
 //   verified            current official or strong independent source confirms name, location and Ethiopian connection

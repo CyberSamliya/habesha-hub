@@ -34,7 +34,7 @@
    "address": "1522 S State St",
    "website": "https://oromianrestaurant.com/",
    "secondSource": "https://www.yelp.com/biz/oromian-restaurant-salt-lake-city-2",
-   "notes": "ZIP and phone not confirmed in this pass.",
+
    "keywords": [
     "oromo"
    ]
@@ -50,9 +50,7 @@
    "status": "verified",
    "verifiedDate": "2026-09-28",
    "address": "1704 Broadway",
-   "secondSource": "https://www.opentable.com/r/queen-sheba-sacramento",
-   "notes": "Not related to Queen of Sheba (Louisville) or the closed Queen of Sheba (NYC)."
-  },
+   "secondSource": "https://www.opentable.com/r/queen-sheba-sacramento"},
   {
    "id": "ca-sacramento-abyssinia",
    "name": "Abyssinia Ethiopian Restaurant",
@@ -63,9 +61,7 @@
    "source": "https://www.yelp.com/biz/abyssinia-ethiopian-restaurant-sacramento-2",
    "status": "verified",
    "verifiedDate": "2026-09-28",
-   "address": "1346 Fulton Ave",
-   "notes": "Second source: Tripadvisor listing. Not related to Abyssinia in Indianapolis or Louisville."
-  },
+   "address": "1346 Fulton Ave"},
   {
    "id": "mo-kansas-city-blue-nile-cafe",
    "name": "Blue Nile Cafe",
@@ -79,9 +75,7 @@
    "address": "20 E 5th St, Suite 102",
    "zip": "64106",
    "phone": "(816) 283-0990",
-   "website": "https://bluenilekc.com/",
-   "notes": "Confirmed by official site and Yelp. Not related to Blue Nile in Houston or Ferndale."
-  },
+   "website": "https://bluenilekc.com/"},
   {
    "id": "mo-kansas-city-j-and-k",
    "name": "J&K Ethiopian Restaurant",
@@ -92,9 +86,7 @@
    "source": "https://www.yelp.com/search?find_desc=J%26K+Ethiopian&find_loc=Kansas+City%2C+MO",
    "status": "community",
    "verifiedDate": "2026-09-28",
-   "address": "7104 NW Prairie View Rd",
-   "notes": "Single source (Yelp). Exact business name to confirm."
-  },
+   "address": "7104 NW Prairie View Rd"},
   {
    "id": "mo-st-louis-meskerem",
    "name": "Meskerem Ethiopian Restaurant",
@@ -106,7 +98,7 @@
    "status": "verified",
    "verifiedDate": "2026-09-28",
    "address": "3210 S Grand Blvd",
-   "notes": "Second source: Tripadvisor listing.",
+
    "altNames": [
     "Meskerem Saint Louis"
    ]
@@ -124,9 +116,7 @@
    "address": "4422 Cass St",
    "zip": "68131",
    "phone": "(402) 991-5662",
-   "website": "https://www.lalibelaomaha.com/",
-   "notes": "Also on Yelp and Visit Omaha. Not related to other restaurants named Lalibela."
-  },
+   "website": "https://www.lalibelaomaha.com/"},
   {
    "id": "nc-raleigh-nafkot",
    "name": "Nafkot Ethiopian Restaurant",
@@ -138,9 +128,7 @@
    "status": "verified",
    "verifiedDate": "2026-09-28",
    "metro": "Raleigh-Durham",
-   "address": "2109 Avent Ferry Rd",
-   "notes": "Second source: African Restaurant Week listing."
-  },
+   "address": "2109 Avent Ferry Rd"},
   {
    "id": "nc-durham-goorsha",
    "name": "Goorsha",
@@ -170,9 +158,7 @@
    "address": "9 N 17th St",
    "zip": "23219",
    "phone": "(804) 308-3649",
-   "website": "https://addisrva.com/",
-   "notes": "Also on Yelp. Not related to other restaurants named Addis."
-  },
+   "website": "https://addisrva.com/"},
   {
    "id": "va-richmond-buna-kurs",
    "name": "Buna Kurs Ethiopian Cafe",
@@ -221,9 +207,7 @@
    "address": "7048 International Dr",
    "zip": "32819",
    "phone": "(407) 354-0026",
-   "website": "https://www.nileorlando.com/",
-   "notes": "Not related to Nile in Aurora, CO."
-  },
+   "website": "https://www.nileorlando.com/"},
   {
    "id": "fl-orlando-selam",
    "name": "Selam Ethiopian & Eritrean Cuisine",
@@ -237,9 +221,7 @@
    "address": "5494 Central Florida Pkwy",
    "zip": "32821",
    "phone": "(407) 778-3119",
-   "website": "https://www.ethiopianrestaurantorlando.com/",
-   "notes": "Not related to other businesses named Selam."
-  },
+   "website": "https://www.ethiopianrestaurantorlando.com/"},
   {
    "id": "mi-ferndale-blue-nile",
    "name": "Blue Nile",
@@ -253,9 +235,7 @@
    "metro": "Detroit",
    "address": "545 W 9 Mile Rd",
    "phone": "(248) 547-6699",
-   "website": "https://bluenileferndale.com/",
-   "notes": "Metro Detroit. ZIP not confirmed in this pass. Not related to Blue Nile in Houston or Kansas City."
-  },
+   "website": "https://bluenileferndale.com/"},
   {
    "id": "in-indianapolis-abyssinia",
    "name": "Abyssinia Ethiopian Restaurant",
@@ -266,9 +246,7 @@
    "source": "https://www.yelp.com/biz/abyssinia-ethiopian-restaurant-indianapolis",
    "status": "verified",
    "verifiedDate": "2026-09-28",
-   "address": "5352 W 38th St",
-   "notes": "Second source: Tripadvisor listing."
-  },
+   "address": "5352 W 38th St"},
   {
    "id": "in-indianapolis-axum",
    "name": "Axum Ethiopian Restaurant",
@@ -282,9 +260,7 @@
    "address": "825 N Pennsylvania St",
    "zip": "46204",
    "phone": "(317) 964-0580",
-   "website": "http://axumethiopianresta.wixsite.com/mysite",
-   "notes": "Confirmed by Downtown Indy listing and own website."
-  },
+   "website": "http://axumethiopianresta.wixsite.com/mysite"},
   {
    "id": "in-indianapolis-major-restaurant",
    "name": "Major Restaurant East African Authentic Food",
@@ -295,9 +271,7 @@
    "source": "https://www.yelp.com/search?find_desc=Major+Restaurant+East+African&find_loc=Indianapolis%2C+IN",
    "status": "community",
    "verifiedDate": "2026-09-28",
-   "address": "1150 S Mickley Ave",
-   "notes": "Single source; Yelp lists it under Ethiopian. Ethiopian ownership not confirmed."
-  },
+   "address": "1150 S Mickley Ave"},
   {
    "id": "ky-louisville-queen-of-sheba",
    "name": "Queen of Sheba Ethiopian Restaurant",
@@ -311,9 +285,7 @@
    "address": "2804 Taylorsville Rd",
    "zip": "40205",
    "phone": "(502) 459-6301",
-   "website": "https://www.queenofshebalouisville.com/",
-   "notes": "Also on GoToLouisville. Not related to the closed Queen of Sheba in NYC."
-  },
+   "website": "https://www.queenofshebalouisville.com/"},
   {
    "id": "ky-louisville-abyssinia",
    "name": "Abyssinia Authentic Ethiopian Cuisine Restaurant & Bar",
@@ -327,9 +299,7 @@
    "address": "554 S 5th St",
    "zip": "40202",
    "phone": "(502) 384-8347",
-   "website": "https://abyssinialouisville.com/",
-   "notes": "Also on Yelp."
-  },
+   "website": "https://abyssinialouisville.com/"},
   {
    "id": "ky-louisville-addis-ababa",
    "name": "Addis Ababa Restaurant",
@@ -340,8 +310,6 @@
    "source": "https://www.yelp.com/search?find_desc=Addis+Ababa&find_loc=Louisville%2C+KY",
    "status": "community",
    "verifiedDate": "2026-09-28",
-   "address": "4750 Bardstown Rd",
-   "notes": "Single source (Yelp, reviews through May 2026)."
-  }
+   "address": "4750 Bardstown Rd"}
  ]
 }

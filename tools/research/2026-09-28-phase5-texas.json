@@ -49,9 +49,7 @@
 "state": "Texas",
 "source": "https://www.yelp.com/biz/banna-restaurant-and-bar-dallas-4",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Single source (Yelp, Ethiopian category, updated May 2026)."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "tx-sachse-debre-menkirat-st-george",
 "name": "Debre Menkirat St. George Ethiopian Orthodox Tewahedo Church",
@@ -140,9 +138,7 @@
 "source": "https://www.guidestar.org/profile/75-2048290",
 "secondSource": "https://www.instagram.com/maaecdallas/",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Shares 300 S Cottonwood Dr with EHPA (community building). ethiopiancommunitydfw.org may be the same community body; not confirmed."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "tx-dallas-eecc-chamber",
 "name": "Ethiopian and Eritrean Chamber of Commerce (EECC)",
@@ -212,9 +208,7 @@
 "social": "https://www.facebook.com/Ethiopianchurchinhouston",
 "source": "https://www.yelp.com/biz/ethiopian-evangelical-christians-church-houston",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Yelp (Aug 2026) and a church Facebook page; no official website found."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "tx-missouri-city-ecfc-houston",
 "name": "Ethiopian Christians Fellowship Church in Houston (ECFC)",
@@ -230,9 +224,7 @@
 "secondSource": "https://www.facebook.com/ecfchouston/",
 "status": "needs-review",
 "verifiedDate": "2026-09-28",
-"publicNote": "Two addresses appear online (Missouri City and Houston). Check the church website before visiting.",
-"notes": "Directories show 401 Present St, Missouri City and 8526 Northern St, Houston (Yelp Feb 2026). Church site contact page could not be read."
-},
+"publicNote": "Two addresses appear online (Missouri City and Houston). Check the church website before visiting."},
 {
 "id": "tx-austin-habesha-restaurant",
 "name": "Habesha Ethiopian Restaurant & Bar",
@@ -339,9 +331,7 @@
 "website": "https://austinlidetaeotc.org/",
 "source": "https://austinlidetaeotc.org/about-us/",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "Official site confirms church (est. 2005) in Pflugerville serving Austin; street address not shown on About page."
-},
+"verifiedDate": "2026-09-28"},
 {
 "id": "tx-san-antonio-african-village",
 "name": "African Village Ethiopian Restaurant",
@@ -367,8 +357,6 @@
 "zip": "75149",
 "source": "https://www.guidestar.org/profile/26-1924188",
 "status": "community",
-"verifiedDate": "2026-09-28",
-"notes": "IRS/GuideStar record only; confirm services at this address."
-}
+"verifiedDate": "2026-09-28"}
 ]
 }
