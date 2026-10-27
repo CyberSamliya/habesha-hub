@@ -21,6 +21,10 @@ Live site: https://cybersamliya.github.io/habesha-hub/
 | `tools/apply-updates.js` | Applies a research batch file to `directory-data.js` |
 | `tools/research/*.json` | Research batches: every change with its sources, kept as an audit trail |
 | `test-site.js` | Browser tests (Playwright) for search, filters, deep links, mobile |
+| `resume.html`, `resume.css`, `resume.js` | Free Resume Builder: template gallery, 8-step questionnaire, drafts, writing helpers and downloads |
+| `resume-engine.js` | Turns the answers into one document and renders it as the HTML preview, PDF, Word (.docx) and plain text |
+| `vendor/` | Self-hosted jsPDF and docx libraries (MIT), loaded only when a visitor downloads a resume; see `vendor/README.md` |
+| `tools/test-resume.js` | Browser tests for the resume builder, including the content of all three downloads |
 | `.github/ISSUE_TEMPLATE/` | Review-queue forms: add business, church, professional, organization, housing, correction, claim |
 | `.github/workflows/validate.yml` | Runs the validator on every push |
 | `PROGRESS.md` | Research progress tracker |
@@ -96,6 +100,20 @@ Only after the business is approved and the Stripe payment shows in the dashboar
 4. Do not delete uncertain records. Mark them `needs-review`, and mark closures only with evidence.
 5. Housing posts show date posted and date last checked, and expire automatically (Active up to 14 days, Needs recheck 15 to 45 days, Expired after 45 days or past the end date). Never publish a private home address.
 6. Government and immigration information links to official sources and is not individual advice.
+
+## Free Resume Builder
+
+`resume.html` runs entirely in the visitor's browser. Nothing they type is sent to Habesha Hub or anyone else; the draft is
+kept in that browser's `localStorage` (key `hh_resume_draft_v1`) and can be downloaded as a JSON backup and restored.
+
+- Five single-column, ATS-friendly templates. Each is a section order and a type style in `resume-engine.js` (`TEMPLATES`).
+- The PDF uses standard PDF fonts, which cover English and Western European letters only. Other characters (for example
+  Amharic) are replaced with "?" in the PDF and the visitor is told to use the Word download, which keeps them.
+- The writing helpers run on the device and only tidy what the visitor wrote; they never add jobs, skills or numbers.
+  The keyword check lists job-description words; it does not score the resume.
+- Optional AI writing help is switched off (`AI.enabled` in `resume.js`). A paid AI service must never be called from the
+  browser with an API key; it would need a server endpoint with usage limits first.
+- Run `node tools/test-resume.js` after changing any `resume*` file.
 
 ## Deep links
 

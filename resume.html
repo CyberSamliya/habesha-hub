@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+<title>Free Resume Builder | Habesha Hub</title>
+<meta name="description" content="Build a professional, ATS-friendly resume for free. Choose from five templates, answer guided questions and download PDF, Word and plain-text versions. No account or payment.">
+<link rel="canonical" href="https://habeshahubusa.com/resume.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='10' height='30' fill='%231f6a45'/%3E%3Crect x='10' width='10' height='30' fill='%23e1b53e'/%3E%3Crect x='20' width='10' height='30' fill='%23a83d2c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="resume.css?v=20261027-resume">
+<script src="resume-engine.js?v=20261027-resume" defer></script>
+<script src="resume.js?v=20261027-resume" defer></script>
+</head>
+<body>
+<header></header>
+<main id="main">
+
+<section class="hero" aria-labelledby="heroTitle">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <p class="eyebrow">FREE RESUME BUILDER</p>
+   <h1 id="heroTitle">Build Your Professional Resume — 100% Free</h1>
+   <p class="lead">Choose a professional template, enter your experience, and download your job-ready resume in minutes. No payment required.</p>
+   <div class="hero-actions">
+    <a class="btn primary" href="#templates">Choose a template</a>
+    <button type="button" class="btn ghost" id="continueDraft" hidden>Continue my draft</button>
+   </div>
+   <ul class="trust">
+    <li>No account or payment</li>
+    <li>Your information stays on your device</li>
+    <li>PDF, Word and plain-text downloads</li>
+    <li>Built to be read by applicant tracking systems (ATS)</li>
+   </ul>
+  </div>
+  <div class="hero-art" aria-hidden="true" lang="en"><div class="fan" id="heroFan"></div></div>
+ </div>
+</section>
+
+<section class="steps-strip" aria-label="How it works">
+ <div class="wrap strip">
+  <div><b>1</b><span>Choose a template</span></div>
+  <div><b>2</b><span>Answer guided questions</span></div>
+  <div><b>3</b><span>Review and polish</span></div>
+  <div><b>4</b><span>Download PDF, Word or text</span></div>
+ </div>
+</section>
+
+<section id="templates" class="section" aria-labelledby="tplTitle">
+ <div class="wrap">
+  <div class="section-head">
+   <p class="eyebrow">STEP 1</p>
+   <h2 id="tplTitle">Choose your resume template</h2>
+   <p>Every template is a clean single column with standard headings, so applicant tracking systems can read it. You can switch templates at any time without losing what you typed.</p>
+  </div>
+  <div class="gallery" id="gallery"></div>
+ </div>
+</section>
+
+<section id="builder" class="section builder-sec" aria-labelledby="builderTitle" hidden>
+ <div class="wrap">
+  <div class="section-head">
+   <p class="eyebrow">STEP 2</p>
+   <h2 id="builderTitle" tabindex="-1">Build your resume</h2>
+   <div class="notice"><strong>Your device, your information.</strong> Nothing you type is sent to Habesha Hub or anyone else. Your draft is saved only in this browser. On a shared or public computer, press “Delete my draft” when you finish.</div>
+   <details class="howto">
+    <summary>How the resume builder works</summary>
+    <ol>
+     <li>Answer each step. Required fields are marked with a red star (*); the others are optional.</li>
+     <li>Press “Next” to continue. If something is missing, a message under the field tells you what to fix.</li>
+     <li>Watch your resume update in the live preview as you type.</li>
+     <li>Your draft saves automatically in this browser. Press “Save draft” any time to be sure.</li>
+     <li>To continue on another device, press “Download draft backup”, then use “Restore a draft backup” on the other device.</li>
+     <li>On the last step, review your resume, then download it as PDF, Word or plain text.</li>
+     <li>The writing helpers only clean up and organize what you wrote. They never add experience, skills or results you did not enter.</li>
+    </ol>
+   </details>
+  </div>
+
+  <div class="builder-bar">
+   <div class="bar-left"><span class="bar-label">Template:</span> <select id="tplSelect" aria-label="Resume template"></select></div>
+   <div class="bar-right">
+    <button type="button" class="btn small" id="saveDraft">Save draft</button>
+    <button type="button" class="btn small" id="exportDraft">Download draft backup</button>
+    <button type="button" class="btn small" id="importDraft">Restore a draft backup</button>
+    <input type="file" id="importFile" accept=".json,application/json" hidden aria-label="Choose a resume draft backup file">
+    <button type="button" class="btn small danger" id="deleteDraft">Delete my draft</button>
+   </div>
+  </div>
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+
+  <div class="builder-grid">
+   <div class="wizard">
+    <nav class="stepper" aria-label="Resume steps"><ol id="stepper"></ol></nav>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <form id="stepForm" class="step" novalidate>
+     <p class="step-count" id="stepCount"></p>
+     <h3 id="stepTitle" tabindex="-1"></h3>
+     <p class="step-intro" id="stepIntro"></p>
+     <p class="req-note"><span class="req" aria-hidden="true">*</span> <span>Required field</span></p>
+     <div id="stepAlert" class="alert" role="alert" hidden></div>
+     <div id="stepBody"></div>
+     <div class="step-nav">
+      <button type="button" class="btn" id="backBtn">Back</button>
+      <button type="button" class="btn ghost-dark" id="previewBtn">Preview</button>
+      <button type="submit" class="btn primary" id="nextBtn">Next</button>
+     </div>
+    </form>
+   </div>
+   <aside class="preview-pane" aria-labelledby="livePreviewTitle">
+    <div class="pane-head"><h3 id="livePreviewTitle">Live preview</h3><span class="pane-note">Updates as you type</span></div>
+    <div class="page-frame" id="liveFrame" lang="en"><div class="page" id="livePage"></div></div>
+   </aside>
+  </div>
+ </div>
+</section>
+
+</main>
+<footer class="site-foot"><div class="wrap">Habesha Hub · Free Resume Builder · No account required. Templates and downloads are free to use for any job application.</div></footer>
+
+<dialog id="previewDialog" aria-labelledby="previewDialogTitle">
+ <div class="dlg-head"><h2 id="previewDialogTitle"></h2><button type="button" class="btn small" id="closePreview">Close</button></div>
+ <div class="page-frame dlg-frame" id="dialogFrame" lang="en"><div class="page" id="dialogPage"></div></div>
+ <div class="dlg-foot" id="dialogFoot"></div>
+</dialog>
+
+<dialog id="confirmDialog" aria-labelledby="confirmTitle">
+ <h2 id="confirmTitle"></h2>
+ <p id="confirmText"></p>
+ <div class="dlg-actions"><button type="button" class="btn primary" id="confirmYes"></button><button type="button" class="btn" id="confirmNo">Cancel</button></div>
+</dialog>
+
+<script src="site-shell.js?v=20261027-resume" defer></script>
+<script src="quality-i18n.js?v=20261027-resume" defer></script>
+<script src="bilingual.js?v=20261022-quality" defer></script>
+</body>
+</html>

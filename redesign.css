@@ -222,9 +222,20 @@ body.rd .footlinks a.foot-ad{color:var(--gold);font-weight:700}
 @media(max-width:1100px){
  body.rd .hero .filters{grid-template-columns:1fr 1fr}
 }
-@media(max-width:1180px){
+/* The full menu, the Free Resume Builder pill and "Add a listing" need about 1400px; between the
+ * phone layout and that width the button hides, and below 1140px the menu button takes over. */
+@media(max-width:1399px){
  body.rd .nav-add{display:none}
 }
+@media(min-width:901px) and (max-width:1139px){
+ body.rd .menu{display:block}
+ body.rd .nav .lang{margin-left:auto}
+ body.rd #mainNav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:12px;padding:16px 18px;max-height:calc(100dvh - 72px);overflow-y:auto;background:var(--midnight);border-bottom:1px solid var(--midnight-line)}
+ body.rd #mainNav.open{display:flex}
+ body.rd .nav-group summary{width:100%;box-sizing:border-box}
+ body.rd .nav-panel,body.rd .nav-group:last-child .nav-panel{position:static;margin-top:10px;min-width:0;box-shadow:none;background:#fff}
+}
+@media(max-width:1139px){body.rd #mainNav .nav-resume{align-self:flex-start}}
 @media(max-width:900px){
  body.rd .hero-grid,body.rd .hh-spot-grid,body.rd .state-layout{grid-template-columns:1fr}
  body.rd .hero-visual{min-height:0}
@@ -322,3 +333,17 @@ body.rd .hh-ad-poster figcaption{margin-top:14px;font-size:.88rem;color:var(--on
 body.rd .hh-spot-ewket{margin:72px auto 0;max-width:880px}
 @media(max-width:900px){body.rd .hh-ad-grid{grid-template-columns:1fr}body.rd .hh-ad-poster{justify-self:center;max-width:420px}body.rd .hh-spot-ewket{margin-top:56px}}
 @media(prefers-reduced-motion:reduce){body.rd .hh-ad-poster img{transition:none}}
+
+/* ---- Free Resume Builder: nav pill + homepage call to action ---- */
+body.rd #mainNav .nav-resume{color:var(--midnight);background:var(--gold);border-radius:999px;padding:7px 14px;font-weight:800}
+body.rd #mainNav .nav-resume:hover{color:var(--midnight);background:#f3c95f}
+body.rd .hh-resume-cta{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;padding:28px 32px;border-radius:var(--radius);background:radial-gradient(700px 300px at 100% 0,#1d3557 0,transparent 60%),var(--midnight);color:#fff}
+body.rd .hh-resume-copy{flex:1 1 420px;min-width:0}
+body.rd .hh-resume-eyebrow{margin:0 0 6px;color:var(--gold);font-weight:800;letter-spacing:.1em;font-size:.78rem}
+body.rd .hh-resume-cta h3{margin:0 0 8px;color:#fff;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;letter-spacing:-.03em}
+body.rd .hh-resume-cta p{margin:0;color:var(--on-dark)}
+body.rd .hh-resume-side{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+body.rd .hh-resume-side p{font-size:.88rem}
+body.rd .hh-resume-btn{background:var(--gold);color:var(--midnight);border-color:var(--gold);font-weight:800;min-height:48px}
+body.rd .hh-resume-btn:hover{background:#f3c95f;color:var(--midnight)}
+@media(max-width:620px){body.rd .hh-resume-cta{padding:22px 18px}body.rd .hh-resume-side{width:100%}body.rd .hh-resume-btn{width:100%}}

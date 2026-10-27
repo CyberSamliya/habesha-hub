@@ -25,3 +25,4 @@ jobs:
       - run: node tools/test-improvements.js
         env:
           HH_OUTPUT_DIR: test-results
+      - run: node tools/test-resume.js
