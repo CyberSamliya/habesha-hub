@@ -153,7 +153,7 @@ ${body}
  <div class="state-links" role="navigation" aria-labelledby="otherStates"><h2 id="otherStates">Ethiopian community in other states</h2><ul>${others}</ul></div>
  <p class="foot-note">© Habesha Hub, a community project. Directory data updated ${esc(updated)}. <a href="./">Back to the full directory</a></p>
 </div></footer>
-<script src="i18n.js?v=20261022-quality" defer></script><script src="site-shell.js?v=20261025-email" defer></script><script src="quality-i18n.js?v=20261022-quality" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
+<script src="i18n.js?v=20261022-quality" defer></script><script src="site-shell.js?v=20261027-resume" defer></script><script src="quality-i18n.js?v=20261027-resume" defer></script><script src="bilingual.js?v=20261022-quality" defer></script></body>
 </html>
 `;
 }
@@ -179,7 +179,7 @@ function main() {
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
     .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
-    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
+    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html","resume.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
   urls.push(...rows.map(r=>`  <url><loc>${SITE}listing.html?id=${encodeURIComponent(r.id)}</loc><lastmod>${esc(r.verifiedDate||updated)}</lastmod></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 

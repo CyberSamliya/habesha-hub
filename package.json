@@ -5,7 +5,8 @@
     "test": "node tools/test-improvements.js",
     "validate": "node tools/validate-data.js",
     "build": "node build-pages.js",
-    "test:quality": "node tools/test-quality.js"
+    "test:quality": "node tools/test-quality.js",
+    "test:resume": "node tools/test-resume.js"
   },
   "devDependencies": {
     "playwright": "1.62.1",

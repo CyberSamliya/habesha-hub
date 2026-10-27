@@ -1,7 +1,8 @@
 (function(){'use strict';
 const header=document.querySelector('header');if(!header)return;
 if(!document.getElementById('mainNav')){
- header.innerHTML='<div class="wrap support-nav"><a class="brand" href="index.html">Habesha Hub</a><nav aria-label="Main navigation"><a href="index.html#directory">Directory</a><a href="daily-tools.html">Daily Life Tools</a><a href="events.html">Events</a><a href="saved.html">Saved places</a><a href="contact.html">Contact</a></nav><button type="button" class="lang" data-language-toggle>Switch to አማርኛ</button></div>';
+ header.innerHTML='<div class="wrap support-nav"><a class="brand" href="index.html">Habesha Hub</a><nav aria-label="Main navigation"><a href="index.html#directory">Directory</a><a href="daily-tools.html">Daily Life Tools</a><a href="resume.html">Free Resume Builder</a><a href="events.html">Events</a><a href="saved.html">Saved places</a><a href="contact.html">Contact</a></nav><button type="button" class="lang" data-language-toggle>Switch to አማርኛ</button></div>';
+ const here=location.pathname.split('/').pop()||'index.html';header.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===here)a.setAttribute('aria-current','page');});
 }
 const footer=document.querySelector('footer');if(footer&&!document.getElementById('stateLinksH')){
  const links=document.createElement('nav');links.className='wrap support-footer';links.setAttribute('aria-label','Helpful links');
