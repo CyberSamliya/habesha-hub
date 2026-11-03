@@ -136,3 +136,11 @@ Filters are reflected in the URL, so results can be shared or bookmarked, for ex
 - New listings and their evidence are recorded in tools/research/2026-10-22-services.json. Do not infer ethnicity or credentials from a name.
 - Run npm install, npx playwright install chromium --only-shell, npm test, npm run test:quality, npm run validate, and npm run build.
 - Automated checks cover WCAG A/AA rules, keyboard navigation, 320/390/768/1280px widths, all tool workspaces, draft preparation, bookmarks, links and JavaScript errors. Physical phones and screen-reader testing remain distinct human acceptance checks.
+
+## Business inquiry forms
+
+`submission.html?type=sponsorship` and `submission.html?type=digital` provide dedicated inquiry drafts. Legacy contact links for these services are normalized without putting the service title in the business-name field. City suggestions come from current directory cities/metros in the selected state; visitors can type an unlisted city. These are not a complete US city database.
+
+Business inquiries are reviewed locally, then passed to the visitor’s email application for sending to `advertise@habeshahubusa.com`. Copy-summary fallback is provided. No email delivery or successful submission is claimed by the website. The existing Google Forms flow remains for community requests. To support direct website submission later, configure a private server-side intake service with delivery/error handling; never publish credentials in this static repository.
+
+Run `python tools/test-inquiries.py` with Python Playwright and system Chromium to check dedicated/legacy routes, state/city dependencies, form validation, summary/email contents, responsive widths and general submission regression.
