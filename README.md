@@ -92,6 +92,12 @@ Only after the business is approved and the Stripe payment shows in the dashboar
 4. Featured never changes the listing's status (Verified, Community listed, Needs verification) or its place in the results. The generated state pages do not show the label, so they never show an expired one.
 5. When it ends, you may leave the fields in place as a record or remove them.
 
+## City or category sponsorship (paid, $75 for 30 days)
+
+The Stripe link (`https://buy.stripe.com/9B6eVc7l16FA68cgOA0kE01`, one-time, no renewal) is on `advertise.html` under
+"Already approved?". As with Featured, confirm the sponsor and the city or category page by email before they pay, and
+publish the clearly labeled sponsorship only after the payment shows in the Stripe dashboard.
+
 ## Trust rules
 
 1. Never invent a listing, address, phone, website, ownership, ethnicity or church tradition.
