@@ -98,6 +98,12 @@ The Stripe link (`https://buy.stripe.com/9B6eVc7l16FA68cgOA0kE01`, one-time, no 
 "Already approved?". As with Featured, confirm the sponsor and the city or category page by email before they pay, and
 publish the clearly labeled sponsorship only after the payment shows in the Stripe dashboard.
 
+## Starter website package (paid, $399)
+
+The Stripe link (`https://buy.stripe.com/aFa00i9t95Bw68c2XK0kE02`, one-time) is on `advertise.html` under
+"Already approved?". It covers up to 5 pages, mobile-friendly design, a contact form, basic SEO setup and one round of
+revisions. Agree the scope by email before the client pays; quote and invoice larger projects separately in Stripe.
+
 ## Trust rules
 
 1. Never invent a listing, address, phone, website, ownership, ethnicity or church tradition.
