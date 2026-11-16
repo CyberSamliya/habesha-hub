@@ -1,0 +1,101 @@
+/* Habesha Hub shared shell (2026-11).
+ * Loaded on every page except index.html, after the page's own stylesheet.
+ * Brings interior pages (states, listings, policies, tools) onto the homepage
+ * redesign: same palette, typeface, dark header with a collapsible Menu.
+ * Every rule is scoped to body.hh-shell so it can be removed in one step.
+ */
+body.hh-shell{
+ --midnight:#0e1a2b;--midnight-line:#22324a;
+ --ink:#121826;--muted:#556070;--paper:#ffffff;--card:#fff;--soft:#f6f7f9;--line:#e5e8ee;
+ --green:#0e7c57;--green2:#0a5e42;--gold:#b88a1d;--rust:#c2452d;
+ --emerald:#0e7c57;--emerald-dark:#0a5e42;--gold-bright:#e9b949;
+ --shadow:0 12px 28px rgba(14,26,43,.10);--radius:16px;
+ background:var(--paper);color:var(--ink);
+ font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;line-height:1.6
+}
+body.hh-shell h1,body.hh-shell h2,body.hh-shell h3,body.hh-shell .brand{
+ font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;letter-spacing:-.02em
+}
+body.hh-shell h1{font-weight:800}
+body.hh-shell h2{font-weight:800}
+body.hh-shell :lang(am),body.hh-shell [lang="am"]{font-family:"Noto Sans Ethiopic","Plus Jakarta Sans",sans-serif}
+:where(body.hh-shell) a{color:var(--emerald)}
+:where(body.hh-shell) a:where(:hover){color:var(--emerald-dark)}
+body.hh-shell .btn.primary,body.hh-shell .nav-cta{background:var(--emerald);color:#fff}
+body.hh-shell .btn.primary:hover{background:var(--emerald-dark);color:#fff}
+body.hh-shell .btn.secondary{color:var(--emerald)}
+
+/* Link colour uses :where() so page components (.button, .btn, cards) keep their own colours. */
+/* ---------- Header ---------- */
+body.hh-shell header.hh-header{max-width:none;margin:0;padding:0;font-size:1rem;position:sticky;top:0;z-index:40;background:var(--midnight);border-bottom:1px solid var(--midnight-line);backdrop-filter:none}
+body.hh-shell .hh-nav{position:relative;min-height:68px;display:flex;align-items:center;gap:18px;width:min(1240px,calc(100% - 32px));margin:auto}
+body.hh-shell .hh-nav .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:1.15rem;white-space:nowrap;flex:0 0 auto}
+body.hh-shell .hh-nav .mark{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--gold-bright);box-shadow:none;color:var(--midnight);font-family:"Noto Sans Ethiopic",sans-serif;font-weight:700;font-size:1.2rem}
+body.hh-shell #shellNav{margin-left:auto;display:flex;align-items:center;gap:4px 16px}
+body.hh-shell #shellNav a{color:#e6eaf0;font-weight:600;font-size:.94rem;text-decoration:none;padding:10px 2px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+body.hh-shell #shellNav a:hover,body.hh-shell #shellNav a[aria-current="page"]{color:var(--gold-bright)}
+body.hh-shell .hh-nav .lang{background:transparent;border:1px solid #33425a;color:#fff;border-radius:999px;padding:8px 14px;font-weight:600;white-space:nowrap;min-height:40px;cursor:pointer}
+body.hh-shell .hh-nav .lang:hover{border-color:#5a6b85}
+body.hh-shell .hh-add{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:10px;background:var(--emerald);color:#fff!important;font-weight:700;text-decoration:none;white-space:nowrap}
+body.hh-shell .hh-add:hover{background:var(--emerald-dark)}
+body.hh-shell .hh-nav .lang,body.hh-shell .hh-menu{box-shadow:none;background-image:none;text-align:center}
+body.hh-shell .hh-menu{display:none;background:transparent;border:1px solid #33425a;color:#fff;border-radius:10px;padding:8px 14px;font-weight:600;min-height:42px;cursor:pointer}
+
+@media (max-width:1180px){
+ body.hh-shell .hh-nav{gap:10px;min-height:64px}
+ body.hh-shell .hh-menu{display:inline-flex;align-items:center;margin-left:auto}
+ body.hh-shell .hh-add{display:none}
+ body.hh-shell .hh-nav .lang{padding:8px 10px;font-size:.88rem}
+ /* Collapsed by default: the panel opens below the bar instead of pushing content. */
+ body.hh-shell #shellNav{display:none;position:absolute;top:100%;left:-16px;right:-16px;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 16px;background:var(--midnight);border-bottom:1px solid var(--midnight-line);box-shadow:0 18px 30px rgba(0,0,0,.25);max-height:calc(100dvh - 64px);overflow-y:auto}
+ body.hh-shell #shellNav.open{display:flex}
+ body.hh-shell #shellNav a{padding:12px 0;border-bottom:1px solid var(--midnight-line)}
+ body.hh-shell #shellNav a.hh-add-m{color:var(--gold-bright)}
+}
+@media (min-width:1181px){
+ body.hh-shell #shellNav a.hh-add-m{display:none}
+ /* Longer Amharic labels wrap to a second row instead of pushing the page sideways. */
+ body.hh-shell #shellNav{flex-wrap:wrap;justify-content:flex-end;min-width:0;flex:1 1 auto}
+ body.hh-shell #shellNav a{white-space:normal}
+}
+@media (max-width:480px){
+ body.hh-shell .hh-nav{gap:6px}
+ body.hh-shell .hh-nav .brand{font-size:.98rem;gap:8px}
+ body.hh-shell .hh-nav .mark{width:32px;height:32px;font-size:1rem}
+ body.hh-shell .hh-menu{padding:6px 10px;min-height:40px}
+ body.hh-shell .hh-nav .lang{padding:6px 9px;font-size:.74rem;min-height:40px}
+}
+@media (max-width:360px){
+ body.hh-shell .hh-nav .brand{font-size:0;gap:0}
+ body.hh-shell .hh-nav .mark{font-size:1rem}
+}
+
+/* styles.css hides and absolutely positions EVERY <nav> under 900px (it was written for the old
+   header). Undo that for any nav that is not the shell menu, e.g. footer and in-page link lists. */
+body.hh-shell nav:not(#shellNav){position:static;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;background:none;border:0;padding:0;margin-left:0;box-shadow:none}
+
+/* ---------- Footer ---------- */
+body.hh-shell footer{background:var(--midnight);color:#c7ced9;margin-top:48px}
+body.hh-shell footer :is(p,span,small,li,div,address){color:#c7ced9}
+body.hh-shell footer :is(h2,h3,strong,b){color:#fff}
+body.hh-shell footer a{color:#e6eaf0}
+body.hh-shell footer a:hover{color:var(--gold-bright)}
+body.hh-shell .support-footer{display:flex;flex-wrap:wrap;gap:8px 16px;padding-block:18px}
+body.hh-shell .support-footer a{min-height:44px;display:inline-flex;align-items:center}
+
+/* ---------- Listing profile (static pages in /places/) ---------- */
+body.hh-shell .profile-wrap{padding-block:28px 48px}
+body.hh-shell .profile-head .loc{color:var(--muted);margin:14px 0 2px;font-weight:600}
+body.hh-shell .profile-head h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.15;margin:0 0 10px}
+body.hh-shell .profile-head .badge{display:inline-block;margin:0 8px 10px 0}
+body.hh-shell .profile-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+body.hh-shell .profile-actions .btn{flex:0 1 auto;margin:0}
+body.hh-shell .profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:10px}
+body.hh-shell .profile-grid>section,body.hh-shell .profile-wrap>section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:18px}
+body.hh-shell .profile-grid>section{margin-top:0}
+body.hh-shell .profile-wrap h2{font-size:1.25rem;margin:0 0 8px}
+body.hh-shell .profile-wrap h3{font-size:1rem;margin:16px 0 4px}
+body.hh-shell .back-link{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none}
+@media (max-width:620px){
+ body.hh-shell .profile-actions .btn{flex:1 1 calc(50% - 10px)}
+}

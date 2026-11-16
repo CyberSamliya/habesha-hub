@@ -13,3 +13,6 @@
 /2026-09-28-phase7-states.json /404.html 404!
 /2026-09-28-phase8-audit.json /404.html 404!
 /2026-09-28-phase8-links.json /404.html 404!
+# Old client-rendered profile URLs -> static profile pages
+/listing.html id=:id /places/:id 301!
+/listing id=:id /places/:id 301!

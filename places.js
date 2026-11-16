@@ -6,10 +6,11 @@ function saved(){try{const a=JSON.parse(localStorage.getItem(key)||'[]');return 
 function status(t){document.getElementById('profileStatus').textContent=t;}
 function button(text,fn){const b=E('button',text);b.type='button';b.className='btn secondary';b.addEventListener('click',fn);return b;}
 function link(text,url){const a=E('a',text);a.href=url;a.className='btn secondary';if(/^https?:/.test(url)){a.rel='noopener noreferrer';a.target='_blank';}return a;}
-function url(x){return 'listing.html?id='+encodeURIComponent(x.id);}
+const up=/\/places\/[^/]*$/.test(location.pathname)?'../':'';
+function url(x){return up+'places/'+encodeURIComponent(x.id)+'.html';}
 // Paid Featured placement, active from featuredFrom through featuredUntil (local date).
 function featured(x){const d=new Date(),t=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');return !!(x.featuredFrom&&x.featuredUntil&&x.featuredFrom<=t&&t<=x.featuredUntil);}
-function request(type,x){return 'submission.html?'+new URLSearchParams({type,id:x.id,name:x.name,city:x.city,state:x.state});}
+function request(type,x){return up+'submission.html?'+new URLSearchParams({type,id:x.id,name:x.name,city:x.city,state:x.state});}
 function toggle(x,b){try{const a=saved(),exists=a.includes(x.id);localStorage.setItem(key,JSON.stringify(exists?a.filter(id=>id!==x.id):a.concat(x.id)));b.textContent=exists?'Save place':'Remove saved place';b.setAttribute('aria-pressed',String(!exists));status(exists?'Place removed.':'Place saved on this device.');}catch{status('Browser storage is unavailable. Bookmark this page instead.');}}
 function profile(x){
  const wrap=document.getElementById('profile');wrap.replaceChildren();
@@ -43,6 +44,11 @@ function profile(x){
  const related=all.filter(y=>y.id!==x.id&&y.category===x.category&&y.state===x.state).slice(0,3);if(related.length){const section=E('section');section.append(E('h2','Related places'));const ul=E('ul');related.forEach(y=>{const li=E('li');li.append(link(y.name,url(y)));ul.append(li);});section.append(ul);wrap.append(section);}
  const schema={'@context':'https://schema.org','@type':'WebPage',name:x.name,url:document.querySelector('link[rel=canonical]').href,about:{'@type':'Organization',name:x.name}};const script=E('script');script.type='application/ld+json';script.textContent=JSON.stringify(schema);document.head.append(script);
 }
-const target=document.getElementById('profile');if(target){const x=all.find(x=>x.id===new URLSearchParams(location.search).get('id'));if(x)profile(x);else{const meta=document.createElement('meta');meta.name='robots';meta.content='noindex';document.head.append(meta);target.replaceChildren(E('h1','Listing not found'),E('p','This listing may have moved or is no longer published.'),link('Back to directory','index.html#directory'));}}
+const target=document.getElementById('profile');
+// Static pages in places/ are pre-rendered by tools/build-shell.js: only wire up the buttons.
+if(target&&target.dataset.id){const x=all.find(y=>y.id===target.dataset.id);const save=target.querySelector('[data-save-place]'),copy=target.querySelector('[data-copy-link]');
+ if(x&&save){const on=saved().includes(x.id);save.textContent=on?'Remove saved place':'Save place';save.setAttribute('aria-pressed',String(on));save.addEventListener('click',()=>toggle(x,save));}
+ if(copy)copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.origin+location.pathname);status('Profile link copied.');}catch{status('Copy the address from your browser to share this profile.');}});
+}else if(target){const x=all.find(x=>x.id===new URLSearchParams(location.search).get('id'));if(x)profile(x);else{const meta=document.createElement('meta');meta.name='robots';meta.content='noindex';document.head.append(meta);target.replaceChildren(E('h1','Listing not found'),E('p','This listing may have moved or is no longer published.'),link('Back to directory','index.html#directory'));}}
 const bookmarks=document.getElementById('savedPlaces');if(bookmarks){const list=all.filter(x=>saved().includes(x.id));if(!list.length)bookmarks.append(E('p','No saved places yet. Open a business profile and choose Save place.'),link('Browse directory','index.html#directory'));else{const ul=E('ul');list.forEach(x=>{const li=E('li');li.append(link(x.name,url(x)));ul.append(li);});bookmarks.append(ul);}}
 })();

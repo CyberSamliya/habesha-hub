@@ -85,10 +85,10 @@
   </form>
   <div class="filter-extra"><label><input type="checkbox" id="verifiedOnly"> <span data-i18n="verified_only">Show verified listings only</span></label><a href="#" id="shareLink" data-i18n="copy_link">Copy link to these results</a></div>
    <div class="hero-stats" aria-label="Directory summary">
-    <div class="stat"><strong id="statListings">0</strong><span data-i18n="stat2_label">community listings</span></div>
-    <div class="stat"><strong id="statVerified" class="gold">0</strong><span data-i18n="stat_verified_label">verified with sources</span></div>
-    <div class="stat"><strong id="statStates">0</strong><span data-i18n="stat_states_label">states with listings</span></div>
-    <div class="stat"><strong id="statCities">0</strong><span data-i18n="stat_cities_label">cities and metros</span></div>
+    <div class="stat"><strong id="statListings">335</strong><span data-i18n="stat2_label">community listings</span></div>
+    <div class="stat"><strong id="statVerified" class="gold">284</strong><span data-i18n="stat_verified_label">verified with sources</span></div>
+    <div class="stat"><strong id="statStates">40</strong><span data-i18n="stat_states_label">states with listings</span></div>
+    <div class="stat"><strong id="statCities">75</strong><span data-i18n="stat_cities_label">cities and metros</span></div>
    </div>
   </div>
   <aside class="hero-visual" aria-label="Recently verified listings">
@@ -102,20 +102,6 @@
 
 <section class="soft" id="directory" tabindex="-1" aria-label="Directory results">
  <div class="wrap">
-  <div class="hh-dir-card">
-   <div class="hh-dir-brand">Habesha <span>Hub</span></div>
-   <h2 data-i18n="directory_h2">Find Habesha businesses & organizations</h2>
-   <div class="hh-dir-row">
-    <form class="hh-dir-search" action="index.html#directory" method="get" role="search">
-     <label class="sr-only" for="dirQuick">Search the directory</label>
-     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-     <input id="dirQuick" name="q" type="search" placeholder="Search by name, city, state or category" data-i18n-placeholder="dir_search_placeholder2" autocomplete="off">
-     <button type="submit" class="hh-dir-go" data-i18n="search_btn">Search</button>
-    </form>
-    <a class="hh-dir-add" href="#contribute" data-i18n="add_listing_btn">Add a listing</a>
-   </div>
-  </div>
-
   <div class="result-meta" id="resultMeta" role="status" aria-live="polite"></div>
   <div class="grid listings" id="listingGrid"></div>
   <div class="more-wrap"><button class="btn secondary hidden" id="showMore" type="button" data-i18n="show_more">Show more</button></div>
@@ -299,6 +285,6 @@
 <noscript><p class="wrap notice">The directory search needs JavaScript. You can still browse every listing on the state pages linked at the bottom of this page.</p></noscript>
 <script src="i18n.js?v=20261023-redesign"></script>
 <script src="directory-data.js?v=20261023-redesign"></script>
-<script src="app.js?v=20261024-featured"></script>
+<script src="app.js?v=20261116-shell"></script>
 <script src="quality-i18n.js?v=20261027-resume" defer></script><script src="bilingual.js?v=20261023-redesign" defer></script></body>
 </html>
