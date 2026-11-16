@@ -21,7 +21,10 @@ const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!
   const data = await page.evaluate(() => window.HABESHA_LISTINGS.filter(x => !["closed","duplicate"].includes(x.status)));
   const expect = f => data.filter(f).length;
 
-  ok(await count() === data.length, `initial count ${await count()} equals visible data ${data.length}`);
+  // With no filters the directory shows a search prompt; "Show results" browses everything.
+  ok(Number.isNaN(await count()) && (await page.$$eval("#listingGrid .listing", n => n.length)) === 0, "no results listed before the first search");
+  await page.click("#searchResults");
+  ok(await count() === data.length, `browse-all count ${await count()} equals visible data ${data.length}`);
   ok(await page.isHidden("#denomWrap"), "denomination hidden until Church selected");
   ok(await page.isDisabled("#dirCity"), "city disabled until state chosen");
 
@@ -52,7 +55,9 @@ const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!
     ok(await count() === expect(x => x.state === "Ohio" && areaOf(x) === "Columbus"), "Ohio > Columbus count matches");
   }
   await page.click("#clearFilters");
-  ok(await count() === data.length && (await page.inputValue("#dirState")) === "" && await page.isDisabled("#dirCity"), "Clear resets everything");
+  ok(Number.isNaN(await count()) && (await page.inputValue("#dirState")) === "" && await page.isDisabled("#dirCity"), "Clear resets everything");
+  await page.click("#searchResults");
+  ok(await count() === data.length, "Show results after Clear browses all listings again");
 
   for (const [st, cat] of [["Maryland","Restaurant"],["Virginia","Grocery"],["Georgia","Beauty"],["Texas","Auto"],["California","Professional"],["Washington","Healthcare"]]) {
     await page.selectOption("#dirState", st); await page.selectOption("#dirCategory", cat);
@@ -70,8 +75,10 @@ const ok = (cond, msg) => { console.log((cond ? "PASS " : "FAIL ") + msg); if (!
   await page.fill("#q", "zzzznotathing"); ok(await page.isVisible("#listingGrid .empty"), "no-match empty state");
   await page.click("#clearFilters");
 
-  await page.fill("#heroWhat", "orthodox church"); await page.selectOption("#heroState", "Ohio"); await page.click("#heroSearch button");
-  ok((await page.inputValue("#dirCategory")) === "Church" && (await page.inputValue("#dirDenomination")) === "Orthodox" && (await page.inputValue("#dirState")) === "Ohio", "hero 'orthodox church' + Ohio maps to filters");
+  // Hero search is the #q / #dirState form (the old #heroWhat box was removed in the 2026-10 redesign).
+  await page.fill("#q", "orthodox"); await page.selectOption("#dirState", "Ohio"); await page.click("#searchResults");
+  const hits = await page.$$eval("#listingGrid .listing", n => n.length);
+  ok(hits > 0 && await count() === expect(x => x.state === "Ohio" && x.denomination === "Orthodox"), "hero search 'orthodox' + Ohio lists Ohio Orthodox churches (" + hits + " shown)");
   await page.click("#clearFilters");
 
   // card integrity

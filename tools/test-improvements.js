@@ -30,8 +30,10 @@ async function run(){
  await p.goto(url+'/ohio.html');ok((await p.textContent('main')).includes(ohioCount+' listings'),'Generated Ohio matches directory');
  for(const width of [390,768,1280]){await p.setViewportSize({width,height:850});await p.goto(url+'/?state=Ohio');ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow at '+width);}
  await p.setViewportSize({width:1280,height:850});await p.goto(url+'/?state=Ohio');fs.mkdirSync(out,{recursive:true});await p.screenshot({path:path.join(out,'habesha-hub-search-preview.png')});
+ // Pin the clock so event classification does not depend on the day the tests run.
+ await p.clock.install({time:new Date('2026-10-22T18:00:00Z')});
  await p.goto(url+'/events.html');ok(await p.locator('#upcomingEvents article').count()===1,'Past events not presented as upcoming');ok(await p.locator('#pastEvents article').count()===3,'All original events retained in archive');
- await p.clock.install({time:new Date('2026-10-10T19:00:00Z')});await p.reload();ok(await p.locator('#upcomingEvents article').count()===3,'Event classification respects timezone and end instant');await p.clock.fastForward(2*60*60*1000);ok(await p.locator('#upcomingEvents article').count()===2,'Event moves to archive while page remains open');
+ await p.clock.setSystemTime(new Date('2026-10-10T19:00:00Z'));await p.reload();ok(await p.locator('#upcomingEvents article').count()===3,'Event classification respects timezone and end instant');await p.clock.fastForward(2*60*60*1000);ok(await p.locator('#upcomingEvents article').count()===2,'Event moves to archive while page remains open');
  await p.clock.setFixedTime(new Date('2026-10-22T18:00:00Z'));
  await p.goto(url+'/daily-tools.html');const tools=['budget','reminders','grocery','help','phrases','jobs','family','scam','events','requests'];
  for(const key of tools){await p.click('[data-key="'+key+'"]');ok((await p.locator('#toolBody').innerText()).length>70,key+' workspace renders');if(['reminders','grocery','jobs','family','events','requests'].includes(key))ok(await p.locator('#toolBody textarea').count()>0,key+' has textarea form');}
