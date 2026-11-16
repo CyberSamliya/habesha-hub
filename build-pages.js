@@ -54,7 +54,7 @@ function card(x) {
     (src2 ? ` · <a href="${esc(src2)}" target="_blank" rel="noopener nofollow">2nd source</a>` : "");
   return `<article class="listing" id="l-${esc(x.id)}">` +
     (type ? `<span class="type">${esc(type)}</span>` : "") +
-    `<h3><a href="listing.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3><address>${addr}</address>` +
+    `<h3><a href="places/${encodeURIComponent(x.id)}.html">${esc(x.name)}</a></h3><address>${addr}</address>` +
     (x.phone && !limited ? `<p><a href="${esc(tel)}">${esc(x.phone)}</a></p>` : "") +
     (x.publicNote ? `<p class="note">${esc(x.publicNote)}</p>` : "") +
     `<div><span class="badge s-${esc(x.status)}">${esc(STATUS[x.status] || x.status)}</span></div>` +
@@ -180,7 +180,7 @@ function main() {
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
     .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
     .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html","resume.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
-  urls.push(...rows.map(r=>`  <url><loc>${SITE}listing.html?id=${encodeURIComponent(r.id)}</loc><lastmod>${esc(r.verifiedDate||updated)}</lastmod></url>`));
+  urls.push(...rows.filter(r=>r.status!=='needs-review').map(r=>`  <url><loc>${SITE}places/${encodeURIComponent(r.id)}.html</loc><lastmod>${esc(r.verifiedDate||updated)}</lastmod></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
   const idx = path.join(ROOT, "index.html");
@@ -192,3 +192,5 @@ function main() {
   console.log(`Preserved all ${states.length} state pages; rebuilt populated state pages and sitemap with ${urls.length} URLs.`);
 }
 main();
+// Shared header, static listing pages and homepage counters (idempotent).
+require("./tools/build-shell.js")({ root: ROOT, site: SITE });

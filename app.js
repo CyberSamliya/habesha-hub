@@ -255,7 +255,7 @@
     return '<article class="listing' + (featured ? " is-featured" : "") + '" id="l-' + esc(x.id) + '">' +
       (x.profile === 'habesha-garden.html' ? '<a href="habesha-garden.html" aria-label="View Habesha Garden photos and menu"><img class="listing-photo" src="assets/habesha-garden/tibs.webp" alt="Tibs served with injera" loading="lazy" width="600" height="400"></a>' : '') +
       '<span class="type">' + esc(typeLine) + "</span>" +
-      '<h3><a href="listing.html?id=' + encodeURIComponent(x.id) + '">' + esc(x.name) + "</a></h3>" +
+      '<h3><a href="places/' + encodeURIComponent(x.id) + '.html">' + esc(x.name) + "</a></h3>" +
       "<address>" + addr + "</address>" +
       (x.phone && !limited ? '<p><a href="' + esc(tel) + '">' + esc(x.phone) + "</a></p>" : "") +
       (featured && x.featuredDetails ? '<p class="featured-details">' + esc(x.featuredDetails) + "</p>" : "") +
@@ -433,7 +433,7 @@
     var counts = stateCounts();
     map.innerHTML = STATES.map(function (s) {
       var p = TILE_POS[ABBR[s]], n = counts[s] || 0, b = n === 0 ? 0 : n < 5 ? 1 : n < 15 ? 2 : 3;
-      return '<button type="button" class="tile b' + b + '" data-state="' + esc(s) + '" aria-pressed="false" aria-label="' + esc(s + ": " + (n ? n + " " + t("listings_word") : t("no_listings_state"))) + '">' + ABBR[s] + "</button>";
+      return '<button type="button" class="tile b' + b + '" data-state="' + esc(s) + '" aria-pressed="false" aria-label="' + esc(s + ": " + (n ? n + " " + t(n===1?"listing_one":"listings_word") : t("no_listings_state"))) + '">' + ABBR[s] + "</button>";
     }).join("");
     // Positions go through the CSSOM: the page's CSP blocks inline style attributes.
     map.querySelectorAll(".tile").forEach(function (b) { var p = TILE_POS[ABBR[b.getAttribute("data-state")]]; b.style.gridRow = String(p[0] + 1); b.style.gridColumn = String(p[1] + 1); });
@@ -453,7 +453,7 @@
       .sort(function (a, b) { return b.verifiedDate.localeCompare(a.verifiedDate) || a.name.localeCompare(b.name); })
       .filter(function (x) { if (seen[x.category]) return false; seen[x.category] = 1; return true; }).slice(0, 3);
     box.innerHTML = picks.map(function (x) {
-      return '<a class="hero-pick" href="listing.html?id=' + encodeURIComponent(x.id) + '"><span class="ini" aria-hidden="true">' + esc(x.name.replace(/^The /, "").charAt(0)) + '</span><span class="txt"><b>' + esc(x.name) + "</b><small>" + esc(catLabel(x.category) + " · " + cityLine(x)) + "</small><small>" + esc(t("last_checked") + " " + fmtDate(x.verifiedDate)) + '</small></span><span class="chk">' + esc(statusLabel("verified")) + "</span></a>";
+      return '<a class="hero-pick" href="places/' + encodeURIComponent(x.id) + '.html"><span class="ini" aria-hidden="true">' + esc(x.name.replace(/^The /, "").charAt(0)) + '</span><span class="txt"><b>' + esc(x.name) + "</b><small>" + esc(catLabel(x.category) + " · " + cityLine(x)) + "</small><small>" + esc(t("last_checked") + " " + fmtDate(x.verifiedDate)) + '</small></span><span class="chk">' + esc(statusLabel("verified")) + "</span></a>";
     }).join("");
   }
   function renderCoverage() {
@@ -462,7 +462,7 @@
     if ($("coverageCount")) $("coverageCount").textContent = withListings + " / " + STATES.length + " " + t("states_with");
     $("coverageGrid").innerHTML = STATES.map(function (s) {
       var n = counts[s] || 0;
-      return '<button type="button" data-state="' + esc(s) + '" class="' + (n ? "has" : "") + '" aria-pressed="false">' + esc(s) + "<span>" + (n ? n + " " + esc(t("listings_word")) : esc(t("no_listings_state"))) + "</span></button>";
+      return '<button type="button" data-state="' + esc(s) + '" class="' + (n ? "has" : "") + '" aria-pressed="false">' + esc(s) + "<span>" + (n ? n + " " + esc(t(n===1?"listing_one":"listings_word")) : esc(t("no_listings_state"))) + "</span></button>";
     }).join("");
     $("coverageGrid").querySelectorAll("button").forEach(function (b) { b.addEventListener("click", function () { $("stateExplorer").value = b.getAttribute("data-state"); renderState(); $("stateSummary").scrollIntoView({block:"nearest"}); }); });
   }
@@ -483,7 +483,7 @@
       return (showExp || r.s !== "expired") && (!state || r.h.state === state) && (!city || (r.h.metro || r.h.city) === city);
     });
     var label = {active: t("h_active"), recheck: t("h_recheck"), expired: t("h_expired")};
-    $("housingMeta").textContent = rows.length + " " + t("listings_word") + (state ? " " + t("in_word") + " " + [city, state].filter(Boolean).join(", ") : "") + ".";
+    $("housingMeta").textContent = rows.length + " " + t(rows.length===1?"listing_one":"listings_word") + (state ? " " + t("in_word") + " " + [city, state].filter(Boolean).join(", ") : "") + ".";
     $("housingGrid").innerHTML = rows.length ? rows.map(function (r) {
       var h = r.h, src = httpUrl(h.sourceUrl);
       return '<article class="listing"><span class="type">' + esc(h.type || "") + '</span><h3>' + esc(h.title || "") + "</h3><p>" + esc([h.area, h.city, ABBR[h.state]].filter(Boolean).join(", ")) + "</p>" +
