@@ -49,6 +49,9 @@ const target=document.getElementById('profile');
 if(target&&target.dataset.id){const x=all.find(y=>y.id===target.dataset.id);const save=target.querySelector('[data-save-place]'),copy=target.querySelector('[data-copy-link]');
  if(x&&save){const on=saved().includes(x.id);save.textContent=on?'Remove saved place':'Save place';save.setAttribute('aria-pressed',String(on));save.addEventListener('click',()=>toggle(x,save));}
  if(copy)copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.origin+location.pathname);status('Profile link copied.');}catch{status('Copy the address from your browser to share this profile.');}});
-}else if(target){const x=all.find(x=>x.id===new URLSearchParams(location.search).get('id'));if(x)profile(x);else{const meta=document.createElement('meta');meta.name='robots';meta.content='noindex';document.head.append(meta);target.replaceChildren(E('h1','Listing not found'),E('p','This listing may have moved or is no longer published.'),link('Back to directory','index.html#directory'));}}
+}else if(target){const x=all.find(x=>x.id===new URLSearchParams(location.search).get('id'));if(x){profile(x);
+ // Old listing.html?id= links: move to the static, crawlable page (server redirect is not available on this host).
+ if(/listing(\.html)?$/.test(location.pathname))location.replace(url(x)+location.hash);
+}else{const meta=document.createElement('meta');meta.name='robots';meta.content='noindex';document.head.append(meta);target.replaceChildren(E('h1','Listing not found'),E('p','This listing may have moved or is no longer published.'),link('Back to directory','index.html#directory'));}}
 const bookmarks=document.getElementById('savedPlaces');if(bookmarks){const list=all.filter(x=>saved().includes(x.id));if(!list.length)bookmarks.append(E('p','No saved places yet. Open a business profile and choose Save place.'),link('Browse directory','index.html#directory'));else{const ul=E('ul');list.forEach(x=>{const li=E('li');li.append(link(x.name,url(x)));ul.append(li);});bookmarks.append(ul);}}
 })();

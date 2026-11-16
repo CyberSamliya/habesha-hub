@@ -7,7 +7,10 @@
 const fs = require('fs'), path = require('path');
 const { loadData } = require('./lib');
 
-const V = '20261116-shell';
+const V = '20261116-shell2';
+// Production origin for canonical/OG/schema on places/ pages. The Netlify build only rewrites
+// the GitHub Pages URL in top-level files, so these pages must name the real domain directly.
+const PROD = 'https://habeshahubusa.com/';
 const STATUS = { verified: 'Verified', community: 'Community listed', 'needs-review': 'Needs verification', 'temporarily-closed': 'Temporarily closed' };
 const CAT = { Restaurant: 'Restaurants & Cafés', Grocery: 'Groceries & Markets', Shopping: 'Clothing & Shopping', Church: 'Churches & Faith', Beauty: 'Barbers & Beauty', Auto: 'Auto & Mechanics', Home: 'Home Services', Professional: 'Professional Services', Healthcare: 'Healthcare', Childcare: 'Children & Family', Community: 'Community & Culture' };
 const SCHEMA = { Restaurant: 'Restaurant', Grocery: 'GroceryStore', Shopping: 'Store', Church: 'Church', Beauty: 'BeautySalon', Auto: 'AutoRepair', Home: 'HomeAndConstructionBusiness', Professional: 'ProfessionalService', Healthcare: 'MedicalBusiness', Childcare: 'ChildCare', Community: 'Organization' };
@@ -126,6 +129,6 @@ module.exports = function buildShell({ root, site }) {
   const csp = read('listing.html').match(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/)[0];
   const dir = path.join(root, 'places'), want = new Set(live.map(x => x.id + '.html'));
   if (fs.existsSync(dir)) for (const f of fs.readdirSync(dir)) if (!want.has(f)) fs.rmSync(path.join(dir, f));
-  for (const x of live) write('places/' + x.id + '.html', profile(x, live, site, csp));
+  for (const x of live) write('places/' + x.id + '.html', profile(x, live, PROD, csp));
   console.log(`Shared shell on ${pages.length} pages; ${live.length} static listing pages in places/.`);
 };
