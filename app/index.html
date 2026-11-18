@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Find Ethiopian and Habesha restaurants, churches, groceries, services and newcomer resources across the USA.">
+<meta name="theme-color" content="#173b2c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Habesha Hub">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>html,body{margin:0;height:auto}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>window.HH_PWA = true;</script>
+</head>
+<body><title>Habesha Hub App</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+/* Layout: phone-shaped app shell (max 560px) with sticky green header, scrolling views, fixed bottom tab bar. Tokens follow habeshahubusa.com. */
+:root{
+  --ink:#17211c; --muted:#5e6962; --paper:#fbfaf6; --card:#ffffff; --soft:#f0eee5; --line:#ddd9ca;
+  --green:#173b2c; --green2:#245b43; --gold:#b58a2b; --gold-soft:#f5ecd6; --rust:#8b3528;
+  --on-green:#fbfaf6; --ok:#245b43; --ok-bg:#e3efe7; --warn:#8a5a00; --warn-bg:#f8ecd2; --bad:#8b3528; --bad-bg:#f6e1dc;
+  --shadow:0 10px 30px rgba(23,59,44,.10);
+  --f-body:"Plus Jakarta Sans","Noto Sans Ethiopic",Inter,Arial,sans-serif;
+  --f-display:"Playfair Display",Georgia,serif;
+  --f-eth:"Noto Sans Ethiopic","Plus Jakarta Sans",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#eef0ea; --muted:#a6b0a9; --paper:#0f1713; --card:#17221c; --soft:#1e2b24; --line:#2c3a32;
+  --green:#12291f; --green2:#7cc39b; --gold:#d9b45c; --gold-soft:#2e2715; --rust:#e3907f;
+  --on-green:#f3f1e8; --ok:#8fd3ab; --ok-bg:#1c3328; --warn:#e8c172; --warn-bg:#33291a; --bad:#f0a090; --bad-bg:#3a201b;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#eef0ea; --muted:#a6b0a9; --paper:#0f1713; --card:#17221c; --soft:#1e2b24; --line:#2c3a32;
+  --green:#12291f; --green2:#7cc39b; --gold:#d9b45c; --gold-soft:#2e2715; --rust:#e3907f;
+  --on-green:#f3f1e8; --ok:#8fd3ab; --ok-bg:#1c3328; --warn:#e8c172; --warn-bg:#33291a; --bad:#f0a090; --bad-bg:#3a201b;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{background:var(--paper)}
+body{color:var(--ink);font:15px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--green2)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.app{max-width:560px;margin:0 auto;min-height:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--green);color:var(--on-green);padding-block:12px}
+.top-row{display:flex;align-items:center;gap:10px}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--gold);color:#17211c;display:grid;place-items:center;font-weight:800;font-family:var(--f-eth);font-size:17px;flex:none}
+.brand{font-weight:800;letter-spacing:-.01em;font-size:17px;line-height:1.1}
+.brand small{display:block;font-weight:500;font-size:11.5px;opacity:.75;letter-spacing:.02em}
+.top-row .spacer{flex:1}
+.icon-btn{background:rgba(255,255,255,.1);border:0;color:var(--on-green);border-radius:10px;height:34px;padding:0 10px;cursor:pointer;font-size:13px;font-weight:600}
+
+/* views */
+.view{padding-block:18px 8px;display:flex;flex-direction:column;gap:22px}
+.view[hidden]{display:none!important}
+h1,h2,h3{margin:0;text-wrap:balance}
+.hello{font-family:var(--f-eth);color:var(--gold);font-weight:700;font-size:14px}
+.hero-title{font-family:var(--f-display);font-size:clamp(28px,8vw,36px);line-height:1.08;letter-spacing:-.01em;margin-top:4px}
+.hero-title em{font-style:normal;color:var(--gold)}
+.lede{color:var(--muted);margin:8px 0 0;max-width:60ch}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.sec-head h2{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.link-btn{background:none;border:0;color:var(--green2);font-weight:700;font-size:13px;cursor:pointer;padding:4px 0}
+
+/* search field */
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 12px;height:50px;box-shadow:var(--shadow)}
+.search svg{flex:none;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:transparent;outline:none;font-size:16px}
+.search input::placeholder{color:var(--muted)}
+.clear-x{border:0;background:var(--soft);border-radius:50%;width:26px;height:26px;cursor:pointer;color:var(--muted);flex:none}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat{text-align:center}
+.stat b{display:block;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--green2)}
+.stat span{font-size:11px;color:var(--muted);line-height:1.2;display:block}
+
+/* category grid */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cat:hover{border-color:var(--gold)}
+.cat .glyph{width:30px;height:30px;border-radius:8px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center}
+.cat strong{font-size:13px;line-height:1.2}
+.cat small{color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums}
+
+/* filters */
+.filters{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.select{flex:1;min-width:140px;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 10px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--green2);border-color:var(--green2);color:var(--paper)}
+.toggle{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--green2);width:18px;height:18px}
+.count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* listing rows */
+.list{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.item{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:0;border-top:1px solid var(--line);background:none;text-align:left;cursor:pointer;width:100%}
+.item:first-child{border-top:0}
+.item:hover{background:var(--soft)}
+.avatar{width:40px;height:40px;border-radius:11px;flex:none;display:grid;place-items:center;font-weight:800;background:var(--soft);color:var(--green2);font-size:15px}
+.item .body{flex:1;min-width:0}
+.item .name{font-weight:700;line-height:1.25;overflow-wrap:anywhere}
+.item .meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+.badge{flex:none;font-size:11px;font-weight:700;border-radius:999px;padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.b-verified{background:var(--ok-bg);color:var(--ok)}
+.b-community{background:var(--gold-soft);color:var(--warn)}
+.b-needs-review,.b-temporarily-closed{background:var(--bad-bg);color:var(--bad)}
+.more{margin-top:10px;width:100%;height:44px;border-radius:12px;border:1px dashed var(--line);background:none;font-weight:700;color:var(--green2);cursor:pointer}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:22px 18px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);margin-bottom:4px}
+
+/* resources */
+.res{display:grid;gap:8px}
+.res a{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.res a:hover{border-color:var(--gold)}
+.res .tag{font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--gold);min-width:74px}
+.res .t{flex:1;min-width:0}
+.res .t b{display:block;font-size:14px}
+.res .t span{font-size:12.5px;color:var(--muted)}
+.note{font-size:12.5px;color:var(--muted);background:var(--soft);border-radius:12px;padding:12px 14px;margin:0}
+.contrib{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.contrib a{background:var(--green);color:var(--on-green);text-decoration:none;border-radius:14px;padding:14px;font-weight:700;font-size:13.5px;line-height:1.3}
+.contrib a span{display:block;font-weight:500;opacity:.75;font-size:12px;margin-top:2px}
+.phrases{display:grid;gap:6px}
+.phrase{display:flex;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.phrase .am{font-family:var(--f-eth);font-weight:600}
+.phrase .en{color:var(--muted);font-size:13px;text-align:right}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabs-in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tab{border:0;background:none;padding:9px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;font-weight:600;color:var(--muted);cursor:pointer;position:relative}
+.tab[aria-current="page"]{color:var(--green2)}
+.tab[aria-current="page"]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--gold)}
+.tab .dot{position:absolute;top:6px;left:calc(50% + 8px);min-width:16px;height:16px;border-radius:8px;background:var(--gold);color:#17211c;font-size:10px;font-weight:800;display:grid;place-items:center;padding:0 4px}
+
+/* detail sheet */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(10,20,15,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--paper);width:100%;max-width:560px;max-height:88%;overflow:auto;border-radius:22px 22px 0 0;padding-top:10px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 14px}
+.sheet h2{font-family:var(--f-display);font-size:26px;line-height:1.15}
+.sheet .sub{color:var(--muted);margin-top:4px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.act{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 6px;font-size:12.5px;font-weight:700;color:var(--ink);text-decoration:none;cursor:pointer}
+.act svg{color:var(--green2)}
+.act[aria-pressed="true"]{background:var(--gold-soft);border-color:var(--gold)}
+.act[aria-pressed="true"] svg{color:var(--gold)}
+dl.facts{margin:18px 0 0;display:grid;gap:0;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+dl.facts div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:11px 14px;border-top:1px solid var(--line)}
+dl.facts div:first-child{border-top:0}
+dt{font-size:12px;color:var(--muted);font-weight:600}
+dd{margin:0;min-width:0;overflow-wrap:anywhere;font-size:14px}
+dd .copy{margin-left:8px;border:1px solid var(--line);background:none;border-radius:8px;font-size:11.5px;padding:2px 8px;cursor:pointer;color:var(--green2);font-weight:700}
+.trust{margin-top:14px;font-size:12.5px;color:var(--muted)}
+.close-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.close{border:0;background:var(--soft);width:34px;height:34px;border-radius:50%;cursor:pointer;flex:none;font-size:18px;color:var(--muted)}
+.install-btn{background:var(--gold);color:#17211c}
+.install-card{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border:1px solid var(--gold);border-radius:16px;padding:12px 12px 12px 14px}
+.install-card .ic-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.install-card strong{font-size:14px;line-height:1.25}
+.install-card span{font-size:12.5px;color:var(--muted)}
+.ic-actions{display:flex;align-items:center;gap:6px;flex:none}
+.ic-go{border:0;background:var(--green2);color:var(--paper);border-radius:10px;height:36px;padding:0 14px;font-weight:700;cursor:pointer}
+.ic-x{border:0;background:none;color:var(--muted);font-size:20px;width:30px;height:30px;cursor:pointer}
+.offline{background:var(--warn-bg);color:var(--warn);font-size:12.5px;font-weight:600;text-align:center;padding-block:6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;z-index:60}
+</style>
+
+<div class="app">
+  <header class="top pad">
+    <div class="top-row">
+      <div class="mark" aria-hidden="true">ሀ</div>
+      <div class="brand">Habesha Hub<small>Ethiopian &amp; Habesha community · USA</small></div>
+      <div class="spacer"></div>
+      <button class="icon-btn install-btn" id="installBtn" type="button" hidden>Install</button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+    </div>
+  </header>
+  <div class="offline pad" id="offlineBar" hidden>You're offline. Showing the directory saved on this phone.</div>
+
+  <!-- HOME -->
+  <main class="view pad" id="v-home">
+    <section>
+      <div class="hello">እንኳን ደህና መጡ · Welcome</div>
+      <h1 class="hero-title">Find your community <em>near you.</em></h1>
+      <p class="lede">Restaurants, churches, groceries and services. Every listing has a source and a last-checked date.</p>
+    </section>
+    <label class="search" for="homeQ">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="homeQ" type="search" placeholder="Injera, church, Columbus, 43227…" autocomplete="off">
+    </label>
+    <section class="install-card" id="installCard" hidden>
+      <div class="mark" aria-hidden="true">ሀ</div>
+      <div class="ic-body">
+        <strong>Add Habesha Hub to your home screen</strong>
+        <span id="installHint">Opens like an app and works without a connection.</span>
+      </div>
+      <div class="ic-actions">
+        <button class="ic-go" id="installCardBtn" type="button" hidden>Install</button>
+        <button class="ic-x" id="installDismiss" type="button" aria-label="Hide install tip">×</button>
+      </div>
+    </section>
+    <div class="stats" id="stats"></div>
+    <section>
+      <div class="sec-head"><h2>Browse by category</h2></div>
+      <div class="cats" id="cats"></div>
+    </section>
+    <section>
+      <div class="sec-head"><h2>Recently verified</h2><button class="link-btn" type="button" data-go="search">See all</button></div>
+      <div class="list" id="recent"></div>
+    </section>
+  </main>
+
+  <!-- SEARCH -->
+  <main class="view pad" id="v-search" hidden>
+    <label class="search" for="q">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Name, city, ZIP or food" autocomplete="off">
+      <button class="clear-x" id="qClear" type="button" aria-label="Clear search" hidden>×</button>
+    </label>
+    <div class="filters">
+      <div class="row">
+        <select class="select" id="state" aria-label="State"></select>
+        <select class="select" id="city" aria-label="City or metro"></select>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Category"></div>
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <label class="toggle" for="verifiedOnly"><input type="checkbox" id="verifiedOnly"> Verified only</label>
+        <span class="count" id="count"></span>
+      </div>
+    </div>
+    <div id="results"></div>
+  </main>
+
+  <!-- SAVED -->
+  <main class="view pad" id="v-saved" hidden>
+    <section>
+      <div class="eyebrow">On this device</div>
+      <h1 class="hero-title" style="font-size:28px">Saved places</h1>
+      <p class="lede">Tap the star on any listing to keep it here. Saved places stay in this browser only.</p>
+    </section>
+    <div id="savedList"></div>
+  </main>
+
+  <!-- HELP -->
+  <main class="view pad" id="v-help" hidden>
+    <section>
+      <div class="eyebrow">Trusted starting points</div>
+      <h1 class="hero-title" style="font-size:28px">Help &amp; newcomer resources</h1>
+      <p class="lede">Official sources for benefits, health, housing and immigration.</p>
+    </section>
+    <div class="res">
+      <a href="https://www.fns.usda.gov/snap/state-directory" target="_blank" rel="noopener"><span class="tag">FOOD</span><span class="t"><b>SNAP food assistance</b><span>USDA state directory</span></span>›</a>
+      <a href="https://www.medicaid.gov/about-us/where-can-people-get-help-medicaid-chip" target="_blank" rel="noopener"><span class="tag">HEALTH</span><span class="t"><b>Medicaid &amp; CHIP</b><span>Medicaid.gov state contacts</span></span>›</a>
+      <a href="https://www.hud.gov/states" target="_blank" rel="noopener"><span class="tag">HOUSING</span><span class="t"><b>Housing assistance</b><span>HUD state resources</span></span>›</a>
+      <a href="https://www.uscis.gov/" target="_blank" rel="noopener"><span class="tag">IMMIGRATION</span><span class="t"><b>USCIS information</b><span>Forms, case status, official guidance</span></span>›</a>
+      <a href="https://www.acf.hhs.gov/orr" target="_blank" rel="noopener"><span class="tag">REFUGEE</span><span class="t"><b>Refugee resettlement</b><span>Office of Refugee Resettlement</span></span>›</a>
+      <a href="https://www.usa.gov/benefits" target="_blank" rel="noopener"><span class="tag">BENEFITS</span><span class="t"><b>Government benefits</b><span>USAGov benefit finder</span></span>›</a>
+    </div>
+    <p class="note">Habesha Hub is not a law firm, government office or benefits agency. Confirm important decisions with the official source.</p>
+    <section>
+      <div class="sec-head"><h2>Everyday phrases</h2></div>
+      <div class="phrases">
+        <div class="phrase"><span class="am">ሰላም</span><span class="en">Hello</span></div>
+        <div class="phrase"><span class="am">አመሰግናለሁ</span><span class="en">Thank you</span></div>
+        <div class="phrase"><span class="am">እርዳታ እፈልጋለሁ</span><span class="en">I need help</span></div>
+        <div class="phrase"><span class="am">ስንት ነው?</span><span class="en">How much is it?</span></div>
+        <div class="phrase"><span class="am">ሆስፒታል የት ነው?</span><span class="en">Where is the hospital?</span></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><h2>Help grow the directory</h2></div>
+      <div class="contrib">
+        <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">Add a business<span>Restaurant, store, salon, service</span></a>
+        <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">Add a church<span>Orthodox, Protestant or Catholic</span></a>
+        <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">Report a correction<span>Closed, moved, wrong phone</span></a>
+        <a href="https://habeshahubusa.com/" target="_blank" rel="noopener">Open full website<span>habeshahubusa.com</span></a>
+      </div>
+    </section>
+    <p class="note" id="dataNote"></p>
+  </main>
+</div>
+
+<nav class="tabs" aria-label="App sections">
+  <div class="tabs-in">
+    <button class="tab" type="button" data-go="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+    <button class="tab" type="button" data-go="search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Directory</button>
+    <button class="tab" type="button" data-go="saved"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>Saved<span class="dot" id="savedDot" hidden></span></button>
+    <button class="tab" type="button" data-go="help"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>Help</button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim" hidden><div class="sheet pad" id="sheet" role="dialog" aria-modal="true" aria-labelledby="dTitle"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="/directory-data.js"></script>
+
+<script>
+(function(){
+const CATS = {
+  Restaurant:{label:"Restaurants & Cafés", short:"Restaurants", icon:'<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>'},
+  Church:{label:"Churches & Faith", short:"Churches", icon:'<path d="M12 2v6M9 5h6M5 21V12l7-4 7 4v9M10 21v-4h4v4"/>'},
+  Grocery:{label:"Groceries & Markets", short:"Groceries", icon:'<path d="M3 4h2l2.4 11h10.8L21 8H7"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/>'},
+  Community:{label:"Community & Culture", short:"Community", icon:'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 15c3 0 7 1 7 5"/>'},
+  Professional:{label:"Professional Services", short:"Professionals", icon:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>'},
+  Childcare:{label:"Children & Family", short:"Family", icon:'<circle cx="12" cy="6" r="3"/><path d="M6 21v-5a6 6 0 0 1 12 0v5"/>'},
+  Beauty:{label:"Barbers & Beauty", short:"Beauty", icon:'<circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8 16 20 4M16 16 4 4"/>'},
+  Shopping:{label:"Clothing & Shopping", short:"Shopping", icon:'<path d="M6 7h12l-1 14H7zM9 7a3 3 0 0 1 6 0"/>'},
+  Healthcare:{label:"Healthcare", short:"Health", icon:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/>'},
+  Auto:{label:"Auto & Mechanics", short:"Auto", icon:'<path d="M3 13l2-6h14l2 6v5H3z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/>'},
+  Home:{label:"Home Services", short:"Home", icon:'<path d="M3 11 12 4l9 7M5 10v10h14V10"/>'}
+};
+const STATUS = window.HABESHA_STATUS_LABELS || {};
+const ABBR={"Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE","District of Columbia":"DC","Florida":"FL","Georgia":"GA","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY","North Carolina":"NC","North Dakota":"ND","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Pennsylvania":"PA","Rhode Island":"RI","South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virginia":"VA","Washington":"WA","West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY"};
+
+const ALL = (window.HABESHA_LISTINGS||[]).filter(l => l.status!=="closed" && l.status!=="duplicate");
+ALL.forEach(l => {
+  l._hay = (l._hay || [l.name,(l.altNames||[]).join(" "),l.category,l.subcategory,l.city,l.state,ABBR[l.state],l.zip,l.address,l.metro,(l.keywords||[]).join(" "),l.denomination].join(" ")).toLowerCase();
+});
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store = {
+  get(k,d){try{const v=localStorage.getItem("hh:"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("hh:"+k,JSON.stringify(v))}catch(e){}}
+};
+const fmtDate = d => { if(!d) return ""; const t=new Date(d+"T12:00:00"); return isNaN(t)?d:t.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
+const place = l => [l.city, ABBR[l.state]||l.state].filter(Boolean).join(", ");
+
+let saved = new Set(store.get("saved",[]));
+const st = { q:"", state:store.get("state",""), city:"", cat:"", verified:false, limit:40 };
+
+/* theme */
+const root=document.documentElement;
+const savedTheme=store.get("theme",null); if(savedTheme) root.setAttribute("data-theme",savedTheme);
+$("#themeBtn").addEventListener("click",()=>{
+  const cur=root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  const next=cur==="dark"?"light":"dark"; root.setAttribute("data-theme",next); store.set("theme",next);
+});
+
+/* rows */
+function badge(s){ const lab=(STATUS[s]&&STATUS[s].en)||s; return `<span class="badge b-${esc(s)}">${esc(lab)}</span>`; }
+function row(l){
+  const c=CATS[l.category]||{label:l.category};
+  return `<button class="item" type="button" data-id="${esc(l.id)}"><span class="avatar" aria-hidden="true">${esc(l.name.trim()[0]||"?")}</span>
+  <span class="body"><span class="name">${esc(l.name)}</span><span class="meta" style="display:block">${esc(c.label)} · ${esc(place(l))}${l.zip?" "+esc(l.zip):""}</span>
+  <span class="meta" style="display:block">Checked ${esc(fmtDate(l.verifiedDate))}</span></span>${badge(l.status)}</button>`;
+}
+
+/* home */
+function renderHome(){
+  const states=new Set(ALL.map(l=>l.state)), cities=new Set(ALL.map(l=>l.city+"|"+l.state));
+  const ver=ALL.filter(l=>l.status==="verified").length;
+  $("#stats").innerHTML=[[ALL.length,"listings"],[ver,"verified"],[states.size,"states"],[cities.size,"cities"]]
+    .map(([n,t])=>`<div class="stat"><b>${n}</b><span>${t}</span></div>`).join("");
+  const counts={}; ALL.forEach(l=>counts[l.category]=(counts[l.category]||0)+1);
+  $("#cats").innerHTML=Object.keys(CATS).filter(k=>counts[k]).sort((a,b)=>counts[b]-counts[a]).map(k=>
+    `<button class="cat" type="button" data-cat="${k}"><span class="glyph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${CATS[k].icon}</svg></span><strong>${esc(CATS[k].short)}</strong><small>${counts[k]} ${counts[k]===1?"place":"places"}</small></button>`).join("");
+  const recent=ALL.filter(l=>l.status==="verified").sort((a,b)=>(b.verifiedDate||"").localeCompare(a.verifiedDate||"")||a.name.localeCompare(b.name)).slice(0,6);
+  $("#recent").innerHTML=recent.map(row).join("");
+}
+
+/* search */
+function fillStates(){
+  const counts={}; ALL.forEach(l=>counts[l.state]=(counts[l.state]||0)+1);
+  $("#state").innerHTML=`<option value="">All states</option>`+Object.keys(counts).sort().map(s=>`<option value="${esc(s)}">${esc(s)} (${counts[s]})</option>`).join("");
+  $("#state").value=st.state;
+}
+function fillCities(){
+  const sel=$("#city");
+  if(!st.state){ sel.innerHTML=`<option value="">All cities</option>`; sel.disabled=true; return; }
+  const counts={}; ALL.filter(l=>l.state===st.state).forEach(l=>{const k=l.metro||l.city;counts[k]=(counts[k]||0)+1});
+  sel.disabled=false;
+  sel.innerHTML=`<option value="">All cities</option>`+Object.keys(counts).sort().map(c=>`<option value="${esc(c)}">${esc(c)} (${counts[c]})</option>`).join("");
+  sel.value=st.city;
+}
+function fillChips(){
+  $("#chips").innerHTML=[["","All"],...Object.keys(CATS).map(k=>[k,CATS[k].short])]
+    .map(([k,t])=>`<button class="chip" type="button" data-chip="${k}" aria-pressed="${st.cat===k}">${esc(t)}</button>`).join("");
+}
+function filtered(){
+  const terms=st.q.toLowerCase().split(/\s+/).filter(Boolean);
+  return ALL.filter(l=>
+    (!st.state||l.state===st.state) && (!st.city||(l.metro||l.city)===st.city) &&
+    (!st.cat||l.category===st.cat) && (!st.verified||l.status==="verified") &&
+    terms.every(t=>l._hay.includes(t))
+  ).sort((a,b)=>{
+    const rank=s=>s==="verified"?0:s==="community"?1:2;
+    return rank(a.status)-rank(b.status) || a.state.localeCompare(b.state) || a.city.localeCompare(b.city) || a.name.localeCompare(b.name);
+  });
+}
+function renderResults(){
+  const res=filtered();
+  $("#count").textContent=`${res.length} ${res.length===1?"result":"results"}`;
+  $("#qClear").hidden=!st.q;
+  if(!res.length){
+    const where=st.state?` in ${st.state}`:"";
+    $("#results").innerHTML=`<div class="empty"><strong>No listings match${esc(where)} yet.</strong>Try a different word or category, or add a place you know on <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">habeshahubusa.com</a>.</div>`;
+    return;
+  }
+  const shown=res.slice(0,st.limit);
+  $("#results").innerHTML=`<div class="list">${shown.map(row).join("")}</div>`+
+    (res.length>st.limit?`<button class="more" type="button" id="moreBtn">Show ${Math.min(40,res.length-st.limit)} more</button>`:"");
+}
+
+/* saved */
+function renderSaved(){
+  const list=ALL.filter(l=>saved.has(l.id)).sort((a,b)=>a.name.localeCompare(b.name));
+  $("#savedList").innerHTML=list.length?`<div class="list">${list.map(row).join("")}</div>`:
+    `<div class="empty"><strong>Nothing saved yet.</strong>Open a listing and tap Save to keep it here for quick access.</div>`;
+  const dot=$("#savedDot"); dot.hidden=!saved.size; dot.textContent=saved.size;
+}
+
+/* detail */
+function mapsUrl(l){
+  if(l.mapsUrl) return l.mapsUrl;
+  const q=[l.name,l.address,l.city,l.state,l.zip].filter(Boolean).join(", ");
+  return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+}
+const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
+function openDetail(id){
+  const l=ALL.find(x=>x.id===id); if(!l) return;
+  const c=CATS[l.category]||{label:l.category};
+  const isSaved=saved.has(l.id);
+  const addr=[l.privacy==="limited"?"":l.address, [l.city, l.state].filter(Boolean).join(", ")+(l.zip?" "+l.zip:"")].filter(Boolean).join(", ");
+  const facts=[];
+  facts.push(["Address",esc(addr)]);
+  if(l.phone && l.privacy!=="limited") facts.push(["Phone",`<a href="tel:${esc(l.phone.replace(/[^\d+]/g,""))}">${esc(l.phone)}</a><button class="copy" type="button" data-copy="${esc(l.phone)}">Copy</button>`]);
+  if(l.website) facts.push(["Website",`<a href="${esc(l.website)}" target="_blank" rel="noopener">${esc(host(l.website))}</a>`]);
+  if(l.social) facts.push(["Social",`<a href="${esc(l.social)}" target="_blank" rel="noopener">${esc(host(l.social))}</a>`]);
+  if(l.denomination) facts.push(["Tradition",esc(l.denomination)]);
+  if(l.hours) facts.push(["Hours",esc(l.hours)]);
+  if(l.services) facts.push(["Services",esc(Array.isArray(l.services)?l.services.join(", "):l.services)]);
+  if(l.languages) facts.push(["Languages",esc(Array.isArray(l.languages)?l.languages.join(", "):l.languages)]);
+  if(l.description) facts.push(["About",esc(l.description)]);
+  if(l.publicNote) facts.push(["Note",esc(l.publicNote)]);
+  const src=[l.source,l.secondSource].filter(Boolean).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(" · ");
+  if(src) facts.push(["Sources",src]);
+  facts.push(["Last checked",esc(fmtDate(l.verifiedDate))]);
+
+  $("#sheet").innerHTML=`<div class="grab"></div>
+  <div class="close-row"><div style="min-width:0"><div class="eyebrow">${esc(c.label)}${l.subcategory?" · "+esc(l.subcategory):""}</div>
+  <h2 id="dTitle">${esc(l.name)}</h2><div class="sub">${esc(place(l))}</div></div>
+  <button class="close" type="button" id="closeSheet" aria-label="Close">×</button></div>
+  <div style="margin-top:10px">${badge(l.status)}</div>
+  <div class="actions">
+    <a class="act" href="${esc(mapsUrl(l))}" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+    ${l.website?`<a class="act" href="${esc(l.website)}" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Website</a>`
+      :`<button class="act" type="button" data-copy="${esc(addr)}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>Copy address</button>`}
+    <button class="act" type="button" id="saveBtn" aria-pressed="${isSaved}"><svg width="22" height="22" viewBox="0 0 24 24" fill="${isSaved?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>${isSaved?"Saved":"Save"}</button>
+  </div>
+  <dl class="facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
+  <p class="trust">Something wrong or out of date? <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">Report a correction</a> or <a href="https://habeshahubusa.com/#contribute" target="_blank" rel="noopener">claim this listing</a>.</p>`;
+  $("#scrim").hidden=false; document.body.style.overflow="hidden";
+  $("#closeSheet").focus();
+  $("#saveBtn").onclick=()=>{
+    saved.has(l.id)?saved.delete(l.id):saved.add(l.id); store.set("saved",[...saved]);
+    toast(saved.has(l.id)?"Saved to this device":"Removed from saved"); renderSaved(); openDetail(l.id);
+  };
+}
+function closeDetail(){ $("#scrim").hidden=true; document.body.style.overflow=""; }
+
+let tt; function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,1800); }
+
+/* navigation */
+const VIEWS=["home","search","saved","help"];
+function go(v,push){
+  if(!VIEWS.includes(v)) v="home";
+  VIEWS.forEach(x=>$("#v-"+x).hidden=x!==v);
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-current",t.dataset.go===v?"page":"false"));
+  if(v==="search") renderResults();
+  if(v==="saved") renderSaved();
+  if(push!==false){ try{history.replaceState(null,"",v==="home"?location.pathname:"#"+v)}catch(e){} }
+  window.scrollTo(0,0);
+}
+
+/* events */
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]"); if(g){ go(g.dataset.go); return; }
+  const it=e.target.closest(".item"); if(it){ openDetail(it.dataset.id); return; }
+  const cat=e.target.closest(".cat"); if(cat){ st.cat=cat.dataset.cat; st.limit=40; fillChips(); go("search"); return; }
+  const ch=e.target.closest(".chip"); if(ch){ st.cat=ch.dataset.chip; st.limit=40; fillChips(); renderResults(); return; }
+  const cp=e.target.closest("[data-copy]"); if(cp){
+    const text=cp.dataset.copy;
+    try{ navigator.clipboard.writeText(text).then(()=>toast("Copied"),()=>toast(text)); }catch(err){ toast(text); }
+    return;
+  }
+  if(e.target.id==="moreBtn"){ st.limit+=40; renderResults(); return; }
+  if(e.target.id==="closeSheet"||e.target.id==="scrim") closeDetail();
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("#scrim").hidden) closeDetail(); });
+$("#homeQ").addEventListener("keydown",e=>{ if(e.key==="Enter"){ st.q=e.target.value.trim(); $("#q").value=st.q; st.limit=40; go("search"); }});
+$("#q").addEventListener("input",e=>{ st.q=e.target.value.trim(); st.limit=40; renderResults(); });
+$("#qClear").addEventListener("click",()=>{ st.q=""; $("#q").value=""; renderResults(); $("#q").focus(); });
+$("#state").addEventListener("change",e=>{ st.state=e.target.value; st.city=""; store.set("state",st.state); st.limit=40; fillCities(); renderResults(); });
+$("#city").addEventListener("change",e=>{ st.city=e.target.value; st.limit=40; renderResults(); });
+$("#verifiedOnly").addEventListener("change",e=>{ st.verified=e.target.checked; renderResults(); });
+
+/* install (only active in the hosted build, where window.HH_PWA is set) */
+if(window.HH_PWA){
+  const standalone=matchMedia("(display-mode: standalone)").matches || navigator.standalone===true;
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  const dismissed=store.get("installDismissed",false);
+  let deferred=null;
+  const showCard=()=>{ if(!standalone && !dismissed) $("#installCard").hidden=false; };
+  if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+  window.addEventListener("beforeinstallprompt",e=>{
+    e.preventDefault(); deferred=e;
+    $("#installBtn").hidden=false; $("#installCardBtn").hidden=false; showCard();
+  });
+  if(ios && !standalone){
+    $("#installHint").textContent="In Safari, tap Share, then Add to Home Screen.";
+    showCard();
+  }
+  const install=async()=>{
+    if(!deferred) return;
+    deferred.prompt();
+    const r=await deferred.userChoice.catch(()=>({}));
+    deferred=null; $("#installBtn").hidden=true; $("#installCardBtn").hidden=true;
+    if(r.outcome==="accepted"){ $("#installCard").hidden=true; toast("Installed"); }
+  };
+  $("#installBtn").addEventListener("click",install);
+  $("#installCardBtn").addEventListener("click",install);
+  window.addEventListener("appinstalled",()=>{ $("#installCard").hidden=true; $("#installBtn").hidden=true; });
+  $("#installDismiss").addEventListener("click",()=>{ $("#installCard").hidden=true; store.set("installDismissed",true); });
+  const net=()=>{ $("#offlineBar").hidden=navigator.onLine; };
+  window.addEventListener("online",net); window.addEventListener("offline",net); net();
+}
+
+/* boot */
+const meta=window.HABESHA_META||{};
+$("#dataNote").textContent=`Directory data from habeshahubusa.com, updated ${fmtDate(meta.updated)}. Verified means the details were confirmed against a current public source.`;
+renderHome(); fillStates(); fillCities(); fillChips(); renderSaved();
+go((location.hash||"").slice(1)||"home",false);
+})();
+</script>
+
+</body>
+</html>
