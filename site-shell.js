@@ -3,7 +3,7 @@
 // The header markup is baked into each page by tools/build-shell.js; this script only
 // adds it if a page is missing it, then wires the mobile Menu button.
 const up=/\/places\/[^/]*$/.test(location.pathname)?'../':'';
-const NAV=[['index.html#directory','Directory'],['index.html#states','Explore states'],['events.html','Events'],['daily-tools.html','Daily Life Tools'],['resume.html','Free Resume Builder'],['saved.html','Saved places'],['contact.html','Contact']];
+const NAV=[['index.html#directory','Directory'],['index.html#states','Explore states'],['family-hub.html','Family Hub'],['events.html','Events'],['daily-tools.html','Daily Life Tools'],['resume.html','Free Resume Builder'],['saved.html','Saved places'],['contact.html','Contact']];
 const body=document.body;body.classList.add('hh-shell');
 let header=document.querySelector('header');
 if(!header){header=document.createElement('header');body.prepend(header);}

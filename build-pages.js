@@ -179,7 +179,7 @@ function main() {
 
   const urls = [`  <url><loc>${SITE}</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`]
     .concat(states.map(s => `  <url><loc>${SITE}${slug(s)}.html</loc><lastmod>${updated}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`))
-    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html","resume.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
+    .concat(["privacy.html","terms.html","listing-policy.html","housing-safety.html","disclaimer.html","accessibility.html","submission.html","founder.html","advertise.html","join.html","community.html","family-hub.html","events.html","daily-tools.html","habesha-garden.html","listing.html","saved.html","contact.html","resume.html"].map(p => `  <url><loc>${SITE}${p}</loc><lastmod>${updated}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`));
   urls.push(...rows.filter(r=>r.status!=='needs-review').map(r=>`  <url><loc>${SITE}places/${encodeURIComponent(r.id)}.html</loc><lastmod>${esc(r.verifiedDate||updated)}</lastmod></url>`));
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 
