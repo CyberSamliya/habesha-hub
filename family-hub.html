@@ -1,14 +1,14 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; object-src 'none'">
-<title>Family Hub | Habesha Hub</title><meta name="description" content="The Habesha Hub Family Hub: introduce your family, share news and prayer requests, and learn the teaching of the Ethiopian Orthodox Tewahedo Church from A to Z.">
-<link rel="stylesheet" href="styles.css?v=20261022-quality"><link rel="stylesheet" href="family-hub.css?v=20261125-family"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="shell.css?v=20261116-shell2"></head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://yfzydixypuronzoeargv.supabase.co; media-src https://yfzydixypuronzoeargv.supabase.co; connect-src 'self' https://yfzydixypuronzoeargv.supabase.co; base-uri 'self'; form-action 'self'; object-src 'none'">
+<title>Family Hub | Habesha Hub</title><meta name="description" content="The Habesha Hub Family Hub: introduce your family, share news and prayer requests, and learn the teaching of the Ethiopian Orthodox Tewahedo Church from beginning to end in ten parts.">
+<link rel="stylesheet" href="styles.css?v=20261022-quality"><link rel="stylesheet" href="family-hub.css?v=20261125-parts"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="shell.css?v=20261116-shell2"></head>
 <body class="hh-shell fh">
 <header class="hh-header"><div class="hh-nav"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">ሀ</span>Habesha Hub</a><button class="hh-menu" id="shellMenu" type="button" aria-expanded="false" aria-controls="shellNav">Menu</button><nav id="shellNav" aria-label="Main navigation"><a href="index.html#directory">Directory</a><a href="index.html#states">Explore states</a><a href="family-hub.html" aria-current="page">Family Hub</a><a href="events.html">Events</a><a href="daily-tools.html">Daily Life Tools</a><a href="resume.html">Free Resume Builder</a><a href="saved.html">Saved places</a><a href="contact.html">Contact</a><a class="hh-add-m" href="submission.html">+ Add a listing</a></nav><button type="button" class="lang" data-language-toggle>Switch to አማርኛ</button><a class="hh-add" href="submission.html">Add a listing</a></div></header>
 <main id="main">
 <section class="hero fh-hero"><div class="wrap">
  <div class="eyebrow">Family Hub · <span lang="am">የቤተሰብ ማዕከል</span></div>
  <h1>One family, one faith, one hub</h1>
- <p class="fh-lede">Introduce your family, keep in touch, share news and prayer requests, and learn the teaching of the Church from A to Z together.</p>
+ <p class="fh-lede">Introduce your family, keep in touch, share news and prayer requests, and learn the teaching of the Church together, from beginning to end.</p>
  <p id="fhWelcome" class="fh-welcome" hidden></p>
 </div></section>
 
@@ -39,7 +39,7 @@
 </div></section>
 
 <div id="hub" hidden>
- <div class="wrap"><nav class="fh-tabs" aria-label="Family Hub sections"><a href="#intro">Our families</a><a href="#board">Family board</a><a href="#teaching">Church teaching A to Z</a><a href="#member">My membership</a></nav></div>
+ <div class="wrap"><nav class="fh-tabs" aria-label="Family Hub sections"><a href="#intro">Our families</a><a href="#board">Family board</a><a href="#teaching">Church teaching</a><a href="#member">My membership</a></nav></div>
 
  <section id="intro" aria-labelledby="introH"><div class="wrap">
   <h2 id="introH">Our families</h2>
@@ -73,12 +73,34 @@
  </div></section>
 
  <section id="teaching" aria-labelledby="teachH"><div class="wrap">
-  <h2 id="teachH">Church teaching from A to Z</h2>
-  <p>Twenty-six short lessons on the faith of the Ethiopian Orthodox Tewahedo Church, for adults and children to learn together. Open a lesson, read it, talk about the question, then mark it learned.</p>
+  <h2 id="teachH">Church teaching: Part 1 to 10</h2>
+  <p>The faith of the Ethiopian Orthodox Tewahedo Church from beginning to end, in ten parts for adults and children to learn together. Go in order: read each part, open its lesson materials, talk about the questions, then mark it complete.</p>
   <div class="fh-progress"><div class="fh-bar" aria-hidden="true"><span id="progressFill"></span></div><p id="progressText" aria-live="polite"></p></div>
-  <div id="letters" class="fh-letters" role="list"></div>
+  <div id="parts" class="fh-parts" role="list"></div>
   <article id="lesson" class="fh-card fh-lesson" aria-live="polite"></article>
   <p class="fh-note">These lessons are an introduction for families. For deeper teaching, ask your parish priest or Sunday school (Sembete Timhirt Bet).</p>
+  <details id="admin" class="fh-card fh-admin">
+   <summary>Upload lessons (admins only)</summary>
+   <p id="adminStatus" class="fh-note" role="status"></p>
+   <form id="adminLogin" hidden>
+    <p>Sign in with the admin account Habesha Hub created for you.</p>
+    <div class="fh-row"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="username" required></div>
+    <div class="fh-row"><label for="aPass">Password</label><input id="aPass" type="password" autocomplete="current-password" required></div>
+    <button class="btn primary" type="submit">Sign in</button>
+   </form>
+   <form id="uploadForm" hidden>
+    <div class="fh-row"><label for="uPart">Add to</label><select id="uPart"></select></div>
+    <div class="fh-row"><label for="uTitle">Lesson title</label><input id="uTitle" maxlength="200" required placeholder="e.g. Sunday school lesson: the Holy Trinity"></div>
+    <fieldset class="fh-choice"><legend>What are you uploading?</legend>
+     <label><input type="radio" name="uWhat" value="file" checked> A file (PDF, audio, video, picture, Word or PowerPoint, up to 50 MB)</label>
+     <label><input type="radio" name="uWhat" value="link"> A link (for example a YouTube video)</label>
+    </fieldset>
+    <div class="fh-row" id="uFileRow"><label for="uFile">Choose file</label><input id="uFile" type="file" accept=".pdf,audio/*,video/*,image/*,.doc,.docx,.ppt,.pptx"></div>
+    <div class="fh-row" id="uLinkRow" hidden><label for="uLink">Link (must start with https://)</label><input id="uLink" type="url" placeholder="https://"></div>
+    <button class="btn primary" type="submit">Upload lesson</button>
+    <button id="adminOut" class="btn fh-quiet" type="button">Sign out</button>
+   </form>
+  </details>
  </div></section>
 
  <section id="member" aria-labelledby="memberH"><div class="wrap fh-narrow">
@@ -92,8 +114,8 @@
 </div>
 </main>
 <footer><div class="wrap foot"><p>Habesha Hub Family Hub · Every post is reviewed before publication.</p></div></footer>
-<script src="family-hub-data.js?v=20261125-family" defer></script>
-<script src="family-hub.js?v=20261125-family" defer></script>
+<script src="family-hub-data.js?v=20261125-parts" defer></script>
+<script src="family-hub.js?v=20261125-parts" defer></script>
 <script src="site-shell.js?v=20261116-shell2" defer></script>
 <script src="quality-i18n.js?v=20261027-resume" defer></script>
 <script src="bilingual.js?v=20261022-quality" defer></script>

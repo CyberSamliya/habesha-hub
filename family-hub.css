@@ -28,11 +28,6 @@ body.fh .fh-ready{margin-top:12px;padding-top:12px;border-top:1px dashed var(--l
 body.fh .fh-progress{margin:16px 0}
 body.fh .fh-bar{height:12px;border-radius:999px;background:#e5e8ee;overflow:hidden}
 body.fh .fh-bar span{display:block;height:100%;width:0;background:var(--emerald,#0e7c57);transition:width .3s}
-body.fh .fh-letters{display:grid;grid-template-columns:repeat(13,1fr);gap:6px;margin-bottom:18px}
-body.fh .fh-letter{font:inherit;font-weight:800;padding:10px 0;border-radius:10px;border:1px solid #9aa3b2;background:#fff;color:var(--ink,#121826);cursor:pointer;min-width:0}
-body.fh .fh-letter.done{background:#e3f3ec;border-color:var(--emerald,#0e7c57);color:#0a5e42}
-body.fh .fh-letter.on{background:var(--midnight,#0e1a2b);border-color:var(--midnight,#0e1a2b);color:#fff}
-body.fh .fh-letter:focus-visible{outline:3px solid #e9b949;outline-offset:2px}
 body.fh .fh-lesson{border-top:5px solid var(--emerald,#0e7c57)}
 body.fh .fh-lesson:focus{outline:none}
 body.fh .fh-am{font-family:"Noto Sans Ethiopic",sans-serif;font-size:1.25rem;color:var(--rust,#c2452d);margin-top:-8px}
@@ -44,7 +39,31 @@ body.fh .fh-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px}
 body.fh .fh-dl dt{font-weight:700}
 body.fh .fh-dl dd{margin:0}
 @media (max-width:760px){
- body.fh .fh-letters{grid-template-columns:repeat(7,1fr)}
- body.fh .fh-two{grid-template-columns:1fr}
+  body.fh .fh-two{grid-template-columns:1fr}
 }
-@media (max-width:360px){body.fh .fh-letters{grid-template-columns:repeat(5,1fr)}}
+body.fh .fh-parts{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:18px}
+body.fh .fh-part{font:inherit;display:flex;flex-direction:column;align-items:center;padding:8px 0;border-radius:12px;border:1px solid #9aa3b2;background:#fff;color:var(--ink,#121826);cursor:pointer;min-width:0;line-height:1.1}
+body.fh .fh-part-k{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+body.fh .fh-part-n{font-size:1.35rem;font-weight:800}
+body.fh .fh-part.done{background:#e3f3ec;border-color:var(--emerald,#0e7c57);color:#0a5e42}
+body.fh .fh-part.on{background:var(--midnight,#0e1a2b);border-color:var(--midnight,#0e1a2b);color:#fff}
+body.fh .fh-part:focus-visible{outline:3px solid #e9b949;outline-offset:2px}
+body.fh .fh-lesson h3{margin:4px 0 0;font-size:1.5rem}
+body.fh .fh-lesson .eyebrow{margin:0}
+body.fh .fh-intro{font-size:1.08rem;font-weight:600}
+body.fh .fh-section{padding:0;margin:18px 0 0}
+body.fh .fh-section h4{margin:0 0 4px;font-size:1.1rem}
+body.fh .fh-sam{font-family:"Noto Sans Ethiopic",sans-serif;font-weight:600;color:var(--rust,#c2452d);font-size:.95rem}
+body.fh .fh-mat-h{margin:22px 0 8px;font-size:1.1rem}
+body.fh .fh-mats{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:10px}
+body.fh .fh-mat{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 12px;border:1px solid var(--line,#e5e8ee);border-radius:10px}
+body.fh .fh-kind{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:#fbf6e8;color:#7a5a10;border-radius:6px;padding:2px 8px}
+body.fh .fh-media{width:100%;max-height:360px}
+body.fh .btn.fh-del{margin-left:auto;padding:6px 12px}
+body.fh .fh-reflect ul{margin:6px 0 0;padding-left:1.2em}
+body.fh .fh-admin summary{cursor:pointer;font-weight:800;font-size:1.05rem}
+body.fh .fh-admin[open] summary{margin-bottom:10px}
+body.fh .fh-choice{border:1px solid var(--line,#e5e8ee);border-radius:10px;padding:10px 14px;margin:0 0 14px;display:grid;gap:6px}
+body.fh .fh-choice legend{font-weight:700;padding:0 4px}
+body.fh .fh-choice label{font-weight:500;display:flex;gap:8px;align-items:flex-start}
+@media (max-width:760px){body.fh .fh-parts{grid-template-columns:repeat(5,1fr)}}
