@@ -72,3 +72,5 @@ body.fh .fh-where legend{font-weight:800;padding:0 4px}
 body.fh .fh-where .fh-note{margin-top:0}
 body.fh .fh-preview{background:#e3f3ec;color:#0a5e42;border-radius:10px;padding:10px 12px;font-weight:700;margin:0 0 10px}
 body.fh .fh-update{background:#fbf6e8;color:#5c430b;border-radius:10px;padding:10px 12px}
+body.fh [hidden]{display:none !important}
+body.fh .fh-note.fh-error{color:#b3261e;font-weight:700}

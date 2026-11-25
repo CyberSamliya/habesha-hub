@@ -25,6 +25,9 @@ Live site: https://cybersamliya.github.io/habesha-hub/
 | `resume-engine.js` | Turns the answers into one document and renders it as the HTML preview, PDF, Word (.docx) and plain text |
 | `vendor/` | Self-hosted jsPDF and docx libraries (MIT), loaded only when a visitor downloads a resume; see `vendor/README.md` |
 | `tools/test-resume.js` | Browser tests for the resume builder, including the content of all three downloads |
+| `family-hub.html`, `family-hub.js`, `family-hub.css`, `family-hub-data.js` | Family Hub: required join step, family introductions and board, Church teaching in Part 1 to 10, admin lesson uploads |
+| `supabase/family-hub-setup.sql` | Database tables, storage bucket and access rules for lesson uploads (Habesha Hub Supabase project) |
+| `data/places/` | Real countries, states or regions and cities used to check each member's location (GeoNames, CC BY 4.0). Rebuild with `tools/build-places.js` |
 | `.github/ISSUE_TEMPLATE/` | Review-queue forms: add business, church, professional, organization, housing, correction, claim |
 | `.github/workflows/validate.yml` | Runs the validator on every push |
 | `PROGRESS.md` | Research progress tracker |

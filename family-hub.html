@@ -22,12 +22,11 @@
    <div class="fh-row"><label for="jFamily">Family name <span aria-hidden="true">*</span></label><input id="jFamily" name="family" required maxlength="80" placeholder="e.g. Tesfaye family"></div>
    <fieldset class="fh-where" aria-describedby="whereHelp">
     <legend>Where do you live? <span aria-hidden="true">*</span></legend>
-    <p id="whereHelp" class="fh-note">Our family lives all over the world. Please write your real city, state or region, and country, spelled out in full, so family nearby can find you.</p>
-    <div class="fh-row"><label for="jCountry">Country <span aria-hidden="true">*</span></label><select id="jCountry" name="country" autocomplete="country-name" required><option value="">Choose your country</option></select></div>
-    <div class="fh-two">
-     <div class="fh-row"><label for="jCity">City or town <span aria-hidden="true">*</span></label><input id="jCity" name="city" autocomplete="address-level2" required maxlength="60" placeholder="e.g. Columbus"></div>
-     <div class="fh-row"><label for="jState"><span id="stateLabel">State, province or region</span> <span aria-hidden="true">*</span></label><input id="jState" name="state" autocomplete="address-level1" required maxlength="60" placeholder="e.g. Ohio"></div>
-    </div>
+    <p id="whereHelp" class="fh-note">Our family lives all over the world. Choose your country and your state or region, then type your city and pick it from the list. Only real places are accepted. If your town is small and not listed, choose the nearest city that is.</p>
+    <div class="fh-row"><label for="jCountry">Country <span aria-hidden="true">*</span></label><select id="jCountry" name="country" required><option value="">Choose your country</option></select></div>
+    <div class="fh-row" id="stateRow"><label for="jState"><span id="stateLabel">State, province or region</span> <span aria-hidden="true">*</span></label><select id="jState" name="state" required disabled><option value="">Choose your country first</option></select></div>
+    <div class="fh-row"><label for="jCity">City or town <span aria-hidden="true">*</span></label><input id="jCity" name="city" list="jCityList" required maxlength="80" autocomplete="off" disabled placeholder="Choose your state or region first"><datalist id="jCityList"></datalist></div>
+    <p id="whereMsg" class="fh-note" role="alert"></p>
     <p id="wherePreview" class="fh-preview" aria-live="polite" hidden></p>
     <div class="fh-check"><input id="jWhere" name="whereOk" type="checkbox" required><label for="jWhere">I checked: my city, state or region, and country are correct.</label></div>
    </fieldset>
@@ -128,7 +127,7 @@
  </div></section>
 </div>
 </main>
-<footer><div class="wrap foot"><p>Habesha Hub Family Hub · Every post is reviewed before publication.</p></div></footer>
+<footer><div class="wrap foot"><p>Habesha Hub Family Hub · Every post is reviewed before publication. Place names from <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> (CC BY 4.0).</p></div></footer>
 <script src="family-hub-data.js?v=20261125-parts" defer></script>
 <script src="family-hub.js?v=20261125-parts" defer></script>
 <script src="site-shell.js?v=20261116-shell2" defer></script>
