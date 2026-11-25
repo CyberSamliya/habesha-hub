@@ -9,6 +9,15 @@
   const UP = D.uploads || {};
   const KEY = 'hh-family-member', PKEY = 'hh-family-parts', SKEY = 'hh-family-admin';
   const $ = id => document.getElementById(id);
+  // A password-reset email brings the admin back here with the reset token in the address.
+  // Read it once, then remove it from the address bar so it is not bookmarked or shared.
+  const recovery = (() => {
+    const h = new URLSearchParams(location.hash.slice(1));
+    if (h.get('type') === 'recovery' && h.get('access_token')) return { token: h.get('access_token'), expires_at: Number(h.get('expires_at')) || 0 };
+    if (h.get('error_description')) return { error: h.get('error_description') };
+    return null;
+  })();
+  if (recovery) history.replaceState(null, '', location.pathname + location.search + '#admin');
   const store = {
     get(k, d, s) { try { const v = (s || localStorage).getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v, s) { try { (s || localStorage).setItem(k, JSON.stringify(v)); } catch (e) { /* storage blocked: session only */ } },
@@ -44,7 +53,7 @@
     store.set(KEY, member);
     showHub();
     $('hub').querySelector('h2').focus({ preventScroll: true });
-    $('intro').scrollIntoView();
+    if (recovery) openRecovery(); else $('intro').scrollIntoView();
   });
 
   function renderMember() {
@@ -194,6 +203,7 @@
         admin.isAdmin = rows.length === 1 && rows[0].role === 'admin' && rows[0].status === 'active';
       } catch (e) { admin.isAdmin = false; }
     }
+    if (recovery && !recovery.done && !recovery.error) return;
     $('adminLogin').hidden = !!admin.isAdmin;
     $('uploadForm').hidden = !admin.isAdmin;
     if (admin.session && !admin.isAdmin) status('You are signed in as ' + admin.session.user.email + ', but this account is not an admin. Ask Habesha Hub to make you an admin.');
@@ -218,6 +228,31 @@
       } catch (err) { status('Sign in failed: ' + err.message); }
     });
     $('adminOut').addEventListener('click', () => { signOut(); checkAdmin(); $('aEmail').focus(); });
+    $('forgotBtn').addEventListener('click', async () => {
+      const email = $('aEmail').value.trim();
+      if (!email || !$('aEmail').checkValidity()) { status('Type your admin email above, then press "Forgot password?" again.'); $('aEmail').focus(); return; }
+      status('Sending a reset link…');
+      try {
+        const back = location.origin + location.pathname;
+        await api('/auth/v1/recover?redirect_to=' + encodeURIComponent(back), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+        status('If ' + email + ' has an admin account, a password reset email is on its way. Open the link in it on this device.');
+      } catch (err) { status('Could not send the reset email: ' + err.message); }
+    });
+    $('resetForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const pw = $('rPass').value, pw2 = $('rPass2').value;
+      if (pw.length < 8) { status('Please use at least 8 characters.'); $('rPass').focus(); return; }
+      if (pw !== pw2) { status('The two passwords do not match.'); $('rPass2').focus(); return; }
+      status('Saving your new password…');
+      try {
+        const u = await api('/auth/v1/user', { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + recovery.token }, body: JSON.stringify({ password: pw }) });
+        admin.session = { access_token: recovery.token, expires_at: recovery.expires_at, user: { id: u.id, email: u.email } };
+        store.set(SKEY, admin.session, sessionStorage);
+        $('rPass').value = $('rPass2').value = ''; $('resetForm').hidden = true; recovery.done = true;
+        await checkAdmin();
+        status('Your new password is saved. ' + $('adminStatus').textContent);
+      } catch (err) { status('Could not save the new password: ' + err.message + '. The reset link may have expired; press "Forgot password?" to get a new one.'); }
+    });
     document.querySelectorAll('input[name="uWhat"]').forEach(r => r.addEventListener('change', () => {
       const link = document.querySelector('input[name="uWhat"]:checked').value === 'link';
       $('uLinkRow').hidden = !link; $('uFileRow').hidden = link;
@@ -252,6 +287,13 @@
       } catch (err) { status('Upload failed: ' + err.message); }
     });
   }
+  function openRecovery() {
+    if (!recovery || recovery.done) return;
+    $('admin').open = true;
+    if (recovery.error) { status('That reset link did not work (' + recovery.error + '). Press "Forgot password?" to get a new one.'); }
+    else { $('adminLogin').hidden = true; $('uploadForm').hidden = true; $('resetForm').hidden = false; status('Welcome back. Choose your new password below.'); }
+    $('admin').scrollIntoView(); (recovery.error ? $('aEmail') : $('rPass')).focus({ preventScroll: true });
+  }
   async function removeUpload(m) {
     if (!confirm('Remove "' + m.title + '" from Part ' + m.part + '?')) return;
     try {
@@ -266,6 +308,7 @@
   current = firstOpen < 0 ? 0 : firstOpen;
   document.querySelectorAll('#hub h2').forEach(h => { h.tabIndex = -1; });
   renderIntros(); renderBoard(); renderParts(); setupAdmin(); loadUploads(); showHub();
+  if (member && recovery) openRecovery();
   // A link such as family-hub.html#teaching opens that section once the hub is unlocked.
-  if (member && location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t && $('hub').contains(t)) t.scrollIntoView(); }
+  if (member && !recovery && location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t && $('hub').contains(t)) t.scrollIntoView(); }
 })();

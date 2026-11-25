@@ -87,6 +87,13 @@
     <div class="fh-row"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="username" required></div>
     <div class="fh-row"><label for="aPass">Password</label><input id="aPass" type="password" autocomplete="current-password" required></div>
     <button class="btn primary" type="submit">Sign in</button>
+    <button id="forgotBtn" class="btn fh-quiet" type="button">Forgot password?</button>
+   </form>
+   <form id="resetForm" hidden novalidate>
+    <p>Choose a new password for your admin account.</p>
+    <div class="fh-row"><label for="rPass">New password (at least 8 characters)</label><input id="rPass" type="password" autocomplete="new-password" minlength="8" required></div>
+    <div class="fh-row"><label for="rPass2">Type the new password again</label><input id="rPass2" type="password" autocomplete="new-password" minlength="8" required></div>
+    <button class="btn primary" type="submit">Save new password</button>
    </form>
    <form id="uploadForm" hidden>
     <div class="fh-row"><label for="uPart">Add to</label><select id="uPart"></select></div>
