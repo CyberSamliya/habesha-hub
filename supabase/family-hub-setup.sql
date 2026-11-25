@@ -1,17 +1,14 @@
 -- Family Hub lesson uploads for the "Habesha Hub" Supabase project (habeshahubusa.com).
--- Members can view uploaded lessons; only people listed in lesson_admins can upload or delete.
+-- Members can view uploaded lessons; only admins can upload or delete.
+-- "Admin" reuses the project's existing rule, app_private.is_admin():
+-- a profile with role = 'admin' and status = 'active'.
+-- To make someone an admin: update public.profiles set role = 'admin', status = 'active' where id = '<user uuid>';
 
--- Who may upload lessons. Add an admin after creating their login in
--- Authentication > Users:  insert into public.lesson_admins (user_id) values ('<user uuid>');
-create table if not exists public.lesson_admins (
-  user_id uuid primary key references auth.users (id) on delete cascade,
-  added_at timestamptz not null default now()
-);
-alter table public.lesson_admins enable row level security;
--- An admin can see their own row (the page uses this to show the upload form).
-create policy "Admins can read their own admin row" on public.lesson_admins
-  for select to authenticated using (user_id = (select auth.uid()));
-grant select on public.lesson_admins to authenticated;
+-- Signed-in users must be able to evaluate is_admin() inside access rules.
+-- app_private is not exposed through the API; is_admin() only reports on the caller.
+grant usage on schema app_private to authenticated;
+revoke execute on function app_private.is_admin() from public, anon;
+grant execute on function app_private.is_admin() to authenticated;
 
 -- Uploaded lesson materials, one row per file or link, attached to Part 1 to 10.
 create table if not exists public.lesson_uploads (
@@ -32,13 +29,10 @@ create policy "Anyone can view lesson uploads" on public.lesson_uploads
   for select to anon, authenticated using (true);
 create policy "Admins can add lesson uploads" on public.lesson_uploads
   for insert to authenticated
-  with check (
-    created_by = (select auth.uid())
-    and exists (select 1 from public.lesson_admins a where a.user_id = (select auth.uid()))
-  );
+  with check (created_by = (select auth.uid()) and (select app_private.is_admin()));
 create policy "Admins can delete lesson uploads" on public.lesson_uploads
   for delete to authenticated
-  using (exists (select 1 from public.lesson_admins a where a.user_id = (select auth.uid())));
+  using ((select app_private.is_admin()));
 grant select on public.lesson_uploads to anon, authenticated;
 grant insert, delete on public.lesson_uploads to authenticated;
 
@@ -52,20 +46,11 @@ on conflict (id) do nothing;
 
 create policy "Admins can upload lesson files" on storage.objects
   for insert to authenticated
-  with check (
-    bucket_id = 'lessons'
-    and exists (select 1 from public.lesson_admins a where a.user_id = (select auth.uid()))
-  );
+  with check (bucket_id = 'lessons' and (select app_private.is_admin()));
 -- Removing a file needs SELECT as well as DELETE on storage.objects.
 create policy "Admins can read lesson file records" on storage.objects
   for select to authenticated
-  using (
-    bucket_id = 'lessons'
-    and exists (select 1 from public.lesson_admins a where a.user_id = (select auth.uid()))
-  );
+  using (bucket_id = 'lessons' and (select app_private.is_admin()));
 create policy "Admins can delete lesson files" on storage.objects
   for delete to authenticated
-  using (
-    bucket_id = 'lessons'
-    and exists (select 1 from public.lesson_admins a where a.user_id = (select auth.uid()))
-  );
+  using (bucket_id = 'lessons' and (select app_private.is_admin()));

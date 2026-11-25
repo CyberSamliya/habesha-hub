@@ -189,13 +189,14 @@
     if (admin.session) {
       if (admin.session.expires_at && admin.session.expires_at * 1000 < Date.now()) { signOut(); status('Your admin session expired. Please sign in again.'); return; }
       try {
-        const rows = await api('/rest/v1/lesson_admins?select=user_id&user_id=eq.' + encodeURIComponent(admin.session.user.id), { auth: true });
-        admin.isAdmin = rows.length === 1;
+        // Same rule as the database: a profile with role admin and status active.
+        const rows = await api('/rest/v1/profiles?select=role,status&id=eq.' + encodeURIComponent(admin.session.user.id), { auth: true });
+        admin.isAdmin = rows.length === 1 && rows[0].role === 'admin' && rows[0].status === 'active';
       } catch (e) { admin.isAdmin = false; }
     }
     $('adminLogin').hidden = !!admin.isAdmin;
     $('uploadForm').hidden = !admin.isAdmin;
-    if (admin.session && !admin.isAdmin) status('You are signed in as ' + admin.session.user.email + ', but this account is not a lesson admin yet. Ask Habesha Hub to add you.');
+    if (admin.session && !admin.isAdmin) status('You are signed in as ' + admin.session.user.email + ', but this account is not an admin. Ask Habesha Hub to make you an admin.');
     else if (admin.isAdmin) status('Signed in as ' + admin.session.user.email + '. Uploads appear in the chosen part right away.');
     else status('Only admins can upload lessons.');
     renderPart();

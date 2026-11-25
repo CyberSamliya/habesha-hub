@@ -7,8 +7,8 @@ window.FAMILY_HUB = {
 
   // Lesson uploads are stored in the "Habesha Hub" Supabase project.
   // The publishable key is safe to show in a web page; uploads are limited to admins by
-  // the database rules in supabase/family-hub-setup.sql. Leave the key empty to turn uploads off.
-  uploads: { url: 'https://yfzydixypuronzoeargv.supabase.co', key: '' },
+  // the database rules in supabase/family-hub-setup.sql. Set the key to '' to turn uploads off.
+  uploads: { url: 'https://yfzydixypuronzoeargv.supabase.co', key: 'sb_publishable_IgrQc77kE1x_vQan5lLUyg_gCGkLdq3' },
 
   // Published family introductions. Add one object per approved introduction:
   // {family:'Tesfaye family', city:'Columbus', state:'Ohio', parish:'Holy Trinity EOTC', text:'...', added:'2026-11-25'}
