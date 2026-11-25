@@ -28,7 +28,37 @@
   let uploaded = [];
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
   const mail = (subject, body) => 'mailto:' + D.contactEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  const who = () => member.name + ' (' + member.family + '), ' + member.city + ', ' + member.state + (member.parish ? '\nParish: ' + member.parish : '');
+  const place = m => [m.city, m.state, m.country].filter(Boolean).join(', ');
+  const who = () => member.name + ' (' + member.family + '), ' + place(member) + (member.parish ? '\nParish: ' + member.parish : '');
+
+  // Location: everyone gives a real city, state or region, and country, spelled out in full.
+  const US = { AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California', CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming', PR: 'Puerto Rico', GU: 'Guam', VI: 'U.S. Virgin Islands' };
+  const CA = { AB: 'Alberta', BC: 'British Columbia', MB: 'Manitoba', NB: 'New Brunswick', NL: 'Newfoundland and Labrador', NS: 'Nova Scotia', NT: 'Northwest Territories', NU: 'Nunavut', ON: 'Ontario', PE: 'Prince Edward Island', QC: 'Quebec', SK: 'Saskatchewan', YT: 'Yukon' };
+  const HINT = {
+    'United States': ['State', 'Columbus', 'Ohio'], Canada: ['Province or territory', 'Toronto', 'Ontario'],
+    Ethiopia: ['Region', 'Addis Ababa', 'Addis Ababa'], Eritrea: ['Region', 'Asmara', 'Maekel'],
+    'United Kingdom': ['County or region', 'London', 'Greater London'], Germany: ['State', 'Frankfurt', 'Hesse'],
+    Australia: ['State or territory', 'Melbourne', 'Victoria'], Sweden: ['County', 'Stockholm', 'Stockholm County']
+  };
+  const COUNTRIES = (D.countries && D.countries.all) || [];
+  const tidy = t => { t = String(t || '').replace(/\s+/g, ' ').trim(); return (t === t.toLowerCase() || t === t.toUpperCase()) && t.length > 3 ? t.toLowerCase().replace(/(^|[\s'-])\p{L}/gu, c => c.toUpperCase()) : t; };
+  function fullState(country, st) {
+    const k = st.replace(/\./g, '').toUpperCase();
+    if (country === 'United States' && US[k]) return US[k];
+    if (country === 'Canada' && CA[k]) return CA[k];
+    return st;
+  }
+  function locationProblem(city, st, country) {
+    if (!country || !COUNTRIES.includes(country)) return ['country', 'Please choose your country from the list.'];
+    for (const [id, v, label] of [['city', city, 'city or town'], ['state', st, (HINT[country] || ['state, province or region'])[0].toLowerCase()]]) {
+      if (!v) return [id, 'Please write your ' + label + '.'];
+      if (/\d/.test(v)) return [id, 'Please write the name of your ' + label + ', not a number or postal code.'];
+      if (v.replace(/[^\p{L}]/gu, '').length < 2) return [id, 'Please write your ' + label + ' in full.'];
+      if (v.toLowerCase() === country.toLowerCase() && country !== 'Singapore') return [id, 'Please write your ' + label + ', not your country.'];
+    }
+    if ((country === 'United States' || country === 'Canada') && /^[A-Za-z]{2}$/.test(st)) return ['state', 'Please write the full name of your ' + (country === 'Canada' ? 'province' : 'state') + ', for example ' + (country === 'Canada' ? 'Ontario' : 'Ohio') + '.'];
+    return null;
+  }
 
   function showHub() {
     const joined = !!member;
@@ -40,16 +70,48 @@
     renderMember();
   }
 
+  // Join form: country list, labels that fit the country, and a live "You live in" preview.
+  (function setupWhere() {
+    const sel = $('jCountry'), common = (D.countries && D.countries.common) || [];
+    const group = (label, list) => { const g = document.createElement('optgroup'); g.label = label; list.forEach(c => { const o = el('option', '', c); o.value = c; g.append(o); }); sel.append(g); };
+    group('Where most of our family lives', common);
+    group('All countries', COUNTRIES);
+    const update = () => {
+      const c = sel.value, h = HINT[c] || ['State, province or region', 'Your city', 'Your region'];
+      $('stateLabel').textContent = h[0]; $('jCity').placeholder = 'e.g. ' + h[1]; $('jState').placeholder = 'e.g. ' + h[2];
+      const city = tidy($('jCity').value), st = fullState(c, tidy($('jState').value));
+      const pv = $('wherePreview');
+      pv.hidden = !(c && city && st); pv.textContent = 'You live in: ' + [city, st, c].join(', ');
+      $('jWhere').checked = false;
+    };
+    sel.addEventListener('change', update);
+    ['jCity', 'jState'].forEach(id => { $(id).addEventListener('input', update); $(id).addEventListener('blur', () => { $(id).value = id === 'jState' ? fullState(sel.value, tidy($(id).value)) : tidy($(id).value); update(); }); });
+    // Members who joined before Country was added are asked to complete their location.
+    if (member && !member.country) {
+      for (const [id, k] of [['jName', 'name'], ['jFamily', 'family'], ['jCity', 'city'], ['jState', 'state'], ['jParish', 'parish'], ['jEmail', 'email']]) $(id).value = member[k] || '';
+      $('jAgree').checked = true;
+      const n = $('joinUpdate'); n.hidden = false; n.textContent = 'Welcome back, ' + member.name + '. Please add your country and check your city and state or region, then press Join.';
+      member = null;
+      update();
+    }
+  })();
+
   $('joinForm').addEventListener('submit', e => {
     e.preventDefault();
     const f = e.target, v = n => f.elements[n].value.trim();
-    const missing = [['name', 'Full name'], ['family', 'Family name'], ['city', 'City'], ['state', 'State']].filter(([n]) => !v(n));
+    const missing = [['name', 'Full name'], ['family', 'Family name'], ['country', 'Country'], ['city', 'City or town'], ['state', $('stateLabel').textContent]].filter(([n]) => !v(n));
     const err = $('joinError');
     if (missing.length) { err.textContent = 'Please fill in: ' + missing.map(([, l]) => l).join(', ') + '.'; f.elements[missing[0][0]].focus(); return; }
+    const country = v('country'), city = tidy(v('city')), st = fullState(country, tidy(v('state')));
+    f.elements.city.value = city; f.elements.state.value = st;
+    const bad = locationProblem(city, st, country);
+    if (bad) { err.textContent = bad[1]; f.elements[bad[0]].focus(); return; }
+    if (!f.elements.whereOk.checked) { err.textContent = 'Please check that your city, state or region, and country are correct, then tick the box.'; f.elements.whereOk.focus(); return; }
     if (v('email') && !f.elements.email.checkValidity()) { err.textContent = 'Please check your email address.'; f.elements.email.focus(); return; }
     if (!f.elements.agree.checked) { err.textContent = 'Please agree to the family guidelines to join.'; f.elements.agree.focus(); return; }
     err.textContent = '';
-    member = { name: v('name'), family: v('family'), city: v('city'), state: v('state'), parish: v('parish'), email: v('email'), joined: new Date().toISOString().slice(0, 10) };
+    $('joinUpdate').hidden = true;
+    member = { name: v('name'), family: v('family'), city, state: st, country, parish: v('parish'), email: v('email'), joined: new Date().toISOString().slice(0, 10) };
     store.set(KEY, member);
     showHub();
     $('hub').querySelector('h2').focus({ preventScroll: true });
@@ -58,7 +120,7 @@
 
   function renderMember() {
     const dl = $('memberInfo'); dl.textContent = '';
-    for (const [k, label] of [['name', 'Name'], ['family', 'Family'], ['city', 'City'], ['state', 'State'], ['parish', 'Parish'], ['email', 'Email'], ['joined', 'Joined']]) {
+    for (const [k, label] of [['name', 'Name'], ['family', 'Family'], ['city', 'City or town'], ['state', 'State or region'], ['country', 'Country'], ['parish', 'Parish'], ['email', 'Email'], ['joined', 'Joined']]) {
       if (!member[k]) continue; dl.append(el('dt', '', label), el('dd', '', member[k]));
     }
     dl.append(el('dt', '', 'Teaching'), el('dd', '', done.size + ' of ' + D.parts.length + ' parts complete'));
@@ -75,7 +137,7 @@
     if (!D.introductions.length) { box.append(el('p', 'fh-empty', 'No introductions are published yet. Be the first family to introduce yourselves below.')); return; }
     for (const x of D.introductions) {
       const c = el('article', 'fh-card fh-family');
-      c.append(el('h3', '', x.family), el('p', 'fh-meta', [x.city, x.state].filter(Boolean).join(', ') + (x.parish ? ' · ' + x.parish : '')), el('p', '', x.text));
+      c.append(el('h3', '', x.family), el('p', 'fh-meta', place(x) + (x.parish ? ' · ' + x.parish : '')), el('p', '', x.text));
       box.append(c);
     }
   }

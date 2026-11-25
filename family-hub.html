@@ -20,16 +20,24 @@
   <form id="joinForm" novalidate>
    <div class="fh-row"><label for="jName">Full name <span aria-hidden="true">*</span></label><input id="jName" name="name" autocomplete="name" required maxlength="80"></div>
    <div class="fh-row"><label for="jFamily">Family name <span aria-hidden="true">*</span></label><input id="jFamily" name="family" required maxlength="80" placeholder="e.g. Tesfaye family"></div>
-   <div class="fh-two">
-    <div class="fh-row"><label for="jCity">City <span aria-hidden="true">*</span></label><input id="jCity" name="city" autocomplete="address-level2" required maxlength="60"></div>
-    <div class="fh-row"><label for="jState">State <span aria-hidden="true">*</span></label><input id="jState" name="state" autocomplete="address-level1" required maxlength="40"></div>
-   </div>
+   <fieldset class="fh-where" aria-describedby="whereHelp">
+    <legend>Where do you live? <span aria-hidden="true">*</span></legend>
+    <p id="whereHelp" class="fh-note">Our family lives all over the world. Please write your real city, state or region, and country, spelled out in full, so family nearby can find you.</p>
+    <div class="fh-row"><label for="jCountry">Country <span aria-hidden="true">*</span></label><select id="jCountry" name="country" autocomplete="country-name" required><option value="">Choose your country</option></select></div>
+    <div class="fh-two">
+     <div class="fh-row"><label for="jCity">City or town <span aria-hidden="true">*</span></label><input id="jCity" name="city" autocomplete="address-level2" required maxlength="60" placeholder="e.g. Columbus"></div>
+     <div class="fh-row"><label for="jState"><span id="stateLabel">State, province or region</span> <span aria-hidden="true">*</span></label><input id="jState" name="state" autocomplete="address-level1" required maxlength="60" placeholder="e.g. Ohio"></div>
+    </div>
+    <p id="wherePreview" class="fh-preview" aria-live="polite" hidden></p>
+    <div class="fh-check"><input id="jWhere" name="whereOk" type="checkbox" required><label for="jWhere">I checked: my city, state or region, and country are correct.</label></div>
+   </fieldset>
    <div class="fh-row"><label for="jParish">Church or parish (optional)</label><input id="jParish" name="parish" maxlength="100"></div>
    <div class="fh-row"><label for="jEmail">Email (optional, for family news)</label><input id="jEmail" name="email" type="email" autocomplete="email" maxlength="120"></div>
    <div class="fh-check"><input id="jAgree" name="agree" type="checkbox" required><label for="jAgree">I agree to the <a href="#guidelines">family guidelines</a>: respect, honesty, and no selling or politics.</label></div>
    <p id="joinError" class="fh-error" role="alert"></p>
    <button class="btn primary" type="submit">Join and enter the hub</button>
   </form>
+  <p id="joinUpdate" class="fh-note fh-update" role="status" hidden></p>
   <p class="fh-note">Your membership is saved on this device. You can also send it to Habesha Hub so we can welcome you and include you in family news.</p>
  </div>
  <div id="guidelines" class="fh-card fh-guidelines">
