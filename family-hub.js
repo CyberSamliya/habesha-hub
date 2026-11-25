@@ -36,7 +36,9 @@
   const LABEL = { US: 'State', CA: 'Province or territory', AU: 'State or territory', GB: 'Country or region', ET: 'Region', ER: 'Region', DE: 'State', MX: 'State', IN: 'State', BR: 'State', NG: 'State' };
   const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’'`.]/g, '').replace(/[-‐–]/g, ' ').replace(/\s+/g, ' ').trim();
   const placeCache = {};
-  const loadPlaces = cc => placeCache[cc] || (placeCache[cc] = fetch('data/places/' + encodeURIComponent(cc) + '.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).catch(e => { delete placeCache[cc]; throw e; }));
+  // Countries are grouped by the first letter of their code: data/places/U.json holds US, UY, ...
+  const loadGroup = l => placeCache[l] || (placeCache[l] = fetch('data/places/' + encodeURIComponent(l) + '.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).catch(e => { delete placeCache[l]; throw e; }));
+  const loadPlaces = cc => loadGroup(cc[0]).then(g => { if (!g[cc]) throw new Error('No places for ' + cc); return g[cc]; });
   const loadCountries = () => placeCache._list || (placeCache._list = fetch('data/places/countries.json').then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).catch(e => { delete placeCache._list; throw e; }));
 
   function showHub() {

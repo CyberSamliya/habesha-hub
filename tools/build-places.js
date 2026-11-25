@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Builds data/places/<CC>.json and data/places/countries.json for the Family Hub join form,
+// Builds data/places/<letter>.json (countries grouped by the first letter of their code) and
+// data/places/countries.json for the Family Hub join form,
 // so every member's city and state or region can be checked against real places.
 // Source: GeoNames (https://www.geonames.org), CC BY 4.0, via the "cities.json" npm package
 // (all places with population over 1,000, plus regional capitals).
@@ -28,7 +29,7 @@ const out = path.join(__dirname, '..', 'data', 'places');
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 const names = new Intl.DisplayNames(['en'], { type: 'region' });
-const countries = [];
+const countries = [], groups = {};
 let total = 0, bytes = 0;
 const cmp = (a, b) => a.localeCompare(b, 'en');
 for (const [cc, regions] of byCountry) {
@@ -38,10 +39,14 @@ for (const [cc, regions] of byCountry) {
   // regions at all (for example Singapore) has a single "Other areas" entry.
   const list = [...regions].sort(([a], [b]) => (a === OTHER) - (b === OTHER) || cmp(a, b))
     .map(([r, set]) => [r, [...set].sort(cmp)]);
-  const json = JSON.stringify({ country: name, regions: list });
-  fs.writeFileSync(path.join(out, cc + '.json'), json);
+  (groups[cc[0]] = groups[cc[0]] || {})[cc] = { country: name, regions: list };
   countries.push([cc, name]);
-  total += list.reduce((n, [, c]) => n + c.length, 0); bytes += json.length;
+  total += list.reduce((n, [, c]) => n + c.length, 0);
+}
+// Few files keep deploys simple; a visitor downloads only the group holding their country.
+for (const [letter, group] of Object.entries(groups)) {
+  const json = JSON.stringify(group);
+  fs.writeFileSync(path.join(out, letter + '.json'), json); bytes += json.length;
 }
 countries.sort((a, b) => cmp(a[1], b[1]));
 fs.writeFileSync(path.join(out, 'countries.json'), JSON.stringify(countries));
@@ -49,4 +54,4 @@ fs.writeFileSync(path.join(out, 'LICENSE.txt'),
   'Place names in this folder come from GeoNames (https://www.geonames.org),\n' +
   'licensed under Creative Commons Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/).\n' +
   'Built by tools/build-places.js from the "cities.json" npm package.\n');
-console.log(countries.length + ' countries, ' + total + ' places, ' + (bytes / 1e6).toFixed(1) + ' MB');
+console.log(countries.length + ' countries in ' + Object.keys(groups).length + ' files, ' + total + ' places, ' + (bytes / 1e6).toFixed(1) + ' MB');
