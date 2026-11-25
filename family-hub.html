@@ -22,10 +22,10 @@
    <div class="fh-row"><label for="jFamily">Family name <span aria-hidden="true">*</span></label><input id="jFamily" name="family" required maxlength="80" placeholder="e.g. Tesfaye family"></div>
    <fieldset class="fh-where" aria-describedby="whereHelp">
     <legend>Where do you live? <span aria-hidden="true">*</span></legend>
-    <p id="whereHelp" class="fh-note">Our family lives all over the world. Choose your country and your state or region, then type your city and pick it from the list. Only real places are accepted. If your town is small and not listed, choose the nearest city that is.</p>
+    <p id="whereHelp" class="fh-note">Our family lives all over the world. Choose your country, then your state or region, then your city from the lists. If your town is small and not listed, choose the nearest city that is.</p>
     <div class="fh-row"><label for="jCountry">Country <span aria-hidden="true">*</span></label><select id="jCountry" name="country" required><option value="">Choose your country</option></select></div>
     <div class="fh-row" id="stateRow"><label for="jState"><span id="stateLabel">State, province or region</span> <span aria-hidden="true">*</span></label><select id="jState" name="state" required disabled><option value="">Choose your country first</option></select></div>
-    <div class="fh-row"><label for="jCity">City or town <span aria-hidden="true">*</span></label><input id="jCity" name="city" list="jCityList" required maxlength="80" autocomplete="off" disabled placeholder="Choose your state or region first"><datalist id="jCityList"></datalist></div>
+    <div class="fh-row"><label for="jCity">City or town <span aria-hidden="true">*</span></label><select id="jCity" name="city" required disabled><option value="">Choose your state or region first</option></select></div>
     <p id="whereMsg" class="fh-note" role="alert"></p>
     <p id="wherePreview" class="fh-preview" aria-live="polite" hidden></p>
     <div class="fh-check"><input id="jWhere" name="whereOk" type="checkbox" required><label for="jWhere">I checked: my city, state or region, and country are correct.</label></div>

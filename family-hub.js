@@ -61,19 +61,20 @@
     pv.hidden = !(country && st && city); pv.textContent = 'You live in: ' + [city, st === 'Other areas' ? '' : st, country].filter(Boolean).join(', ');
     $('jWhere').checked = false;
   }
-  function fillCities() {
+  function fillCities(keepCity) {
     const r = where.places && where.places.regions.find(([n]) => n === $('jState').value);
     where.region = r || null;
-    const dl = $('jCityList'); dl.textContent = '';
-    if (r) r[1].forEach(n => { const o = document.createElement('option'); o.value = n; dl.append(o); });
-    $('jCity').disabled = !r; $('jCity').placeholder = r ? 'Start typing, then pick from the list' : 'Choose your state or region first';
+    const sel = $('jCity'); sel.textContent = '';
+    const first = el('option', '', r ? 'Choose your city or town' : 'Choose your ' + $('stateLabel').textContent.toLowerCase() + ' first'); first.value = ''; sel.append(first);
+    if (r) r[1].forEach(n => { const o = el('option', '', n); o.value = n; sel.append(o); });
+    sel.disabled = !r;
+    if (r && keepCity) { const m = r[1].find(c => norm(c) === norm(keepCity)); if (m) sel.value = m; }
     updatePreview();
   }
   async function chooseCountry(keep) {
     const cc = $('jCountry').value, st = $('jState');
     where.places = null; where.region = null;
     st.textContent = ''; st.append(el('option', '', cc ? 'Loading…' : 'Choose your country first')); st.options[0].value = ''; st.disabled = true;
-    $('jCity').value = keep ? keep.city || '' : ''; $('jCity').disabled = true;
     $('stateLabel').textContent = LABEL[cc] || 'State, province or region';
     whereMsg(''); fillCities();
     if (!cc) return;
@@ -88,7 +89,7 @@
     $('stateRow').hidden = regions.length === 1 && regions[0][0] === 'Other areas';
     if ($('stateRow').hidden) st.value = regions[0][0];
     else if (keep && keep.state) { const m = regions.find(([n]) => norm(n) === norm(keep.state)); if (m) st.value = m[0]; }
-    fillCities();
+    fillCities(keep && keep.city);
   }
   // Returns [field, message] when the location is not a real place, else null.
   // On success the city is replaced by its official spelling.
@@ -97,28 +98,21 @@
     if (!country) return ['country', 'Please choose your country from the list.'];
     if (!where.places) return ['country', 'The list of places for this country has not loaded yet. Please wait a moment or choose your country again.'];
     if (!st || !where.region) return ['state', 'Please choose your ' + $('stateLabel').textContent.toLowerCase() + ' from the list.'];
-    if (!typed) return ['city', 'Please type your city or town and pick it from the list.'];
-    const n = norm(typed), cities = where.region[1];
-    const exact = cities.find(c => norm(c) === n);
-    if (exact) { $('jCity').value = exact; return null; }
-    const near = cities.filter(c => norm(c).startsWith(n) || norm(c).includes(' ' + n) || n.startsWith(norm(c) + ' ')).slice(0, 4);
-    if (near.length) return ['city', 'We could not find "' + typed + '" in ' + st + '. Did you mean ' + near.join(', ') + '? Please pick your city from the list.'];
-    const elsewhere = where.places.regions.filter(([, cs]) => cs.some(c => norm(c) === n)).map(([r]) => r).slice(0, 5);
-    if (elsewhere.length) return ['state', '"' + typed + '" is not in ' + st + '. It is in ' + elsewhere.join(', ') + '. Please check your ' + $('stateLabel').textContent.toLowerCase() + '.'];
-    return ['city', 'We could not find "' + typed + '" in ' + st + '. Please pick your city from the list. If your town is small and not listed, choose the nearest city that is.'];
+    if (!typed) return ['city', 'Please choose your city or town from the list.'];
+    if (!where.region[1].includes(typed)) return ['city', 'Please choose your city or town from the list for ' + st + '.'];
+    return null;
   }
   (async function setupWhere() {
     const sel = $('jCountry');
     sel.addEventListener('change', () => chooseCountry());
-    $('jState').addEventListener('change', () => { $('jCity').value = ''; fillCities(); });
-    $('jCity').addEventListener('input', updatePreview);
-    $('jCity').addEventListener('change', () => { if (where.region) { const m = where.region[1].find(c => norm(c) === norm($('jCity').value)); if (m) $('jCity').value = m; } updatePreview(); });
+    $('jState').addEventListener('change', () => fillCities());
+    $('jCity').addEventListener('change', updatePreview);
     // Members who joined before places were checked are asked to confirm a real location.
     const old = member && member.locVer !== 2 ? member : null;
     if (old) {
       for (const [id, k] of [['jName', 'name'], ['jFamily', 'family'], ['jParish', 'parish'], ['jEmail', 'email']]) $(id).value = old[k] || '';
       $('jAgree').checked = true;
-      const n = $('joinUpdate'); n.hidden = false; n.textContent = 'Welcome back, ' + old.name + '. Please confirm where you live: choose your country and state or region, and pick your city from the list. Then press Join.';
+      const n = $('joinUpdate'); n.hidden = false; n.textContent = 'Welcome back, ' + old.name + '. Please confirm where you live: choose your country, your state or region, and your city from the lists. Then press Join.';
       member = null;
     }
     let list;
