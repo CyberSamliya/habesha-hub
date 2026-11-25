@@ -25,3 +25,20 @@ Public-data regression and JavaScript syntax checks pass. Pre-change live GETs: 
 5. **Other report items are outside this patch and remain unverified:** Community Care preview destination; Stripe payout readiness and personal support contacts; private submission receipt/review operations; paid placement labeling and expiry on the live deployment; Search Console; trademark/name conflict; fluent Amharic and physical-device/accessibility acceptance. Do not treat the October 23 checklist as current proof of completion.
 
 Do not enable the Supabase admin interface or announce unrestricted launch while item 1 remains unresolved. A limited directory-only launch still requires live deployment verification and acceptance of the historical-content risk.
+
+# Family Hub database review: November 25, 2026
+
+The Family Hub (family-hub.html) uses Supabase project yfzydixypuronzoeargv for lesson uploads: anyone can read the list of uploaded lessons; only admins can upload or delete. The page uses the publishable key only. The site owner approved this as the single exception to the "no public database client" check in tools/test-public-data.js; every other page must still have none.
+
+Note: the Family Hub upload commits were published before this review, while that check was failing (from commit c2e12b8 until the review commit). No other tables were changed by those commits.
+
+Review performed before accepting the exception (project restored from paused for this purpose):
+
+- Inventory: exposed schema `public` has seven tables (profiles, member_requests, business_claims, event_submissions, reports, admin_resources, lesson_uploads), all with RLS enabled; no public views or functions. The admin rule is `app_private.is_admin()` (active profile with role admin), in an unexposed schema. Storage: one public bucket, `lessons`, with admin-only insert, select and delete policies.
+- Sign-up: the new-user trigger copies only `full_name` from user metadata; role defaults to `member` and status to `pending`. Only admins may update profiles, so users cannot promote themselves.
+- Tested as anonymous: every table except lesson_uploads is refused; lesson_uploads is read-only; inserting an admin profile is refused.
+- Tested as an ordinary signed-in user: sees only their own profile and no other users' rows; cannot promote themselves, edit the admin profile, add admin resources, or add or delete lesson uploads.
+- Tested as the admin: can add lesson uploads and file records.
+- Changes made: granted `authenticated` usage on `app_private` and execute on `is_admin()` (revoked from anon and public) so admin-only policies can be evaluated; before this, signed-in users could not evaluate them at all. Reset lesson_uploads to least-privilege grants (anon: select; authenticated: select, insert, delete). Supabase security advisors: no findings except leaked-password protection being off (enable it under Authentication).
+
+Item 1 above is resolved for the tables and storage listed here, as of this date. Re-run this review whenever tables, policies or functions change. The Supabase admin interface (admin.html) remains retired.

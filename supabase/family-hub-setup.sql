@@ -33,6 +33,9 @@ create policy "Admins can add lesson uploads" on public.lesson_uploads
 create policy "Admins can delete lesson uploads" on public.lesson_uploads
   for delete to authenticated
   using ((select app_private.is_admin()));
+-- Least privilege: Supabase's default grants give anon and authenticated every privilege
+-- on new public tables, so reset them and grant only what the page needs.
+revoke all on public.lesson_uploads from anon, authenticated;
 grant select on public.lesson_uploads to anon, authenticated;
 grant insert, delete on public.lesson_uploads to authenticated;
 
